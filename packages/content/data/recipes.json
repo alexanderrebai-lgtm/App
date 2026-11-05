@@ -1,0 +1,1424 @@
+{
+  "recipes": [
+    {
+      "id": "porridge-banane-cacao",
+      "name": "Porridge banane-cacao",
+      "category": "breakfast",
+      "minutes": 5,
+      "reference": {
+        "kcal": 620,
+        "protein": 25
+      },
+      "ingredients": [
+        {
+          "ingredient": "oats",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 250,
+          "unit": "ml",
+          "label": "lait"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "qty": 15,
+          "unit": "g"
+        },
+        {
+          "ingredient": "cocoa",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Chauffe flocons et lait 3 min en remuant.",
+        "Ajoute le cacao, puis la banane écrasée et le beurre de cacahuète."
+      ],
+      "tasteTip": "Une pincée de sel et de cannelle le rend gourmand comme un dessert.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget"
+      ]
+    },
+    {
+      "id": "pancakes-flocons-banane",
+      "name": "Pancakes flocons-banane",
+      "category": "breakfast",
+      "minutes": 10,
+      "reference": {
+        "kcal": 485,
+        "protein": 27
+      },
+      "ingredients": [
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "oats",
+          "qty": 50,
+          "unit": "g"
+        },
+        {
+          "ingredient": "baking-powder",
+          "qty": 1,
+          "unit": "tsp",
+          "label": "levure"
+        },
+        {
+          "ingredient": "fromage-blanc",
+          "qty": 100,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Mixe œufs, banane, flocons et levure.",
+        "Cuis de petites louches 2 min de chaque côté.",
+        "Sers avec le fromage blanc."
+      ],
+      "tasteTip": "Cuisson à feu moyen : dorés dehors, moelleux dedans. Un filet de miel au besoin.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "freezable"
+      ]
+    },
+    {
+      "id": "omelette-fromage-et-pain-grille",
+      "name": "Omelette fromage et pain grillé",
+      "category": "breakfast",
+      "minutes": 10,
+      "reference": {
+        "kcal": 510,
+        "protein": 30
+      },
+      "ingredients": [
+        {
+          "ingredient": "egg",
+          "qty": 3,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 25,
+          "unit": "g"
+        },
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "butter",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Bats les œufs, cuis doucement à feu moyen, ajoute le fromage et replie.",
+        "Grille le pain et beurre-le."
+      ],
+      "tasteTip": "Retire l’omelette du feu avant qu’elle soit sèche : baveuse, elle est bien meilleure.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "bowl-fromage-blanc-flocons-et-fruits",
+      "name": "Bowl fromage blanc, flocons et fruits",
+      "category": "snack",
+      "minutes": 3,
+      "reference": {
+        "kcal": 320,
+        "protein": 20
+      },
+      "ingredients": [
+        {
+          "ingredient": "fromage-blanc",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oats",
+          "qty": 30,
+          "unit": "g"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "fruit",
+          "qty": 100,
+          "unit": "g",
+          "label": "fruits"
+        }
+      ],
+      "steps": [
+        "Fais griller les flocons à sec 2 min.",
+        "Verse sur le fromage blanc avec le miel et les fruits."
+      ],
+      "tasteTip": "Les flocons grillés donnent l’effet granola croustillant.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "smoothie-prise-de-masse",
+      "name": "Smoothie prise de masse",
+      "category": "snack",
+      "minutes": 3,
+      "reference": {
+        "kcal": 470,
+        "protein": 20
+      },
+      "ingredients": [
+        {
+          "ingredient": "milk",
+          "qty": 300,
+          "unit": "ml",
+          "label": "lait"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "oats",
+          "qty": 40,
+          "unit": "g"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Mixe tout 1 minute."
+      ],
+      "tasteTip": "Mets la banane au congélateur : le smoothie devient onctueux comme une glace.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget"
+      ]
+    },
+    {
+      "id": "tartines-beurre-de-cacahuete-banane",
+      "name": "Tartines beurre de cacahuète-banane",
+      "category": "snack",
+      "minutes": 3,
+      "reference": {
+        "kcal": 410,
+        "protein": 16
+      },
+      "ingredients": [
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "qty": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        }
+      ],
+      "steps": [
+        "Grille le pain, tartine, ajoute la banane en rondelles."
+      ],
+      "tasteTip": "Une pincée de cannelle et de sel : addictif.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget"
+      ]
+    },
+    {
+      "id": "omelette-de-pommes-de-terre",
+      "name": "Omelette de pommes de terre",
+      "category": "main",
+      "minutes": 25,
+      "reference": {
+        "kcal": 470,
+        "protein": 22
+      },
+      "ingredients": [
+        {
+          "ingredient": "egg",
+          "qty": 3,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais revenir pommes de terre et oignon en dés 15 min à feu doux.",
+        "Verse les œufs battus, cuis 4 min, retourne et finis 3 min."
+      ],
+      "tasteTip": "Cuis les pommes de terre doucement : elles deviennent fondantes. Sers avec une salade.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "riz-cantonais-au-poulet",
+      "name": "Riz cantonais au poulet",
+      "category": "main",
+      "minutes": 20,
+      "reference": {
+        "kcal": 655,
+        "protein": 49
+      },
+      "ingredients": [
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "chicken-breast",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "frozen-peas",
+          "qty": 75,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        },
+        {
+          "ingredient": "soy-sauce",
+          "qty": 1,
+          "unit": "tbsp"
+        }
+      ],
+      "steps": [
+        "Cuis le riz.",
+        "Dore le poulet en dés, ajoute les petits pois, pousse sur le côté et brouille les œufs.",
+        "Mélange avec le riz et la sauce soja."
+      ],
+      "tasteTip": "Du riz de la veille grille mieux et ne colle pas.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "chili-de-boeuf-aux-haricots-rouges",
+      "name": "Chili de bœuf aux haricots rouges",
+      "category": "main",
+      "minutes": 30,
+      "reference": {
+        "kcal": 655,
+        "protein": 41
+      },
+      "ingredients": [
+        {
+          "ingredient": "beef-mince-5",
+          "qty": 125,
+          "unit": "g"
+        },
+        {
+          "ingredient": "kidney-beans",
+          "qty": 120,
+          "unit": "g",
+          "label": "haricots rouges égouttés"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 70,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Fais revenir l’oignon et la viande.",
+        "Ajoute épices, tomates et haricots, mijote 20 min.",
+        "Sers sur le riz."
+      ],
+      "tasteTip": "Un carré de chocolat noir à la fin adoucit et donne de la profondeur.",
+      "tags": [
+        "noPork",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "pates-thon-brocoli-gratinees",
+      "name": "Pâtes thon-brocoli gratinées",
+      "category": "main",
+      "minutes": 25,
+      "reference": {
+        "kcal": 630,
+        "protein": 41
+      },
+      "ingredients": [
+        {
+          "ingredient": "pasta",
+          "qty": 90,
+          "unit": "g",
+          "label": "pâtes crues"
+        },
+        {
+          "ingredient": "tuna",
+          "qty": 70,
+          "unit": "g",
+          "label": "thon"
+        },
+        {
+          "ingredient": "frozen-broccoli",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 100,
+          "unit": "ml",
+          "label": "lait"
+        },
+        {
+          "ingredient": "flour",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 25,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis pâtes et brocoli.",
+        "Fais une béchamel (farine + lait).",
+        "Mélange avec le thon, couvre de fromage et passe 10 min au four."
+      ],
+      "tasteTip": "Un peu de poivre et de muscade dans la béchamel.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "cuisse-de-poulet-rotie-et-riz",
+      "name": "Cuisse de poulet rôtie et riz",
+      "category": "main",
+      "minutes": 45,
+      "reference": {
+        "kcal": 625,
+        "protein": 31
+      },
+      "ingredients": [
+        {
+          "ingredient": "chicken-leg",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "frozen-veg",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        }
+      ],
+      "steps": [
+        "Frotte la cuisse avec paprika, ail et huile.",
+        "Four 200 °C pendant 40 min.",
+        "Cuis riz et légumes à part."
+      ],
+      "tasteTip": "Sèche bien la peau et monte le four à 220 °C les 10 dernières minutes : croustillante.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "lentilles-corail-epicees",
+      "name": "Lentilles corail épicées",
+      "category": "main",
+      "minutes": 25,
+      "reference": {
+        "kcal": 680,
+        "protein": 35
+      },
+      "ingredients": [
+        {
+          "ingredient": "red-lentils",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 50,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece",
+          "label": "œufs durs"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        },
+        {
+          "ingredient": "turmeric",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Fais revenir oignon et épices, ajoute lentilles, tomates et 30 cl d’eau.",
+        "Cuis 15 min.",
+        "Sers avec riz et œufs durs."
+      ],
+      "tasteTip": "Un jus de citron et du persil à la fin réveillent tout.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "wraps-poulet-crudites",
+      "name": "Wraps poulet-crudités",
+      "category": "main",
+      "minutes": 10,
+      "reference": {
+        "kcal": 480,
+        "protein": 49
+      },
+      "ingredients": [
+        {
+          "ingredient": "wheat-tortilla",
+          "qty": 2,
+          "unit": "piece",
+          "label": "galettes de blé"
+        },
+        {
+          "ingredient": "cooked-chicken",
+          "qty": 120,
+          "unit": "g",
+          "label": "poulet cuit"
+        },
+        {
+          "ingredient": "crudites",
+          "qty": 100,
+          "unit": "g",
+          "label": "carottes et salade"
+        },
+        {
+          "ingredient": "fromage-blanc",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Mélange fromage blanc, citron, sel et poivre.",
+        "Garnis les galettes et roule."
+      ],
+      "tasteTip": "Dore les galettes à sec 30 s pour une texture plus gourmande.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "pates-bolognaise",
+      "name": "Pâtes bolognaise",
+      "category": "main",
+      "minutes": 30,
+      "reference": {
+        "kcal": 665,
+        "protein": 41
+      },
+      "ingredients": [
+        {
+          "ingredient": "pasta",
+          "qty": 90,
+          "unit": "g",
+          "label": "pâtes crues"
+        },
+        {
+          "ingredient": "beef-mince-5",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "carrot",
+          "qty": 0.5,
+          "unit": "piece",
+          "label": "carotte"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais revenir oignon, carotte et viande.",
+        "Ajoute les tomates, mijote 25 min.",
+        "Sers sur les pâtes avec le fromage."
+      ],
+      "tasteTip": "Une pincée de sucre et du basilic : la sauce devient ronde.",
+      "tags": [
+        "noPork",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "couscous-poulet-et-pois-chiches",
+      "name": "Couscous poulet et pois chiches",
+      "category": "main",
+      "minutes": 20,
+      "reference": {
+        "kcal": 620,
+        "protein": 45
+      },
+      "ingredients": [
+        {
+          "ingredient": "semolina",
+          "qty": 80,
+          "unit": "g",
+          "label": "semoule crue"
+        },
+        {
+          "ingredient": "chicken-breast",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "ingredient": "chickpeas",
+          "qty": 100,
+          "unit": "g",
+          "label": "pois chiches égouttés"
+        },
+        {
+          "ingredient": "zucchini",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        },
+        {
+          "ingredient": "ras-el-hanout",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Dore le poulet en dés avec les épices, ajoute courgette et pois chiches 10 min.",
+        "Gonfle la semoule à l’eau bouillante et mélange."
+      ],
+      "tasteTip": "Un filet d’huile d’olive et du citron sur la semoule.",
+      "tags": [
+        "noPork",
+        "batch"
+      ]
+    },
+    {
+      "id": "poulet-teriyaki-et-riz",
+      "name": "Poulet teriyaki et riz",
+      "category": "main",
+      "minutes": 20,
+      "reference": {
+        "kcal": 535,
+        "protein": 38
+      },
+      "ingredients": [
+        {
+          "ingredient": "chicken-breast",
+          "qty": 130,
+          "unit": "g"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "frozen-broccoli",
+          "qty": 100,
+          "unit": "g",
+          "label": "brocoli"
+        },
+        {
+          "ingredient": "soy-sauce",
+          "qty": 1,
+          "unit": "tbsp"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        }
+      ],
+      "steps": [
+        "Dore le poulet en morceaux.",
+        "Ajoute soja, miel et ail, fais caraméliser 1 min.",
+        "Sers sur le riz avec le brocoli vapeur."
+      ],
+      "tasteTip": "Laisse la sauce napper le poulet : brillant et sucré-salé.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "burger-maison-et-pommes-de-terre-au-four",
+      "name": "Burger maison et pommes de terre au four",
+      "category": "main",
+      "minutes": 35,
+      "reference": {
+        "kcal": 615,
+        "protein": 42
+      },
+      "ingredients": [
+        {
+          "ingredient": "burger-bun",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "beef-patty-5",
+          "qty": 125,
+          "unit": "g"
+        },
+        {
+          "ingredient": "cheese-slice",
+          "qty": 20,
+          "unit": "g",
+          "label": "fromage"
+        },
+        {
+          "ingredient": "tomato",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        }
+      ],
+      "steps": [
+        "Coupe les pommes de terre en quartiers, huile, four 220 °C 30 min.",
+        "Cuis le steak 3 min par face, fais fondre le fromage dessus.",
+        "Monte le burger."
+      ],
+      "tasteTip": "Ne presse pas le steak à la cuisson : il reste juteux.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "tacos-boeuf-haricots",
+      "name": "Tacos bœuf-haricots",
+      "category": "main",
+      "minutes": 20,
+      "reference": {
+        "kcal": 625,
+        "protein": 43
+      },
+      "ingredients": [
+        {
+          "ingredient": "wheat-tortilla",
+          "qty": 2,
+          "unit": "piece",
+          "label": "tortillas"
+        },
+        {
+          "ingredient": "beef-mince-5",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "kidney-beans",
+          "qty": 80,
+          "unit": "g",
+          "label": "haricots rouges égouttés"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 25,
+          "unit": "g"
+        },
+        {
+          "ingredient": "plain-yogurt",
+          "qty": 50,
+          "unit": "g"
+        },
+        {
+          "ingredient": "tomato",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Fais revenir le bœuf avec paprika et haricots.",
+        "Réchauffe les tortillas, garnis avec la viande, le fromage, la tomate et le yaourt."
+      ],
+      "tasteTip": "Un trait de citron et de la coriandre : effet resto.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "poulet-tikka-masala-et-riz",
+      "name": "Poulet tikka masala et riz",
+      "category": "main",
+      "minutes": 30,
+      "reference": {
+        "kcal": 560,
+        "protein": 40
+      },
+      "ingredients": [
+        {
+          "ingredient": "chicken-breast",
+          "qty": 130,
+          "unit": "g"
+        },
+        {
+          "ingredient": "plain-yogurt",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        },
+        {
+          "ingredient": "garam-masala",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Marine le poulet dans yaourt et épices 30 min.",
+        "Dore-le, ajoute oignon et tomates, mijote 15 min.",
+        "Sers sur le riz."
+      ],
+      "tasteTip": "Plus tu marines, plus c’est tendre et parfumé.",
+      "tags": [
+        "noPork",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "pizza-maison-thon-mozzarella",
+      "name": "Pizza maison thon-mozzarella",
+      "category": "main",
+      "minutes": 40,
+      "reference": {
+        "kcal": 680,
+        "protein": 40
+      },
+      "ingredients": [
+        {
+          "ingredient": "flour",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "ingredient": "tuna",
+          "qty": 70,
+          "unit": "g",
+          "label": "thon"
+        },
+        {
+          "ingredient": "mozzarella",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "tomato-sauce",
+          "qty": 3,
+          "unit": "tbsp"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        }
+      ],
+      "steps": [
+        "Pétris farine, 6 cl d’eau tiède, huile et sel, étale finement.",
+        "Garnis de sauce tomate, thon, mozzarella.",
+        "Four 240 °C 12 min."
+      ],
+      "tasteTip": "Four très chaud et pâte fine : bord croustillant.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "riz-lentilles-et-oeufs-au-plat",
+      "name": "Riz, lentilles et œufs au plat",
+      "category": "main",
+      "minutes": 25,
+      "reference": {
+        "kcal": 805,
+        "protein": 35
+      },
+      "ingredients": [
+        {
+          "ingredient": "rice",
+          "qty": 90,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "green-lentils",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 10,
+          "unit": "g",
+          "label": "huile"
+        }
+      ],
+      "steps": [
+        "Cuis les lentilles 20 min et le riz.",
+        "Fais revenir l’oignon et ajoute-le aux lentilles.",
+        "Cuis les œufs au plat et pose-les dessus."
+      ],
+      "tasteTip": "Un filet de vinaigre et du persil relèvent tout.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch"
+      ]
+    },
+    {
+      "id": "pates-aux-lentilles-corail-et-tomate",
+      "name": "Pâtes aux lentilles corail et tomate",
+      "category": "main",
+      "minutes": 25,
+      "reference": {
+        "kcal": 775,
+        "protein": 34
+      },
+      "ingredients": [
+        {
+          "ingredient": "pasta",
+          "qty": 110,
+          "unit": "g",
+          "label": "pâtes crues"
+        },
+        {
+          "ingredient": "red-lentils",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        }
+      ],
+      "steps": [
+        "Cuis les pâtes.",
+        "Fais revenir l’oignon, ajoute lentilles, tomates et 20 cl d’eau, cuis 12 min jusqu’à ce que ça devienne crémeux.",
+        "Mélange avec les pâtes et le fromage."
+      ],
+      "tasteTip": "Un peu de piment et de basilic : sauce de trattoria, sans viande.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch"
+      ]
+    },
+    {
+      "id": "gratin-de-pommes-de-terre-et-cuisse-de-poulet",
+      "name": "Gratin de pommes de terre et cuisse de poulet",
+      "category": "main",
+      "minutes": 60,
+      "reference": {
+        "kcal": 625,
+        "protein": 36
+      },
+      "ingredients": [
+        {
+          "ingredient": "chicken-leg",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 300,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 100,
+          "unit": "ml",
+          "label": "lait"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        }
+      ],
+      "steps": [
+        "Cuis la cuisse 25 min à 200 °C.",
+        "Émince pommes de terre et oignon, verse le lait, couvre de fromage et enfourne 35 min."
+      ],
+      "tasteTip": "Frotte le plat avec de l’ail avant de le remplir.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "soupe-epaisse-lentilles-carottes-et-pain",
+      "name": "Soupe épaisse lentilles-carottes et pain",
+      "category": "main",
+      "minutes": 40,
+      "reference": {
+        "kcal": 795,
+        "protein": 34
+      },
+      "ingredients": [
+        {
+          "ingredient": "green-lentils",
+          "qty": 90,
+          "unit": "g"
+        },
+        {
+          "ingredient": "carrot",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g",
+          "label": "huile"
+        }
+      ],
+      "steps": [
+        "Fais revenir l’oignon, ajoute lentilles, carottes, pommes de terre et 80 cl d’eau.",
+        "Cuis 30 min, mixe à moitié.",
+        "Sers avec le pain."
+      ],
+      "tasteTip": "Cumin et un filet d’huile d’olive à la fin : velouté et parfumé.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "chili-sans-viande-lentilles-haricots-rouges",
+      "name": "Chili sans viande lentilles-haricots rouges",
+      "category": "main",
+      "minutes": 30,
+      "reference": {
+        "kcal": 675,
+        "protein": 31
+      },
+      "ingredients": [
+        {
+          "ingredient": "kidney-beans",
+          "qty": 120,
+          "unit": "g",
+          "label": "haricots rouges égouttés"
+        },
+        {
+          "ingredient": "green-lentils",
+          "qty": 40,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 1,
+          "unit": "piece",
+          "label": "œuf"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Fais revenir l’oignon et les épices, ajoute tomates, haricots et lentilles précuites, mijote 20 min.",
+        "Sers sur le riz avec un œuf au plat."
+      ],
+      "tasteTip": "Un carré de chocolat noir et un jus de citron à la fin.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "semoule-pois-chiches-et-carottes-au-cumin",
+      "name": "Semoule, pois chiches et carottes au cumin",
+      "category": "main",
+      "minutes": 20,
+      "reference": {
+        "kcal": 740,
+        "protein": 27
+      },
+      "ingredients": [
+        {
+          "ingredient": "semolina",
+          "qty": 100,
+          "unit": "g",
+          "label": "semoule crue"
+        },
+        {
+          "ingredient": "chickpeas",
+          "qty": 120,
+          "unit": "g",
+          "label": "pois chiches égouttés"
+        },
+        {
+          "ingredient": "carrot",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 10,
+          "unit": "g",
+          "label": "huile"
+        },
+        {
+          "ingredient": "plain-yogurt",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Fais revenir oignon et carottes en dés avec le cumin 8 min, ajoute les pois chiches.",
+        "Gonfle la semoule à l’eau bouillante, mélange.",
+        "Sers avec le yaourt."
+      ],
+      "tasteTip": "Un filet de citron et du persil : frais et parfumé.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch"
+      ]
+    },
+    {
+      "id": "porridge-pomme-cannelle",
+      "name": "Porridge pomme-cannelle",
+      "category": "breakfast",
+      "minutes": 7,
+      "reference": {
+        "kcal": 665,
+        "protein": 27
+      },
+      "ingredients": [
+        {
+          "ingredient": "oats",
+          "qty": 90,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 300,
+          "unit": "ml",
+          "label": "lait"
+        },
+        {
+          "ingredient": "apple",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Chauffe flocons et lait 4 min en remuant.",
+        "Ajoute la pomme en dés, le miel, le beurre de cacahuète et de la cannelle."
+      ],
+      "tasteTip": "Fais caraméliser la pomme 2 min à la poêle avant : effet tarte aux pommes.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget"
+      ]
+    }
+  ]
+}

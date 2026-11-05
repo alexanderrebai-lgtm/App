@@ -1,0 +1,984 @@
+{
+  "exercises": [
+    {
+      "id": "barre-au-front",
+      "name": "Barre au front",
+      "kind": "strength",
+      "muscles": [
+        "triceps"
+      ],
+      "equipment": "barbell"
+    },
+    {
+      "id": "bird-dog",
+      "name": "Bird-dog",
+      "kind": "core",
+      "muscles": [
+        "lowerBack",
+        "core"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "chat-vache",
+      "name": "Chat-vache",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "circuit-squat-pompes-rowing",
+      "name": "Circuit : squat, pompes, rowing",
+      "kind": "cardio",
+      "muscles": [
+        "fullBody"
+      ],
+      "equipment": "bodyweight",
+      "technique": "sq"
+    },
+    {
+      "id": "corde-a-sauter",
+      "name": "Corde à sauter",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "jumpRope"
+    },
+    {
+      "id": "crunch",
+      "name": "Crunch",
+      "kind": "core",
+      "muscles": [
+        "core"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "curl-barre-ez",
+      "name": "Curl barre EZ",
+      "kind": "strength",
+      "muscles": [
+        "biceps"
+      ],
+      "equipment": "barbell",
+      "technique": "cu"
+    },
+    {
+      "id": "curl-biceps-halteres",
+      "name": "Curl biceps haltères",
+      "kind": "strength",
+      "muscles": [
+        "biceps"
+      ],
+      "equipment": "dumbbell",
+      "technique": "cu"
+    },
+    {
+      "id": "curl-marteau",
+      "name": "Curl marteau",
+      "kind": "strength",
+      "muscles": [
+        "biceps"
+      ],
+      "equipment": "bodyweight",
+      "technique": "cu"
+    },
+    {
+      "id": "dead-bug",
+      "name": "Dead bug",
+      "kind": "core",
+      "muscles": [
+        "core"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "developpe-couche-barre",
+      "name": "Développé couché barre",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "technique": "bp"
+    },
+    {
+      "id": "developpe-couche-halteres",
+      "name": "Développé couché haltères",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "technique": "bp"
+    },
+    {
+      "id": "developpe-couche-halteres-rapide",
+      "name": "Développé couché haltères rapide",
+      "kind": "power",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "technique": "bp"
+    },
+    {
+      "id": "developpe-epaules-halteres",
+      "name": "Développé épaules haltères",
+      "kind": "strength",
+      "muscles": [
+        "shoulders"
+      ],
+      "equipment": "dumbbell",
+      "technique": "op"
+    },
+    {
+      "id": "developpe-incline-barre",
+      "name": "Développé incliné barre",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "barbell"
+    },
+    {
+      "id": "developpe-incline-halteres",
+      "name": "Développé incliné haltères",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "dumbbell"
+    },
+    {
+      "id": "developpe-militaire-barre",
+      "name": "Développé militaire barre",
+      "kind": "strength",
+      "muscles": [
+        "shoulders"
+      ],
+      "equipment": "barbell",
+      "technique": "op"
+    },
+    {
+      "id": "developpe-militaire-halteres",
+      "name": "Développé militaire haltères",
+      "kind": "strength",
+      "muscles": [
+        "shoulders"
+      ],
+      "equipment": "dumbbell",
+      "technique": "op"
+    },
+    {
+      "id": "dips",
+      "name": "Dips",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "pullupBar"
+    },
+    {
+      "id": "dips-lestes",
+      "name": "Dips lestés",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "dumbbell"
+    },
+    {
+      "id": "dips-sur-banc",
+      "name": "Dips sur banc",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "echauffement-footing",
+      "name": "Échauffement footing",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "echauffement-marche",
+      "name": "Échauffement marche",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "elevations-laterales",
+      "name": "Élévations latérales",
+      "kind": "strength",
+      "muscles": [
+        "shoulders"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "etirement-flechisseurs-de-hanche",
+      "name": "Étirement fléchisseurs de hanche",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "etirement-ischio-jambiers",
+      "name": "Étirement ischio-jambiers",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "etirement-pecs-au-mur",
+      "name": "Étirement pecs au mur",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "etirements",
+      "name": "Étirements",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "etirements-jambes-et-dos",
+      "name": "Étirements jambes et dos",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "extension-lombaire-a-45",
+      "name": "Extension lombaire à 45°",
+      "kind": "strength",
+      "muscles": [
+        "lowerBack",
+        "core"
+      ],
+      "equipment": "machine"
+    },
+    {
+      "id": "extension-lombaire-lestee",
+      "name": "Extension lombaire lestée",
+      "kind": "strength",
+      "muscles": [
+        "lowerBack",
+        "core"
+      ],
+      "equipment": "dumbbell"
+    },
+    {
+      "id": "extension-triceps-poulie",
+      "name": "Extension triceps poulie",
+      "kind": "strength",
+      "muscles": [
+        "triceps"
+      ],
+      "equipment": "cable"
+    },
+    {
+      "id": "face-pull",
+      "name": "Face pull",
+      "kind": "strength",
+      "muscles": [
+        "shoulders"
+      ],
+      "equipment": "cable"
+    },
+    {
+      "id": "fentes-alternees",
+      "name": "Fentes alternées",
+      "kind": "strength",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "fentes-bulgares",
+      "name": "Fentes bulgares",
+      "kind": "strength",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "dumbbell"
+    },
+    {
+      "id": "fentes-marchees",
+      "name": "Fentes marchées",
+      "kind": "strength",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "fentes-marchees-lestees",
+      "name": "Fentes marchées lestées",
+      "kind": "strength",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "dumbbell"
+    },
+    {
+      "id": "footing-facile-tu-peux-parler",
+      "name": "Footing facile (tu peux parler)",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "fractionne-30-s-vite-90-s-lent",
+      "name": "Fractionné : 30 s vite, 90 s lent",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "fractionne-45-s-vite-75-s-lent",
+      "name": "Fractionné : 45 s vite, 75 s lent",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "fractionne-doux-1-min-rapide-2-min-lent",
+      "name": "Fractionné doux : 1 min rapide, 2 min lent",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "hip-thrust",
+      "name": "Hip thrust",
+      "kind": "strength",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "technique": "br"
+    },
+    {
+      "id": "hip-thrust-barre",
+      "name": "Hip thrust barre",
+      "kind": "strength",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "barbell",
+      "technique": "br"
+    },
+    {
+      "id": "lancer-de-medecine-ball",
+      "name": "Lancer de médecine-ball",
+      "kind": "power",
+      "muscles": [
+        "fullBody"
+      ],
+      "equipment": "medicineBall"
+    },
+    {
+      "id": "lancer-de-medecine-ball-au-mur",
+      "name": "Lancer de médecine-ball au mur",
+      "kind": "power",
+      "muscles": [
+        "fullBody"
+      ],
+      "equipment": "medicineBall"
+    },
+    {
+      "id": "leg-curl-machine",
+      "name": "Leg curl machine",
+      "kind": "strength",
+      "muscles": [
+        "hamstrings"
+      ],
+      "equipment": "machine"
+    },
+    {
+      "id": "leg-extension",
+      "name": "Leg extension",
+      "kind": "strength",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "machine"
+    },
+    {
+      "id": "marche-rapide",
+      "name": "Marche rapide",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "marche-rapide-retour-au-calme",
+      "name": "Marche rapide, retour au calme",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "mollets-assis",
+      "name": "Mollets assis",
+      "kind": "strength",
+      "muscles": [
+        "calves"
+      ],
+      "equipment": "machine"
+    },
+    {
+      "id": "mollets-debout",
+      "name": "Mollets debout",
+      "kind": "strength",
+      "muscles": [
+        "calves"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "mollets-sautes",
+      "name": "Mollets sautés",
+      "kind": "power",
+      "muscles": [
+        "calves"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "oiseau-arriere-d-epaule",
+      "name": "Oiseau (arrière d’épaule)",
+      "kind": "strength",
+      "muscles": [
+        "shoulders"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "pigeon-fessiers",
+      "name": "Pigeon (fessiers)",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "planche",
+      "name": "Planche",
+      "kind": "core",
+      "muscles": [
+        "core"
+      ],
+      "equipment": "bodyweight",
+      "technique": "pl"
+    },
+    {
+      "id": "planche-laterale",
+      "name": "Planche latérale",
+      "kind": "core",
+      "muscles": [
+        "core"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "pompes",
+      "name": "Pompes",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "technique": "pu"
+    },
+    {
+      "id": "pompes-sur-genoux-si-besoin",
+      "name": "Pompes (sur genoux si besoin)",
+      "kind": "strength",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "technique": "pu"
+    },
+    {
+      "id": "pompes-explosives",
+      "name": "Pompes explosives",
+      "kind": "power",
+      "muscles": [
+        "chest",
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "technique": "pu"
+    },
+    {
+      "id": "pont-fessier",
+      "name": "Pont fessier",
+      "kind": "strength",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "technique": "br"
+    },
+    {
+      "id": "pont-fessier-lent",
+      "name": "Pont fessier lent",
+      "kind": "mobility",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "technique": "br"
+    },
+    {
+      "id": "posture-de-l-enfant",
+      "name": "Posture de l’enfant",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "presse-a-cuisses",
+      "name": "Presse à cuisses",
+      "kind": "strength",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "machine"
+    },
+    {
+      "id": "presse-a-cuisses-vitesse",
+      "name": "Presse à cuisses vitesse",
+      "kind": "power",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "machine"
+    },
+    {
+      "id": "pull-through-poulie",
+      "name": "Pull-through poulie",
+      "kind": "strength",
+      "muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "cable"
+    },
+    {
+      "id": "releve-de-jambes",
+      "name": "Relevé de jambes",
+      "kind": "core",
+      "muscles": [
+        "core"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "releve-de-jambes-suspendu",
+      "name": "Relevé de jambes suspendu",
+      "kind": "core",
+      "muscles": [
+        "core"
+      ],
+      "equipment": "pullupBar"
+    },
+    {
+      "id": "respiration-ventrale",
+      "name": "Respiration ventrale",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "retour-au-calme",
+      "name": "Retour au calme",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "rotation-du-haut-du-dos",
+      "name": "Rotation du haut du dos",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "rouleau-de-massage-dos-et-cuisses",
+      "name": "Rouleau de massage dos et cuisses",
+      "kind": "mobility",
+      "muscles": [
+        "mobility"
+      ],
+      "equipment": "foamRoller"
+    },
+    {
+      "id": "rowing-buste-appuye",
+      "name": "Rowing buste appuyé",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "bodyweight",
+      "technique": "ro"
+    },
+    {
+      "id": "rowing-explosif-poulie",
+      "name": "Rowing explosif poulie",
+      "kind": "power",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "cable",
+      "technique": "ro"
+    },
+    {
+      "id": "rowing-haltere-un-bras",
+      "name": "Rowing haltère un bras",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "dumbbell",
+      "technique": "ro"
+    },
+    {
+      "id": "rowing-poulie-assis",
+      "name": "Rowing poulie assis",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "cable",
+      "technique": "ro"
+    },
+    {
+      "id": "rowing-t-bar",
+      "name": "Rowing T-bar",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "barbell",
+      "technique": "ro"
+    },
+    {
+      "id": "sauts-en-longueur-sur-place",
+      "name": "Sauts en longueur sur place",
+      "kind": "power",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "sauts-sur-box",
+      "name": "Sauts sur box",
+      "kind": "power",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "box"
+    },
+    {
+      "id": "skipping-rapide",
+      "name": "Skipping rapide",
+      "kind": "power",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "squat-goblet",
+      "name": "Squat goblet",
+      "kind": "strength",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "dumbbell",
+      "technique": "sq"
+    },
+    {
+      "id": "squat-goblet-lourd",
+      "name": "Squat goblet lourd",
+      "kind": "strength",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "dumbbell",
+      "technique": "sq"
+    },
+    {
+      "id": "squat-saute",
+      "name": "Squat sauté",
+      "kind": "power",
+      "muscles": [
+        "quads",
+        "glutes"
+      ],
+      "equipment": "bodyweight",
+      "technique": "sq"
+    },
+    {
+      "id": "superman-au-sol",
+      "name": "Superman au sol",
+      "kind": "core",
+      "muscles": [
+        "lowerBack",
+        "core"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "tirage-horizontal-poulie",
+      "name": "Tirage horizontal poulie",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "cable"
+    },
+    {
+      "id": "tirage-poitrine-prise-serree",
+      "name": "Tirage poitrine prise serrée",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "tirage-vertical-poulie",
+      "name": "Tirage vertical poulie",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "cable"
+    },
+    {
+      "id": "tirage-vertical-prise-neutre",
+      "name": "Tirage vertical prise neutre",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "bodyweight"
+    },
+    {
+      "id": "tractions-assistees",
+      "name": "Tractions assistées",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "pullupBar"
+    },
+    {
+      "id": "tractions-lestees",
+      "name": "Tractions lestées",
+      "kind": "strength",
+      "muscles": [
+        "back",
+        "biceps"
+      ],
+      "equipment": "dumbbell"
+    },
+    {
+      "id": "velo-ou-rameur-regulier",
+      "name": "Vélo ou rameur régulier",
+      "kind": "cardio",
+      "muscles": [
+        "cardio"
+      ],
+      "equipment": "cardioMachine"
+    }
+  ],
+  "techniques": [
+    {
+      "id": "sq",
+      "name": "Squat goblet",
+      "text": "Haltère contre la poitrine, pieds un peu plus larges que les épaules, talons au sol. Descends dos droit jusqu’aux cuisses parallèles."
+    },
+    {
+      "id": "br",
+      "name": "Pont fessier / hip thrust",
+      "text": "Pieds à plat, serre les fessiers pour monter le bassin jusqu’à l’alignement épaules-hanches-genoux. Ne cambre pas le bas du dos."
+    },
+    {
+      "id": "pu",
+      "name": "Pompes",
+      "text": "Corps gainé en planche, coudes à 45°. Descends la poitrine près du sol, repousse sans creuser le dos. Sur les genoux si besoin. Version explosive : seulement avec une bonne technique."
+    },
+    {
+      "id": "bp",
+      "name": "Développé couché",
+      "text": "Omoplates serrées, pieds au sol. Descends la charge vers le bas des pecs, coudes à 45°, pousse en expirant."
+    },
+    {
+      "id": "ro",
+      "name": "Rowing",
+      "text": "Buste penché, dos plat, genoux fléchis. Tire le coude vers la hanche et serre les omoplates. Prends la version appuyée si ton dos est sensible."
+    },
+    {
+      "id": "op",
+      "name": "Développé épaules",
+      "text": "Gainé, sans cambrer. Pousse au-dessus de la tête puis redescends à hauteur des oreilles."
+    },
+    {
+      "id": "cu",
+      "name": "Curl biceps",
+      "text": "Coudes collés au corps, sans élan. Monte en expirant, redescends en 2–3 s."
+    },
+    {
+      "id": "pl",
+      "name": "Planche",
+      "text": "Avant-bras au sol, corps aligné de la tête aux talons, ventre et fessiers serrés. Ne creuse pas le dos : très bon pour protéger les lombaires."
+    }
+  ],
+  "substitutions": [
+    [
+      "developpe-couche-halteres",
+      "pompes",
+      "developpe-couche-barre",
+      "developpe-incline-halteres"
+    ],
+    [
+      "tirage-vertical-poulie",
+      "tractions-assistees",
+      "tirage-poitrine-prise-serree",
+      "tirage-vertical-prise-neutre"
+    ],
+    [
+      "rowing-poulie-assis",
+      "rowing-haltere-un-bras",
+      "rowing-buste-appuye",
+      "rowing-t-bar",
+      "tirage-horizontal-poulie"
+    ],
+    [
+      "developpe-epaules-halteres",
+      "developpe-militaire-halteres"
+    ],
+    [
+      "presse-a-cuisses",
+      "squat-goblet",
+      "fentes-marchees",
+      "fentes-bulgares"
+    ],
+    [
+      "pont-fessier",
+      "hip-thrust",
+      "leg-curl-machine",
+      "pull-through-poulie"
+    ],
+    [
+      "curl-biceps-halteres",
+      "curl-marteau",
+      "curl-barre-ez"
+    ],
+    [
+      "extension-triceps-poulie",
+      "dips-sur-banc",
+      "barre-au-front"
+    ],
+    [
+      "planche",
+      "dead-bug",
+      "crunch",
+      "planche-laterale",
+      "releve-de-jambes",
+      "bird-dog"
+    ],
+    [
+      "mollets-debout",
+      "mollets-assis"
+    ]
+  ]
+}

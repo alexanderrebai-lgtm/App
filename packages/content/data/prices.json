@@ -1,0 +1,332 @@
+{
+  "asOf": "2026-11-05",
+  "currency": "EUR",
+  "source": "Estimations du prototype : marques distributeur en drive, France. À vérifier sur ton drive.",
+  "spoonCost": 0.04,
+  "spicePotPrice": 2.5,
+  "items": {
+    "oats": {
+      "perKg": 2
+    },
+    "milk": {
+      "perKg": 1
+    },
+    "banana": {
+      "perUnit": 0.22
+    },
+    "peanut-butter": {
+      "perKg": 7
+    },
+    "cocoa": {
+      "perKg": 12
+    },
+    "egg": {
+      "perUnit": 0.28
+    },
+    "fromage-blanc": {
+      "perKg": 2
+    },
+    "grated-cheese": {
+      "perKg": 7.5
+    },
+    "wholemeal-bread": {
+      "perKg": 3
+    },
+    "butter": {
+      "perKg": 9
+    },
+    "fruit": {
+      "perKg": 2.5
+    },
+    "honey": {
+      "perKg": 8
+    },
+    "potato": {
+      "perKg": 1.3
+    },
+    "onion": {
+      "perUnit": 0.15
+    },
+    "olive-oil": {
+      "perKg": 8
+    },
+    "oil": {
+      "perKg": 3
+    },
+    "chicken-breast": {
+      "perKg": 9
+    },
+    "rice": {
+      "perKg": 1.7
+    },
+    "frozen-peas": {
+      "perKg": 2.3
+    },
+    "beef-mince-5": {
+      "perKg": 13
+    },
+    "kidney-beans": {
+      "perKg": 3.6
+    },
+    "crushed-tomatoes": {
+      "perKg": 1.75
+    },
+    "pasta": {
+      "perKg": 1.6
+    },
+    "tuna": {
+      "perKg": 13.5
+    },
+    "frozen-broccoli": {
+      "perKg": 2.5
+    },
+    "flour": {
+      "perKg": 1.1
+    },
+    "chicken-leg": {
+      "perUnit": 0.9
+    },
+    "frozen-veg": {
+      "perKg": 2
+    },
+    "garlic": {
+      "perUnit": 0.05
+    },
+    "apple": {
+      "perUnit": 0.2
+    },
+    "red-lentils": {
+      "perKg": 3.2
+    },
+    "green-lentils": {
+      "perKg": 2.8
+    },
+    "crudites": {
+      "perKg": 2.5
+    },
+    "carrot": {
+      "perKg": 1.3
+    },
+    "wheat-tortilla": {
+      "perUnit": 0.22
+    },
+    "cooked-chicken": {
+      "perKg": 14
+    },
+    "semolina": {
+      "perKg": 1.8
+    },
+    "chickpeas": {
+      "perKg": 3.6
+    },
+    "zucchini": {
+      "perKg": 2.5
+    },
+    "burger-bun": {
+      "perUnit": 0.3
+    },
+    "beef-patty-5": {
+      "perKg": 12
+    },
+    "cheese-slice": {
+      "perKg": 8
+    },
+    "tomato": {
+      "perUnit": 0.35
+    },
+    "plain-yogurt": {
+      "perKg": 2
+    },
+    "mozzarella": {
+      "perKg": 7
+    }
+  },
+  "packs": {
+    "rice": {
+      "size": 1000,
+      "price": 1.7,
+      "label": "1 kg"
+    },
+    "pasta": {
+      "size": 500,
+      "price": 0.8,
+      "label": "500 g"
+    },
+    "semolina": {
+      "size": 1000,
+      "price": 1.8,
+      "label": "1 kg"
+    },
+    "oats": {
+      "size": 500,
+      "price": 1,
+      "label": "500 g"
+    },
+    "green-lentils": {
+      "size": 500,
+      "price": 1.4,
+      "label": "500 g"
+    },
+    "red-lentils": {
+      "size": 500,
+      "price": 1.6,
+      "label": "500 g"
+    },
+    "kidney-beans": {
+      "size": 250,
+      "price": 0.9,
+      "label": "1 boîte"
+    },
+    "chickpeas": {
+      "size": 250,
+      "price": 0.9,
+      "label": "1 boîte"
+    },
+    "crushed-tomatoes": {
+      "size": 400,
+      "price": 0.7,
+      "label": "1 boîte"
+    },
+    "flour": {
+      "size": 1000,
+      "price": 1.1,
+      "label": "1 kg"
+    },
+    "oil": {
+      "size": 1000,
+      "price": 3,
+      "label": "1 L"
+    },
+    "olive-oil": {
+      "size": 1000,
+      "price": 8,
+      "label": "1 L"
+    },
+    "peanut-butter": {
+      "size": 350,
+      "price": 2.5,
+      "label": "350 g"
+    },
+    "honey": {
+      "size": 250,
+      "price": 2,
+      "label": "250 g"
+    },
+    "cocoa": {
+      "size": 250,
+      "price": 3,
+      "label": "250 g"
+    },
+    "tuna": {
+      "size": 112,
+      "price": 1.5,
+      "label": "1 boîte"
+    }
+  },
+  "bulk": [
+    {
+      "ingredient": "rice",
+      "format": "sac de 5 kg",
+      "size": 5000,
+      "unit": "g",
+      "price": 6.9,
+      "shelfLife": "se garde longtemps au sec"
+    },
+    {
+      "ingredient": "pasta",
+      "format": "paquet de 5 kg",
+      "size": 5000,
+      "unit": "g",
+      "price": 6.5,
+      "shelfLife": "se garde longtemps au sec"
+    },
+    {
+      "ingredient": "oats",
+      "format": "sac de 3 kg",
+      "size": 3000,
+      "unit": "g",
+      "price": 4.9,
+      "shelfLife": "plusieurs mois, bocal fermé"
+    },
+    {
+      "ingredient": "green-lentils",
+      "format": "sac de 2 kg",
+      "size": 2000,
+      "unit": "g",
+      "price": 4.8,
+      "shelfLife": "plus d’un an au sec"
+    },
+    {
+      "ingredient": "red-lentils",
+      "format": "sac de 2 kg",
+      "size": 2000,
+      "unit": "g",
+      "price": 5.8,
+      "shelfLife": "plus d’un an au sec"
+    },
+    {
+      "ingredient": "semolina",
+      "format": "sac de 5 kg",
+      "size": 5000,
+      "unit": "g",
+      "price": 7.5,
+      "shelfLife": "plusieurs mois au sec"
+    },
+    {
+      "ingredient": "peanut-butter",
+      "format": "pot de 1 kg",
+      "size": 1000,
+      "unit": "g",
+      "price": 5.9,
+      "shelfLife": "6 à 12 mois"
+    },
+    {
+      "ingredient": "crushed-tomatoes",
+      "format": "lot de 6 boîtes",
+      "size": 2400,
+      "unit": "g",
+      "price": 3.9,
+      "shelfLife": "plusieurs années"
+    },
+    {
+      "ingredient": "kidney-beans",
+      "format": "lot de 6 boîtes",
+      "size": 1500,
+      "unit": "g",
+      "price": 4.9,
+      "shelfLife": "plusieurs années"
+    },
+    {
+      "ingredient": "chickpeas",
+      "format": "lot de 6 boîtes",
+      "size": 1500,
+      "unit": "g",
+      "price": 4.9,
+      "shelfLife": "plusieurs années"
+    },
+    {
+      "ingredient": "oil",
+      "format": "bidon de 5 L",
+      "size": 5000,
+      "unit": "g",
+      "price": 11.5,
+      "shelfLife": "environ 12 mois"
+    },
+    {
+      "ingredient": "frozen-veg",
+      "format": "sac de 2,5 kg",
+      "size": 2500,
+      "unit": "g",
+      "price": 4.5,
+      "shelfLife": "congélateur, 3 à 4 mois"
+    },
+    {
+      "ingredient": "chicken-leg",
+      "format": "lot de 10 cuisses surgelées",
+      "size": 10,
+      "unit": "piece",
+      "price": 7,
+      "shelfLife": "congélateur, 3 à 4 mois"
+    }
+  ]
+}

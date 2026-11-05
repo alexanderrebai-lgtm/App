@@ -1,0 +1,110 @@
+{
+  "activityFactor": 1.55,
+  "waterLitersPerKg": 0.035,
+  "waterTrainingBonusL": 0.5,
+  "goals": {
+    "mass": {
+      "kcalOffset": 400,
+      "proteinPerKg": 1.8,
+      "fatPerKg": 1.2,
+      "weightTrendKgPerWeek": [
+        0.25,
+        0.5
+      ]
+    },
+    "strength": {
+      "kcalOffset": 250,
+      "proteinPerKg": 1.8,
+      "fatPerKg": 1.1,
+      "weightTrendKgPerWeek": [
+        0.1,
+        0.25
+      ]
+    },
+    "power": {
+      "kcalOffset": 100,
+      "proteinPerKg": 1.7,
+      "fatPerKg": 1,
+      "weightTrendKgPerWeek": [
+        -0.25,
+        0.25
+      ]
+    },
+    "cardio": {
+      "kcalOffset": 100,
+      "proteinPerKg": 1.5,
+      "fatPerKg": 1,
+      "weightTrendKgPerWeek": [
+        -0.25,
+        0.25
+      ]
+    }
+  },
+  "quickFoods": [
+    {
+      "name": "Œuf",
+      "kcal": 70,
+      "protein": 6
+    },
+    {
+      "name": "Riz cuit 150 g",
+      "kcal": 195,
+      "protein": 4
+    },
+    {
+      "name": "Pâtes cuites 200 g",
+      "kcal": 280,
+      "protein": 10
+    },
+    {
+      "name": "Cuisse de poulet",
+      "kcal": 220,
+      "protein": 26
+    },
+    {
+      "name": "Thon en boîte",
+      "kcal": 110,
+      "protein": 25
+    },
+    {
+      "name": "Bœuf haché 5 % 150 g",
+      "kcal": 200,
+      "protein": 30
+    },
+    {
+      "name": "Banane",
+      "kcal": 90,
+      "protein": 1
+    },
+    {
+      "name": "Flocons d’avoine 60 g",
+      "kcal": 225,
+      "protein": 8
+    },
+    {
+      "name": "Lait 25 cl",
+      "kcal": 120,
+      "protein": 8
+    },
+    {
+      "name": "Pain 2 tranches",
+      "kcal": 150,
+      "protein": 5
+    },
+    {
+      "name": "Beurre de cacahuète 1 c. à soupe",
+      "kcal": 95,
+      "protein": 4
+    },
+    {
+      "name": "Fromage blanc 200 g",
+      "kcal": 130,
+      "protein": 14
+    },
+    {
+      "name": "Lentilles cuites 200 g",
+      "kcal": 230,
+      "protein": 18
+    }
+  ]
+}

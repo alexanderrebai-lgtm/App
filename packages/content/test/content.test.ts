@@ -1,0 +1,78 @@
+import { describe, expect, it } from 'vitest';
+import {
+  content, exerciseById, ingredientById, recipeById, GoalId,
+} from '../src';
+
+const goals = GoalId.options;
+
+describe('contenus migrés du prototype', () => {
+  it('garde toutes les recettes et tous les exercices', () => {
+    expect(content.recipes).toHaveLength(27);
+    expect(content.exercises.exercises).toHaveLength(90);
+    expect(content.exercises.techniques).toHaveLength(8);
+  });
+
+  it('chaque recette a une astuce de goût, des étapes et des ingrédients connus', () => {
+    for (const r of content.recipes) {
+      expect(r.tasteTip.length).toBeGreaterThan(10);
+      for (const i of r.ingredients) expect(ingredientById.has(i.ingredient), `${r.id}: ${i.ingredient}`).toBe(true);
+    }
+  });
+
+  it('les identifiants sont uniques', () => {
+    expect(new Set(content.recipes.map((r) => r.id)).size).toBe(content.recipes.length);
+    expect(new Set(content.exercises.exercises.map((e) => e.id)).size).toBe(content.exercises.exercises.length);
+  });
+
+  it('chaque objectif a 3 phases de 4 séances qui ne citent que des exercices connus', () => {
+    for (const g of goals) {
+      const t = content.programs.templates[g];
+      expect(t).toHaveLength(3);
+      for (const phase of t) {
+        expect(phase).toHaveLength(4);
+        for (const s of phase) for (const p of s) expect(exerciseById.has(p.exercise), p.exercise).toBe(true);
+      }
+    }
+    for (const p of [...content.programs.recovery.mobility.items, ...content.programs.recovery.walk.items]) {
+      expect(exerciseById.has(p.exercise)).toBe(true);
+    }
+  });
+
+  it('les groupes de remplacement ne citent que des exercices connus', () => {
+    for (const g of content.exercises.substitutions) for (const id of g) expect(exerciseById.has(id), id).toBe(true);
+  });
+
+  it('les rotations de menus citent des recettes de la bonne catégorie', () => {
+    for (const mode of ['budget', 'normal'] as const) {
+      for (const cat of ['breakfast', 'main', 'snack'] as const) {
+        for (const id of content.menus[mode][cat]) {
+          const r = recipeById.get(id);
+          expect(r, id).toBeDefined();
+          // le prototype met des smoothies/tartines (collations) au petit-déjeuner en mode budget : on le vérifie
+          if (mode === 'normal') expect(r!.category).toBe(cat);
+        }
+      }
+    }
+    expect(content.menus.mealShares.reduce((a, b) => a + b, 0)).toBeCloseTo(1);
+  });
+
+  it('chaque ingrédient hors épices a un prix', () => {
+    for (const i of content.ingredients.ingredients) {
+      if (i.aisle === 'spice') continue;
+      expect(content.prices.items[i.id], i.id).toBeDefined();
+    }
+    for (const b of content.prices.bulk) expect(ingredientById.has(b.ingredient)).toBe(true);
+    for (const id of Object.keys(content.prices.packs)) expect(ingredientById.has(id), id).toBe(true);
+  });
+
+  it('les ingrédients comptés à la pièce ont un poids unitaire', () => {
+    for (const r of content.recipes) for (const i of r.ingredients) {
+      if (i.unit === 'piece') expect(ingredientById.get(i.ingredient)!.gramsPerUnit, i.ingredient).toBeDefined();
+    }
+  });
+
+  it('les compléments par défaut existent', () => {
+    const ids = new Set(content.supplements.supplements.map((s) => s.id));
+    for (const g of goals) for (const id of content.supplements.defaults[g]) expect(ids.has(id)).toBe(true);
+  });
+});

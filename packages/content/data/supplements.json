@@ -1,0 +1,161 @@
+{
+  "supplements": [
+    {
+      "id": "creatine",
+      "name": "Créatine",
+      "dose": "3 à 5 g dans un verre d’eau",
+      "timing": "N’importe quand dans la journée",
+      "trainingDaysOnly": false
+    },
+    {
+      "id": "whey",
+      "name": "Whey",
+      "dose": "1 dosette (25 g)",
+      "timing": "Après la séance ou en collation",
+      "trainingDaysOnly": false
+    },
+    {
+      "id": "omega3",
+      "name": "Oméga-3",
+      "dose": "500 mg à 1 g d’EPA + DHA",
+      "timing": "Au petit-déjeuner, avec le repas",
+      "trainingDaysOnly": false
+    },
+    {
+      "id": "caffeine",
+      "name": "Caféine",
+      "dose": "",
+      "timing": "45 à 60 min avant la séance",
+      "trainingDaysOnly": true
+    },
+    {
+      "id": "vitaminD",
+      "name": "Vitamine D",
+      "dose": "dose validée par ton médecin",
+      "timing": "Au petit-déjeuner, avec le repas",
+      "trainingDaysOnly": false
+    },
+    {
+      "id": "magnesium",
+      "name": "Magnésium",
+      "dose": "200 à 400 mg",
+      "timing": "Le soir",
+      "trainingDaysOnly": false
+    }
+  ],
+  "defaults": {
+    "mass": [
+      "creatine",
+      "whey",
+      "omega3"
+    ],
+    "strength": [
+      "creatine",
+      "caffeine",
+      "whey",
+      "omega3"
+    ],
+    "power": [
+      "creatine",
+      "caffeine",
+      "whey",
+      "omega3"
+    ],
+    "cardio": [
+      "caffeine",
+      "omega3"
+    ]
+  },
+  "usefulness": [
+    {
+      "name": "Créatine monohydrate",
+      "byGoal": {
+        "mass": "recommended",
+        "strength": "recommended",
+        "power": "recommended",
+        "cardio": "optional"
+      }
+    },
+    {
+      "name": "Whey (si besoin)",
+      "byGoal": {
+        "mass": "useful",
+        "strength": "useful",
+        "power": "useful",
+        "cardio": "useful"
+      }
+    },
+    {
+      "name": "Oméga-3",
+      "byGoal": {
+        "mass": "useful",
+        "strength": "useful",
+        "power": "useful",
+        "cardio": "useful"
+      }
+    },
+    {
+      "name": "Caféine avant séance",
+      "byGoal": {
+        "mass": "optional",
+        "strength": "recommended",
+        "power": "recommended",
+        "cardio": "recommended"
+      }
+    },
+    {
+      "name": "Vitamine D (hiver)",
+      "byGoal": {
+        "mass": "useful",
+        "strength": "useful",
+        "power": "useful",
+        "cardio": "useful"
+      }
+    },
+    {
+      "name": "Magnésium",
+      "byGoal": {
+        "mass": "optional",
+        "strength": "optional",
+        "power": "optional",
+        "cardio": "optional"
+      }
+    },
+    {
+      "name": "Citrulline",
+      "byGoal": {
+        "mass": "optional",
+        "strength": "optional",
+        "power": "optional",
+        "cardio": "optional"
+      }
+    },
+    {
+      "name": "Bêta-alanine",
+      "byGoal": {
+        "mass": "optional",
+        "strength": "useless",
+        "power": "optional",
+        "cardio": "optional"
+      }
+    },
+    {
+      "name": "Boisson + glucides (effort > 60 min)",
+      "byGoal": {
+        "mass": "useless",
+        "strength": "useless",
+        "power": "useless",
+        "cardio": "useful"
+      }
+    },
+    {
+      "name": "BCAA, brûleurs, boosters, gainers",
+      "byGoal": {
+        "mass": "useless",
+        "strength": "useless",
+        "power": "useless",
+        "cardio": "useless"
+      }
+    }
+  ]
+}

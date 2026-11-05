@@ -1,0 +1,612 @@
+{
+  "ingredients": [
+    {
+      "id": "oats",
+      "name": "flocons d’avoine",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 370,
+        "protein": 13.5,
+        "carbs": 58.7,
+        "fat": 7
+      }
+    },
+    {
+      "id": "milk",
+      "name": "lait demi-écrémé",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 46,
+        "protein": 3.3,
+        "carbs": 4.8,
+        "fat": 1.6
+      }
+    },
+    {
+      "id": "banana",
+      "name": "banane",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 90,
+        "protein": 1.1,
+        "carbs": 20,
+        "fat": 0.3
+      },
+      "gramsPerUnit": 120
+    },
+    {
+      "id": "peanut-butter",
+      "name": "beurre de cacahuète",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 600,
+        "protein": 25,
+        "carbs": 14,
+        "fat": 49
+      }
+    },
+    {
+      "id": "cocoa",
+      "name": "cacao en poudre",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 360,
+        "protein": 20,
+        "carbs": 13,
+        "fat": 21
+      }
+    },
+    {
+      "id": "egg",
+      "name": "œufs",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 140,
+        "protein": 12.5,
+        "carbs": 0.5,
+        "fat": 10
+      },
+      "gramsPerUnit": 50
+    },
+    {
+      "id": "baking-powder",
+      "name": "levure chimique",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 50,
+        "protein": 0,
+        "carbs": 12,
+        "fat": 0
+      }
+    },
+    {
+      "id": "fromage-blanc",
+      "name": "fromage blanc",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 70,
+        "protein": 7.5,
+        "carbs": 4,
+        "fat": 2.5
+      }
+    },
+    {
+      "id": "grated-cheese",
+      "name": "fromage râpé",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 380,
+        "protein": 28,
+        "carbs": 0,
+        "fat": 29
+      }
+    },
+    {
+      "id": "wholemeal-bread",
+      "name": "pain complet",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 245,
+        "protein": 9,
+        "carbs": 43,
+        "fat": 3
+      }
+    },
+    {
+      "id": "butter",
+      "name": "beurre",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 745,
+        "protein": 0.7,
+        "carbs": 0.6,
+        "fat": 82
+      }
+    },
+    {
+      "id": "honey",
+      "name": "miel",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 330,
+        "protein": 0.4,
+        "carbs": 81,
+        "fat": 0
+      }
+    },
+    {
+      "id": "fruit",
+      "name": "fruits de saison",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 55,
+        "protein": 0.7,
+        "carbs": 12,
+        "fat": 0.3
+      }
+    },
+    {
+      "id": "potato",
+      "name": "pommes de terre",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 80,
+        "protein": 2,
+        "carbs": 17,
+        "fat": 0.1
+      }
+    },
+    {
+      "id": "onion",
+      "name": "oignon",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 40,
+        "protein": 1.2,
+        "carbs": 7.5,
+        "fat": 0.2
+      },
+      "gramsPerUnit": 100
+    },
+    {
+      "id": "olive-oil",
+      "name": "huile d’olive",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 900,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 100
+      }
+    },
+    {
+      "id": "oil",
+      "name": "huile de colza ou tournesol",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 900,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 100
+      }
+    },
+    {
+      "id": "rice",
+      "name": "riz",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 355,
+        "protein": 7.5,
+        "carbs": 78,
+        "fat": 0.6
+      }
+    },
+    {
+      "id": "chicken-breast",
+      "name": "escalope de poulet",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 110,
+        "protein": 23.5,
+        "carbs": 0,
+        "fat": 1.5
+      }
+    },
+    {
+      "id": "frozen-peas",
+      "name": "petits pois surgelés",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 75,
+        "protein": 5.5,
+        "carbs": 10,
+        "fat": 0.5
+      }
+    },
+    {
+      "id": "soy-sauce",
+      "name": "sauce soja",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 60,
+        "protein": 8,
+        "carbs": 6,
+        "fat": 0.1
+      }
+    },
+    {
+      "id": "beef-mince-5",
+      "name": "bœuf haché 5 %",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 125,
+        "protein": 21,
+        "carbs": 0,
+        "fat": 5
+      }
+    },
+    {
+      "id": "beef-patty-5",
+      "name": "steak haché 5 %",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 125,
+        "protein": 21,
+        "carbs": 0,
+        "fat": 5
+      }
+    },
+    {
+      "id": "kidney-beans",
+      "name": "haricots rouges en boîte",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 105,
+        "protein": 8,
+        "carbs": 14,
+        "fat": 0.5
+      }
+    },
+    {
+      "id": "crushed-tomatoes",
+      "name": "tomates concassées",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 25,
+        "protein": 1.2,
+        "carbs": 3.8,
+        "fat": 0.2
+      }
+    },
+    {
+      "id": "paprika",
+      "name": "paprika",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 300,
+        "protein": 14,
+        "carbs": 20,
+        "fat": 13
+      }
+    },
+    {
+      "id": "cumin",
+      "name": "cumin",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 375,
+        "protein": 18,
+        "carbs": 34,
+        "fat": 22
+      }
+    },
+    {
+      "id": "turmeric",
+      "name": "curcuma",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 310,
+        "protein": 10,
+        "carbs": 44,
+        "fat": 3
+      }
+    },
+    {
+      "id": "ras-el-hanout",
+      "name": "ras-el-hanout",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 300,
+        "protein": 12,
+        "carbs": 40,
+        "fat": 10
+      }
+    },
+    {
+      "id": "garam-masala",
+      "name": "garam masala",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 300,
+        "protein": 12,
+        "carbs": 40,
+        "fat": 12
+      }
+    },
+    {
+      "id": "pasta",
+      "name": "pâtes",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 355,
+        "protein": 12.5,
+        "carbs": 70,
+        "fat": 1.5
+      }
+    },
+    {
+      "id": "tuna",
+      "name": "thon au naturel",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 115,
+        "protein": 26,
+        "carbs": 0,
+        "fat": 1
+      }
+    },
+    {
+      "id": "frozen-broccoli",
+      "name": "brocoli surgelé",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 30,
+        "protein": 2.8,
+        "carbs": 3.5,
+        "fat": 0.4
+      }
+    },
+    {
+      "id": "flour",
+      "name": "farine",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 345,
+        "protein": 10,
+        "carbs": 72,
+        "fat": 1.2
+      }
+    },
+    {
+      "id": "chicken-leg",
+      "name": "cuisse de poulet",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 150,
+        "protein": 18,
+        "carbs": 0,
+        "fat": 8.5
+      },
+      "gramsPerUnit": 150
+    },
+    {
+      "id": "frozen-veg",
+      "name": "légumes surgelés",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 40,
+        "protein": 2,
+        "carbs": 6,
+        "fat": 0.3
+      }
+    },
+    {
+      "id": "garlic",
+      "name": "ail",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 130,
+        "protein": 6,
+        "carbs": 28,
+        "fat": 0.5
+      },
+      "gramsPerUnit": 5
+    },
+    {
+      "id": "red-lentils",
+      "name": "lentilles corail",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 345,
+        "protein": 24,
+        "carbs": 50,
+        "fat": 1.5
+      }
+    },
+    {
+      "id": "green-lentils",
+      "name": "lentilles vertes",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 330,
+        "protein": 24,
+        "carbs": 48,
+        "fat": 1.5
+      }
+    },
+    {
+      "id": "wheat-tortilla",
+      "name": "tortillas de blé",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 300,
+        "protein": 8,
+        "carbs": 50,
+        "fat": 7
+      },
+      "gramsPerUnit": 40
+    },
+    {
+      "id": "cooked-chicken",
+      "name": "blanc de poulet cuit",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 150,
+        "protein": 30,
+        "carbs": 0,
+        "fat": 3
+      }
+    },
+    {
+      "id": "crudites",
+      "name": "carottes râpées et salade",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 30,
+        "protein": 1,
+        "carbs": 5,
+        "fat": 0.2
+      }
+    },
+    {
+      "id": "lemon-juice",
+      "name": "jus de citron",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 25,
+        "protein": 0.4,
+        "carbs": 6,
+        "fat": 0
+      }
+    },
+    {
+      "id": "carrot",
+      "name": "carottes",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 36,
+        "protein": 0.8,
+        "carbs": 7,
+        "fat": 0.2
+      },
+      "gramsPerUnit": 100
+    },
+    {
+      "id": "semolina",
+      "name": "semoule",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 360,
+        "protein": 12,
+        "carbs": 72,
+        "fat": 1.5
+      }
+    },
+    {
+      "id": "chickpeas",
+      "name": "pois chiches en boîte",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 130,
+        "protein": 7,
+        "carbs": 17,
+        "fat": 2.4
+      }
+    },
+    {
+      "id": "zucchini",
+      "name": "courgette",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 17,
+        "protein": 1.2,
+        "carbs": 2.5,
+        "fat": 0.3
+      }
+    },
+    {
+      "id": "burger-bun",
+      "name": "pain à burger",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 280,
+        "protein": 9,
+        "carbs": 50,
+        "fat": 4.5
+      },
+      "gramsPerUnit": 70
+    },
+    {
+      "id": "cheese-slice",
+      "name": "fromage en tranches",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 380,
+        "protein": 24,
+        "carbs": 1,
+        "fat": 31
+      }
+    },
+    {
+      "id": "tomato",
+      "name": "tomate",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 20,
+        "protein": 0.9,
+        "carbs": 3,
+        "fat": 0.2
+      },
+      "gramsPerUnit": 120
+    },
+    {
+      "id": "plain-yogurt",
+      "name": "yaourt nature",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 55,
+        "protein": 4.3,
+        "carbs": 5.5,
+        "fat": 1.5
+      }
+    },
+    {
+      "id": "mozzarella",
+      "name": "mozzarella",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 250,
+        "protein": 18,
+        "carbs": 1,
+        "fat": 19
+      }
+    },
+    {
+      "id": "tomato-sauce",
+      "name": "sauce tomate",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 45,
+        "protein": 1.5,
+        "carbs": 7,
+        "fat": 1
+      }
+    },
+    {
+      "id": "apple",
+      "name": "pomme",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 52,
+        "protein": 0.3,
+        "carbs": 12,
+        "fat": 0.2
+      },
+      "gramsPerUnit": 150
+    }
+  ],
+  "spoonGrams": {
+    "tbsp": 15,
+    "tsp": 3
+  }
+}
