@@ -3,10 +3,14 @@ import { z } from 'zod';
 export const GoalId = z.enum(['mass', 'strength', 'power', 'cardio']);
 export type GoalId = z.infer<typeof GoalId>;
 
+/** Objet avec une entrée obligatoire par objectif (z.record rendrait les clés optionnelles). */
+const byGoal = <T extends z.ZodTypeAny>(s: T) => z.object({ mass: s, strength: s, power: s, cardio: s });
+
 export const Muscle = z.enum([
   'chest', 'back', 'shoulders', 'biceps', 'triceps', 'quads', 'hamstrings', 'glutes',
   'calves', 'core', 'lowerBack', 'fullBody', 'cardio', 'mobility',
 ]);
+export type Muscle = z.infer<typeof Muscle>;
 export const Equipment = z.enum([
   'barbell', 'dumbbell', 'cable', 'machine', 'pullupBar', 'box', 'medicineBall',
   'jumpRope', 'cardioMachine', 'foamRoller', 'bodyweight',
@@ -41,10 +45,10 @@ const Goal = z.object({
 });
 
 export const ProgramsFile = z.object({
-  goals: z.record(GoalId, Goal),
+  goals: byGoal(Goal),
   phaseNames: z.array(z.string()).length(3),
   // templates[goal][phase][session] -> prescriptions
-  templates: z.record(GoalId, z.array(z.array(z.array(Prescription))).length(3)),
+  templates: byGoal(z.array(z.array(z.array(Prescription))).length(3)),
   recovery: z.object({
     mobility: z.object({ title: z.string(), items: z.array(Prescription) }),
     walk: z.object({ title: z.string(), items: z.array(Prescription) }),
@@ -146,7 +150,7 @@ export const NutritionFile = z.object({
   activityFactor: z.number(),
   waterLitersPerKg: z.number(),
   waterTrainingBonusL: z.number(),
-  goals: z.record(GoalId, z.object({
+  goals: byGoal(z.object({
     kcalOffset: z.number(),
     proteinPerKg: z.number(),
     fatPerKg: z.number(),
@@ -162,10 +166,10 @@ export const SupplementsFile = z.object({
   supplements: z.array(z.object({
     id: SupplementId, name: z.string(), dose: z.string(), timing: z.string(), trainingDaysOnly: z.boolean(),
   })),
-  defaults: z.record(GoalId, z.array(SupplementId)),
+  defaults: byGoal(z.array(SupplementId)),
   usefulness: z.array(z.object({
     name: z.string(),
-    byGoal: z.record(GoalId, z.enum(['recommended', 'useful', 'optional', 'useless'])),
+    byGoal: byGoal(z.enum(['recommended', 'useful', 'optional', 'useless'])),
   })),
 });
 export type SupplementsFile = z.infer<typeof SupplementsFile>;

@@ -314,7 +314,8 @@ const SPID = { cre: 'creatine', whey: 'whey', om3: 'omega3', caf: 'caffeine', vd
 const SYM = { '✅': 'recommended', '👍': 'useful', '➖': 'optional', '❌': 'useless' };
 write('supplements.json', {
   supplements: Object.entries(P.SPL).map(([k, [name, dose, timing]]) => ({
-    id: SPID[k], name, dose, timing, trainingDaysOnly: k === 'caf',
+    // Correction : l'EFSA fixe à 250 mg/jour la limite du magnésium en complément (le prototype disait 200 à 400 mg).
+    id: SPID[k], name, dose: k === 'mg' ? '200 à 250 mg' : dose, timing, trainingDaysOnly: k === 'caf',
   })),
   defaults: Object.fromEntries(GOALS.map((g) => [g, P.SPD[g].map((k) => SPID[k])])),
   usefulness: P.SM.map(([name, ...v]) => ({ name, byGoal: Object.fromEntries(GOALS.map((g, i) => [g, SYM[v[i]]])) })),
