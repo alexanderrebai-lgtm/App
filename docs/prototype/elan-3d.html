@@ -1,0 +1,501 @@
+<title>Élan · Mouvements 3D</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout : la scène 3D occupe la colonne principale, la fiche de l'exercice à droite (empilée sur téléphone). */
+:root {
+  --night: #0E1220;
+  --slate: #171C2E;
+  --line: #2A3150;
+  --chalk: #F2F4F8;
+  --mute: #A3ACC0;
+  --neon: #C6F432;
+  --coral: #FF6B3D;
+  --azure: #5B8CFF;
+  --f-display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* échelle : 13 / 15 / 17 / 22 / 28 / 40 */
+  --t-cap: 0.8125rem; --t-small: 0.9375rem; --t-body: 1.0625rem; --t-h3: 1.375rem; --t-h2: 1.75rem; --t-num: 2.5rem;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--night); color: var(--chalk); font-family: var(--f-body); font-size: var(--t-body); line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 40px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+header { display: flex; flex-direction: column; gap: 6px; }
+.eyebrow { margin: 0; font-size: var(--t-cap); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+h1 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: var(--t-h2); line-height: 1.15; text-wrap: balance; }
+h2 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: var(--t-h3); line-height: 1.2; }
+p { margin: 0; }
+.lead { color: var(--mute); max-width: 62ch; }
+
+.main { display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch; }
+.stage {
+  flex: 999 1 520px; min-width: 0; position: relative; border-radius: 20px; overflow: hidden; background: var(--slate);
+  aspect-ratio: 4 / 5; max-height: 640px; width: 100%;
+}
+.stage canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.hud { position: absolute; left: 16px; right: 16px; top: 14px; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; gap: 12px; }
+.phase { display: flex; flex-direction: column; gap: 2px; }
+.phase b { font-family: var(--f-display); font-size: var(--t-h3); font-weight: 700; color: var(--neon); }
+.phase span { font-size: var(--t-cap); color: var(--mute); }
+.reps { text-align: right; font-family: var(--f-display); }
+.reps b { display: block; font-size: var(--t-num); line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.reps span { font-size: var(--t-cap); color: var(--mute); font-family: var(--f-body); }
+.hint { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); font-size: var(--t-cap); color: var(--mute); pointer-events: none; white-space: nowrap; }
+.views { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+
+button { font: inherit; color: inherit; cursor: pointer; }
+.chip {
+  min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line); background: rgba(14,18,32,.72);
+  font-size: var(--t-small); font-weight: 500;
+}
+.chip[aria-pressed="true"] { background: var(--chalk); color: var(--night); border-color: var(--chalk); font-weight: 600; }
+:focus-visible { outline: 3px solid var(--azure); outline-offset: 2px; }
+
+.panel { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.picker { display: flex; flex-direction: column; gap: 8px; }
+.ex {
+  text-align: left; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--slate);
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 56px;
+}
+.ex strong { font-family: var(--f-display); font-size: 1.1875rem; font-weight: 600; }
+.ex small { color: var(--mute); font-size: var(--t-cap); }
+.ex[aria-pressed="true"] { border-color: var(--neon); box-shadow: inset 0 0 0 1px var(--neon); }
+.card { background: var(--slate); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.presc { display: flex; gap: 20px; flex-wrap: wrap; }
+.presc div { display: flex; flex-direction: column; }
+.presc b { font-family: var(--f-display); font-size: var(--t-h3); font-weight: 700; font-variant-numeric: tabular-nums; }
+.presc span { font-size: var(--t-cap); color: var(--mute); }
+ol.cues { margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 6px; font-size: var(--t-small); }
+.muscles { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag { font-size: var(--t-cap); font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(198,244,50,.14); color: var(--neon); }
+.controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.btn { min-height: 52px; border-radius: 14px; border: 1px solid var(--line); background: var(--slate); font-weight: 600; font-size: var(--t-small); }
+.btn.primary { background: var(--neon); color: var(--night); border: 0; font-family: var(--f-display); font-size: 1.1875rem; font-weight: 700; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: var(--t-cap); color: var(--mute); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+
+.how { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.how .card p { color: var(--mute); font-size: var(--t-small); }
+.how h3 { margin: 0; font-family: var(--f-display); font-size: 1.1875rem; font-weight: 600; }
+.err { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--mute); }
+@media (max-width: 560px) { .hint { bottom: 70px; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Élan · prototype de la séance guidée</p>
+    <h1>Voir le mouvement avant de le faire</h1>
+    <p class="lead">Avant chaque exercice, un mannequin 3D montre le geste au bon tempo. Fais-le tourner du doigt, passe en ralenti, puis lance ta première série.</p>
+  </header>
+
+  <div class="main">
+    <div class="stage" id="stage">
+      <div class="hud" aria-live="polite">
+        <div class="phase"><b id="phase">Descends</b><span id="phaseSub">2 secondes, contrôlé</span></div>
+        <div class="reps"><b id="reps">0</b><span>répétitions</span></div>
+      </div>
+      <p class="hint">Glisse pour tourner · pince pour zoomer</p>
+      <div class="views" role="group" aria-label="Angle de vue">
+        <button class="chip" data-view="face" aria-pressed="false">Face</button>
+        <button class="chip" data-view="side" aria-pressed="false">Profil</button>
+        <button class="chip" data-view="three" aria-pressed="true">Trois-quarts</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="picker" role="group" aria-label="Exercice" id="picker"></div>
+
+      <div class="card">
+        <div class="presc">
+          <div><b id="pSets">3 × 10–12</b><span>séries × répétitions</span></div>
+          <div><b id="pTempo">2 – 1</b><span>tempo descente – montée (s)</span></div>
+          <div><b id="pRest">1:15</b><span>repos</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Les points clés</h2>
+        <ol class="cues" id="cues"></ol>
+        <div class="muscles" id="muscles"></div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="play" aria-pressed="true">Pause</button>
+        <button class="btn" id="slow" aria-pressed="false">Ralenti</button>
+        <button class="btn primary" id="go" style="grid-column: 1 / -1;">Je suis prêt : série 1</button>
+      </div>
+      <div class="legend"><span><i style="background: var(--neon)"></i>muscles travaillés</span><span><i style="background: var(--coral)"></i>charge</span></div>
+    </div>
+  </div>
+
+  <section class="how" aria-label="Dans l’application">
+    <div class="card"><h3>Hors ligne et léger</h3><p>Le mannequin et ses mouvements sont calculés sur le téléphone : aucune vidéo à télécharger, rien n’est envoyé.</p></div>
+    <div class="card"><h3>Une vingtaine de gestes de base</h3><p>Squat, fente, poussée, tirage, charnière de hanche, gainage… combinés, ils couvrent les 90 exercices du programme.</p></div>
+    <div class="card"><h3>Le tempo du programme</h3><p>La vitesse de l’animation suit le tempo prescrit, et la charge proposée s’affiche sur l’haltère dès la série 1.</p></div>
+  </section>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+const smooth = (t) => t * t * (3 - 2 * t);
+
+// ---------- proportions du mannequin (mètres) ----------
+const L = { shin: 0.44, thigh: 0.45, ankle: 0.08, torso: 0.52, upper: 0.30, fore: 0.27, hipW: 0.10, shW: 0.19 };
+
+// IK à deux segments : position de l'articulation intermédiaire (genou, coude).
+function ik(a, c, l1, l2, pole) {
+  const ac = c.clone().sub(a);
+  let d = ac.length();
+  const max = l1 + l2 - 1e-4;
+  if (d > max) { ac.setLength(max); d = max; }
+  const end = a.clone().add(ac);
+  const dir = ac.clone().normalize();
+  const x = (l1 * l1 - l2 * l2 + d * d) / (2 * d);
+  const h = Math.sqrt(Math.max(0, l1 * l1 - x * x));
+  const n = pole.clone().sub(dir.clone().multiplyScalar(pole.dot(dir))).normalize();
+  return { joint: a.clone().add(dir.multiplyScalar(x)).add(n.multiplyScalar(h)), end };
+}
+
+function torsoFrame(hip, lean) {
+  const dir = V(Math.sin(lean), Math.cos(lean), 0);
+  const fwd = V(Math.cos(lean), -Math.sin(lean), 0);
+  const sh = hip.clone().add(dir.clone().multiplyScalar(L.torso));
+  return { dir, fwd, sh };
+}
+
+// ---------- mouvements : pose(s), s = 0 position de départ, 1 position d'arrivée ----------
+const MOVES = {
+  squat: {
+    name: 'Squat goblet', sets: '3 × 10–12', rest: '1:15', tempo: [2, 1],
+    phases: ['Descends', 'Pause en bas', 'Remonte', 'Respire'],
+    phaseSub: ['2 secondes, contrôlé', 'cuisses parallèles', 'pousse dans le sol', 'genoux et hanches tendus'],
+    cues: ['Haltère contre la poitrine, pieds un peu plus larges que les épaules.', 'Talons au sol, genoux dans l’axe des pieds.', 'Descends dos droit jusqu’aux cuisses parallèles, remonte en poussant dans le sol.'],
+    muscles: ['Quadriceps', 'Fessiers'], hi: ['thighL', 'thighR', 'pelvis'], bell: 'vertical',
+    pose(s) {
+      const hip = V(-0.02 - 0.2 * s, 0.955 - 0.44 * s, 0);
+      const t = torsoFrame(hip, 0.08 + 0.55 * s);
+      const feet = { L: { at: V(0, L.ankle, 0.16), pitch: 0 }, R: { at: V(0, L.ankle, -0.16), pitch: 0 } };
+      const hand = (side) => t.sh.clone().add(t.fwd.clone().multiplyScalar(0.24)).add(t.dir.clone().multiplyScalar(-0.2)).add(V(0, 0, 0.075 * side));
+      return { hip, t, feet, hands: { L: hand(1), R: hand(-1) }, kneePole: (side) => V(1, 0, 0.35 * side), elbowPole: (side) => V(0.2, -1, 0.5 * side) };
+    },
+  },
+  press: {
+    name: 'Développé épaules haltères', sets: '2 × 10–12', rest: '1:15', tempo: [1, 2], startUp: true,
+    phases: ['Pousse', 'Bras tendus', 'Redescends', 'Gaine-toi'],
+    phaseSub: ['en expirant', 'sans verrouiller fort', '2 secondes, jusqu’aux oreilles', 'ventre serré, pas de cambrure'],
+    cues: ['Debout, gainé, sans cambrer le bas du dos.', 'Pousse au-dessus de la tête en expirant.', 'Redescends à hauteur des oreilles en 2 secondes.'],
+    muscles: ['Épaules', 'Triceps'], hi: ['shL', 'shR', 'upperL', 'upperR'], bell: 'lateral',
+    pose(s) {
+      const hip = V(0, 0.94, 0);
+      const t = torsoFrame(hip, 0.02);
+      const feet = { L: { at: V(0, L.ankle, 0.12), pitch: 0 }, R: { at: V(0, L.ankle, -0.12), pitch: 0 } };
+      const hand = (side) => {
+        const sh = t.sh.clone().add(V(0, 0, L.shW * side));
+        const rack = sh.clone().add(V(0.05, 0.07, 0.1 * side));
+        const top = sh.clone().add(V(0.0, 0.555, -0.05 * side));
+        return rack.lerp(top, s);
+      };
+      return { hip, t, feet, hands: { L: hand(1), R: hand(-1) }, kneePole: () => V(1, 0, 0), elbowPole: (side) => V(0.15, -0.6, 1 * side) };
+    },
+  },
+  lunge: {
+    name: 'Fentes avec haltères', sets: '2 × 10 par jambe', rest: '1:15', tempo: [2, 1], alternate: true,
+    phases: ['Descends', 'Genou près du sol', 'Remonte', 'Change de jambe'],
+    phaseSub: ['buste droit', 'sans le poser', 'pousse sur le talon avant', 'reste gainé'],
+    cues: ['Grand pas, buste droit, haltères le long du corps.', 'Descends jusqu’à frôler le sol avec le genou arrière.', 'Genou avant au-dessus de la cheville, pousse sur le talon pour remonter.'],
+    muscles: ['Quadriceps', 'Fessiers'], hi: ['front', 'pelvis'], bell: 'forward',
+    pose(s, side) {
+      const hip = V(0, 0.9 - 0.4 * s, 0);
+      const t = torsoFrame(hip, 0.03);
+      const front = { at: V(0.32, L.ankle, 0.11 * side), pitch: 0 };
+      const back = { at: V(-0.36, 0.14, -0.11 * side), pitch: -0.6 };
+      const feet = side === 1 ? { L: front, R: back } : { L: back, R: front };
+      const hand = (sd) => t.sh.clone().add(V(0.02, -0.56, L.shW * sd + 0.02 * sd));
+      return { hip, t, feet, hands: { L: hand(1), R: hand(-1) }, kneePole: () => V(1, 0, 0), elbowPole: () => V(-1, 0, 0), frontSide: side };
+    },
+  },
+};
+
+// ---------- scène ----------
+const stage = document.getElementById('stage');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  const d = document.createElement('div'); d.className = 'err';
+  d.textContent = 'La 3D n’est pas disponible sur cet appareil. L’appli affichera alors une illustration fixe du mouvement.';
+  stage.appendChild(d);
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+stage.prepend(renderer.domElement);
+renderer.domElement.setAttribute('aria-label', 'Mannequin 3D qui exécute le mouvement');
+renderer.domElement.setAttribute('role', 'img');
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#171C2E');
+scene.fog = new THREE.Fog('#171C2E', 5, 10);
+const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 50);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0.78, 0);
+controls.enableDamping = true;
+controls.enablePan = false;
+controls.minDistance = 2;
+controls.maxDistance = 5.5;
+controls.maxPolarAngle = 1.52;
+
+scene.add(new THREE.HemisphereLight('#dfe6ff', '#1a2033', 1.1));
+const key = new THREE.DirectionalLight('#ffffff', 2.2);
+key.position.set(2.5, 4, 2);
+key.castShadow = true;
+key.shadow.mapSize.set(1024, 1024);
+Object.assign(key.shadow.camera, { left: -1.5, right: 1.5, top: 2.2, bottom: -0.5, near: 0.5, far: 10 });
+scene.add(key);
+const rim = new THREE.DirectionalLight('#5B8CFF', 1.2);
+rim.position.set(-3, 2.5, -2);
+scene.add(rim);
+
+const floor = new THREE.Mesh(new THREE.CircleGeometry(1.5, 64), new THREE.MeshStandardMaterial({ color: '#20263C', roughness: 0.95 }));
+floor.rotation.x = -Math.PI / 2;
+floor.receiveShadow = true;
+scene.add(floor);
+const ring = new THREE.Mesh(new THREE.RingGeometry(1.48, 1.5, 96), new THREE.MeshBasicMaterial({ color: '#2A3150' }));
+ring.rotation.x = -Math.PI / 2; ring.position.y = 0.002;
+scene.add(ring);
+
+const matBody = new THREE.MeshStandardMaterial({ color: '#B4BED2', roughness: 0.5, metalness: 0.05 });
+const matJoint = new THREE.MeshStandardMaterial({ color: '#8E99B0', roughness: 0.5 });
+const matHi = new THREE.MeshStandardMaterial({ color: '#C6F432', roughness: 0.45, emissive: '#3d4d00', emissiveIntensity: 0.6 });
+const matBell = new THREE.MeshStandardMaterial({ color: '#FF6B3D', roughness: 0.4, metalness: 0.2 });
+const matHandle = new THREE.MeshStandardMaterial({ color: '#3A4260', roughness: 0.4, metalness: 0.6 });
+
+const parts = {};
+const UP = V(0, 1, 0);
+const cyl = new THREE.CylinderGeometry(1, 1, 1, 20);
+const sph = new THREE.SphereGeometry(1, 24, 16);
+function mesh(geo, mat, name) {
+  const m = new THREE.Mesh(geo, mat); m.castShadow = true; scene.add(m); if (name) parts[name] = m; return m;
+}
+function limb(name, r) { const m = mesh(cyl, matBody, name); m.userData.r = r; return m; }
+function ball(name, r, mat = matJoint) { const m = mesh(sph, mat, name); m.scale.setScalar(r); return m; }
+function between(m, a, b) {
+  const d = b.clone().sub(a); const len = d.length();
+  m.position.copy(a).add(b).multiplyScalar(0.5);
+  m.quaternion.setFromUnitVectors(UP, d.normalize());
+  m.scale.set(m.userData.r, len, m.userData.r);
+}
+
+for (const s of ['L', 'R']) {
+  limb('thigh' + s, 0.068); limb('shin' + s, 0.052); limb('upper' + s, 0.048); limb('fore' + s, 0.04);
+  ball('knee' + s, 0.058); ball('ankle' + s, 0.045); ball('elbow' + s, 0.045); ball('wrist' + s, 0.038); ball('hand' + s, 0.045, matBody);
+  ball('sh' + s, 0.07, matBody); ball('hipJ' + s, 0.07, matJoint);
+  const foot = mesh(new THREE.BoxGeometry(0.24, 0.06, 0.095), matBody, 'foot' + s);
+  foot.geometry.translate(0.06, -0.045, 0);
+}
+limb('torso', 0.125);
+const chest = mesh(sph, matBody, 'chest'); chest.scale.set(0.13, 0.13, 0.2);
+const pelvis = mesh(sph, matBody, 'pelvis'); pelvis.scale.set(0.12, 0.1, 0.17);
+limb('neck', 0.045);
+const head = ball('head', 0.105, matBody);
+
+function makeBell() {
+  const g = new THREE.Group();
+  const h = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 0.2, 12), matHandle);
+  const p1 = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.05, 20), matBell);
+  const p2 = p1.clone(); p1.position.y = 0.09; p2.position.y = -0.09;
+  for (const m of [h, p1, p2]) { m.castShadow = true; g.add(m); }
+  scene.add(g); return g;
+}
+const bellA = makeBell();
+const bellB = makeBell();
+
+// ---------- application d'une pose ----------
+let current = 'squat';
+function applyPose(move, s, side) {
+  const P = move.pose(s, side);
+  const { hip, t } = P;
+  const hips = { L: hip.clone().add(V(0, 0, L.hipW)), R: hip.clone().add(V(0, 0, -L.hipW)) };
+  const shs = { L: t.sh.clone().add(V(0, 0, L.shW)), R: t.sh.clone().add(V(0, 0, -L.shW)) };
+  for (const s2 of ['L', 'R']) {
+    const sign = s2 === 'L' ? 1 : -1;
+    const foot = P.feet[s2];
+    const leg = ik(hips[s2], foot.at, L.thigh, L.shin, P.kneePole(sign));
+    between(parts['thigh' + s2], hips[s2], leg.joint);
+    between(parts['shin' + s2], leg.joint, leg.end);
+    parts['knee' + s2].position.copy(leg.joint);
+    parts['ankle' + s2].position.copy(leg.end);
+    parts['hipJ' + s2].position.copy(hips[s2]);
+    parts['foot' + s2].position.copy(leg.end);
+    parts['foot' + s2].rotation.set(0, 0, foot.pitch);
+    const arm = ik(shs[s2], P.hands[s2], L.upper, L.fore, P.elbowPole(sign));
+    between(parts['upper' + s2], shs[s2], arm.joint);
+    between(parts['fore' + s2], arm.joint, arm.end);
+    parts['elbow' + s2].position.copy(arm.joint);
+    parts['wrist' + s2].position.copy(arm.end);
+    parts['hand' + s2].position.copy(arm.end);
+    parts['sh' + s2].position.copy(shs[s2]);
+  }
+  const base = hip.clone().add(t.dir.clone().multiplyScalar(0.06));
+  const top = t.sh.clone().add(t.dir.clone().multiplyScalar(-0.05));
+  between(parts.torso, base, top);
+  chest.position.copy(t.sh).add(t.dir.clone().multiplyScalar(-0.06));
+  chest.quaternion.copy(parts.torso.quaternion);
+  pelvis.position.copy(hip);
+  pelvis.quaternion.copy(parts.torso.quaternion);
+  const neckTop = t.sh.clone().add(t.dir.clone().multiplyScalar(0.13));
+  between(parts.neck, t.sh, neckTop);
+  head.position.copy(t.sh).add(t.dir.clone().multiplyScalar(0.23)).add(t.fwd.clone().multiplyScalar(0.02));
+
+  // haltères
+  const hl = parts.handL.position, hr = parts.handR.position;
+  if (move.bell === 'vertical') {
+    bellA.visible = true; bellB.visible = false;
+    bellA.position.copy(hl).add(hr).multiplyScalar(0.5);
+    bellA.quaternion.copy(parts.torso.quaternion);
+  } else {
+    bellA.visible = bellB.visible = true;
+    const axis = move.bell === 'lateral' ? V(0, 0, 1) : V(1, 0, 0);
+    for (const [b, h] of [[bellA, hl], [bellB, hr]]) { b.position.copy(h); b.quaternion.setFromUnitVectors(UP, axis); }
+  }
+
+  // muscles travaillés
+  for (const k of ['thighL', 'thighR', 'pelvis', 'shL', 'shR', 'upperL', 'upperR']) {
+    parts[k].material = matBody;
+  }
+  for (const k of move.hi) {
+    if (k === 'front') parts[P.frontSide === 1 ? 'thighL' : 'thighR'].material = matHi;
+    else parts[k].material = matHi;
+  }
+}
+
+// ---------- tempo ----------
+const ui = {
+  phase: document.getElementById('phase'), phaseSub: document.getElementById('phaseSub'), reps: document.getElementById('reps'),
+  play: document.getElementById('play'), slow: document.getElementById('slow'),
+};
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let playing = !reduce;
+let speed = 1;
+let elapsed = 0;
+let lastPhase = -1;
+
+function timeline(move) {
+  const [down, up] = move.tempo;
+  return [down, 0.35, up, 0.7];
+}
+function sample(move, time) {
+  const seg = timeline(move);
+  const total = seg.reduce((a, b) => a + b, 0);
+  const rep = Math.floor(time / total);
+  let x = time - rep * total;
+  let phase = 0;
+  while (phase < 3 && x > seg[phase]) { x -= seg[phase]; phase++; }
+  const k = Math.min(1, x / seg[phase]);
+  const s = phase === 0 ? smooth(k) : phase === 1 ? 1 : phase === 2 ? 1 - smooth(k) : 0;
+  return { s, phase, rep };
+}
+
+// ---------- caméra ----------
+const VIEWS = { face: V(3.4, 1.15, 0.0001), side: V(0.0001, 1.15, 3.4), three: V(2.5, 1.35, 2.4) };
+let camFrom = null, camTo = null, camT = 1;
+camera.position.copy(VIEWS.three);
+function setView(name) {
+  camFrom = camera.position.clone(); camTo = VIEWS[name]; camT = reduce ? 1 : 0;
+  if (reduce) camera.position.copy(camTo);
+  document.querySelectorAll('[data-view]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === name)));
+}
+document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => setView(b.dataset.view)));
+
+// ---------- panneau ----------
+const picker = document.getElementById('picker');
+for (const [id, m] of Object.entries(MOVES)) {
+  const b = document.createElement('button');
+  b.className = 'ex'; b.dataset.move = id;
+  b.innerHTML = `<strong></strong><small></small>`;
+  b.querySelector('strong').textContent = m.name;
+  b.querySelector('small').textContent = m.sets;
+  b.addEventListener('click', () => select(id));
+  picker.appendChild(b);
+}
+function select(id) {
+  current = id; elapsed = 0; lastPhase = -1;
+  const m = MOVES[id];
+  document.querySelectorAll('[data-move]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.move === id)));
+  document.getElementById('pSets').textContent = m.sets;
+  document.getElementById('pTempo').textContent = `${m.tempo[0]} – ${m.tempo[1]}`;
+  document.getElementById('pRest').textContent = m.rest;
+  const cues = document.getElementById('cues'); cues.replaceChildren();
+  for (const c of m.cues) { const li = document.createElement('li'); li.textContent = c; cues.appendChild(li); }
+  const mus = document.getElementById('muscles'); mus.replaceChildren();
+  for (const c of m.muscles) { const sp = document.createElement('span'); sp.className = 'tag'; sp.textContent = c; mus.appendChild(sp); }
+  frame(0);
+}
+ui.play.addEventListener('click', () => {
+  playing = !playing; ui.play.textContent = playing ? 'Pause' : 'Lecture'; ui.play.setAttribute('aria-pressed', String(playing));
+});
+ui.slow.addEventListener('click', () => {
+  speed = speed === 1 ? 0.5 : 1; ui.slow.setAttribute('aria-pressed', String(speed !== 1));
+  ui.slow.textContent = speed === 1 ? 'Ralenti' : 'Vitesse normale';
+});
+document.getElementById('go').addEventListener('click', (e) => {
+  e.currentTarget.textContent = 'Dans l’appli : l’écran de la série 1 s’ouvre';
+});
+if (!playing) { ui.play.textContent = 'Lecture'; ui.play.setAttribute('aria-pressed', 'false'); }
+
+// ---------- boucle ----------
+function resize() {
+  const r = stage.getBoundingClientRect();
+  renderer.setSize(r.width, r.height, false);
+  camera.aspect = r.width / Math.max(1, r.height);
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(stage);
+resize();
+
+let prev = performance.now();
+function frame(dt) {
+  const m = MOVES[current];
+  if (playing) elapsed += dt * speed;
+  const { s, phase, rep } = sample(m, playing || elapsed ? elapsed : 0.9);
+  const side = m.alternate && rep % 2 ? -1 : 1;
+  applyPose(m, playing || elapsed ? s : (m.startUp ? 0 : 0.55), side);
+  if (phase !== lastPhase) {
+    lastPhase = phase;
+    ui.phase.textContent = m.phases[phase];
+    ui.phaseSub.textContent = m.phaseSub[phase];
+  }
+  ui.reps.textContent = String(rep);
+}
+function loop(now) {
+  const dt = Math.min(0.05, (now - prev) / 1000); prev = now;
+  frame(dt);
+  if (camTo && camT < 1) {
+    camT = Math.min(1, camT + dt / 0.6);
+    camera.position.lerpVectors(camFrom, camTo, smooth(camT));
+  }
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(loop);
+}
+select('squat');
+requestAnimationFrame(loop);
+</script>

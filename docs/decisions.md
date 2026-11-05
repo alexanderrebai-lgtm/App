@@ -9,6 +9,9 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 - Français d'abord, anglais ensuite : le moteur renvoie des codes, traduits dans `packages/engine/src/i18n`.
 - Import des exports du prototype : oui.
 - Monorepo pnpm : `packages/engine`, `packages/content`, `apps/mobile` (M1).
+- M0 validé. Nom retenu : **Élan** (disponibilité App Store, INPI et EUIPO à vérifier). Modèle freemium validé.
+- Couleurs « Nuit et néon » validées ; tailles et polices revues (piste 2 : Barlow, six tailles de 13 à 40 px), en attente de validation.
+- Séance guidée : un mannequin 3D montre chaque mouvement avant la première série (prototype : `docs/prototype/elan-3d.html`). Les poses sont calculées par cinématique inverse à partir d'une vingtaine de gestes de base, sans vidéo. Approche à valider avant M2.
 
 ## Règles harmonisées (incohérences du prototype)
 
