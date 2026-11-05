@@ -7,9 +7,10 @@
   "types": "src/index.ts",
   "scripts": {
     "test": "vitest run",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.test.json"
   },
   "dependencies": {
-    "@muscu/content": "workspace:*"
+    "@muscu/content": "workspace:*",
+    "zod": "3.25.76"
   }
 }
