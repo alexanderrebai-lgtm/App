@@ -1,0 +1,41 @@
+# Décisions et écarts par rapport au prototype
+
+Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa raison.
+
+## Choix validés (cadrage du 5 novembre 2026)
+
+- iOS d'abord, publication sur l'App Store à terme ; Android reste possible avec la même base Expo.
+- Hors ligne jusqu'à M4, puis synchronisation Supabase hébergée dans l'UE.
+- Français d'abord, anglais ensuite : le moteur renvoie des codes, traduits dans `packages/engine/src/i18n`.
+- Import des exports du prototype : oui.
+- Monorepo pnpm : `packages/engine`, `packages/content`, `apps/mobile` (M1).
+
+## Règles harmonisées (incohérences du prototype)
+
+| Sujet | Prototype | Retenu | Raison |
+|---|---|---|---|
+| Pas de progression | +2 kg (Guide, calendrier) ou +2,5 kg (séance guidée) | +2,5 kg partout (`LOAD_STEP_KG`) | Le cahier des charges fixe un pas de 2,5 kg. Le pas sera réglable par exercice si des haltères de 1 kg l'exigent. |
+| Ajustement des calories | Texte « masse » : +200 kcal ; code : +150 | ±150 kcal | Dans la fourchette usuelle (100 à 200 kcal) ; un seul chiffre pour éviter la confusion. Texte à corriger en M3. |
+| Tendance de poids visée | Texte « poids stable à ±1 kg » ; code ±0,25 kg/sem | ±0,25 kg/sem pour explosivité et cardio | C'est ce que le calcul applique ; le texte sera reformulé. |
+| Check-in difficile | Texte : « une série en moins et des charges plus légères » ; code : une série en moins | Une série en moins, non cumulée avec la semaine allégée | Conforme au cahier des charges ; le texte sera aligné. |
+| 2 séances en explosivité | Haut puis bas | Chaque séance mélange haut et bas | Cahier des charges. Le cardio garde endurance + fractionné. |
+| Magnésium | 200 à 400 mg | 200 à 250 mg | L'EFSA fixe à 250 mg/jour la limite du magnésium apporté en complément. |
+| Œufs durs, brocoli, tortillas | Prix et libellés séparés | Fusionnés dans un ingrédient canonique | La liste de courses additionne ce qui s'achète ensemble ; le libellé de la recette est gardé. |
+
+## Vérifications des repères (sources de référence)
+
+- **Calories** : Mifflin-St Jeor × 1,55 (activité modérée), estimation à ajuster avec le poids sur 2 semaines. Conservé.
+- **Protéines** : 1,6 à 2,2 g/kg pour la prise de muscle (méta-analyse Morton et al., 2018). Le prototype met 1,7 à 1,8 g/kg en force, masse et explosivité, et 1,5 g/kg en cardio (les recommandations endurance vont de 1,2 à 1,6 g/kg). Conservé.
+- **Lipides** : au moins 0,6 g/kg et 20 à 35 % des calories. Le prototype met 1 à 1,2 g/kg, soit environ 25 % pour le profil de référence. Conforme.
+- **Prise de poids** : 0,25 à 0,5 kg/sem en masse, adapté à un débutant. Conservé.
+- **Caféine** : départ 2 mg/kg, jusqu'à 3 mg/kg ; les études vont de 3 à 6 mg/kg ; plafond EFSA de 400 mg/jour. Départ bas conservé (public fumeur, cœur).
+- **Créatine** : 3 à 5 g/jour sans phase de charge. Conforme.
+- **Oméga-3** : 500 mg à 1 g d'EPA + DHA (l'EFSA recommande au moins 250 mg). Conforme.
+- **Eau** : 35 ml/kg, +0,5 L les jours de séance. Repère usuel, conservé.
+- **Sevrage tabagique** : Tabac Info Service, 39 89 (France). Vérifié.
+
+## Constats à traiter plus tard
+
+- En mode budget serré, les semaines 1 et 4 de la rotation donnent le même menu (formules du prototype). À revoir en M3 avec les nouvelles recettes.
+- Les recettes passent de 27 à 60 en M3.
+- Le remplacement d'exercice ne tient pas encore compte du matériel (salle ou maison) : prévu en M1 avec l'onboarding.
