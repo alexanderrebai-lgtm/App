@@ -9,7 +9,7 @@
 | Droits | Visiteurs non connectés : aucun. Connectés : lecture, ajout, modification, suppression filtrées par RLS ; `TRUNCATE` retiré |
 | Appli | Branchée sur le projet (`apps/mobile/src/sync/config.ts`) |
 | Test d'intégration | 5 tests passés contre le serveur réel (envoi, isolation, lecture seule, co-édition, propriétaire non modifiable), comptes de test supprimés ensuite |
-| Connexion par code e-mail | SMTP Brevo branché, e-mail en français avec le code à 6 chiffres (valable 10 minutes), connexion ouverte dans l'appli. Reste à vérifier la réception réelle |
+| Connexion par code e-mail | SMTP Brevo branché, e-mail en français avec le code à 6 chiffres (10 minutes). **En attente d'un nom de domaine** : Brevo refuse d'envoyer au nom d'une adresse Gmail ou Hotmail. Connexion masquée dans l'appli d'ici là |
 
 ## Envoi des codes par e-mail (fait)
 
@@ -37,6 +37,6 @@ Une ligne par profil (`profile_snapshot`) avec ses données au format de sauvega
 - Fusion entrée par entrée : la plus récente l'emporte ; une suppression faite sur un seul appareil peut réapparaître.
 - Synchronisation lancée à la main (bouton « Synchroniser maintenant »).
 
-## Délivrabilité
+## Expéditeur : nom de domaine obligatoire
 
-L'expéditeur est une adresse Gmail envoyée par Brevo : certains fournisseurs classent ces e-mails en spam. Avant la publication, prendre un nom de domaine, l'authentifier dans Brevo (DKIM, DMARC) et changer l'adresse d'expéditeur dans Supabase.
+Brevo refuse les adresses gratuites (Gmail, Hotmail, Yahoo) comme expéditeur, à cause des règles d'authentification de Gmail et Yahoo. Il faut un domaine à soi, authentifié dans Brevo (DKIM, DMARC), puis une adresse d'expéditeur sur ce domaine, à reporter dans Supabase (Authentication › Emails › SMTP Settings › Sender email). Ensuite, passer `emailCodeReady` à `true`.
