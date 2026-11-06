@@ -99,7 +99,7 @@ export const Recipe = z.object({
   category: z.enum(['breakfast', 'main', 'snack']),
   minutes: z.number().int().positive(),
   // kcal et protéines annoncés par le prototype, gardés comme repère de contrôle
-  reference: z.object({ kcal: z.number(), protein: z.number() }),
+  reference: z.object({ kcal: z.number(), protein: z.number() }).optional(),
   ingredients: z.array(RecipeIngredient).min(1),
   steps: z.array(z.string()).min(1),
   tasteTip: z.string().min(1),
@@ -109,18 +109,10 @@ export type Recipe = z.infer<typeof Recipe>;
 
 export const RecipesFile = z.object({ recipes: z.array(Recipe) });
 
-const Rotation = z.object({
-  breakfast: z.array(z.string()).min(1),
-  main: z.array(z.string()).min(1),
-  snack: z.array(z.string()).min(1),
-});
-export type Rotation = z.infer<typeof Rotation>;
 export const MenusFile = z.object({
   rotationWeeks: z.number().int().positive(),
   mealShares: z.array(z.number()).length(4),
   slots: z.array(z.string()).length(4),
-  budget: Rotation,
-  normal: Rotation,
 });
 export type MenusFile = z.infer<typeof MenusFile>;
 
@@ -156,7 +148,7 @@ export const NutritionFile = z.object({
     fatPerKg: z.number(),
     weightTrendKgPerWeek: z.tuple([z.number(), z.number()]),
   })),
-  quickFoods: z.array(z.object({ name: z.string(), kcal: z.number(), protein: z.number() })),
+  quickFoods: z.array(z.object({ name: z.string(), kcal: z.number(), protein: z.number(), carbs: z.number(), fat: z.number() })),
 });
 export type NutritionFile = z.infer<typeof NutritionFile>;
 

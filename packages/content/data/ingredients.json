@@ -603,6 +603,326 @@
         "fat": 0.2
       },
       "gramsPerUnit": 150
+    },
+    {
+      "id": "sardines",
+      "name": "sardines à l’huile (égouttées)",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 220,
+        "protein": 25,
+        "carbs": 0,
+        "fat": 13
+      }
+    },
+    {
+      "id": "frozen-spinach",
+      "name": "épinards hachés surgelés",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 25,
+        "protein": 3,
+        "carbs": 1.5,
+        "fat": 0.4
+      }
+    },
+    {
+      "id": "lemon",
+      "name": "citron",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 30,
+        "protein": 0.8,
+        "carbs": 6,
+        "fat": 0.3
+      },
+      "gramsPerUnit": 100
+    },
+    {
+      "id": "coconut-milk",
+      "name": "lait de coco",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 180,
+        "protein": 1.5,
+        "carbs": 3,
+        "fat": 18
+      }
+    },
+    {
+      "id": "sweet-potato",
+      "name": "patate douce",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 86,
+        "protein": 1.6,
+        "carbs": 20,
+        "fat": 0.1
+      }
+    },
+    {
+      "id": "white-fish",
+      "name": "colin d’Alaska surgelé",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 80,
+        "protein": 18,
+        "carbs": 0,
+        "fat": 0.8
+      }
+    },
+    {
+      "id": "tofu",
+      "name": "tofu nature",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 120,
+        "protein": 12,
+        "carbs": 2,
+        "fat": 7
+      }
+    },
+    {
+      "id": "feta",
+      "name": "feta",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 260,
+        "protein": 14,
+        "carbs": 1,
+        "fat": 21
+      }
+    },
+    {
+      "id": "cabbage",
+      "name": "chou blanc ou vert",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 25,
+        "protein": 1.3,
+        "carbs": 4,
+        "fat": 0.2
+      }
+    },
+    {
+      "id": "leek",
+      "name": "poireaux",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 30,
+        "protein": 1.5,
+        "carbs": 5,
+        "fat": 0.3
+      }
+    },
+    {
+      "id": "frozen-peppers",
+      "name": "poivrons en lanières surgelés",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 30,
+        "protein": 1,
+        "carbs": 5,
+        "fat": 0.3
+      }
+    },
+    {
+      "id": "turkey",
+      "name": "escalope de dinde",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 110,
+        "protein": 24,
+        "carbs": 0,
+        "fat": 1.5
+      }
+    },
+    {
+      "id": "bulgur",
+      "name": "boulgour",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 350,
+        "protein": 12,
+        "carbs": 69,
+        "fat": 1.5
+      }
+    },
+    {
+      "id": "corn",
+      "name": "maïs en boîte",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 80,
+        "protein": 2.5,
+        "carbs": 14,
+        "fat": 1.2
+      }
+    },
+    {
+      "id": "frozen-green-beans",
+      "name": "haricots verts surgelés",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 30,
+        "protein": 2,
+        "carbs": 4,
+        "fat": 0.2
+      }
+    },
+    {
+      "id": "mushrooms",
+      "name": "champignons de Paris",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 22,
+        "protein": 3,
+        "carbs": 0.5,
+        "fat": 0.3
+      }
+    },
+    {
+      "id": "light-cream",
+      "name": "crème fraîche légère",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 150,
+        "protein": 3,
+        "carbs": 4,
+        "fat": 15
+      }
+    },
+    {
+      "id": "raisins",
+      "name": "raisins secs",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 300,
+        "protein": 3,
+        "carbs": 70,
+        "fat": 0.5
+      }
+    },
+    {
+      "id": "dark-chocolate",
+      "name": "chocolat noir",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 550,
+        "protein": 8,
+        "carbs": 30,
+        "fat": 42
+      }
+    },
+    {
+      "id": "noodles",
+      "name": "nouilles aux œufs",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 360,
+        "protein": 13,
+        "carbs": 70,
+        "fat": 2.5
+      }
+    },
+    {
+      "id": "white-beans",
+      "name": "haricots blancs en boîte",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 100,
+        "protein": 7,
+        "carbs": 13,
+        "fat": 0.5
+      }
+    },
+    {
+      "id": "frozen-berries",
+      "name": "fruits rouges surgelés",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 50,
+        "protein": 1,
+        "carbs": 10,
+        "fat": 0.3
+      }
+    },
+    {
+      "id": "curry",
+      "name": "curry en poudre",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 320,
+        "protein": 13,
+        "carbs": 30,
+        "fat": 14
+      }
+    },
+    {
+      "id": "cinnamon",
+      "name": "cannelle",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 250,
+        "protein": 4,
+        "carbs": 50,
+        "fat": 1
+      }
+    },
+    {
+      "id": "ginger",
+      "name": "gingembre en poudre",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 330,
+        "protein": 9,
+        "carbs": 60,
+        "fat": 4
+      }
+    },
+    {
+      "id": "herbs",
+      "name": "herbes de Provence",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 260,
+        "protein": 9,
+        "carbs": 40,
+        "fat": 7
+      }
+    },
+    {
+      "id": "chili",
+      "name": "piment en flocons",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 300,
+        "protein": 12,
+        "carbs": 50,
+        "fat": 14
+      }
+    },
+    {
+      "id": "mustard",
+      "name": "moutarde",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 150,
+        "protein": 7,
+        "carbs": 5,
+        "fat": 11
+      }
+    },
+    {
+      "id": "vinegar",
+      "name": "vinaigre",
+      "aisle": "spice",
+      "per100g": {
+        "kcal": 20,
+        "protein": 0,
+        "carbs": 1,
+        "fat": 0
+      }
     }
   ],
   "spoonGrams": {

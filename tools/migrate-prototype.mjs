@@ -1,7 +1,13 @@
 // Migration ponctuelle : extrait les données du prototype (docs/prototype/muscu-app.html)
 // et les écrit en fichiers JSON structurés dans packages/content/data.
 // Après la migration, les JSON sont la source de vérité ; ce script reste pour la traçabilité.
-// Usage : node tools/migrate-prototype.mjs
+// Usage : node tools/migrate-prototype.mjs --force
+// Depuis M3, les JSON contiennent des ajouts faits à la main (recettes, aliments rapides…) :
+// relancer ce script les écraserait. Il refuse donc de tourner sans --force.
+if (!process.argv.includes('--force')) {
+  console.error('Migration figée depuis M3 : les fichiers JSON sont la référence. Ajoute --force pour l’écraser quand même.');
+  process.exit(1);
+}
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';

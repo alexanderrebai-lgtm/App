@@ -7,7 +7,7 @@ const goals = GoalId.options;
 
 describe('contenus migrés du prototype', () => {
   it('garde toutes les recettes et tous les exercices', () => {
-    expect(content.recipes).toHaveLength(27);
+    expect(content.recipes.filter((r) => r.reference)).toHaveLength(27);
     expect(content.exercises.exercises).toHaveLength(90);
     expect(content.exercises.techniques).toHaveLength(8);
   });
@@ -42,18 +42,18 @@ describe('contenus migrés du prototype', () => {
     for (const g of content.exercises.substitutions) for (const id of g) expect(exerciseById.has(id), id).toBe(true);
   });
 
-  it('les rotations de menus citent des recettes de la bonne catégorie', () => {
-    for (const mode of ['budget', 'normal'] as const) {
-      for (const cat of ['breakfast', 'main', 'snack'] as const) {
-        for (const id of content.menus[mode][cat]) {
-          const r = recipeById.get(id);
-          expect(r, id).toBeDefined();
-          // le prototype met des smoothies/tartines (collations) au petit-déjeuner en mode budget : on le vérifie
-          if (mode === 'normal') expect(r!.category).toBe(cat);
-        }
-      }
+  it('au moins 60 recettes, chacune réalisable en budget serré ou en menu normal', () => {
+    expect(content.recipes.length).toBeGreaterThanOrEqual(60);
+    for (const cat of ['breakfast', 'main', 'snack'] as const) {
+      const all = content.recipes.filter((r) => r.category === cat);
+      expect(all.filter((r) => r.tags.includes('budget')).length, cat).toBeGreaterThanOrEqual(5);
+      expect(all.filter((r) => r.tags.includes('vegetarian')).length, cat).toBeGreaterThanOrEqual(4);
     }
     expect(content.menus.mealShares.reduce((a, b) => a + b, 0)).toBeCloseTo(1);
+  });
+
+  it('chaque produit de placard a un format d’achat', () => {
+    for (const i of content.ingredients.ingredients) if (i.aisle === 'pantry') expect(content.prices.packs[i.id], i.id).toBeDefined();
   });
 
   it('chaque ingrédient hors épices a un prix', () => {

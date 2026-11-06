@@ -4,8 +4,7 @@
   "packageManager": "pnpm@10.28.0",
   "scripts": {
     "test": "pnpm -r test",
-    "typecheck": "pnpm -r typecheck",
-    "migrate:prototype": "node tools/migrate-prototype.mjs"
+    "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {
     "@types/node": "22.19.1",

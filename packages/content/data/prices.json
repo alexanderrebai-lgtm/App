@@ -139,6 +139,72 @@
     },
     "mozzarella": {
       "perKg": 7
+    },
+    "sardines": {
+      "perKg": 9
+    },
+    "frozen-spinach": {
+      "perKg": 2.4
+    },
+    "lemon": {
+      "perUnit": 0.35
+    },
+    "coconut-milk": {
+      "perKg": 3.2
+    },
+    "sweet-potato": {
+      "perKg": 2.5
+    },
+    "white-fish": {
+      "perKg": 8
+    },
+    "tofu": {
+      "perKg": 8
+    },
+    "feta": {
+      "perKg": 10
+    },
+    "cabbage": {
+      "perKg": 1.3
+    },
+    "leek": {
+      "perKg": 2
+    },
+    "frozen-peppers": {
+      "perKg": 2.6
+    },
+    "turkey": {
+      "perKg": 9.5
+    },
+    "bulgur": {
+      "perKg": 2.6
+    },
+    "corn": {
+      "perKg": 3.5
+    },
+    "frozen-green-beans": {
+      "perKg": 2
+    },
+    "mushrooms": {
+      "perKg": 4
+    },
+    "light-cream": {
+      "perKg": 4.4
+    },
+    "raisins": {
+      "perKg": 6
+    },
+    "dark-chocolate": {
+      "perKg": 10
+    },
+    "noodles": {
+      "perKg": 3.2
+    },
+    "white-beans": {
+      "perKg": 3.6
+    },
+    "frozen-berries": {
+      "perKg": 6
     }
   },
   "packs": {
@@ -220,6 +286,46 @@
     "tuna": {
       "size": 112,
       "price": 1.5,
+      "label": "1 boîte"
+    },
+    "sardines": {
+      "size": 100,
+      "price": 0.95,
+      "label": "1 boîte"
+    },
+    "coconut-milk": {
+      "size": 400,
+      "price": 1.25,
+      "label": "1 boîte de 40 cl"
+    },
+    "bulgur": {
+      "size": 500,
+      "price": 1.3,
+      "label": "500 g"
+    },
+    "corn": {
+      "size": 285,
+      "price": 0.95,
+      "label": "1 boîte"
+    },
+    "raisins": {
+      "size": 250,
+      "price": 1.5,
+      "label": "250 g"
+    },
+    "dark-chocolate": {
+      "size": 100,
+      "price": 1,
+      "label": "1 tablette"
+    },
+    "noodles": {
+      "size": 250,
+      "price": 0.8,
+      "label": "250 g"
+    },
+    "white-beans": {
+      "size": 250,
+      "price": 0.9,
       "label": "1 boîte"
     }
   },

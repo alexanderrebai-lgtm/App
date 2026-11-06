@@ -1419,6 +1419,1844 @@
         "vegetarian",
         "budget"
       ]
+    },
+    {
+      "id": "overnight-oats-cacao-banane",
+      "name": "Overnight oats cacao-banane",
+      "category": "breakfast",
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredient": "oats",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 200,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "plain-yogurt",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "cocoa",
+          "qty": 5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Mélange flocons, lait, yaourt, cacao et miel dans un bocal.",
+        "Ferme et laisse une nuit au frais.",
+        "Le matin, ajoute la banane en rondelles."
+      ],
+      "tasteTip": "Prépare trois pots le dimanche : ils se gardent trois jours et sont encore meilleurs le lendemain.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch"
+      ]
+    },
+    {
+      "id": "tartines-oeufs-brouilles-tomate",
+      "name": "Tartines aux œufs brouillés et tomate",
+      "category": "breakfast",
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 3,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomato",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "butter",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Grille le pain.",
+        "Bats les œufs, cuis-les à feu doux dans le beurre en remuant sans arrêt.",
+        "Sers sur le pain avec la tomate en tranches."
+      ],
+      "tasteTip": "Retire les œufs du feu quand ils sont encore crémeux : ils finissent de cuire dans l’assiette.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "pain-perdu-cannelle",
+      "name": "Pain perdu à la cannelle",
+      "category": "breakfast",
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 150,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "cinnamon",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "butter",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Bats œufs, lait et cannelle.",
+        "Trempe les tranches de pain des deux côtés.",
+        "Dore-les 2 minutes par face dans le beurre, puis arrose de miel."
+      ],
+      "tasteTip": "Une pincée de sel dans le mélange œufs-lait fait ressortir la cannelle. Le pain rassis est le meilleur.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "porridge-sale-oeuf-mollet",
+      "name": "Porridge salé, œuf mollet et fromage",
+      "category": "breakfast",
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredient": "oats",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 200,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis l’œuf 6 minutes dans l’eau bouillante, passe-le sous l’eau froide.",
+        "Chauffe flocons et lait 3 minutes en remuant, ajoute le fromage.",
+        "Pose l’œuf écalé sur le porridge."
+      ],
+      "tasteTip": "Un trait de sauce soja et beaucoup de poivre : un petit-déjeuner salé qui tient jusqu’à midi.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget"
+      ]
+    },
+    {
+      "id": "bowl-fromage-blanc-fruits-rouges",
+      "name": "Bowl fromage blanc et fruits rouges",
+      "category": "breakfast",
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredient": "fromage-blanc",
+          "qty": 250,
+          "unit": "g"
+        },
+        {
+          "ingredient": "frozen-berries",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oats",
+          "qty": 40,
+          "unit": "g"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Sors les fruits rouges du congélateur la veille.",
+        "Verse-les sur le fromage blanc avec leur jus.",
+        "Ajoute les flocons et le miel."
+      ],
+      "tasteTip": "Décongelés une nuit, les fruits rouges font un coulis naturel qui parfume tout le bol.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "crepes-banane-cacahuete",
+      "name": "Crêpes à la banane et beurre de cacahuète",
+      "category": "breakfast",
+      "minutes": 20,
+      "ingredients": [
+        {
+          "ingredient": "flour",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 150,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fouette farine, œufs et lait, laisse reposer 10 minutes.",
+        "Cuis de fines crêpes dans une poêle chaude légèrement huilée.",
+        "Garnis de banane et de beurre de cacahuète."
+      ],
+      "tasteTip": "Poêle la banane une minute avec le beurre de cacahuète : il fond et nappe les crêpes.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget"
+      ]
+    },
+    {
+      "id": "yaourt-granola-maison",
+      "name": "Yaourt et granola maison",
+      "category": "snack",
+      "minutes": 8,
+      "ingredients": [
+        {
+          "ingredient": "plain-yogurt",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oats",
+          "qty": 30,
+          "unit": "g"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "raisins",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais dorer les flocons 3 minutes à la poêle avec le miel.",
+        "Laisse refroidir : ils deviennent croustillants.",
+        "Verse sur le yaourt avec les raisins secs."
+      ],
+      "tasteTip": "Fais-en une grande quantité le dimanche : le granola se garde deux semaines dans un bocal.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch"
+      ]
+    },
+    {
+      "id": "houmous-maison-crudites",
+      "name": "Houmous maison et crudités",
+      "category": "snack",
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredient": "chickpeas",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 2,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "carrot",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 40,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Mixe pois chiches, huile, ail, citron, cumin et 2 cuillères d’eau.",
+        "Coupe la carotte en bâtonnets.",
+        "Sers avec le pain grillé."
+      ],
+      "tasteTip": "Garde un peu du jus de la boîte de pois chiches : ajouté au mixage, il rend le houmous très lisse.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "batch"
+      ]
+    },
+    {
+      "id": "oeufs-durs-pain-tomate",
+      "name": "Œufs durs, pain et tomate",
+      "category": "snack",
+      "minutes": 12,
+      "ingredients": [
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 50,
+          "unit": "g"
+        },
+        {
+          "ingredient": "tomato",
+          "qty": 1,
+          "unit": "piece"
+        }
+      ],
+      "steps": [
+        "Cuis les œufs 9 minutes, refroidis-les.",
+        "Coupe la tomate, sale et poivre.",
+        "Mange avec le pain."
+      ],
+      "tasteTip": "Une pincée de paprika et de sel sur les œufs coupés : simple et très bon.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "lait-frappe-chocolat-flocons",
+      "name": "Lait frappé chocolat-flocons",
+      "category": "snack",
+      "minutes": 3,
+      "ingredients": [
+        {
+          "ingredient": "milk",
+          "qty": 300,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "cocoa",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oats",
+          "qty": 30,
+          "unit": "g"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Mets tout dans le mixeur.",
+        "Ajoute trois glaçons.",
+        "Mixe 1 minute."
+      ],
+      "tasteTip": "Avec les glaçons et une minute de mixeur, la texture devient celle d’un vrai milkshake.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget"
+      ]
+    },
+    {
+      "id": "toast-thon-fromage-blanc",
+      "name": "Toast au thon et fromage blanc",
+      "category": "snack",
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "tuna",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "ingredient": "fromage-blanc",
+          "qty": 50,
+          "unit": "g"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Écrase le thon avec le fromage blanc et le citron.",
+        "Sale et poivre.",
+        "Tartine sur le pain grillé."
+      ],
+      "tasteTip": "Un peu d’oignon haché très fin ou de ciboulette transforme ce toast en rillettes de thon.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "fromage-blanc-banane-chocolat",
+      "name": "Fromage blanc, banane et chocolat noir",
+      "category": "snack",
+      "minutes": 3,
+      "ingredients": [
+        {
+          "ingredient": "fromage-blanc",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "dark-chocolate",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Coupe la banane en rondelles sur le fromage blanc.",
+        "Râpe le chocolat au couteau par-dessus."
+      ],
+      "tasteTip": "Le chocolat râpé sur un fromage blanc bien froid croque comme des copeaux de dessert.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "barres-cereales-maison",
+      "name": "Barres de céréales maison",
+      "category": "snack",
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredient": "oats",
+          "qty": 50,
+          "unit": "g"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "qty": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 15,
+          "unit": "g"
+        },
+        {
+          "ingredient": "raisins",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Chauffe beurre de cacahuète et miel 30 secondes.",
+        "Mélange avec les flocons et les raisins.",
+        "Tasse dans un plat, laisse 1 heure au frais, coupe en barres."
+      ],
+      "tasteTip": "Tasse très fort avec le dos d’une cuillère : les barres se tiennent et ne s’émiettent pas.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "curry-pois-chiches-coco-epinards",
+      "name": "Curry de pois chiches, coco et épinards",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "chickpeas",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "coconut-milk",
+          "qty": 80,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "frozen-spinach",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "curry",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis le riz.",
+        "Fais revenir l’oignon puis le curry 1 minute dans l’huile.",
+        "Ajoute tomates, pois chiches, épinards et lait de coco, mijote 15 minutes."
+      ],
+      "tasteTip": "Faire revenir le curry dans l’huile avant le reste libère tout son parfum.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "dahl-lentilles-corail-coco",
+      "name": "Dahl de lentilles corail au lait de coco",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "red-lentils",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "coconut-milk",
+          "qty": 60,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 70,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "curry",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "ginger",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais revenir oignon, ail et épices.",
+        "Ajoute lentilles, tomates, lait de coco et 30 cl d’eau, cuis 15 minutes.",
+        "Sers avec le riz."
+      ],
+      "tasteTip": "Un jus de citron au moment de servir réveille toutes les épices.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "poulet-basquaise-riz",
+      "name": "Poulet basquaise et riz",
+      "category": "main",
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredient": "chicken-breast",
+          "qty": 130,
+          "unit": "g"
+        },
+        {
+          "ingredient": "frozen-peppers",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Dore le poulet en morceaux.",
+        "Ajoute oignon et poivrons 5 minutes, puis tomates et paprika.",
+        "Mijote 15 minutes, sers sur le riz."
+      ],
+      "tasteTip": "Une pincée de piment ou de paprika fumé donne le goût du Pays basque.",
+      "tags": [
+        "noPork",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "colin-puree-haricots-verts",
+      "name": "Colin, purée maison et haricots verts",
+      "category": "main",
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredient": "white-fish",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 300,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 50,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "butter",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "frozen-green-beans",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Cuis les pommes de terre 20 minutes, écrase-les avec le lait et la moitié du beurre.",
+        "Cuis les haricots verts.",
+        "Poêle le colin 3 minutes par face dans le reste du beurre."
+      ],
+      "tasteTip": "Laisse le beurre devenir noisette dans la poêle avant d’y mettre le poisson, puis un trait de citron.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "pates-sardines-tomate-citron",
+      "name": "Pâtes aux sardines, tomate et citron",
+      "category": "main",
+      "minutes": 20,
+      "ingredients": [
+        {
+          "ingredient": "pasta",
+          "qty": 100,
+          "unit": "g",
+          "label": "pâtes crues"
+        },
+        {
+          "ingredient": "sardines",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        },
+        {
+          "ingredient": "chili",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Cuis les pâtes.",
+        "Fais revenir l’ail et le piment, ajoute les tomates 5 minutes.",
+        "Ajoute les sardines, écrase-les à la fourchette, mélange avec les pâtes et le citron."
+      ],
+      "tasteTip": "Écrasées dans la sauce chaude, les sardines fondent : sauce marine et riche en oméga-3 pour pas cher.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "frittata-courgette-feta",
+      "name": "Frittata courgette et feta",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "egg",
+          "qty": 4,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "zucchini",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "feta",
+          "qty": 40,
+          "unit": "g"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais revenir pommes de terre et courgette en dés 10 minutes.",
+        "Verse les œufs battus, émiette la feta.",
+        "Cuis 5 minutes à feu doux couvert."
+      ],
+      "tasteTip": "Termine 3 minutes sous le gril du four : le dessus dore et gonfle.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "chili-dinde-haricots-blancs",
+      "name": "Chili de dinde aux haricots blancs",
+      "category": "main",
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredient": "turkey",
+          "qty": 130,
+          "unit": "g"
+        },
+        {
+          "ingredient": "white-beans",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "corn",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 70,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Coupe la dinde en petits dés et dore-la avec l’oignon.",
+        "Ajoute épices, tomates, haricots et maïs, mijote 20 minutes.",
+        "Sers sur le riz."
+      ],
+      "tasteTip": "Un carré de chocolat noir fondu à la fin donne de la rondeur au chili.",
+      "tags": [
+        "noPork",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "riz-saute-oeufs-legumes",
+      "name": "Riz sauté aux œufs et légumes",
+      "category": "main",
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredient": "rice",
+          "qty": 90,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 3,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "frozen-veg",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "soy-sauce",
+          "qty": 1,
+          "unit": "tbsp"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        }
+      ],
+      "steps": [
+        "Cuis le riz (idéalement la veille).",
+        "Fais sauter l’ail et les légumes à feu vif.",
+        "Pousse sur le côté, brouille les œufs, ajoute riz et sauce soja."
+      ],
+      "tasteTip": "Riz froid et feu très vif : les grains grillent au lieu de coller.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget"
+      ]
+    },
+    {
+      "id": "lasagnes-express-lentilles",
+      "name": "Lasagnes express aux lentilles",
+      "category": "main",
+      "minutes": 40,
+      "ingredients": [
+        {
+          "ingredient": "pasta",
+          "qty": 90,
+          "unit": "g",
+          "label": "pâtes crues"
+        },
+        {
+          "ingredient": "green-lentils",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "carrot",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 150,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "flour",
+          "qty": 15,
+          "unit": "g"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 25,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis les lentilles 20 minutes et les pâtes.",
+        "Fais une sauce avec oignon, carotte, tomates et lentilles ; une béchamel avec lait et farine.",
+        "Alterne pâtes, sauce et béchamel, couvre de fromage, 15 minutes au four."
+      ],
+      "tasteTip": "Une pointe de muscade dans la béchamel et 5 minutes de repos avant de servir.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "boulgour-legumes-rotis-feta",
+      "name": "Boulgour, légumes rôtis et feta",
+      "category": "main",
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredient": "bulgur",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "zucchini",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "frozen-peppers",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "chickpeas",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "feta",
+          "qty": 50,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 2,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Rôtis courgette, poivrons et pois chiches 20 minutes à 220 °C avec l’huile.",
+        "Gonfle le boulgour dans l’eau bouillante.",
+        "Mélange, ajoute la feta et le citron."
+      ],
+      "tasteTip": "Four très chaud : les légumes caramélisent et deviennent sucrés.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "batch"
+      ]
+    },
+    {
+      "id": "hachis-parmentier",
+      "name": "Hachis parmentier",
+      "category": "main",
+      "minutes": 45,
+      "ingredients": [
+        {
+          "ingredient": "beef-mince-5",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 300,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 60,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "butter",
+          "qty": 5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "carrot",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 20,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis les pommes de terre et fais une purée avec lait et beurre.",
+        "Fais dorer oignon, carotte râpée et viande.",
+        "Viande au fond, purée dessus, fromage, 20 minutes au four à 200 °C."
+      ],
+      "tasteTip": "Laisse l’oignon bien dorer et ajoute de la muscade dans la purée.",
+      "tags": [
+        "noPork",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "poulet-curry-coco-riz",
+      "name": "Poulet au curry et lait de coco",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "chicken-breast",
+          "qty": 130,
+          "unit": "g"
+        },
+        {
+          "ingredient": "coconut-milk",
+          "qty": 70,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "frozen-peas",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "curry",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis le riz.",
+        "Dore le poulet en morceaux avec l’oignon et le curry.",
+        "Ajoute lait de coco et petits pois, mijote 10 minutes."
+      ],
+      "tasteTip": "Un jus de citron à la fin équilibre la douceur du coco.",
+      "tags": [
+        "noPork",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "tofu-saute-sauce-cacahuete",
+      "name": "Tofu sauté, sauce cacahuète et nouilles",
+      "category": "main",
+      "minutes": 20,
+      "ingredients": [
+        {
+          "ingredient": "tofu",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "noodles",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "qty": 15,
+          "unit": "g"
+        },
+        {
+          "ingredient": "soy-sauce",
+          "qty": 1,
+          "unit": "tbsp"
+        },
+        {
+          "ingredient": "frozen-veg",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis les nouilles.",
+        "Coupe le tofu en cubes et dore-le à la poêle.",
+        "Ajoute légumes et ail, puis la sauce (beurre de cacahuète, soja, miel, un peu d’eau) et les nouilles."
+      ],
+      "tasteTip": "Sèche bien le tofu dans un torchon avant de le dorer : il devient croustillant.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "rosti-oeufs-au-plat",
+      "name": "Rösti et œufs au plat",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "potato",
+          "qty": 250,
+          "unit": "g"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crudites",
+          "qty": 80,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Râpe pommes de terre et oignon, presse-les dans un torchon.",
+        "Forme des galettes et dore-les 5 minutes par face.",
+        "Sers avec les œufs au plat et la salade."
+      ],
+      "tasteTip": "Plus tu presses les pommes de terre, plus le rösti est croustillant.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "boulettes-boeuf-tomate-semoule",
+      "name": "Boulettes de bœuf sauce tomate et semoule",
+      "category": "main",
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredient": "beef-mince-5",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "semolina",
+          "qty": 80,
+          "unit": "g",
+          "label": "semoule crue"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 0.5,
+          "unit": "piece",
+          "label": "œuf"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Mélange viande, œuf, cumin, sel et poivre, forme des boulettes.",
+        "Dore-les, ajoute l’oignon et les tomates, mijote 15 minutes.",
+        "Sers sur la semoule."
+      ],
+      "tasteTip": "Saisis bien les boulettes avant de les mijoter : la sauce prend leur goût grillé.",
+      "tags": [
+        "noPork",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "wok-dinde-legumes-nouilles",
+      "name": "Wok de dinde, légumes et nouilles",
+      "category": "main",
+      "minutes": 20,
+      "ingredients": [
+        {
+          "ingredient": "turkey",
+          "qty": 130,
+          "unit": "g"
+        },
+        {
+          "ingredient": "noodles",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "frozen-veg",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "soy-sauce",
+          "qty": 1,
+          "unit": "tbsp"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis les nouilles.",
+        "Saisis la dinde en lanières à feu très vif.",
+        "Ajoute légumes, ail, soja, miel et nouilles, fais sauter 3 minutes."
+      ],
+      "tasteTip": "Ne surcharge pas la poêle : la viande doit griller, pas bouillir.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "salade-lentilles-oeuf-carotte",
+      "name": "Salade de lentilles, œuf et carottes",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "green-lentils",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "carrot",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "mustard",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "vinegar",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 60,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis les lentilles 20 minutes et les œufs 9 minutes.",
+        "Fais une vinaigrette moutarde, vinaigre, huile.",
+        "Mélange lentilles tièdes, carotte râpée, oignon et œufs."
+      ],
+      "tasteTip": "Verse la vinaigrette sur les lentilles encore tièdes : elles l’absorbent.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch"
+      ]
+    },
+    {
+      "id": "veloute-poireaux-tartines-fromage",
+      "name": "Velouté poireaux-pommes de terre et tartines au fromage",
+      "category": "main",
+      "minutes": 35,
+      "ingredients": [
+        {
+          "ingredient": "leek",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "milk",
+          "qty": 100,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "butter",
+          "qty": 5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 30,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais suer les poireaux 10 minutes dans le beurre.",
+        "Ajoute pommes de terre et 50 cl d’eau, cuis 20 minutes, mixe avec le lait.",
+        "Gratine les tartines au fromage 5 minutes au four."
+      ],
+      "tasteTip": "Les poireaux doivent fondre doucement sans colorer : c’est le secret d’un velouté sucré.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "pates-cremeuses-champignons-poulet",
+      "name": "Pâtes crémeuses champignons et poulet",
+      "category": "main",
+      "minutes": 20,
+      "ingredients": [
+        {
+          "ingredient": "pasta",
+          "qty": 100,
+          "unit": "g",
+          "label": "pâtes crues"
+        },
+        {
+          "ingredient": "chicken-breast",
+          "qty": 110,
+          "unit": "g"
+        },
+        {
+          "ingredient": "mushrooms",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "light-cream",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "garlic",
+          "qty": 1,
+          "unit": "piece",
+          "label": "gousse d’ail"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis les pâtes.",
+        "Saisis les champignons à feu vif, puis le poulet en dés et l’ail.",
+        "Ajoute la crème et un peu d’eau des pâtes, mélange."
+      ],
+      "tasteTip": "Ne remue pas les champignons pendant 2 minutes : ils dorent au lieu de rendre leur eau.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "patate-douce-haricots-rouges-yaourt",
+      "name": "Patate douce rôtie, haricots rouges et yaourt",
+      "category": "main",
+      "minutes": 35,
+      "ingredients": [
+        {
+          "ingredient": "sweet-potato",
+          "qty": 300,
+          "unit": "g"
+        },
+        {
+          "ingredient": "kidney-beans",
+          "qty": 120,
+          "unit": "g",
+          "label": "haricots rouges égouttés"
+        },
+        {
+          "ingredient": "plain-yogurt",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "corn",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Coupe la patate douce en cubes, mélange avec huile et paprika, 25 minutes à 220 °C.",
+        "Réchauffe haricots et maïs.",
+        "Sers avec le yaourt citronné."
+      ],
+      "tasteTip": "Paprika fumé et yaourt au citron : sucré, fumé, frais.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "shakshuka-pain",
+      "name": "Shakshuka et pain",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "egg",
+          "qty": 3,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 250,
+          "unit": "g"
+        },
+        {
+          "ingredient": "frozen-peppers",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "wholemeal-bread",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais revenir oignon, poivrons et épices.",
+        "Ajoute les tomates, mijote 10 minutes.",
+        "Casse les œufs dans la sauce, couvre 5 minutes, sers avec le pain."
+      ],
+      "tasteTip": "Couvre la poêle : les blancs prennent pendant que les jaunes restent coulants.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "poelee-chou-pommes-de-terre-oeufs",
+      "name": "Poêlée de chou, pommes de terre et œufs",
+      "category": "main",
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredient": "cabbage",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 250,
+          "unit": "g"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "onion",
+          "qty": 0.5,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "paprika",
+          "qty": 1,
+          "unit": "tsp"
+        },
+        {
+          "ingredient": "vinegar",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Fais dorer les pommes de terre en dés 10 minutes.",
+        "Ajoute oignon et chou émincé, cuis 10 minutes en laissant colorer.",
+        "Fais cuire les œufs au plat par-dessus."
+      ],
+      "tasteTip": "Laisse le chou griller sans trop remuer, puis un filet de vinaigre à la fin.",
+      "tags": [
+        "noPork",
+        "vegetarian"
+      ]
+    },
+    {
+      "id": "burritos-poulet-riz-haricots",
+      "name": "Burritos poulet, riz et haricots",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "wheat-tortilla",
+          "qty": 2,
+          "unit": "piece",
+          "label": "tortillas"
+        },
+        {
+          "ingredient": "chicken-breast",
+          "qty": 110,
+          "unit": "g"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 50,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "kidney-beans",
+          "qty": 80,
+          "unit": "g",
+          "label": "haricots rouges égouttés"
+        },
+        {
+          "ingredient": "corn",
+          "qty": 40,
+          "unit": "g"
+        },
+        {
+          "ingredient": "plain-yogurt",
+          "qty": 50,
+          "unit": "g"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Cuis le riz.",
+        "Dore le poulet en dés avec le cumin, ajoute haricots et maïs.",
+        "Garnis les tortillas, ajoute le yaourt et roule."
+      ],
+      "tasteTip": "Dore le burrito fermé une minute par face à la poêle : il devient croustillant et se tient.",
+      "tags": [
+        "noPork"
+      ]
+    },
+    {
+      "id": "poisson-pane-riz-brocoli",
+      "name": "Poisson pané maison, riz et brocoli",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "white-fish",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "flour",
+          "qty": 15,
+          "unit": "g"
+        },
+        {
+          "ingredient": "egg",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "oats",
+          "qty": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "frozen-broccoli",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Mixe les flocons en chapelure.",
+        "Passe le poisson dans la farine, l’œuf battu puis les flocons.",
+        "Dore 3 minutes par face ; sers avec riz, brocoli et citron."
+      ],
+      "tasteTip": "Les flocons d’avoine mixés font une chapelure très croustillante et nourrissante.",
+      "tags": [
+        "noPork"
+      ]
     }
   ]
 }
