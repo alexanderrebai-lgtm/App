@@ -38,6 +38,19 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 | Presse à cuisses | Montrée avec le geste du squat | Même mouvement des hanches et des genoux ; une machine en 3D n'apporte rien à la compréhension. |
 | Photos de progression | Reportées | Nécessitent un stockage chiffré ; prévues avec le partage (M4). |
 
+## Choix de M3
+
+| Sujet | Retenu | Raison |
+|---|---|---|
+| Recettes | 64 (27 du prototype, 37 nouvelles), chacune avec astuce de goût, macros calculées, coût et tags | Cahier des charges : au moins 60. Script d'ajout `tools/add-recipes-m3.mjs` (relançable). |
+| Tag « budget » des nouvelles recettes | Au plus 2,15 € pour 1 000 kcal | Le coût par portion seul classait « budget » des plats chers en calories (œufs, feta) et faisait passer la semaine à 38 €. 2,15 € est le niveau des recettes budget du prototype. |
+| Rotation des menus | Construite à partir des recettes autorisées (budget, régime, allergies, plats exclus, favoris doublés) | Le prototype utilisait des listes fixes : impossible de filtrer, et en budget serré les semaines 1 et 4 étaient identiques. Les menus diffèrent donc de ceux du prototype. |
+| Budget serré, profil de référence | Environ 29 € par semaine à 2 600 kcal, 32 à 33 € à 2 900 kcal (prise de masse) | Au-dessus du budget, l'appli l'affiche avec deux pistes (cahier des charges). La première semaine coûte plus cher : on remplit le placard. |
+| Prix | Fichier daté (5 novembre 2026) et prix de la personne en base (`price_override`) | Les prix saisis remplacent l'estimation partout : menus, recettes, courses, budget. |
+| Suivi de l'eau, batch cooking | Faits | Extensions simples, utiles au quotidien. |
+| Open Food Facts, scan de code-barres | Reportés | Envoient une requête à un service tiers : à faire avec votre accord explicite et une dépendance de scan à valider. |
+| Migration du prototype | Script figé (`--force` obligatoire) | Les JSON contiennent désormais des ajouts faits à la main. |
+
 ## Règles harmonisées (incohérences du prototype)
 
 | Sujet | Prototype | Retenu | Raison |

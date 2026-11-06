@@ -25,8 +25,8 @@ pnpm typecheck   # vérification des types
 
 - [x] **M0** : moteur de calcul, modèle de données, migration des contenus du prototype
 - [x] M1 : onboarding, génération du programme, calendrier
-- [x] M2 : séance guidée avec mannequin 3D, check-in, suivi des performances (en attente de validation)
-- [ ] M3 : nutrition (cibles, menus, 60 recettes, courses, budget, calories)
+- [x] M2 : séance guidée avec mannequin 3D, check-in, suivi des performances
+- [x] M3 : nutrition (cibles, menus, 64 recettes, courses, budget, calories) (en attente de validation)
 - [ ] M4 : compléments, hygiène de vie, bilan, rappels, profils multiples, partage
 - [ ] M5 : finitions, accessibilité, performances, builds de test
 

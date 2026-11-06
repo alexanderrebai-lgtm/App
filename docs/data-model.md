@@ -11,9 +11,9 @@ Deux familles de données :
 |---|---|
 | `exercises.json` | 90 exercices (type, muscles, matériel, fiche technique), 8 fiches, groupes de remplacement |
 | `programs.json` | 4 objectifs (textes, phases, conseils nutrition), `templates[objectif][phase][séance]`, séances de récupération, bloc dos |
-| `ingredients.json` | 54 ingrédients canoniques : rayon (frais, placard, épice), valeurs pour 100 g, poids d'une pièce |
-| `recipes.json` | 27 recettes : catégorie, temps, ingrédients structurés (quantité, unité, ingrédient canonique), étapes, astuce de goût, tags, repère kcal/protéines du prototype |
-| `menus.json` | Rotation de 4 semaines, parts des 4 prises, listes « budget serré » et « normal » |
+| `ingredients.json` | 83 ingrédients canoniques : rayon (frais, placard, épice), valeurs pour 100 g, poids d'une pièce |
+| `recipes.json` | 64 recettes : catégorie, temps, ingrédients structurés (quantité, unité, ingrédient canonique), étapes, astuce de goût, tags, repère kcal/protéines du prototype |
+| `menus.json` | Rotation de 4 semaines et parts des 4 prises ; les listes de plats sont calculées selon le profil |
 | `prices.json` | Prix datés (au kilo ou à la pièce), paquets de placard, offres en grande quantité |
 | `nutrition.json` | Facteur d'activité, eau, paramètres par objectif (S, g/kg, tendance de poids visée), aliments rapides |
 | `supplements.json` | 6 compléments suivis, défauts par objectif, tableau d'utilité |
@@ -22,7 +22,7 @@ Les kcal, protéines, glucides et lipides d'une recette sont **calculés** à pa
 
 ## Tables SQLite
 
-M1 crée `profile` (profil complet en JSON dans `data`), `session_log` et `settings`. M2 ajoute `exercise_log`, `check_in`, `body_weight` et `measurements` (migration 2). La séance guidée en cours est gardée dans `settings` (clé `activeSession`). Les autres tables arrivent avec leurs jalons, chacune par une migration numérotée (`apps/mobile/src/store/migrations.ts`).
+M1 crée `profile` (profil complet en JSON dans `data`), `session_log` et `settings`. M2 ajoute `exercise_log`, `check_in`, `body_weight` et `measurements` (migration 2). La séance guidée en cours est gardée dans `settings` (clé `activeSession`). M3 ajoute `food_entry`, `water_log`, `menu_override`, `pantry_item`, `recipe_pref` et `price_override` (migration 3). Les autres tables arrivent avec leurs jalons, chacune par une migration numérotée (`apps/mobile/src/store/migrations.ts`).
 
 Toutes les tables personnelles portent `profile_id` ; les dates sont des chaînes `AAAA-MM-JJ`.
 
