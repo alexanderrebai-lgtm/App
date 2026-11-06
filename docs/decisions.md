@@ -65,6 +65,19 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 | Hygiène de vie | Compteurs quotidiens, tendance sur 7 jours, Tabac Info Service (39 89) et Alcool Info Service (0 980 980 930) | Messages bienveillants, jamais culpabilisants. |
 | Liens d'achat des compléments | Dans `supplements.json`, avec la mention des commissions éventuelles | Modifiables sans toucher au code. Élan ne touche aucune commission aujourd'hui. |
 
+## Choix de M5
+
+| Sujet | Retenu | Raison |
+|---|---|---|
+| Accessibilité | Audit axe-core sur 12 écrans : plus aucun défaut critique ou sérieux. États « coché » annoncés, étapes de l'onboarding en barre de progression, zones tactiles d'au moins 44 points | VoiceOver annonce correctement les choix. L'alerte restante (« landmarks ») ne concerne que le web. |
+| Taille du texte | Suit le réglage de l'iPhone jusqu'à 150 % | Au-delà, les écrans de séance deviennent illisibles ; 150 % couvre les tailles d'accessibilité courantes. |
+| Mannequin 3D | Bouton pause ; à l'arrêt au départ si « Réduire les animations » est activé | Règle d'accessibilité : tout contenu animé doit pouvoir être mis en pause. |
+| Performances | Pas d'optimisation ajoutée | Les calculs les plus lourds (rotation des menus, liste de courses) prennent moins de 2 ms. |
+| Icône | « É » néon sur fond nuit, générée depuis les polices de l'appli | Lisible en petit, cohérente avec la piste 2. |
+| Builds | `eas.json` (aperçu interne et production TestFlight), configuration iOS vérifiée par `expo prebuild` | Build et envoi dans le cloud, sans Mac. Le compte Apple Developer reste à créer. |
+| `expo-system-ui` | Ajouté | Fond nuit dès le lancement, sans flash blanc (module Expo officiel). |
+| Contenu manquant du prototype | Écran Guide (bien démarrer, fiches techniques, glossaire), échauffement avant chaque séance, mention « pas un avis médical » | Prévu par le cahier des charges pour le niveau débutant ; il n'avait pas encore d'écran. |
+
 ## Règles harmonisées (incohérences du prototype)
 
 | Sujet | Prototype | Retenu | Raison |

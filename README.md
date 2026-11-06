@@ -27,7 +27,9 @@ pnpm typecheck   # vérification des types
 - [x] M1 : onboarding, génération du programme, calendrier
 - [x] M2 : séance guidée avec mannequin 3D, check-in, suivi des performances
 - [x] M3 : nutrition (cibles, menus, 64 recettes, courses, budget, calories)
-- [x] M4 : compléments, hygiène de vie, bilan, rappels, profils multiples, sauvegarde, synchronisation et partage (en attente de validation)
-- [ ] M5 : finitions, accessibilité, performances, builds de test
+- [x] M4 : compléments, hygiène de vie, bilan, rappels, profils multiples, sauvegarde, synchronisation et partage
+- [x] M5 : accessibilité, guide, icône, configuration des builds TestFlight (en attente de validation)
+
+Publication : `docs/release.md` (TestFlight), `docs/privacy.md`, `docs/app-store.md`.
 
 Voir `docs/decisions.md` pour les écarts avec le prototype et `docs/data-model.md` pour le modèle de données.
