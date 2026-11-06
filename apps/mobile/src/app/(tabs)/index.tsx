@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import {
-  addDays, dayPlan, effectiveTargets, mondayOf, plannedTrainingDates, weekDates,
+  addDays, dayPlan, dayTotals, effectiveTargets, mondayOf, plannedTrainingDates, weekDates,
 } from '@muscu/engine';
 import { longDate, num } from '../../lib/format';
 import { kindColor, phaseName, planLabel } from '../../lib/programView';
@@ -17,7 +17,7 @@ import { T } from '../../ui/Text';
 
 export default function Home() {
   const p = useProfile();
-  const { today, sessions, loadActiveSession } = useApp();
+  const { today, sessions, loadActiveSession, food } = useApp();
   const [active, setActive] = useState(false);
   useFocusEffect(useCallback(() => {
     loadActiveSession().then((s) => setActive(!!s && s.date === today && s.phase !== 'done'));
@@ -28,6 +28,7 @@ export default function Home() {
   const planned = plannedTrainingDates(p, week[0]!, week[6]!);
   const doneWeek = planned.filter((d) => done.has(d)).length;
   const t = effectiveTargets(p);
+  const eaten = dayTotals(food, today);
   let next: string | null = null;
   for (let i = 1; i <= 14 && !next; i++) {
     const d = addDays(today, i);
@@ -94,9 +95,11 @@ export default function Home() {
           </View>
         </Card> : null}
         <Card style={{ flex: 1 }}>
-          <T v="caption" color={colors.mute}>Objectif du jour</T>
-          <T v="title">{num(t.kcal)} <T v="detail" color={colors.mute}>kcal</T></T>
-          <T v="caption" color={colors.mute}>{t.protein} g de protéines</T>
+          <T v="caption" color={colors.mute}>Calories du jour</T>
+          <T v="title">{num(Math.round(eaten.kcal))} <T v="detail" color={colors.mute}>/ {num(t.kcal)}</T></T>
+          <View style={{ height: 6, borderRadius: 3, backgroundColor: colors.line }}>
+            <View style={{ width: `${Math.min(100, (eaten.kcal / t.kcal) * 100)}%`, height: 6, borderRadius: 3, backgroundColor: colors.coral }} />
+          </View>
         </Card>
       </View>
 
