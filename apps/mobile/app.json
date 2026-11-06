@@ -53,6 +53,21 @@
     "experiments": {
       "typedRoutes": false
     },
-    "description": "Programme de musculation, cardio et nutrition sur 26 semaines, guidé série par série."
+    "description": "Programme de musculation, cardio et nutrition sur 26 semaines, guidé série par série.",
+    "owner": "alex60s-team",
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "89cb6ae4-e6af-447f-86c8-c73ab9f3e6ce"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/89cb6ae4-e6af-447f-86c8-c73ab9f3e6ce"
+    },
+    "runtimeVersion": "exposdk:58.0.0"
   }
 }

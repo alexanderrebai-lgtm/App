@@ -1,5 +1,21 @@
 # Builds de test et publication (iOS)
 
+## Essayer sans compte Apple : Expo Go
+
+L'appli est publiée sur Expo (organisation `alex60s-team`, projet `elan`, canal `preview`). Sur l'iPhone, installer Expo Go depuis l'App Store, puis ouvrir :
+
+```
+exp://u.expo.dev/89cb6ae4-e6af-447f-86c8-c73ab9f3e6ce?channel-name=preview&runtime-version=exposdk:58.0.0
+```
+
+(ou scanner le QR code correspondant avec l'appareil photo). Pour republier après une modification, depuis `apps/mobile` :
+
+```
+npx eas-cli@latest update --branch preview --environment preview --platform ios --message "…"
+```
+
+Expo Go ne lit que les mises à jour publiées pour son SDK : `runtimeVersion` vaut donc `exposdk:58.0.0` dans app.json. **Avant le premier build TestFlight**, remettre `"runtimeVersion": { "policy": "appVersion" }`.
+
 ## Ce qu'il faut
 
 - Un compte Apple Developer (99 € par an), au nom de la personne ou de la société qui publie.
