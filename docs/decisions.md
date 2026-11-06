@@ -13,6 +13,18 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 - Couleurs « Nuit et néon » validées ; tailles et polices revues (piste 2 : Barlow, six tailles de 13 à 40 px), en attente de validation.
 - Séance guidée : un mannequin 3D montre chaque mouvement avant la première série (prototype : `docs/prototype/elan-3d.html`). Les poses sont calculées par cinématique inverse à partir d'une vingtaine de gestes de base, sans vidéo. Approche à valider avant M2.
 
+## Choix de M1
+
+| Sujet | Retenu | Raison |
+|---|---|---|
+| Version d'Expo | SDK 58 (React Native 0.88) | C'est la version qu'Expo Go sur l'App Store sait ouvrir. |
+| Date de début | Lundi de la semaine en cours jusqu'au mercredi, sinon lundi suivant | Le prototype prenait toujours le lundi en cours : un jeudi, les deux premières séances étaient déjà passées. |
+| Stockage | `expo-sqlite` seul, migrations SQL numérotées (`PRAGMA user_version`) | Drizzle annoncé au cadrage n'apporte pas assez pour 3 tables ; une dépendance de moins. Le profil est stocké en JSON (une colonne), les journaux en colonnes. |
+| Aperçu web | `react-native-web` et `react-dom` | Captures d'écran automatiques et démos sans téléphone ; non utilisés par l'appli iOS. |
+| Polices | `@expo-google-fonts/barlow` et `barlow-semi-condensed` | Polices de la piste 2, chargées par `expo-font`, compatibles Expo Go. |
+| Matériel maison | Remplacements dans `content/data/equipment.json` | Chaque exercice de salle a un équivalent haltères ou poids du corps, sans doublon dans une séance. |
+| Textes du prototype | « +2 kg » → « +2,5 kg », « +200 kcal » → « +150 kcal », « ±1 kg » → « ±0,25 kg par semaine » | Alignés sur les règles ci-dessous. |
+
 ## Règles harmonisées (incohérences du prototype)
 
 | Sujet | Prototype | Retenu | Raison |

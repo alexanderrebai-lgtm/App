@@ -20,7 +20,9 @@ Deux familles de données :
 
 Les kcal, protéines, glucides et lipides d'une recette sont **calculés** à partir des ingrédients (`recipeMacros`). Un test vérifie qu'ils restent proches des valeurs du prototype (kcal à ±10 %).
 
-## Tables SQLite (à partir de M1)
+## Tables SQLite
+
+M1 crée `profile` (profil complet en JSON dans `data`), `session_log` et `settings`. Les autres tables arrivent avec leurs jalons, chacune par une migration numérotée (`apps/mobile/src/store/migrations.ts`).
 
 Toutes les tables personnelles portent `profile_id` ; les dates sont des chaînes `AAAA-MM-JJ`.
 
