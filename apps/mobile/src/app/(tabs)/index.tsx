@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import {
   addDays, dayPlan, dayTotals, effectiveTargets, mondayOf, plannedTrainingDates, weekDates,
@@ -7,7 +7,8 @@ import {
 import { longDate, num } from '../../lib/format';
 import { kindColor, phaseName, planLabel } from '../../lib/programView';
 import { useApp, useProfile } from '../../store/AppState';
-import { colors, space } from '../../theme';
+import { colors, fonts, space } from '../../theme';
+import { SupplementsToday } from '../../ui/SupplementsToday';
 import { Button } from '../../ui/Button';
 import { Card } from '../../ui/Card';
 import { CheckInCard } from '../../ui/CheckInCard';
@@ -37,9 +38,15 @@ export default function Home() {
 
   return (
     <Screen>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
       <View style={{ gap: space.xs }}>
         <T v="label" color={colors.mute}>{longDate(today)}</T>
         <T v="title" accessibilityRole="header">{p.name && p.name !== 'Moi' ? `Salut ${p.name}` : 'Salut'}</T>
+      </View>
+      <Pressable accessibilityRole="button" accessibilityLabel={`Profil de ${p.name}. Changer de profil`} onPress={() => router.push('/profils')}
+        style={{ width: 44, height: 44, borderRadius: 22, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.slate, alignItems: 'center', justifyContent: 'center' }}>
+        <T v="heading" style={{ fontFamily: fonts.displayBold }}>{p.name.charAt(0).toUpperCase()}</T>
+      </Pressable>
       </View>
 
       {!plan ? (
@@ -102,6 +109,16 @@ export default function Home() {
           </View>
         </Card>
       </View>
+
+      {plan ? (
+        <Card>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <T v="heading">Compléments du jour</T>
+            <Pressable accessibilityRole="button" onPress={() => router.push('/complements')} hitSlop={8}><T v="detail" color={colors.neon}>Voir</T></Pressable>
+          </View>
+          <SupplementsToday />
+        </Card>
+      ) : null}
 
       {next ? <T v="detail" color={colors.mute}>Prochaine séance : {longDate(next)}.</T> : null}
     </Screen>

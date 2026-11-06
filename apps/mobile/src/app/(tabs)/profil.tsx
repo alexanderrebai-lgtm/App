@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { router } from 'expo-router';
 import { content, programs } from '@muscu/content';
 import { bmi, mondayOf } from '@muscu/engine';
@@ -7,7 +7,8 @@ import { longDate, num } from '../../lib/format';
 import { allergiesFrom } from '../../lib/onboarding';
 import { LEVEL } from '../../lib/programView';
 import { useApp, useProfile } from '../../store/AppState';
-import { colors, space } from '../../theme';
+import { colors, fonts, space } from '../../theme';
+import { Icon } from '../../ui/Icon';
 import { Button } from '../../ui/Button';
 import { Card } from '../../ui/Card';
 import { Screen } from '../../ui/Screen';
@@ -43,6 +44,24 @@ export default function ProfileTab() {
         <Row label="Début" value={longDate(p.startDate)} />
       </Card>
       <Button label="Modifier mon profil" variant="secondary" onPress={() => router.push('/onboarding?edit=1')} />
+      <Card style={{ gap: 0, paddingVertical: space.xs }}>
+        {([
+          ['Profils', 'Changer de profil ou en ajouter un', '/profils'],
+          ['Rappels', 'Séances, compléments, pesée, repas', '/rappels'],
+          ['Compléments', 'Routine, dosages et où les trouver', '/complements'],
+          ['Sauvegarde', 'Exporter ou importer tes données', '/sauvegarde'],
+          ['Compte et partage', 'Synchroniser, partager avec un ami', '/compte'],
+        ] as const).map(([title, desc, href], i) => (
+          <Pressable key={href} accessibilityRole="button" onPress={() => router.push(href)}
+            style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.m, borderTopWidth: i ? 1 : 0, borderTopColor: colors.line, minHeight: 56 }}>
+            <View style={{ flex: 1 }}>
+              <T style={{ fontFamily: fonts.medium }}>{title}</T>
+              <T v="caption" color={colors.mute}>{desc}</T>
+            </View>
+            <Icon name="chevronRight" color={colors.mute} size={20} />
+          </Pressable>
+        ))}
+      </Card>
       <Button label="Recommencer le programme cette semaine" variant="secondary"
         onPress={() => saveProfile({ ...p, startDate: today >= p.startDate ? mondayOf(today) : p.startDate })} />
       <View style={{ gap: space.s }}>

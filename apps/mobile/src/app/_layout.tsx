@@ -8,6 +8,7 @@ import { useFonts, Barlow_400Regular, Barlow_500Medium, Barlow_600SemiBold } fro
 import { BarlowSemiCondensed_600SemiBold, BarlowSemiCondensed_700Bold } from '@expo-google-fonts/barlow-semi-condensed';
 import { AppStateProvider, useApp } from '../store/AppState';
 import { colors, gutter } from '../theme';
+import { ReminderSync } from '../ui/ReminderSync';
 import { T } from '../ui/Text';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -44,6 +45,7 @@ function Gate({ fontsReady }: { fontsReady: boolean }) {
   return (
     <>
       <StatusBar style="light" />
+      <ReminderSync />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.night } }}>
         <Stack.Screen name="guidee/[date]" options={{ presentation: 'fullScreenModal', gestureEnabled: false, animation: 'slide_from_bottom' }} />
       </Stack>

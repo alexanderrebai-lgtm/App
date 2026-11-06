@@ -11,7 +11,9 @@ import { colors, fonts, space } from '../../theme';
 import { Button } from '../../ui/Button';
 import { Card } from '../../ui/Card';
 import { Screen } from '../../ui/Screen';
-import { Segmented } from '../../ui/Segmented';
+import { Chip } from '../../ui/Chip';
+import { LifestyleView } from '../../ui/progress/LifestyleView';
+import { ReviewView } from '../../ui/progress/ReviewView';
 import { Sparkline } from '../../ui/Sparkline';
 import { Stepper } from '../../ui/Stepper';
 import { T } from '../../ui/Text';
@@ -21,15 +23,18 @@ const MUSCLE_FR: Record<string, string> = {
   hamstrings: 'Ischios', glutes: 'Fessiers', calves: 'Mollets', core: 'Gainage', lowerBack: 'Lombaires',
 };
 
-type Tab = 'summary' | 'records' | 'body';
+type Tab = 'summary' | 'records' | 'body' | 'life' | 'review';
+const TABS: [Tab, string][] = [['summary', 'Résumé'], ['records', 'Records'], ['body', 'Corps'], ['life', 'Hygiène de vie'], ['review', 'Bilan']];
 
 export default function Progress() {
   const [tab, setTab] = useState<Tab>('summary');
   return (
     <Screen>
       <T v="title" accessibilityRole="header">Progrès</T>
-      <Segmented<Tab> options={[{ key: 'summary', label: 'Résumé' }, { key: 'records', label: 'Records' }, { key: 'body', label: 'Corps' }]} value={tab} onChange={setTab} />
-      {tab === 'summary' ? <Summary /> : tab === 'records' ? <Records /> : <Body />}
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
+        {TABS.map(([k, l]) => <Chip key={k} label={l} selected={tab === k} onPress={() => setTab(k)} />)}
+      </View>
+      {tab === 'summary' ? <Summary /> : tab === 'records' ? <Records /> : tab === 'body' ? <Body /> : tab === 'life' ? <LifestyleView /> : <ReviewView />}
     </Screen>
   );
 }
