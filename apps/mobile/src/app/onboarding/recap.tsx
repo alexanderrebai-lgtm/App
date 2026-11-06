@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View } from 'react-native';
 import { router } from 'expo-router';
-import { programs } from '@muscu/content';
+import { content, programs } from '@muscu/content';
 import { effectiveTargets, waterLiters } from '@muscu/engine';
 import { longDate, num } from '../../lib/format';
 import { buildProfile, isComplete } from '../../lib/onboarding';
@@ -49,6 +49,13 @@ export default function RecapStep() {
         <T v="title" color={colors.night}>{goal.name}</T>
         <T v="detail" color={colors.night}>Début le {longDate(p.startDate)}. {goal.weightGoalText.charAt(0).toUpperCase() + goal.weightGoalText.slice(1)}.</T>
       </Card>
+
+      {p.health && p.health.outcome !== 'ok' ? (
+        <Card style={{ borderWidth: 2, borderColor: p.health.outcome === 'doctor' ? colors.coral : colors.neon }}>
+          <T v="heading">{content.health.outcomes[p.health.outcome].title}</T>
+          <T v="detail" color={colors.soft}>{content.health.outcomes[p.health.outcome].text}</T>
+        </Card>
+      ) : null}
 
       <Card>
         <T v="label" color={colors.mute}>Ta cible chaque jour</T>

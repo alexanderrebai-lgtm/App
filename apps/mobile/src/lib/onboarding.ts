@@ -1,6 +1,6 @@
 import { content, type GoalId, type RecipeTag } from '@muscu/content';
 import {
-  addDays, mondayOf, weekday, type IsoDate, type Level, type Profile, type SessionsPerWeek, type Sex,
+  addDays, mondayOf, screen, weekday, type InjuryArea, type IsoDate, type Level, type Profile, type SessionsPerWeek, type Sex,
 } from '@muscu/engine';
 
 export type GoalChoice = GoalId | 'unsure';
@@ -20,6 +20,18 @@ export interface Draft {
   allergies: string[];
   budgetMode: boolean;
   weeklyBudgetEur: number;
+  /** Difficulté à prendre du poids (prise de masse seulement). */
+  hardGainer: boolean;
+  injuries: InjuryArea[];
+  sessionMinutes?: 30 | 45 | 60 | 90;
+  /** Jours choisis (0 = lundi … 5 = samedi) ; vide = jours par défaut. */
+  trainingDays: number[];
+  /** 0 = pas de limite connue. */
+  maxDumbbellKg: number;
+  mealsPerDay?: 3 | 4 | 5 | 6;
+  maxCookMinutes?: 15 | 30 | 45;
+  healthAnswers: Record<string, boolean>;
+  healthDone: boolean;
 }
 
 /** Valeurs de départ : le profil de référence (30 ans, 65 kg, 1,75 m). */
@@ -34,6 +46,12 @@ export const DEFAULT_DRAFT: Draft = {
   allergies: [],
   budgetMode: true,
   weeklyBudgetEur: 30,
+  hardGainer: false,
+  injuries: [],
+  trainingDays: [],
+  maxDumbbellKg: 0,
+  healthAnswers: {},
+  healthDone: false,
 };
 
 export const LIMITS = {
@@ -43,7 +61,7 @@ export const LIMITS = {
   weeklyBudgetEur: { min: 15, max: 100, step: 1 },
 } as const;
 
-export const STEPS = ['objectif', 'seances', 'niveau', 'corps', 'options', 'recap'] as const;
+export const STEPS = ['objectif', 'seances', 'niveau', 'corps', 'sante', 'options', 'recap'] as const;
 export type Step = (typeof STEPS)[number];
 
 /** « Je ne sais pas » mène à la prise de masse, le programme le plus polyvalent. */
@@ -110,6 +128,16 @@ export function buildProfile(d: Draft, today: IsoDate, existing?: Profile, id: s
     budgetMode: d.budgetMode,
     weeklyBudgetEur: clamp(Math.round(d.weeklyBudgetEur), LIMITS.weeklyBudgetEur.min, LIMITS.weeklyBudgetEur.max),
   };
+  if (goal === 'mass' && d.hardGainer) p.hardGainer = true;
+  if (d.injuries.length) p.injuries = [...d.injuries];
+  if (d.sessionMinutes) p.sessionMinutes = d.sessionMinutes;
+  const days = [...new Set(d.trainingDays)].sort((a, b) => a - b);
+  if (days.length === d.sessionsPerWeek) p.trainingDays = days;
+  if (d.maxDumbbellKg > 0) p.maxDumbbellKg = d.maxDumbbellKg;
+  if (d.mealsPerDay) p.mealsPerDay = d.mealsPerDay;
+  if (d.maxCookMinutes) p.maxCookMinutes = d.maxCookMinutes;
+  if (d.healthDone) p.health = { date: existing?.health?.date ?? today, answers: { ...d.healthAnswers }, outcome: screen(d.healthAnswers, d, p.hardGainer).outcome };
+  if (existing?.deloadOverrides) p.deloadOverrides = existing.deloadOverrides;
   if (sameBody && existing?.kcalTarget) p.kcalTarget = existing.kcalTarget;
   if (sameBody && existing?.proteinTarget) p.proteinTarget = existing.proteinTarget;
   if (existing?.supplements) p.supplements = existing.supplements;
@@ -133,5 +161,14 @@ export function draftFromProfile(p: Profile): Draft {
     allergies: allergiesFrom(p.excludedIngredients),
     budgetMode: p.budgetMode,
     weeklyBudgetEur: p.weeklyBudgetEur,
+    hardGainer: !!p.hardGainer,
+    injuries: [...(p.injuries ?? [])],
+    sessionMinutes: p.sessionMinutes,
+    trainingDays: [...(p.trainingDays ?? [])],
+    maxDumbbellKg: p.maxDumbbellKg ?? 0,
+    mealsPerDay: p.mealsPerDay,
+    maxCookMinutes: p.maxCookMinutes,
+    healthAnswers: { ...(p.health?.answers ?? {}) },
+    healthDone: !!p.health,
   };
 }

@@ -288,5 +288,10 @@ export const WhyFile = z.object({
     boosters: z.array(z.object({ ingredient: z.string(), qty: z.number(), unit: Unit, label: z.string() })),
   }),
   fatLoss: z.object({ title: z.string(), tips: z.array(z.string()) }),
+  progression: z.object({ title: z.string(), text: z.string() }),
+  deload: z.object({
+    title: z.string(), text: z.string(), reasons: z.record(z.string(), z.string()),
+    now: z.string(), skip: z.string(), undo: z.string(),
+  }),
 });
 export type WhyFile = z.infer<typeof WhyFile>;

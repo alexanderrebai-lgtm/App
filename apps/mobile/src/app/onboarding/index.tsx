@@ -12,6 +12,8 @@ const GOALS: { key: GoalChoice; title: string; description: string }[] = [
   { key: 'strength', title: programs.goals.strength.name, description: programs.goals.strength.description },
   { key: 'power', title: programs.goals.power.name, description: programs.goals.power.description },
   { key: 'cardio', title: programs.goals.cardio.name, description: programs.goals.cardio.description },
+  { key: 'fatloss', title: programs.goals.fatloss.name, description: programs.goals.fatloss.description },
+  { key: 'health', title: programs.goals.health.name, description: programs.goals.health.description },
   { key: 'unsure', title: 'Je ne sais pas', description: 'On commence par la prise de masse : c’est le plus polyvalent. Tu pourras changer plus tard.' },
 ];
 

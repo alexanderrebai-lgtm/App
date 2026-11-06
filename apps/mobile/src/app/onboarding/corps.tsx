@@ -13,7 +13,7 @@ import { T } from '../../ui/Text';
 export default function BodyStep() {
   const { draft, update } = useOnboarding();
   return (
-    <Screen footer={<Button label="Continuer" disabled={!draft.sex} onPress={() => router.push('/onboarding/options')} />}>
+    <Screen footer={<Button label="Continuer" disabled={!draft.sex} onPress={() => router.push('/onboarding/sante')} />}>
       <StepHeader step="corps" title="Toi" subtitle="Ces valeurs servent à calculer tes calories et tes protéines." />
 
       <View style={{ gap: space.s }}>

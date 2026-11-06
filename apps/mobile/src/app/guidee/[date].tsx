@@ -6,7 +6,7 @@ import * as Haptics from 'expo-haptics';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { exerciseById } from '@muscu/content';
 import {
-  dayPlan, fr, isLowReadiness, records, restRemaining, restSeconds, sessionReducer, sessionResult, startSession, substituteFor,
+  dayPlan, explainExercise, fr, isLowReadiness, records, restRemaining, restSeconds, sessionReducer, sessionResult, startSession, substituteFor,
   workingLoad, type SessionAction, type SessionState,
 } from '@muscu/engine';
 import { num } from '../../lib/format';
@@ -28,6 +28,7 @@ const MUSCLE_FR: Record<string, string> = {
   hamstrings: 'Ischio-jambiers', glutes: 'Fessiers', calves: 'Mollets', core: 'Gainage', lowerBack: 'Lombaires',
   fullBody: 'Tout le corps', cardio: 'Cardio', mobility: 'Mobilité',
 };
+const JOINT_FR: Record<string, string> = { shoulder: 'l’épaule', knee: 'le genou', lowerBack: 'le bas du dos', wrist: 'le poignet', elbow: 'le coude' };
 const mmss = (sec: number) => `${Math.floor(sec / 60)}:${String(Math.max(0, sec) % 60).padStart(2, '0')}`;
 const restLabel = (s: number) => (s % 60 ? mmss(s) : `${s / 60} min`);
 
@@ -58,7 +59,7 @@ export default function GuidedSession() {
       const check = app.checkIns.find((c) => c.date === date);
       setS(startSession({
         plan, goal: p.goal, history: app.exerciseLogs, lowReadiness: isLowReadiness(check), now: Date.now(),
-        oneRepMaxes: p.level === 'advanced' ? p.oneRepMaxes : undefined,
+        oneRepMaxes: p.level !== 'beginner' ? p.oneRepMaxes : undefined, maxDumbbellKg: p.maxDumbbellKg,
       }, fr.sessionLabels[plan.label] ?? plan.label));
     })();
     // une seule initialisation par ouverture de l'écran
@@ -192,6 +193,8 @@ function Intro({ s, dispatch, header }: { s: SessionState; dispatch(a: SessionAc
   const [phase, setPhase] = useState('');
   useEffect(() => { AccessibilityInfo.isReduceMotionEnabled().then((r) => { if (r) setPlaying(false); }).catch(() => {}); }, []);
   const [orm, setOrm] = useState<number | null>(null);
+  const [whyOpen, setWhyOpen] = useState(false);
+  const why = useMemo(() => explainExercise(e.exercise, e.scheme.raw, { goal: s.goal, phase: dayPlan(p, s.date)?.phase ?? 0 }), [e.exercise, e.scheme.raw, s.goal, s.date, p]);
   const cues = useMemo(() => {
     const t = techniqueText(e.exercise);
     return t ? t.split(/(?<=\.)\s+/) : ['Mouvement contrôlé, sans à-coups.', 'Expire pendant l’effort.', 'Arrête-toi en cas de douleur vive.'];
@@ -199,7 +202,7 @@ function Intro({ s, dispatch, header }: { s: SessionState; dispatch(a: SessionAc
   const alt = e.sets.length ? null : substituteFor(e.exercise, p.equipment, s.exercises.map((x) => x.exercise));
   const lighter = e.targetSets && e.targetSets < e.scheme.sets;
   const charge = e.free ? 'libre' : s.kg ? `${num(s.kg, s.kg % 1 ? 1 : 0)} kg` : 'à trouver';
-  const advanced = p.level === 'advanced' && !e.free && !e.suggestedKg && !e.sets.length && e.scheme.topReps > 0;
+  const advanced = p.level !== 'beginner' && !e.free && !e.suggestedKg && !e.sets.length && e.scheme.topReps > 0;
 
   return (
     <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: colors.night }}>
@@ -262,6 +265,26 @@ function Intro({ s, dispatch, header }: { s: SessionState; dispatch(a: SessionAc
               </>
             )}
           </Card>
+        ) : null}
+        {why ? (
+          <Pressable accessibilityRole="button" accessibilityState={{ expanded: whyOpen }} onPress={() => setWhyOpen(!whyOpen)}>
+            <Card>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <T v="heading">Pourquoi cet exercice ?</T>
+                <T v="detail" color={colors.neon}>{whyOpen ? '−' : '+'}</T>
+              </View>
+              <T v="detail" color={colors.soft}>{why.role.label} : {why.role.text}</T>
+              {whyOpen ? (
+                <>
+                  <T v="detail" color={colors.soft}>{why.zone.label} : {why.zone.text}</T>
+                  {why.restSeconds ? <T v="detail" color={colors.soft}>{why.zone.restText}</T> : null}
+                  <T v="detail" color={colors.soft}>Effort : {why.rir}</T>
+                  <T v="detail" color={colors.soft}>{why.goalText}</T>
+                  {why.joints.length ? <T v="detail" color={colors.mute}>Sollicite : {why.joints.map((j) => JOINT_FR[j] ?? j).join(', ')}. Dis-le dans ton profil si une de ces zones te fait mal.</T> : null}
+                </>
+              ) : null}
+            </Card>
+          </Pressable>
         ) : null}
         <View style={{ gap: space.s }}>
           <T v="heading">Les points clés</T>

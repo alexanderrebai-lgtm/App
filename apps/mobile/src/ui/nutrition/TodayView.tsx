@@ -3,7 +3,7 @@ import { Pressable, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 import { content, programs } from '@muscu/content';
 import {
-  dayPlan, dayTotals, effectiveTargets, lastDays, mealSplit, menuEntry, waterLiters,
+  boostersFor, dayPlan, dayTotals, effectiveTargets, lastDays, mealSplit, menuEntry, waterLiters,
 } from '@muscu/engine';
 import { DAY_INITIALS, num } from '../../lib/format';
 import { useDayMeals, useMealNames } from '../../lib/useNutrition';
@@ -30,6 +30,9 @@ export function TodayView() {
   const t = effectiveTargets(p);
   const meals = useDayMeals(today);
   const names = useMealNames();
+  const menuKcal = meals.reduce((a, m) => a + m.macros.kcal, 0);
+  const gap = Math.round(t.kcal - menuKcal);
+  const boost = boostersFor(gap > 0 ? gap : 0);
   const got = dayTotals(food, today);
   const todays = food.filter((f) => f.date === today);
   const training = dayPlan(p, today)?.day.kind === 'training';
@@ -96,6 +99,13 @@ export function TodayView() {
             );
           })}
         </Card>
+        {boost.items.length ? (
+          <Card style={{ gap: space.xs }}>
+            <T v="heading">Pour atteindre ta cible</T>
+            <T v="detail" color={colors.soft}>Le menu fait {num(Math.round(menuKcal))} kcal, il en manque environ {gap}. Ajoute sans manger plus de volume :</T>
+            {boost.items.map((b, i) => <T key={i} v="detail" color={colors.soft}>• {b.label} (+{b.kcal} kcal)</T>)}
+          </Card>
+        ) : null}
         <T v="caption" color={colors.mute}>Coche un repas quand tu l’as mangé : il s’ajoute à tes calories.</T>
       </View>
 

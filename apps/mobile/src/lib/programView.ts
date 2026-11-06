@@ -37,3 +37,9 @@ export function techniqueText(id: string): string | null {
 }
 
 const techniques = new Map(exercisesData.techniques.map((x) => [x.id, x.text]));
+
+export const MUSCLE_FR: Record<string, string> = {
+  chest: 'Pectoraux', back: 'Dos', shoulders: 'Épaules', biceps: 'Biceps', triceps: 'Triceps', quads: 'Quadriceps',
+  hamstrings: 'Ischio-jambiers', glutes: 'Fessiers', calves: 'Mollets', core: 'Gainage', lowerBack: 'Lombaires',
+  fullBody: 'Tout le corps', cardio: 'Cardio', mobility: 'Mobilité',
+};

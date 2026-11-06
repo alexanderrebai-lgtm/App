@@ -1,18 +1,71 @@
 {
   "roles": {
-    "compound": { "label": "Exercice de base", "text": "Il fait travailler plusieurs muscles et plusieurs articulations à la fois : tu peux charger plus lourd et progresser vite. C’est la base du programme." },
-    "isolation": { "label": "Exercice ciblé", "text": "Il isole un muscle précis pour en ajouter le volume sans fatiguer le reste du corps. Il vient après les exercices de base." },
-    "core": { "label": "Gainage", "text": "Il renforce le ventre et le dos pour stabiliser le corps et protéger les lombaires sous charge." },
-    "power": { "label": "Explosivité", "text": "Mouvement rapide, peu de répétitions, repos longs : on travaille la vitesse, pas la fatigue. Qualité avant quantité." },
-    "cardio": { "label": "Endurance", "text": "Il fait monter le souffle et améliore ton cœur et ta récupération." },
-    "mobility": { "label": "Mobilité", "text": "Mouvement doux qui entretient l’amplitude des articulations et aide à récupérer." }
+    "compound": {
+      "label": "Exercice de base",
+      "text": "Il fait travailler plusieurs muscles et plusieurs articulations à la fois : tu peux charger plus lourd et progresser vite. C’est la base du programme."
+    },
+    "isolation": {
+      "label": "Exercice ciblé",
+      "text": "Il isole un muscle précis pour en ajouter le volume sans fatiguer le reste du corps. Il vient après les exercices de base."
+    },
+    "core": {
+      "label": "Gainage",
+      "text": "Il renforce le ventre et le dos pour stabiliser le corps et protéger les lombaires sous charge."
+    },
+    "power": {
+      "label": "Explosivité",
+      "text": "Mouvement rapide, peu de répétitions, repos longs : on travaille la vitesse, pas la fatigue. Qualité avant quantité."
+    },
+    "cardio": {
+      "label": "Endurance",
+      "text": "Il fait monter le souffle et améliore ton cœur et ta récupération."
+    },
+    "mobility": {
+      "label": "Mobilité",
+      "text": "Mouvement doux qui entretient l’amplitude des articulations et aide à récupérer."
+    }
   },
   "zones": [
-    { "id": "strength", "min": 1, "max": 5, "label": "Force", "text": "Peu de répétitions avec une charge lourde : c’est ce qui fait le plus progresser la force maximale.", "restText": "Repos long (2 min 30) : les muscles et le système nerveux ont besoin de récupérer pour que la série suivante reste lourde." },
-    { "id": "heavy", "min": 6, "max": 8, "label": "Force et muscle", "text": "Une charge assez lourde pour progresser en force tout en construisant du muscle.", "restText": "Repos moyen à long (1 min 45 à 2 min 30) pour garder la charge d’une série à l’autre." },
-    { "id": "muscle", "min": 9, "max": 12, "label": "Construction musculaire", "text": "Le muscle se construit sur une large plage de charges tant que la série s’approche de l’échec. Cette zone chargée modérément est confortable pour les articulations et facile à progresser.", "restText": "Repos moyen (1 min 45) : assez pour récupérer sans refroidir le muscle." },
-    { "id": "light", "min": 13, "max": 30, "label": "Muscle à charge légère", "text": "Avec une charge plus légère mais des séries proches de l’échec, le muscle progresse aussi. Utile pour les exercices ciblés et les petits muscles.", "restText": "Repos court (1 min 15) : la fatigue vient du nombre de répétitions, pas de la charge." },
-    { "id": "timed", "min": 0, "max": 0, "label": "Durée", "text": "Un exercice tenu dans le temps : on cherche la qualité de la position, pas la charge.", "restText": "Repos court." }
+    {
+      "id": "strength",
+      "min": 1,
+      "max": 5,
+      "label": "Force",
+      "text": "Peu de répétitions avec une charge lourde : c’est ce qui fait le plus progresser la force maximale.",
+      "restText": "Repos long (2 min 30) : les muscles et le système nerveux ont besoin de récupérer pour que la série suivante reste lourde."
+    },
+    {
+      "id": "heavy",
+      "min": 6,
+      "max": 8,
+      "label": "Force et muscle",
+      "text": "Une charge assez lourde pour progresser en force tout en construisant du muscle.",
+      "restText": "Repos moyen à long (1 min 45 à 2 min 30) pour garder la charge d’une série à l’autre."
+    },
+    {
+      "id": "muscle",
+      "min": 9,
+      "max": 12,
+      "label": "Construction musculaire",
+      "text": "Le muscle se construit sur une large plage de charges tant que la série s’approche de l’échec. Cette zone chargée modérément est confortable pour les articulations et facile à progresser.",
+      "restText": "Repos moyen (1 min 45) : assez pour récupérer sans refroidir le muscle."
+    },
+    {
+      "id": "light",
+      "min": 13,
+      "max": 30,
+      "label": "Muscle à charge légère",
+      "text": "Avec une charge plus légère mais des séries proches de l’échec, le muscle progresse aussi. Utile pour les exercices ciblés et les petits muscles.",
+      "restText": "Repos court (1 min 15) : la fatigue vient du nombre de répétitions, pas de la charge."
+    },
+    {
+      "id": "timed",
+      "min": 0,
+      "max": 0,
+      "label": "Durée",
+      "text": "Un exercice tenu dans le temps : on cherche la qualité de la position, pas la charge.",
+      "restText": "Repos court."
+    }
   ],
   "rirByPhase": [
     "Phase 1 : garde 3 à 4 répétitions en réserve. Tu apprends les gestes, la fatigue n’est pas l’objectif.",
@@ -28,56 +81,149 @@
     "mass": {
       "training": "Séries de 8 à 12 répétitions sur des exercices de base, proches de l’échec, avec assez de volume par muscle. C’est la façon la plus simple de construire du muscle.",
       "nutrition": "Un surplus calorique modéré (on mange un peu plus qu’on ne dépense), des protéines à 1,8 g/kg et des glucides pour l’énergie des séances.",
-      "evidence": ["volume", "reps", "protein-morton", "rate-gain"]
+      "evidence": [
+        "volume",
+        "reps",
+        "protein-morton",
+        "rate-gain"
+      ]
     },
     "strength": {
       "training": "Moins de répétitions (3 à 8) avec des charges lourdes et des repos longs, sur peu d’exercices de base : c’est ce qui développe la force maximale.",
       "nutrition": "Un petit surplus pour soutenir la récupération, et des protéines à 1,8 g/kg.",
-      "evidence": ["reps", "protein-issn"]
+      "evidence": [
+        "reps",
+        "protein-issn"
+      ]
     },
     "power": {
       "training": "Mouvements rapides et sauts, peu de répétitions, repos longs, et un nombre de contacts au sol limité : tu travailles la vitesse en restant frais.",
       "nutrition": "Calories proches de l’entretien, glucides suffisants pour sauter et courir frais.",
-      "evidence": ["plyo", "carbs-load"]
+      "evidence": [
+        "plyo",
+        "carbs-load"
+      ]
     },
     "cardio": {
       "training": "Surtout de l’endurance facile (tu peux parler), avec un peu de fractionné progressif et du renforcement pour protéger les articulations.",
       "nutrition": "Calories proches de l’entretien et des glucides qui suivent la charge d’entraînement.",
-      "evidence": ["carbs-load", "protein-issn"]
+      "evidence": [
+        "carbs-load",
+        "protein-issn"
+      ]
     },
     "fatloss": {
       "training": "Tu gardes une musculation complète, avec des charges qui progressent : c’est le signal qui dit à ton corps de garder son muscle pendant que tu perds du gras. Un peu de cardio en fin de séance s’ajoute.",
       "nutrition": "Un déficit modéré, des protéines élevées (2,0 g/kg) pour protéger le muscle et mieux rassasier, et une perte lente : aller trop vite fait perdre du muscle.",
-      "evidence": ["protein-deficit", "reps", "volume"]
+      "evidence": [
+        "protein-deficit",
+        "reps",
+        "volume"
+      ]
     },
     "health": {
       "training": "2 à 3 séries par exercice, de la musculation de base et du cardio doux : assez pour rester solide et en forme, sans fatigue excessive.",
       "nutrition": "Calories d’entretien, protéines à 1,4 g/kg, une alimentation variée.",
-      "evidence": ["protein-issn", "frequency"]
+      "evidence": [
+        "protein-issn",
+        "frequency"
+      ]
     }
   },
   "hardGainer": {
     "title": "Tu prends difficilement du poids",
     "intro": "Presque toujours, ce n’est pas une fatalité : on dépense plus ou on mange moins qu’on ne le croit. Voici comment Élan s’y prend.",
     "tips": [
-      { "text": "Un surplus plus grand que d’habitude (+400 à +600 kcal par jour) et 5 repas par jour au lieu de 4.", "evidence": ["underreporting"] },
-      { "text": "Note tout ce que tu manges pendant 2 semaines : on sous-estime souvent ce qu’on avale vraiment.", "evidence": ["underreporting"] },
-      { "text": "Ajoute des calories sans volume : une cuillère d’huile d’olive, du beurre de cacahuète, du lait entier, des flocons d’avoine, du fromage.", "evidence": ["liquid"] },
-      { "text": "Bois des calories : un shake de 800 kcal passe plus facilement qu’un repas quand l’appétit manque.", "evidence": ["liquid"] },
-      { "text": "Ne bois pas un grand verre d’eau juste avant de manger : il coupe l’appétit.", "evidence": [] },
-      { "text": "Bouge un peu moins à côté des séances (moins de marche inutile, plus de temps assis) : la dépense spontanée peut représenter beaucoup d’énergie.", "evidence": ["neat"] },
-      { "text": "Dors 8 heures : le manque de sommeil freine la récupération et l’appétit.", "evidence": [] },
-      { "text": "Pèse-toi chaque semaine : si ton poids n’augmente pas après 2 semaines, l’appli ajoute 200 kcal par jour.", "evidence": [] },
-      { "text": "Si tu as perdu du poids sans le vouloir ou si tu manges beaucoup sans rien changer, parle-en à ton médecin pour écarter une cause médicale.", "evidence": [] }
+      {
+        "text": "Un surplus plus grand que d’habitude (+400 à +600 kcal par jour) et 5 repas par jour au lieu de 4.",
+        "evidence": [
+          "underreporting"
+        ]
+      },
+      {
+        "text": "Note tout ce que tu manges pendant 2 semaines : on sous-estime souvent ce qu’on avale vraiment.",
+        "evidence": [
+          "underreporting"
+        ]
+      },
+      {
+        "text": "Ajoute des calories sans volume : une cuillère d’huile d’olive, du beurre de cacahuète, du lait entier, des flocons d’avoine, du fromage.",
+        "evidence": [
+          "liquid"
+        ]
+      },
+      {
+        "text": "Bois des calories : un shake de 800 kcal passe plus facilement qu’un repas quand l’appétit manque.",
+        "evidence": [
+          "liquid"
+        ]
+      },
+      {
+        "text": "Ne bois pas un grand verre d’eau juste avant de manger : il coupe l’appétit.",
+        "evidence": []
+      },
+      {
+        "text": "Bouge un peu moins à côté des séances (moins de marche inutile, plus de temps assis) : la dépense spontanée peut représenter beaucoup d’énergie.",
+        "evidence": [
+          "neat"
+        ]
+      },
+      {
+        "text": "Dors 8 heures : le manque de sommeil freine la récupération et l’appétit.",
+        "evidence": []
+      },
+      {
+        "text": "Pèse-toi chaque semaine : si ton poids n’augmente pas après 2 semaines, l’appli ajoute 200 kcal par jour.",
+        "evidence": []
+      },
+      {
+        "text": "Si tu as perdu du poids sans le vouloir ou si tu manges beaucoup sans rien changer, parle-en à ton médecin pour écarter une cause médicale.",
+        "evidence": []
+      }
     ],
     "boosters": [
-      { "ingredient": "olive-oil", "qty": 10, "unit": "g", "label": "1 cuillère à soupe d’huile d’olive" },
-      { "ingredient": "peanut-butter", "qty": 20, "unit": "g", "label": "1 cuillère à soupe de beurre de cacahuète" },
-      { "ingredient": "whole-milk", "qty": 250, "unit": "ml", "label": "1 verre de lait entier" },
-      { "ingredient": "oats", "qty": 40, "unit": "g", "label": "4 cuillères à soupe de flocons d’avoine" },
-      { "ingredient": "grated-cheese", "qty": 25, "unit": "g", "label": "une poignée de fromage râpé" },
-      { "ingredient": "banana", "qty": 1, "unit": "piece", "label": "une banane" },
-      { "ingredient": "honey", "qty": 20, "unit": "g", "label": "1 cuillère à soupe de miel" }
+      {
+        "ingredient": "olive-oil",
+        "qty": 10,
+        "unit": "g",
+        "label": "1 cuillère à soupe d’huile d’olive"
+      },
+      {
+        "ingredient": "peanut-butter",
+        "qty": 20,
+        "unit": "g",
+        "label": "1 cuillère à soupe de beurre de cacahuète"
+      },
+      {
+        "ingredient": "whole-milk",
+        "qty": 250,
+        "unit": "ml",
+        "label": "1 verre de lait entier"
+      },
+      {
+        "ingredient": "oats",
+        "qty": 40,
+        "unit": "g",
+        "label": "4 cuillères à soupe de flocons d’avoine"
+      },
+      {
+        "ingredient": "grated-cheese",
+        "qty": 25,
+        "unit": "g",
+        "label": "une poignée de fromage râpé"
+      },
+      {
+        "ingredient": "banana",
+        "qty": 1,
+        "unit": "piece",
+        "label": "une banane"
+      },
+      {
+        "ingredient": "honey",
+        "qty": 20,
+        "unit": "g",
+        "label": "1 cuillère à soupe de miel"
+      }
     ]
   },
   "fatLoss": {
@@ -89,5 +235,23 @@
       "Remplis ton assiette de légumes et de féculents peu transformés : beaucoup de volume pour peu de calories.",
       "Marche chaque jour : c’est la façon la plus simple d’augmenter ta dépense sans te fatiguer."
     ]
+  },
+  "progression": {
+    "title": "Comment les charges montent",
+    "text": "Élan applique la double progression : tant que tu n’as pas atteint le haut de la fourchette de répétitions, tu gardes la même charge et tu ajoutes une répétition. Quand tu l’atteins (ou que toutes les séries sont faciles), la charge monte d’un petit pas (1,25 kg sous 20 kg, sinon 2,5 kg) et tu repars du bas de la fourchette. Avec des haltères limités, on ajoute des répétitions plutôt que de la charge."
+  },
+  "deload": {
+    "title": "Semaine allégée",
+    "text": "Une semaine allégée enlève une série par exercice pour récupérer. Élan la décide d’après ta fatigue réelle plutôt que seulement le calendrier.",
+    "reasons": {
+      "lowEnergy": "ton énergie déclarée est basse ces derniers jours",
+      "hardSets": "plus de la moitié de tes séries sont jugées « dures »",
+      "plateaus": "plusieurs exercices de base n’ont pas progressé depuis 3 séances",
+      "longWithout": "cela fait longtemps que tu n’as pas allégé",
+      "fresh": "tu es en forme : tu peux sauter l’allègement prévu"
+    },
+    "now": "Alléger cette semaine",
+    "skip": "Sauter l’allègement prévu",
+    "undo": "Revenir au calendrier"
   }
 }

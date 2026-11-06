@@ -46,6 +46,8 @@ export default function ProfileTab() {
       <Button label="Modifier mon profil" variant="secondary" onPress={() => router.push('/onboarding?edit=1')} />
       <Card style={{ gap: 0, paddingVertical: space.xs }}>
         {([
+          ['Mon coaching', 'Calories, volume, progression, pourquoi', '/coaching'],
+          ['Preuves', 'Sources et niveau de confiance', '/preuves'],
           ['Profils', 'Changer de profil ou en ajouter un', '/profils'],
           ['Rappels', 'Séances, compléments, pesée, repas', '/rappels'],
           ['Compléments', 'Routine, dosages et où les trouver', '/complements'],
