@@ -7,3 +7,9 @@ coverage/
 .env.*
 !.env.example
 .DS_Store
+
+# Expo
+apps/mobile/ios/
+apps/mobile/android/
+apps/mobile/dist/
+apps/mobile/web-build/

@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "Élan",
+    "slug": "elan",
+    "scheme": "elan",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0E1220",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "app.elan.training"
+    },
+    "android": {
+      "package": "app.elan.training",
+      "adaptiveIcon": {
+        "backgroundColor": "#0E1220",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      "expo-sqlite",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        { "backgroundColor": "#0E1220", "image": "./assets/splash-icon.png", "imageWidth": 120 }
+      ]
+    ],
+    "experiments": { "typedRoutes": false }
+  }
+}
