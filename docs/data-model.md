@@ -22,7 +22,7 @@ Les kcal, protéines, glucides et lipides d'une recette sont **calculés** à pa
 
 ## Tables SQLite
 
-M1 crée `profile` (profil complet en JSON dans `data`), `session_log` et `settings`. M2 ajoute `exercise_log`, `check_in`, `body_weight` et `measurements` (migration 2). La séance guidée en cours est gardée dans `settings` (clé `activeSession`). M3 ajoute `food_entry`, `water_log`, `menu_override`, `pantry_item`, `recipe_pref` et `price_override` (migration 3). Les autres tables arrivent avec leurs jalons, chacune par une migration numérotée (`apps/mobile/src/store/migrations.ts`).
+M1 crée `profile` (profil complet en JSON dans `data`), `session_log` et `settings`. M2 ajoute `exercise_log`, `check_in`, `body_weight` et `measurements` (migration 2). La séance guidée en cours est gardée dans `settings` (clé `activeSession`). M3 ajoute `food_entry`, `water_log`, `menu_override`, `pantry_item`, `recipe_pref` et `price_override` (migration 3). M4 ajoute `supplement_log` et `life_log` (migration 4). Les réglages des rappels, le consentement à la synchronisation et la session de connexion sont dans `settings`. Côté serveur (facultatif) : voir `docs/supabase/`. Les autres tables arrivent avec leurs jalons, chacune par une migration numérotée (`apps/mobile/src/store/migrations.ts`).
 
 Toutes les tables personnelles portent `profile_id` ; les dates sont des chaînes `AAAA-MM-JJ`.
 

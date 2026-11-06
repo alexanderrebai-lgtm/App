@@ -9,7 +9,7 @@ packages/content   Contenus en JSON validés par Zod (exercices, programmes, rec
 packages/engine    Moteur métier en TypeScript pur, sans dépendance à l'interface
 packages/motion    Poses du mannequin 3D (squelette, gestes, tempo), TypeScript pur
 apps/mobile        Application Expo « Élan » (voir apps/mobile/README.md pour la lancer sur iPhone)
-docs/              Prototype de référence, modèle de données, décisions
+docs/              Prototype de référence, modèle de données, décisions, schéma Supabase
 tools/             Script de migration ponctuel du prototype
 ```
 
@@ -26,8 +26,8 @@ pnpm typecheck   # vérification des types
 - [x] **M0** : moteur de calcul, modèle de données, migration des contenus du prototype
 - [x] M1 : onboarding, génération du programme, calendrier
 - [x] M2 : séance guidée avec mannequin 3D, check-in, suivi des performances
-- [x] M3 : nutrition (cibles, menus, 64 recettes, courses, budget, calories) (en attente de validation)
-- [ ] M4 : compléments, hygiène de vie, bilan, rappels, profils multiples, partage
+- [x] M3 : nutrition (cibles, menus, 64 recettes, courses, budget, calories)
+- [x] M4 : compléments, hygiène de vie, bilan, rappels, profils multiples, sauvegarde, synchronisation et partage (en attente de validation)
 - [ ] M5 : finitions, accessibilité, performances, builds de test
 
 Voir `docs/decisions.md` pour les écarts avec le prototype et `docs/data-model.md` pour le modèle de données.

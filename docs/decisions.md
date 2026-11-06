@@ -51,6 +51,20 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 | Open Food Facts, scan de code-barres | Reportés | Envoient une requête à un service tiers : à faire avec votre accord explicite et une dépendance de scan à valider. |
 | Migration du prototype | Script figé (`--force` obligatoire) | Les JSON contiennent désormais des ajouts faits à la main. |
 
+## Choix de M4
+
+| Sujet | Retenu | Raison |
+|---|---|---|
+| Rappels | `expo-notifications`, notifications locales hebdomadaires (jour + heure), calculées par le moteur (`reminderPlan`) | Fonctionne dans Expo Go sans serveur ; au plus 40 rappels, sous la limite iOS de 64. |
+| Synchronisation et partage | `@supabase/supabase-js`, projet UE, une ligne par profil, règles RLS, invitations par code | Choix validé au cadrage. Activée seulement si un projet est configuré (`.env`, non versionné) ; aucune clé dans le dépôt. |
+| Consentement | Écran explicite listant les données de santé envoyées, avant toute connexion ; suppression des données en ligne en un bouton | Règle du cahier des charges : aucune donnée de santé envoyée sans accord explicite. |
+| Partage en lecture seule | Écran de consultation dédié (assiduité, records, poids) avec défi amical sur 4 semaines | Plus simple et plus sûr que d'ouvrir toute l'appli en mode bloqué. La co-édition, elle, importe le profil comme un profil normal. |
+| Fusion des données | Par entrée (même profil et même jour) : la plus récente l'emporte | Une suppression peut réapparaître ; limite notée, à améliorer avec des dates de modification par entrée. |
+| Sauvegarde | Format v2 (eau, changements de plats, favoris, prix ajoutés) ; v1 et exports du prototype toujours lisibles | Export par la feuille de partage d'iOS, import par copier-coller : aucune dépendance. |
+| Profils multiples | Sur le même téléphone, chacun son programme, sa nutrition et son suivi | Cahier des charges. |
+| Hygiène de vie | Compteurs quotidiens, tendance sur 7 jours, Tabac Info Service (39 89) et Alcool Info Service (0 980 980 930) | Messages bienveillants, jamais culpabilisants. |
+| Liens d'achat des compléments | Dans `supplements.json`, avec la mention des commissions éventuelles | Modifiables sans toucher au code. Élan ne touche aucune commission aujourd'hui. |
+
 ## Règles harmonisées (incohérences du prototype)
 
 | Sujet | Prototype | Retenu | Raison |
