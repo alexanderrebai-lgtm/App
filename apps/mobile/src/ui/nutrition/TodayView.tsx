@@ -81,7 +81,7 @@ export function TodayView() {
             const eaten = todays.find((f) => f.menuSlot === m.slot);
             return (
               <View key={m.slot} style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.m, borderTopWidth: i ? 1 : 0, borderTopColor: colors.line }}>
-                <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: !!eaten }} accessibilityLabel={`${fr.mealSlots[m.slot]} mangé`}
+                <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: !!eaten }} aria-checked={!!eaten} accessibilityLabel={`${fr.mealSlots[m.slot]} mangé`}
                   onPress={() => (eaten?.id ? deleteFood(eaten.id) : addFood(menuEntry(m, today, p.id)))}
                   style={{ width: 32, height: 32, borderRadius: 8, borderWidth: eaten ? 0 : 2, borderColor: colors.line, backgroundColor: eaten ? colors.neon : 'transparent', alignItems: 'center', justifyContent: 'center' }}>
                   {eaten ? <Icon name="check" size={18} color={colors.night} strokeWidth={3} /> : null}

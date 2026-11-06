@@ -70,8 +70,8 @@ export function ShoppingView() {
                 <T v="detail">{l.ingredient.name}</T>
                 <T v="caption" color={colors.mute}>{l.packLabel} · {euros(l.packPrice)} · dure ≈ {l.lastsWeeks ? `${l.lastsWeeks} sem.` : '6 mois et +'}</T>
               </View>
-              <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: l.owned }} onPress={() => togglePantry(l.ingredient.id)}
-                style={{ minHeight: 36, paddingHorizontal: 10, borderRadius: 10, justifyContent: 'center', borderWidth: 1, borderColor: l.owned ? colors.neon : colors.line, backgroundColor: l.owned ? colors.neon : 'transparent' }}>
+              <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: l.owned }} aria-checked={l.owned} onPress={() => togglePantry(l.ingredient.id)}
+                style={{ minHeight: 44, paddingHorizontal: 10, borderRadius: 10, justifyContent: 'center', borderWidth: 1, borderColor: l.owned ? colors.neon : colors.line, backgroundColor: l.owned ? colors.neon : 'transparent' }}>
                 <T v="caption" color={l.owned ? colors.night : colors.chalk} style={{ fontFamily: fonts.semibold }}>{l.owned ? 'J’en ai' : 'À acheter'}</T>
               </Pressable>
               <T v="detail" color={colors.mute} style={{ minWidth: 56, textAlign: 'right' }}>{l.owned ? '—' : euros(l.toPay)}</T>

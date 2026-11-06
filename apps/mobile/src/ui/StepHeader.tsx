@@ -16,7 +16,8 @@ export function StepHeader({ step, title, subtitle, canBack = true }: { step: St
             <Icon name="chevronLeft" color={colors.chalk} />
           </Pressable>
         ) : <View style={{ width: 44, height: 44 }} />}
-        <View accessibilityLabel={`Étape ${i + 1} sur ${STEPS.length}`} style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
+        <View accessibilityRole="progressbar" accessibilityLabel={`Étape ${i + 1} sur ${STEPS.length}`}
+          accessibilityValue={{ min: 1, max: STEPS.length, now: i + 1 }} style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
           {STEPS.map((s, k) => (
             <View key={s} style={{ flex: 1, height: 6, borderRadius: 3, backgroundColor: k <= i ? colors.neon : colors.line }} />
           ))}

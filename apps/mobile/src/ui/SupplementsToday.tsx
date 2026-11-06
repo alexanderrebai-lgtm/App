@@ -21,7 +21,7 @@ export function SupplementsToday() {
         const s = content.supplements.supplements.find((x) => x.id === id)!;
         const on = taken(id);
         return (
-          <Pressable key={id} accessibilityRole="checkbox" accessibilityState={{ checked: on }} accessibilityLabel={`${s.name} pris`}
+          <Pressable key={id} accessibilityRole="checkbox" accessibilityState={{ checked: on }} aria-checked={on} accessibilityLabel={`${s.name} pris`}
             onPress={() => setSupplement(today, id, !on)}
             style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.m, borderTopWidth: i ? 1 : 0, borderTopColor: colors.line }}>
             <View style={{ width: 32, height: 32, borderRadius: 8, borderWidth: on ? 0 : 2, borderColor: colors.line, backgroundColor: on ? colors.neon : 'transparent', alignItems: 'center', justifyContent: 'center' }}>

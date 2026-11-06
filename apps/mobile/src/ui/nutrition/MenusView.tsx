@@ -62,7 +62,7 @@ export function MenusView() {
                   </Pressable>
                   <Pressable accessibilityRole="button" accessibilityLabel={`Changer le plat : ${fr.mealSlots[m.slot]} du ${longDate(date)}`} hitSlop={6}
                     onPress={() => setMenuOverride(date, m.slot, nextRecipe(m.recipe.id, m.slot as Slot, prefs, day))}
-                    style={{ minHeight: 36, paddingHorizontal: 10, borderRadius: 10, borderWidth: 1, borderColor: colors.line, justifyContent: 'center' }}>
+                    style={{ minHeight: 44, paddingHorizontal: 10, borderRadius: 10, borderWidth: 1, borderColor: colors.line, justifyContent: 'center' }}>
                     <T v="caption" style={{ fontFamily: fonts.semibold }}>Changer</T>
                   </Pressable>
                 </View>

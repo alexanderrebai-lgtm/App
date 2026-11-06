@@ -10,7 +10,7 @@ const SORENESS: [Soreness, string][] = [['none', 'Aucune'], ['light', 'Légères
 
 function Choice({ label, on, onPress, a11y }: { label: string; on: boolean; onPress(): void; a11y?: string }) {
   return (
-    <Pressable accessibilityRole="radio" accessibilityState={{ selected: on }} accessibilityLabel={a11y ?? label} onPress={onPress}
+    <Pressable accessibilityRole="radio" accessibilityState={{ checked: on }} aria-checked={on} accessibilityLabel={a11y ?? label} onPress={onPress}
       style={{ flex: 1, minHeight: 48, borderRadius: radius.button, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: on ? colors.neon : colors.line, backgroundColor: on ? colors.neon : 'transparent' }}>
       <T v="detail" color={on ? colors.night : colors.chalk} style={{ fontFamily: fonts.semibold }}>{label}</T>
     </Pressable>

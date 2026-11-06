@@ -15,7 +15,8 @@ export function OptionCard({ title, description, badge, selected, onPress }: Pro
   return (
     <Pressable
       accessibilityRole="radio"
-      accessibilityState={{ selected }}
+      accessibilityState={{ checked: selected }}
+      aria-checked={selected}
       onPress={onPress}
       style={({ pressed }) => ({
         backgroundColor: colors.slate,

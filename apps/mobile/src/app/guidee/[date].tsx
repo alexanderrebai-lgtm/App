@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Platform, Pressable, ScrollView, useWindowDimensions, Vibration, View } from 'react-native';
+import { AccessibilityInfo, Platform, Pressable, ScrollView, useWindowDimensions, Vibration, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import * as Haptics from 'expo-haptics';
@@ -170,7 +170,7 @@ function RoundButton({ icon, label, onPress }: { icon: 'close' | 'chevronLeft'; 
 
 function Pill({ label, on, onPress }: { label: string; on: boolean; onPress(): void }) {
   return (
-    <Pressable accessibilityRole="button" accessibilityState={{ selected: on }} onPress={onPress}
+    <Pressable accessibilityRole="button" accessibilityState={{ selected: on }} onPress={onPress} hitSlop={6}
       style={{ height: 36, paddingHorizontal: 12, borderRadius: 10, justifyContent: 'center', backgroundColor: on ? colors.chalk : 'rgba(14,18,32,0.72)' }}>
       <T v="caption" color={on ? colors.night : colors.chalk} style={{ fontFamily: fonts.semibold }}>{label}</T>
     </Pressable>
@@ -188,7 +188,9 @@ function Intro({ s, dispatch, header }: { s: SessionState; dispatch(a: SessionAc
   const muscles = ex?.muscles ?? [];
   const [view, setView] = useState<ViewName>('three');
   const [slow, setSlow] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [phase, setPhase] = useState('');
+  useEffect(() => { AccessibilityInfo.isReduceMotionEnabled().then((r) => { if (r) setPlaying(false); }).catch(() => {}); }, []);
   const [orm, setOrm] = useState<number | null>(null);
   const cues = useMemo(() => {
     const t = techniqueText(e.exercise);
@@ -202,7 +204,7 @@ function Intro({ s, dispatch, header }: { s: SessionState; dispatch(a: SessionAc
   return (
     <SafeAreaView edges={['bottom']} style={{ flex: 1, backgroundColor: colors.night }}>
       <View style={{ height: Math.round(height * 0.45) }}>
-        <Mannequin3D exerciseId={e.exercise} muscles={muscles} slow={slow ? 0.5 : 1} view={view} style={{ flex: 1 }}
+        <Mannequin3D exerciseId={e.exercise} muscles={muscles} slow={slow ? 0.5 : 1} view={view} playing={playing} style={{ flex: 1 }}
           onPhase={(label) => setPhase(label)} />
         <SafeAreaView edges={['top']} style={{ position: 'absolute', left: gutter, right: gutter, top: 0 }} pointerEvents="box-none">
           <View style={{ paddingTop: space.s }}>{header}</View>
@@ -210,9 +212,14 @@ function Intro({ s, dispatch, header }: { s: SessionState; dispatch(a: SessionAc
         <View pointerEvents="box-none" style={{ position: 'absolute', left: space.l, right: space.l, bottom: space.l, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <View accessibilityLiveRegion="polite">
             <T v="heading" color={colors.neon} style={{ fontFamily: fonts.displayBold }}>{phase}</T>
-            <Pressable accessibilityRole="button" accessibilityState={{ selected: slow }} onPress={() => setSlow(!slow)} hitSlop={8}>
-              <T v="caption" color={colors.soft}>{slow ? 'Ralenti · vitesse normale' : 'Passer au ralenti'}</T>
-            </Pressable>
+            <View style={{ flexDirection: 'row', gap: space.m }}>
+              <Pressable accessibilityRole="button" accessibilityLabel={playing ? 'Mettre le mouvement en pause' : 'Lancer le mouvement'} onPress={() => setPlaying(!playing)} hitSlop={10}>
+                <T v="caption" color={colors.soft} style={{ fontFamily: fonts.semibold }}>{playing ? 'Pause' : 'Lecture'}</T>
+              </Pressable>
+              <Pressable accessibilityRole="button" accessibilityState={{ selected: slow }} onPress={() => setSlow(!slow)} hitSlop={10}>
+                <T v="caption" color={colors.soft}>{slow ? 'Vitesse normale' : 'Ralenti'}</T>
+              </Pressable>
+            </View>
           </View>
           <View style={{ flexDirection: 'row', gap: 6 }}>
             {(['face', 'three', 'side'] as const).map((v) => (
@@ -342,7 +349,7 @@ function SetScreen({ s, dispatch, header }: { s: SessionState; dispatch(a: Sessi
         <T v="label" color={colors.mute}>Comment c’était ?</T>
         <View style={{ flexDirection: 'row', gap: space.s }}>
           {([['easy', 'Facile'], ['good', 'Bien'], ['hard', 'Dur']] as const).map(([k, l]) => (
-            <Pressable key={k} accessibilityRole="radio" accessibilityState={{ selected: s.feedback === k }} onPress={() => dispatch({ type: 'feedback', value: k })}
+            <Pressable key={k} accessibilityRole="radio" accessibilityState={{ checked: s.feedback === k }} aria-checked={s.feedback === k} onPress={() => dispatch({ type: 'feedback', value: k })}
               style={{ flex: 1, minHeight: 52, borderRadius: radius.button, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: s.feedback === k ? colors.chalk : colors.line, backgroundColor: s.feedback === k ? colors.chalk : 'transparent' }}>
               <T v="detail" color={s.feedback === k ? colors.night : colors.chalk} style={{ fontFamily: fonts.semibold }}>{l}</T>
             </Pressable>
@@ -355,7 +362,7 @@ function SetScreen({ s, dispatch, header }: { s: SessionState; dispatch(a: Sessi
           <T v="label" color={colors.mute}>Répétitions en réserve (facultatif)</T>
           <View style={{ flexDirection: 'row', gap: space.s }}>
             {[0, 1, 2, 3, 4].map((n) => (
-              <Pressable key={n} accessibilityRole="radio" accessibilityState={{ selected: s.rir === n }} accessibilityLabel={`${n} en réserve, RPE ${10 - n}`}
+              <Pressable key={n} accessibilityRole="radio" accessibilityState={{ checked: s.rir === n }} aria-checked={s.rir === n} accessibilityLabel={`${n} en réserve, RPE ${10 - n}`}
                 onPress={() => dispatch({ type: 'rir', value: s.rir === n ? null : n })}
                 style={{ flex: 1, minHeight: 44, borderRadius: radius.button, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: s.rir === n ? colors.azure : colors.line, backgroundColor: s.rir === n ? colors.azure : 'transparent' }}>
                 <T v="detail" color={s.rir === n ? colors.night : colors.chalk} style={{ fontFamily: fonts.semibold }}>{n === 4 ? '4+' : n}</T>
@@ -403,7 +410,7 @@ function Done({ s, header }: { s: SessionState; header: React.ReactNode }) {
         <T v="heading">Comment te sens-tu ?</T>
         <View style={{ flexDirection: 'row', gap: space.s }}>
           {([1, 2, 3, 4, 5] as const).map((n) => (
-            <Pressable key={n} accessibilityRole="radio" accessibilityState={{ selected: feeling === n }} accessibilityLabel={`Ressenti ${n} sur 5`} onPress={() => setFeeling(n)}
+            <Pressable key={n} accessibilityRole="radio" accessibilityState={{ checked: feeling === n }} aria-checked={feeling === n} accessibilityLabel={`Ressenti ${n} sur 5`} onPress={() => setFeeling(n)}
               style={{ flex: 1, minHeight: 52, borderRadius: radius.button, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: feeling === n ? colors.neon : colors.line, backgroundColor: feeling === n ? colors.neon : 'transparent' }}>
               <T v="heading" color={feeling === n ? colors.night : colors.chalk}>{n}</T>
             </Pressable>
