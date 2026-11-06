@@ -1,4 +1,11 @@
-# Appli muscu, cardio et nutrition
+# Applis
+
+Ce dépôt contient deux applications :
+
+- **Élan** (`apps/mobile`) : appli muscu, cardio et nutrition (Expo, iOS). Détails ci-dessous.
+- **Aimanté** (`apps/aimante`) : organisation du quotidien (PWA React). Voir [`apps/aimante/README.md`](apps/aimante/README.md).
+
+## Élan : muscu, cardio et nutrition
 
 Application mobile (iOS d'abord, Expo et React Native) qui construit un programme de 26 semaines, guide chaque séance, adapte charges et calories, propose menus, recettes et courses à petit budget, et suit la progression.
 
@@ -9,6 +16,7 @@ packages/content   Contenus en JSON validés par Zod (exercices, programmes, rec
 packages/engine    Moteur métier en TypeScript pur, sans dépendance à l'interface
 packages/motion    Poses du mannequin 3D (squelette, gestes, tempo), TypeScript pur
 apps/mobile        Application Expo « Élan » (voir apps/mobile/README.md pour la lancer sur iPhone)
+apps/aimante       Application PWA « Aimanté » (organisation du quotidien)
 docs/              Prototype de référence, modèle de données, décisions, schéma Supabase
 tools/             Script de migration ponctuel du prototype
 ```

@@ -1,0 +1,13 @@
+# Netlify : choisir « apps/aimante » comme dossier de base (Base directory).
+[build]
+  command = "pnpm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Le service worker doit toujours être relu pour que les mises à jour arrivent.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
