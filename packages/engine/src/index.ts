@@ -9,4 +9,5 @@ export * from './progress';
 export * from './supplements';
 export * from './review';
 export * from './backup';
+export * from './session';
 export * as fr from './i18n/fr';
