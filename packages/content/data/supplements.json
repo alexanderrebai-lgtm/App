@@ -157,5 +157,148 @@
         "cardio": "useless"
       }
     }
-  ]
+  ],
+  "guide": {
+    "intro": "La nourriture, le sommeil et l’entraînement font 95 % des résultats, surtout quand on repart de zéro. Les compléments servent à combler un manque ou à gagner un petit plus.",
+    "buyOrder": "Ordre d’achat : 1. nourriture · 2. créatine · 3. whey si besoin · 4. oméga-3 et vitamine D.",
+    "stacks": {
+      "mass": [
+        "Créatine : 3 à 5 g par jour, tous les jours",
+        "Whey : 1 dosette (25–30 g) quand tu n’atteins pas tes {protein} g de protéines",
+        "Oméga-3 : 500 mg à 1 g d’EPA + DHA par jour si tu manges peu de poisson gras",
+        "Café avant la séance si tu veux (optionnel)"
+      ],
+      "strength": [
+        "Créatine : 3 à 5 g par jour, tous les jours",
+        "Caféine : {c0} à {c1} mg, 45 à 60 min avant les grosses séances",
+        "Whey si tu n’atteins pas tes {protein} g de protéines",
+        "Oméga-3 : 500 mg à 1 g d’EPA + DHA par jour"
+      ],
+      "power": [
+        "Créatine : 3 à 5 g par jour, tous les jours",
+        "Caféine : {c0} à {c1} mg, 45 à 60 min avant les séances de sauts",
+        "Whey si tu n’atteins pas tes {protein} g de protéines",
+        "Oméga-3 : 500 mg à 1 g d’EPA + DHA par jour"
+      ],
+      "cardio": [
+        "Caféine : {c0} mg (environ {cups} café) 45 à 60 min avant les sorties",
+        "Oméga-3 : 500 mg à 1 g d’EPA + DHA par jour",
+        "Efforts de plus de 60 min : eau + 30 à 60 g de glucides par heure",
+        "Créatine et whey : facultatives pour ce programme"
+      ]
+    },
+    "doses": [
+      {
+        "name": "Créatine monohydrate",
+        "dose": "3 à 5 g par jour, sans phase de charge"
+      },
+      {
+        "name": "Whey",
+        "dose": "20 à 40 g par prise (environ 25 g)"
+      },
+      {
+        "name": "Oméga-3",
+        "dose": "500 mg à 1 g d’EPA + DHA par jour, au repas"
+      },
+      {
+        "name": "Caféine",
+        "dose": "Départ {c0} mg, jusqu’à {c1} mg (limite étudiée : {c2} mg, jamais plus de 400 mg par jour)"
+      },
+      {
+        "name": "Citrulline (optionnel)",
+        "dose": "6 à 8 g avant la séance"
+      },
+      {
+        "name": "Magnésium (optionnel)",
+        "dose": "200 à 250 mg le soir"
+      },
+      {
+        "name": "Vitamine D",
+        "dose": "Dose à valider avec ton médecin"
+      }
+    ],
+    "cupNote": "Un café contient environ 80 à 100 mg de caféine.",
+    "timing": [
+      {
+        "when": "Petit-déjeuner",
+        "what": "Oméga-3 et vitamine D avec le repas."
+      },
+      {
+        "when": "45 à 60 min avant",
+        "what": "Café ou caféine, une banane."
+      },
+      {
+        "when": "Après la séance",
+        "what": "Whey (25 g) avec un fruit ou un smoothie."
+      },
+      {
+        "when": "N’importe quand",
+        "what": "Créatine (3 à 5 g dans de l’eau), même les jours de repos."
+      },
+      {
+        "when": "Le soir",
+        "what": "Magnésium si tu en prends. Pas de caféine après 15 h."
+      }
+    ],
+    "preworkout": "Les pré-workouts du commerce sont surtout de la caféine avec de la citrulline et de la bêta-alanine. Tu peux faire le tien : un café + une banane. Si tu en achètes, vise 200 mg de caféine maximum par dose, une étiquette qui détaille chaque dose (pas de « mélange propriétaire ») et un label de contrôle indépendant (Informed Sport, Banned Substance Control).",
+    "warnings": [
+      "Créatine : 1 à 2 kg de prise de poids dans les premières semaines, c’est de l’eau dans le muscle. Bois bien. Avis médical si tu as un problème de reins.",
+      "Les BCAA, brûleurs de graisse, boosters de testostérone et gainers ne sont pas utiles : un smoothie maison remplace le gainer pour moins cher.",
+      "Les sardines en boîte, 2 fois par semaine, couvrent à peu près ton besoin en oméga-3 pour pas cher.",
+      "Évite stéroïdes, SARMs et produits sans étiquette claire.",
+      "Prends un avis médical si tu suis un traitement ou si tu as une maladie."
+    ],
+    "smokerWarning": "Tu fumes : la caféine et le tabac accélèrent le cœur. Reste à la dose basse, évite les pré-workouts forts, et parle-en à ton médecin si tu as des palpitations.",
+    "disclosure": "Ces comparatifs sont gratuits, mais certains sites touchent une commission sur les ventes. Élan ne touche rien sur ces liens pour l’instant. Les prix changent : vérifie sur la boutique.",
+    "shops": [
+      {
+        "title": "Créatine monohydrate",
+        "text": "Choisis une créatine monohydrate avec le label Creapure®. Dans un comparatif de 18 marques (prix relevés en juillet 2026), AM Nutrition en 500 g (39,90 €, environ 0,08 € le gramme), Decathlon en 300 g (21,99 €, environ 0,07 € le gramme) et Protéalpes en 1 kg (environ 0,06 € le gramme) ressortent. À 3 g par jour, 300 g durent plus de 3 mois.",
+        "links": [
+          {
+            "label": "Comparatif Creapure",
+            "url": "https://www.darwin-nutrition.fr/comparatifs/meilleure-creatine-creapure/"
+          },
+          {
+            "label": "Decathlon",
+            "url": "https://www.decathlon.fr/vc/creatine-monohydrate"
+          },
+          {
+            "label": "Autre comparatif",
+            "url": "https://meilleurtest.fr/comparatif/complement-creatine/"
+          }
+        ]
+      },
+      {
+        "title": "Whey",
+        "text": "Les comparatifs mettent en tête Nutripure et Nutri&Co pour la qualité, et AM Nutrition pour le prix. Compte environ 50 à 60 € le kilo en isolate native, soit une quarantaine de doses de 25 g. Une whey classique (concentrée) coûte moins cher : l’isolate vaut le coup si tu digères mal le lactose.",
+        "links": [
+          {
+            "label": "Comparatif whey",
+            "url": "https://www.darwin-nutrition.fr/meilleure-proteine-whey/"
+          },
+          {
+            "label": "Rapport qualité-prix",
+            "url": "https://meilleurtest.fr/comparatif-proteines-whey-rapport-qualite-prix/"
+          }
+        ]
+      },
+      {
+        "title": "Oméga-3",
+        "text": "Regarde la quantité d’EPA + DHA par dose, pas le poids d’huile : une capsule de 1 000 mg d’huile peut n’apporter que 300 mg d’actifs. Un bon indice d’oxydation (TOTOX bas) compte aussi. Moins cher : des sardines en boîte 2 fois par semaine.",
+        "links": [
+          {
+            "label": "Comparatif oméga-3",
+            "url": "https://www.edp-nutrition.fr/comparatif/meilleur-omega3/"
+          }
+        ]
+      },
+      {
+        "title": "Caféine, vitamine D, magnésium",
+        "text": "La caféine se prend simplement en café. Pour la vitamine D, demande à ton médecin la dose adaptée. Pour le magnésium, vise une forme bien tolérée (bisglycinate).",
+        "links": []
+      }
+    ],
+    "labels": "Pour les compléments testés contre le dopage, cherche les labels Informed Sport ou Banned Substance Control sur l’étiquette."
+  }
 }

@@ -163,6 +163,20 @@ export const SupplementsFile = z.object({
     name: z.string(),
     byGoal: byGoal(z.enum(['recommended', 'useful', 'optional', 'useless'])),
   })),
+  guide: z.object({
+    intro: z.string(),
+    buyOrder: z.string(),
+    stacks: byGoal(z.array(z.string())),
+    doses: z.array(z.object({ name: z.string(), dose: z.string() })),
+    cupNote: z.string(),
+    timing: z.array(z.object({ when: z.string(), what: z.string() })),
+    preworkout: z.string(),
+    warnings: z.array(z.string()),
+    smokerWarning: z.string(),
+    disclosure: z.string(),
+    shops: z.array(z.object({ title: z.string(), text: z.string(), links: z.array(z.object({ label: z.string(), url: z.string().url() })) })),
+    labels: z.string(),
+  }),
 });
 export type SupplementsFile = z.infer<typeof SupplementsFile>;
 

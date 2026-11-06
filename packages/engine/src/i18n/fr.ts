@@ -55,7 +55,8 @@ export const lifestyle = {
 };
 
 /** Message bienveillant selon la tendance de la semaine. */
-export function lifeMessage(kind: 'cigarettes' | 'drinks', t: 'down' | 'up' | 'same' | 'none', current: number): string {
+export function lifeMessage(kind: 'cigarettes' | 'drinks', t: 'down' | 'up' | 'same' | 'none', current: number, previous = -1): string {
+  if (previous === 0 && current > 0) return 'Première semaine notée : continue chaque jour, tu verras ta tendance la semaine prochaine.';
   if (kind === 'cigarettes') {
     if (t === 'none') return 'Aucune cigarette notée ces deux dernières semaines.';
     if (t === 'down') return `${current} cette semaine, moins que la semaine d’avant : ton souffle te dira merci.`;
