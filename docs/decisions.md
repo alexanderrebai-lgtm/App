@@ -25,6 +25,19 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 | Matériel maison | Remplacements dans `content/data/equipment.json` | Chaque exercice de salle a un équivalent haltères ou poids du corps, sans doublon dans une séance. |
 | Textes du prototype | « +2 kg » → « +2,5 kg », « +200 kcal » → « +150 kcal », « ±1 kg » → « ±0,25 kg par semaine » | Alignés sur les règles ci-dessous. |
 
+## Choix de M2
+
+| Sujet | Retenu | Raison |
+|---|---|---|
+| Mannequin 3D | Paquet `@muscu/motion` (TypeScript pur, sans dépendance) : squelette, cinématique inverse, 61 gestes de base pour les 90 exercices | Hors ligne, léger, aucune vidéo à télécharger ; les gestes sont testés (longueurs des membres, cibles atteintes, rien sous le sol). |
+| Rendu 3D | `three` 0.185 dans `expo-gl` (inclus dans Expo Go) | Pas de `@react-three/fiber` ni d'`expo-three` : deux dépendances de moins, la scène est un module three.js autonome (`apps/mobile/src/three/scene.ts`). Si la 3D est refusée par l'appareil, l'écran affiche les points clés seuls. |
+| Écran allumé, vibration | `expo-keep-awake`, `expo-haptics` | Modules Expo officiels, inclus dans Expo Go. |
+| Séance guidée | Machine à états pure dans le moteur (`sessionReducer`) | Toute la logique (séries, charges, repos, remplacements) est testée sans interface ; l'écran ne fait qu'afficher et envoyer des actions. |
+| Reprise après interruption | État de la séance gardé à chaque action (table `settings`) | Fermer l'appli ou recevoir un appel ne fait rien perdre. |
+| Niveau confirmé | Saisie d'un 1RM par exercice (charge de travail : 2 répétitions en réserve) et répétitions en réserve facultatives, enregistrées en RPE | Extensions du cahier des charges, sans alourdir l'écran des débutants. |
+| Presse à cuisses | Montrée avec le geste du squat | Même mouvement des hanches et des genoux ; une machine en 3D n'apporte rien à la compréhension. |
+| Photos de progression | Reportées | Nécessitent un stockage chiffré ; prévues avec le partage (M4). |
+
 ## Règles harmonisées (incohérences du prototype)
 
 | Sujet | Prototype | Retenu | Raison |

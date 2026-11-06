@@ -22,7 +22,7 @@ Les kcal, protéines, glucides et lipides d'une recette sont **calculés** à pa
 
 ## Tables SQLite
 
-M1 crée `profile` (profil complet en JSON dans `data`), `session_log` et `settings`. Les autres tables arrivent avec leurs jalons, chacune par une migration numérotée (`apps/mobile/src/store/migrations.ts`).
+M1 crée `profile` (profil complet en JSON dans `data`), `session_log` et `settings`. M2 ajoute `exercise_log`, `check_in`, `body_weight` et `measurements` (migration 2). La séance guidée en cours est gardée dans `settings` (clé `activeSession`). Les autres tables arrivent avec leurs jalons, chacune par une migration numérotée (`apps/mobile/src/store/migrations.ts`).
 
 Toutes les tables personnelles portent `profile_id` ; les dates sont des chaînes `AAAA-MM-JJ`.
 
