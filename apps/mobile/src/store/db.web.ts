@@ -17,12 +17,14 @@ interface Data {
   pantry: Keyed<{ ingredient: string }>[];
   prefs: Keyed<{ recipe: string; pref: RecipePref }>[];
   prices: PriceOverrides;
+  supplements: ProfileData['supplements'];
+  life: ProfileData['life'];
   nextId: number;
 }
 const KEY = 'elan-web-preview';
 const empty = (): Data => ({
   profiles: [], settings: {}, sessions: [], exerciseLogs: [], checkIns: [], weights: [], measurements: [],
-  food: [], water: [], overrides: [], pantry: [], prefs: [], prices: {}, nextId: 1,
+  food: [], water: [], overrides: [], pantry: [], prefs: [], prices: {}, supplements: [], life: [], nextId: 1,
 });
 
 export function createStore(): Store {
@@ -44,6 +46,7 @@ export function createStore(): Store {
         menuOverrides: Object.fromEntries(f(d.overrides).map((o) => [o.key, o.recipe])),
         pantry: f(d.pantry).map((x) => x.ingredient),
         recipePrefs: Object.fromEntries(f(d.prefs).map((x) => [x.recipe, x.pref])),
+        supplements: f(d.supplements), life: f(d.life),
       };
     },
     async saveSession(s) { d.sessions = upsert(d.sessions, s); save(); },
@@ -78,6 +81,20 @@ export function createStore(): Store {
       const p = { ...d.prices };
       if (price === null) delete p[ingredient]; else p[ingredient] = price;
       d.prices = p;
+      save();
+    },
+    async setSupplement(profileId, date, supplement, taken) {
+      d.supplements = [...d.supplements.filter((x) => !(x.profileId === profileId && x.date === date && x.supplement === supplement)), { profileId, date, supplement, taken }];
+      save();
+    },
+    async setLife(l) { d.life = upsert(d.life, l); save(); },
+    async deleteProfile(id) {
+      const keep = <T extends { profileId: string }>(l: T[]) => l.filter((x) => x.profileId !== id);
+      d = {
+        ...d, profiles: d.profiles.filter((p) => p.id !== id), sessions: keep(d.sessions), exerciseLogs: keep(d.exerciseLogs), checkIns: keep(d.checkIns),
+        weights: keep(d.weights), measurements: keep(d.measurements), food: keep(d.food), water: keep(d.water), overrides: keep(d.overrides),
+        pantry: keep(d.pantry), prefs: keep(d.prefs), supplements: keep(d.supplements), life: keep(d.life),
+      };
       save();
     },
     async getSetting(k) { return d.settings[k] ?? null; },

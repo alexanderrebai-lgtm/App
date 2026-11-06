@@ -1,5 +1,6 @@
 import * as SQLite from 'expo-sqlite';
 import type { CheckIn, ExerciseLog, FoodEntry, PriceOverrides, Profile, SessionLog } from '@muscu/engine';
+import type { SupplementId } from '@muscu/content';
 import { MIGRATIONS } from './migrations';
 import type { RecipePref, Store } from './types';
 
@@ -51,6 +52,8 @@ export function createStore(name = 'elan.db'): Store {
       const overrides = await d.getAllAsync<{ date: string; slot: number; recipe_id: string }>('SELECT date, slot, recipe_id FROM menu_override WHERE profile_id = ?', profileId);
       const pantry = await d.getAllAsync<{ ingredient: string }>('SELECT ingredient FROM pantry_item WHERE profile_id = ? AND owned = 1', profileId);
       const prefs = await d.getAllAsync<{ recipe_id: string; pref: RecipePref }>('SELECT recipe_id, pref FROM recipe_pref WHERE profile_id = ?', profileId);
+      const supps = await d.getAllAsync<{ date: string; supplement: string; taken: number }>('SELECT date, supplement, taken FROM supplement_log WHERE profile_id = ? ORDER BY date', profileId);
+      const life = await d.getAllAsync<{ date: string; cigarettes: number; drinks: number }>('SELECT date, cigarettes, drinks FROM life_log WHERE profile_id = ? ORDER BY date', profileId);
       return {
         sessions: sessions.map((r): SessionLog => ({
           profileId, date: r.date, done: !!r.done,
@@ -70,6 +73,8 @@ export function createStore(name = 'elan.db'): Store {
         menuOverrides: Object.fromEntries(overrides.map((o) => [`${o.date}|${o.slot}`, o.recipe_id])),
         pantry: pantry.map((x) => x.ingredient),
         recipePrefs: Object.fromEntries(prefs.map((x) => [x.recipe_id, x.pref])),
+        supplements: supps.map((x) => ({ profileId, date: x.date, supplement: x.supplement as SupplementId, taken: !!x.taken })),
+        life: life.map((x) => ({ profileId, date: x.date, cigarettes: x.cigarettes, drinks: x.drinks })),
       };
     },
     async saveSession(s) {
@@ -131,6 +136,23 @@ export function createStore(name = 'elan.db'): Store {
       if (price === null) await get().runAsync('DELETE FROM price_override WHERE ingredient = ?', ingredient);
       else await get().runAsync('INSERT INTO price_override (ingredient, price, updated_at) VALUES (?, ?, ?) ON CONFLICT(ingredient) DO UPDATE SET price = excluded.price, updated_at = excluded.updated_at', ingredient, JSON.stringify(price), now());
     },
+    async setSupplement(profileId, date, supplement, taken) {
+      await get().runAsync('INSERT INTO supplement_log (profile_id, date, supplement, taken) VALUES (?, ?, ?, ?) ON CONFLICT(profile_id, date, supplement) DO UPDATE SET taken = excluded.taken',
+        profileId, date, supplement, taken ? 1 : 0);
+    },
+    async setLife(l) {
+      await get().runAsync('INSERT INTO life_log (profile_id, date, cigarettes, drinks) VALUES (?, ?, ?, ?) ON CONFLICT(profile_id, date) DO UPDATE SET cigarettes = excluded.cigarettes, drinks = excluded.drinks',
+        l.profileId, l.date, l.cigarettes, l.drinks);
+    },
+    async deleteProfile(profileId) {
+      const d = get();
+      await d.withTransactionAsync(async () => {
+        for (const t of ['session_log', 'exercise_log', 'check_in', 'body_weight', 'measurements', 'food_entry', 'water_log', 'menu_override', 'pantry_item', 'recipe_pref', 'supplement_log', 'life_log']) {
+          await d.runAsync(`DELETE FROM ${t} WHERE profile_id = ?`, profileId);
+        }
+        await d.runAsync('DELETE FROM profile WHERE id = ?', profileId);
+      });
+    },
     async getSetting(key) {
       const r = await get().getFirstAsync<{ value: string }>('SELECT value FROM settings WHERE key = ?', key);
       return r?.value ?? null;
@@ -140,7 +162,7 @@ export function createStore(name = 'elan.db'): Store {
       else await get().runAsync('INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value', key, value);
     },
     async wipe() {
-      await get().execAsync('DELETE FROM session_log; DELETE FROM exercise_log; DELETE FROM check_in; DELETE FROM body_weight; DELETE FROM measurements; DELETE FROM food_entry; DELETE FROM water_log; DELETE FROM menu_override; DELETE FROM pantry_item; DELETE FROM recipe_pref; DELETE FROM price_override; DELETE FROM profile; DELETE FROM settings;');
+      await get().execAsync('DELETE FROM session_log; DELETE FROM exercise_log; DELETE FROM check_in; DELETE FROM body_weight; DELETE FROM measurements; DELETE FROM food_entry; DELETE FROM water_log; DELETE FROM menu_override; DELETE FROM pantry_item; DELETE FROM recipe_pref; DELETE FROM price_override; DELETE FROM supplement_log; DELETE FROM life_log; DELETE FROM profile; DELETE FROM settings;');
     },
   };
 }

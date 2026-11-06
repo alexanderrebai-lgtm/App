@@ -1,6 +1,8 @@
 import type {
-  BodyWeight, CheckIn, ExerciseLog, FoodEntry, IsoDate, Measurements, MenuOverrides, PriceOverrides, Profile, SessionLog,
+  BodyWeight, CheckIn, ExerciseLog, FoodEntry, IsoDate, LifeLog, Measurements, MenuOverrides, PriceOverrides,
+  Profile, SessionLog, SupplementLog,
 } from '@muscu/engine';
+import type { SupplementId } from '@muscu/content';
 
 export type RecipePref = 'favorite' | 'excluded';
 
@@ -16,6 +18,8 @@ export interface ProfileData {
   /** Produits de placard que la personne a déjà. */
   pantry: string[];
   recipePrefs: Record<string, RecipePref>;
+  supplements: SupplementLog[];
+  life: LifeLog[];
 }
 
 /** Accès aux données sur l'appareil. Rien n'est envoyé ailleurs. */
@@ -37,6 +41,9 @@ export interface Store {
   setRecipePref(profileId: string, recipeId: string, pref: RecipePref | null): Promise<void>;
   getPriceOverrides(): Promise<PriceOverrides>;
   setPriceOverride(ingredient: string, price: PriceOverrides[string] | null): Promise<void>;
+  setSupplement(profileId: string, date: IsoDate, supplement: SupplementId, taken: boolean): Promise<void>;
+  setLife(l: LifeLog): Promise<void>;
+  deleteProfile(profileId: string): Promise<void>;
   getSetting(key: string): Promise<string | null>;
   setSetting(key: string, value: string | null): Promise<void>;
   wipe(): Promise<void>;

@@ -90,4 +90,18 @@ export const MIGRATIONS: string[] = [
      price TEXT NOT NULL,
      updated_at TEXT NOT NULL
    );`,
+  `CREATE TABLE IF NOT EXISTS supplement_log (
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     supplement TEXT NOT NULL,
+     taken INTEGER NOT NULL,
+     PRIMARY KEY (profile_id, date, supplement)
+   );
+   CREATE TABLE IF NOT EXISTS life_log (
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     cigarettes INTEGER NOT NULL DEFAULT 0,
+     drinks INTEGER NOT NULL DEFAULT 0,
+     PRIMARY KEY (profile_id, date)
+   );`,
 ];
