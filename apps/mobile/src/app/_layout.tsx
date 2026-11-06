@@ -44,7 +44,9 @@ function Gate({ fontsReady }: { fontsReady: boolean }) {
   return (
     <>
       <StatusBar style="light" />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.night } }} />
+      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.night } }}>
+        <Stack.Screen name="guidee/[date]" options={{ presentation: 'fullScreenModal', gestureEnabled: false, animation: 'slide_from_bottom' }} />
+      </Stack>
     </>
   );
 }

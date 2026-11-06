@@ -8,6 +8,7 @@ import { useApp, useProfile } from '../../store/AppState';
 import { colors, space } from '../../theme';
 import { Button } from '../../ui/Button';
 import { Card } from '../../ui/Card';
+import { CheckInCard } from '../../ui/CheckInCard';
 import { Icon } from '../../ui/Icon';
 import { Screen } from '../../ui/Screen';
 import { T } from '../../ui/Text';
@@ -17,7 +18,7 @@ const restLabel = (s: number) => `${Math.floor(s / 60)} min${s % 60 ? ` ${s % 60
 export default function SessionDay() {
   const { date } = useLocalSearchParams<{ date: string }>();
   const p = useProfile();
-  const { sessions, toggleDone, today } = useApp();
+  const { sessions, toggleDone, today, checkIns } = useApp();
   const [open, setOpen] = useState<number | null>(null);
   const plan = date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? dayPlan(p, date) : null;
   const done = sessions.some((s) => s.date === date && s.done);
@@ -33,7 +34,10 @@ export default function SessionDay() {
   const training = plan.day.kind === 'training';
   return (
     <Screen footer={training && date <= today ? (
-      <Button label={done ? 'Faite · annuler' : 'Marquer la séance comme faite'} variant={done ? 'secondary' : 'primary'} onPress={() => toggleDone(date)} />
+      <>
+        {!done ? <Button label="Démarrer la séance guidée" onPress={() => router.push(`/guidee/${date}`)} /> : null}
+        <Button label={done ? 'Faite · annuler' : 'Marquer comme faite sans la guider'} variant="secondary" onPress={() => toggleDone(date)} />
+      </>
     ) : undefined}>
       {back}
       <View style={{ gap: space.xs }}>
@@ -43,18 +47,11 @@ export default function SessionDay() {
           Phase {phaseName(p.level, plan.phase)}{plan.deload && training ? ' · semaine allégée, une série de moins par exercice' : ''}
         </T>
       </View>
-      {training ? (
-        <Card style={{ backgroundColor: colors.slateHi }}>
-          <T v="detail" color={colors.soft}>
-            Bientôt ici : la séance guidée, avec le mouvement en 3D, série par série et chrono de repos.
-            En attendant, choisis une charge qui te laisse 3 à 4 répétitions en réserve.
-          </T>
-        </Card>
-      ) : null}
+      {training && date <= today && !done ? <CheckInCard /> : null}
       <View style={{ gap: space.m }}>
         {plan.items.map((i, k) => {
           const sc = parseScheme(i.scheme);
-          const sets = setsToDo(sc, { deload: plan.deload && training, lowReadiness: isLowReadiness(undefined) });
+          const sets = setsToDo(sc, { deload: plan.deload && training, lowReadiness: isLowReadiness(checkIns.find((c) => c.date === date)) });
           const tech = techniqueText(i.exercise);
           const isOpen = open === k;
           return (

@@ -1,5 +1,6 @@
+import { useCallback, useState } from 'react';
 import { View } from 'react-native';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import {
   addDays, dayPlan, effectiveTargets, mondayOf, plannedTrainingDates, weekDates,
 } from '@muscu/engine';
@@ -9,13 +10,18 @@ import { useApp, useProfile } from '../../store/AppState';
 import { colors, space } from '../../theme';
 import { Button } from '../../ui/Button';
 import { Card } from '../../ui/Card';
+import { CheckInCard } from '../../ui/CheckInCard';
 import { Icon } from '../../ui/Icon';
 import { Screen } from '../../ui/Screen';
 import { T } from '../../ui/Text';
 
 export default function Home() {
   const p = useProfile();
-  const { today, sessions } = useApp();
+  const { today, sessions, loadActiveSession } = useApp();
+  const [active, setActive] = useState(false);
+  useFocusEffect(useCallback(() => {
+    loadActiveSession().then((s) => setActive(!!s && s.date === today && s.phase !== 'done'));
+  }, [loadActiveSession, today]));
   const plan = dayPlan(p, today);
   const done = new Set(sessions.filter((s) => s.done).map((s) => s.date));
   const week = weekDates(mondayOf(today));
@@ -68,11 +74,16 @@ export default function Home() {
               ? 'Dors bien et mange à ta faim : c’est là que le muscle se construit.'
               : `Semaine ${plan.week + 1} sur 26 · ${phaseName(p.level, plan.phase)}${plan.deload && plan.day.kind === 'training' ? ' · semaine allégée' : ''}`}
           </T>
+          {plan.day.kind === 'training' && !done.has(today) ? (
+            <Button label={active ? 'Reprendre la séance' : 'Démarrer la séance'} onPress={() => router.push(`/guidee/${today}`)} />
+          ) : null}
           {plan.day.kind !== 'rest' ? (
-            <Button label={plan.day.kind === 'training' ? 'Voir la séance' : 'Voir le programme'} onPress={() => router.push(`/seance/${today}`)} />
+            <Button label={plan.day.kind === 'training' ? 'Voir le détail' : 'Voir le programme'} variant="secondary" onPress={() => router.push(`/seance/${today}`)} />
           ) : null}
         </Card>
       )}
+
+      {plan?.day.kind === 'training' && !done.has(today) ? <CheckInCard /> : null}
 
       <View style={{ flexDirection: 'row', gap: space.m }}>
         {planned.length ? <Card style={{ flex: 1 }}>
