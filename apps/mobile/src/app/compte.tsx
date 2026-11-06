@@ -3,7 +3,7 @@ import { Pressable, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 import { useApp } from '../store/AppState';
 import { createInvite, currentEmail, deleteMyData, redeemInvite, sendCode, signOut, supabase, verifyCode, type RemoteProfile } from '../sync/api';
-import { syncConfigured } from '../sync/config';
+import { emailCodeReady, syncConfigured } from '../sync/config';
 import { syncNow } from '../sync/sync';
 import { colors, fonts, radius, space, type as typeScale } from '../theme';
 import { Button } from '../ui/Button';
@@ -75,6 +75,12 @@ export default function Account() {
           {SENT.map((s) => <T key={s} v="detail" color={colors.soft}>• {s}</T>)}
           <T v="detail" color={colors.soft}>Seuls toi et les personnes que tu invites peuvent les voir. Tu peux tout supprimer du serveur à tout moment depuis cet écran. Rien n’est revendu ni utilisé pour de la publicité.</T>
           <Button label="J’accepte d’envoyer ces données" onPress={async () => { const d = new Date().toISOString(); await app.setSetting('syncConsent', d); setConsent(d); }} />
+        </Card>
+      ) : !me && !emailCodeReady ? (
+        <Card>
+          <T v="heading">Connexion bientôt ouverte</T>
+          <T v="detail" color={colors.soft}>Le serveur est prêt ; il reste à brancher l’envoi des codes de connexion par e-mail. En attendant, tes données restent sur ce téléphone et la sauvegarde permet de les copier.</T>
+          <Button label="Ouvrir la sauvegarde" variant="secondary" onPress={() => router.push('/sauvegarde')} />
         </Card>
       ) : !me ? (
         <Card>

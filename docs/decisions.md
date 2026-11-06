@@ -78,6 +78,15 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 | `expo-system-ui` | Ajouté | Fond nuit dès le lancement, sans flash blanc (module Expo officiel). |
 | Contenu manquant du prototype | Écran Guide (bien démarrer, fiches techniques, glossaire), échauffement avant chaque séance, mention « pas un avis médical » | Prévu par le cahier des charges pour le niveau débutant ; il n'avait pas encore d'écran. |
 
+## Supabase (après M5)
+
+| Sujet | Retenu | Raison |
+|---|---|---|
+| Projet | Projet existant du compte, vide, en région UE (Francfort) | Évite un second projet ; l'offre gratuite en limite le nombre. |
+| Droits | `TRUNCATE` et tous les droits des visiteurs non connectés retirés | `TRUNCATE` ignore les règles RLS : n'importe quel utilisateur aurait pu vider la table. |
+| Clé de l'appli | Clé « publishable » et adresse versionnées dans `config.ts` | Publiques par conception (incluses dans chaque appli installée) ; la clé secrète n'est jamais versionnée. |
+| Connexion | Désactivée dans l'appli tant que les codes par e-mail ne sont pas envoyés | Sans SMTP, Supabase envoie un lien et non un code, et au plus 2 e-mails par heure. |
+
 ## Règles harmonisées (incohérences du prototype)
 
 | Sujet | Prototype | Retenu | Raison |

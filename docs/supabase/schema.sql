@@ -90,3 +90,11 @@ end $$;
 
 revoke all on function public.create_invite(text, text) from anon;
 revoke all on function public.redeem_invite(text) from anon;
+
+-- Droits par défaut de Supabase trop larges : TRUNCATE ignore les règles RLS, et les visiteurs
+-- non connectés (anon) n'ont rien à faire ici. On ne garde que lecture, ajout, modification
+-- et suppression pour les utilisateurs connectés, toujours filtrées par les règles ci-dessus.
+revoke all on public.profile_snapshot, public.profile_member, public.profile_invite from anon;
+revoke truncate, references, trigger on public.profile_snapshot, public.profile_member, public.profile_invite from authenticated;
+revoke insert, update on public.profile_member, public.profile_invite from authenticated;
+revoke delete on public.profile_invite from authenticated;
