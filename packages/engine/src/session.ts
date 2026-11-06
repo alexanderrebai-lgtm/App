@@ -95,6 +95,7 @@ export function startSession(o: StartOptions, label: string): SessionState {
 
 export type SessionAction =
   | { type: 'begin' }
+  | { type: 'review' }
   | { type: 'adjustKg'; delta: number }
   | { type: 'adjustReps'; delta: number }
   | { type: 'setKg'; kg: number }
@@ -129,6 +130,8 @@ export function sessionReducer(s: SessionState, a: SessionAction): SessionState 
   switch (a.type) {
     case 'begin':
       return s.phase === 'intro' ? { ...s, phase: 'set' } : s;
+    case 'review':
+      return s.phase === 'set' ? { ...s, phase: 'intro' } : s;
     case 'adjustKg':
       return { ...s, kg: Math.max(0, round1(s.kg + a.delta)) };
     case 'adjustReps':

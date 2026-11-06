@@ -32,6 +32,7 @@ const ProfileSchema = z.object({
   kcalTarget: z.number().positive().optional(),
   proteinTarget: z.number().positive().optional(),
   supplements: z.array(SupplementId).optional(),
+  oneRepMaxes: z.record(z.string(), z.number().positive()).optional(),
 });
 
 const pid = { profileId: z.string(), date: Iso };

@@ -35,6 +35,8 @@ export interface Profile {
   proteinTarget?: number;
   /** Compléments suivis ; à défaut, ceux conseillés pour l'objectif. */
   supplements?: SupplementId[];
+  /** Niveau confirmé : 1RM connus, par exercice (kg). */
+  oneRepMaxes?: Record<string, number>;
 }
 
 /** Une série réalisée. Pour le cardio : kg = minutes, reps = kilomètres. */

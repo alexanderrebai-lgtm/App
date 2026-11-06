@@ -57,6 +57,14 @@ describe('séance guidée', () => {
     expect(session({ date: addDays(START, 21) }).exercises[0]!.targetSets).toBe(2); // semaine 4
   });
 
+  it('revoir le mouvement en cours de série, puis reprendre', () => {
+    let s = run(session(), { type: 'begin' }, { type: 'setKg', kg: 20 }, { type: 'setReps', reps: 10 }, { type: 'validateSet', now: 0 }, { type: 'skipRest' });
+    s = run(s, { type: 'review' });
+    expect(s.phase).toBe('intro');
+    s = run(s, { type: 'begin' });
+    expect([s.phase, s.exercises[0]!.sets.length]).toEqual(['set', 1]);
+  });
+
   it('remplacer et passer', () => {
     let s = run(session(), { type: 'replace', exercise: 'pompes', history: [] });
     expect(s.exercises[0]).toMatchObject({ exercise: 'pompes', planned: 'developpe-couche-halteres', targetSets: 3 });
