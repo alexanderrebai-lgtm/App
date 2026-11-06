@@ -11,6 +11,8 @@ export interface Habit {
   /** Nouvelle habitude : « …je [action] » */
   action: string;
   order: number;
+  /** Jour de création : on ne signale pas « raté hier » pour une routine créée aujourd'hui. */
+  createdOn: ISODate;
 }
 
 export type TaskKind = "obligatoire" | "secondaire";
@@ -149,6 +151,12 @@ export interface Settings {
   totalDrops: number;
   onboardingSeen: boolean;
   seededAt: ISODate;
+  /** Dernier jour où l'appli a été ouverte. */
+  lastOpenedOn: ISODate;
+  /** Retour après une pause : jour où le message est affiché et nombre de jours d'absence. */
+  welcomeBack: { on: ISODate; daysAway: number } | null;
+  /** Heure de coucher visée (« 23:00 »), ou null si désactivé. */
+  bedtime: string | null;
   reminders: {
     morning: string | null;
     evening: string | null;

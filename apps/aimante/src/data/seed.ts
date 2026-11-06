@@ -46,6 +46,9 @@ export function defaultSettings(today: ISODate): Settings {
     totalDrops: 0,
     onboardingSeen: false,
     seededAt: today,
+    lastOpenedOn: today,
+    welcomeBack: null,
+    bedtime: "23:00",
     reminders: {
       morning: "07:30",
       evening: "21:30",
@@ -96,7 +99,7 @@ export function buildSeed(today: ISODate, now = Date.now()): SeedData {
 
   return {
     settings: defaultSettings(today),
-    habits: SEED_HABITS.map((h, order) => ({ id: newId(), order, ...h })),
+    habits: SEED_HABITS.map((h, order) => ({ id: newId(), order, createdOn: today, ...h })),
     rooms,
     chores,
     recipes,

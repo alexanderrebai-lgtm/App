@@ -72,6 +72,7 @@ export async function importAll(database: AimanteDB, raw: unknown): Promise<void
       await table.clear();
       await table.bulkAdd(backup.tables[name]);
     }
+    await database.deletions.clear();
   });
 }
 

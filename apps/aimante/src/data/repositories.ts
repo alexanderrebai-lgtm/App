@@ -8,6 +8,11 @@ import { db } from "./db";
  * change que ce dossier.
  */
 function repo<T, K extends keyof T & string>(table: EntityTable<T, K>) {
+  const remove = (key: T[K] & string): Promise<void> =>
+    db.transaction("rw", [table, db.deletions], async () => {
+      await table.delete(key as never);
+      await db.deletions.put({ key: `${table.name}|${key}`, table: table.name, id: key, at: Date.now() });
+    });
   return {
     getAll: (): Promise<T[]> => table.toArray(),
     get: (key: T[K] & string): Promise<T | undefined> => table.get(key as never),
@@ -17,7 +22,7 @@ function repo<T, K extends keyof T & string>(table: EntityTable<T, K>) {
     saveMany: async (items: T[]): Promise<void> => {
       await table.bulkPut(items as never);
     },
-    remove: (key: T[K] & string): Promise<void> => table.delete(key as never),
+    remove,
   };
 }
 

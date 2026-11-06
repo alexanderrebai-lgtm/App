@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { overdueCount } from "./domain/chores";
 import { db } from "./data/db";
 import { useLive } from "./data/live";
+import { recordOpening } from "./data/actions";
 import { pruneOldData } from "./data/prune";
 import { choresRepo, shoppingRepo } from "./data/repositories";
 import { ensureSeeded } from "./data/seed";
@@ -31,6 +32,7 @@ function useBootstrap() {
   useEffect(() => {
     const t = today();
     ensureSeeded(db, t)
+      .then(() => recordOpening(t))
       .then(() => pruneOldData(db, t))
       .then(() => setState("ready"))
       .catch((e: unknown) => {

@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { BackupError, backupFileName, exportAll, importAll } from "../../data/backup";
 import { db } from "../../data/db";
+import { useLive } from "../../data/live";
+import { getSettings, saveSettings } from "../../data/repositories";
 import { today } from "../../domain/dates";
 import { Sheet } from "../../ui/Sheet";
 import { useToast } from "../../ui/Toast";
@@ -34,6 +36,8 @@ export function SettingsSheet({ open, onClose }: { open: boolean; onClose: () =>
   const [pending, setPending] = useState<{ name: string; data: unknown } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const settings = useLive(getSettings);
+  const bedtime = settings?.bedtime ?? null;
 
   const close = () => {
     setPending(null);
@@ -80,6 +84,32 @@ export function SettingsSheet({ open, onClose }: { open: boolean; onClose: () =>
 
   return (
     <Sheet open={open} title="Réglages" onClose={close}>
+      <div className="panel c-violet">
+        <h3>Heure de coucher</h3>
+        <p className="small muted">
+          Bien dormir aide tout le reste à tenir. Le soir, Aujourd'hui te rappelle l'heure visée, 2 h avant.
+        </p>
+        <div className="grid2" style={{ alignItems: "end" }}>
+          <div className="field">
+            <label htmlFor="s-bedtime">Je vise</label>
+            <input
+              id="s-bedtime"
+              type="time"
+              value={bedtime ?? ""}
+              disabled={bedtime === null}
+              onChange={(e) => e.target.value && saveSettings({ bedtime: e.target.value })}
+            />
+          </div>
+          <button
+            type="button"
+            className="btn"
+            aria-pressed={bedtime !== null}
+            onClick={() => saveSettings({ bedtime: bedtime === null ? "23:00" : null })}
+          >
+            {bedtime === null ? "Activer" : "Désactiver"}
+          </button>
+        </div>
+      </div>
       <div className="panel c-blue">
         <h3>Sauvegarde</h3>
         <p className="small muted">

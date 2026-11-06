@@ -73,8 +73,11 @@ Les écrans ne parlent jamais à Dexie directement : ils passent par `src/data/r
 ## Avancement
 
 - [x] Étape 1 : base (Vite, PWA, Dexie, 5 onglets, thème clair/sombre, données de départ, export/import)
-- [ ] Étape 2 : Aujourd'hui + Maison (routines, tâches, ménage, session éclair, plante, journée difficile)
+- [x] Étape 2 : Aujourd'hui + Maison (routines, tâches avec report, ménage, session éclair, plante et gouttes, journée difficile, retour en douceur, heure de coucher)
 - [ ] Étape 3 : Repas + Courses
-- [ ] Étape 4 : Agenda
-- [ ] Étape 5 : notifications et finitions
-- [ ] Étape 6 : budget
+- [ ] Étape 4 : Agenda, revue et bilan doux du dimanche
+- [ ] Synchro téléphone + ordi (Supabase, connexion par code e-mail)
+- [ ] Étape 5 : vraies notifications (service Supabase) et finitions
+- [ ] Étape 6 : budget (saisie rapide d'abord, photo du relevé en essai)
+
+Préparation de la synchro : chaque ligne garde sa date de modification (`updatedAt`) et chaque suppression laisse une trace (table `deletions`).

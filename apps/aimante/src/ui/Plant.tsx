@@ -1,7 +1,10 @@
 import { MAX_STAGE } from "../domain/points";
 
-/** Dessin de la plante selon son palier (0 = graine, 7 = fleur). */
-export function Plant({ stage }: { stage: number }) {
+/**
+ * Dessin de la plante selon son palier (0 = graine, 7 = fleur).
+ * `grew` : la dernière feuille vient de pousser, elle apparaît en douceur.
+ */
+export function Plant({ stage, grew = false }: { stage: number; grew?: boolean }) {
   const h = 6 + stage * 7.5;
   const top = 76 - h;
   const leaves = Array.from({ length: stage }, (_, i) => {
@@ -9,15 +12,17 @@ export function Plant({ stage }: { stage: number }) {
     const left = i % 2 === 0;
     const cx = left ? 33 : 47;
     return (
-      <ellipse
-        key={i}
-        cx={cx}
-        cy={y.toFixed(1)}
-        rx="8"
-        ry="3.6"
-        transform={`rotate(${left ? -28 : 28} ${cx} ${y.toFixed(1)})`}
-        fill="var(--m-green)"
-      />
+      // Le groupe porte l'animation, l'ellipse garde sa rotation.
+      <g key={i} className={grew && i === stage - 1 ? "leaf-new" : undefined}>
+        <ellipse
+          cx={cx}
+          cy={y.toFixed(1)}
+          rx="8"
+          ry="3.6"
+          transform={`rotate(${left ? -28 : 28} ${cx} ${y.toFixed(1)})`}
+          fill="var(--m-green)"
+        />
+      </g>
     );
   });
 
@@ -30,7 +35,7 @@ export function Plant({ stage }: { stage: number }) {
       )}
       {leaves}
       {stage >= MAX_STAGE && (
-        <g>
+        <g className={grew ? "leaf-new" : undefined}>
           {[0, 72, 144, 216, 288].map((a) => (
             <circle
               key={a}

@@ -1,4 +1,4 @@
-import Dexie, { type EntityTable } from "dexie";
+import Dexie, { type EntityTable, type Table } from "dexie";
 import type {
   AgendaEvent,
   BacklogItem,
@@ -17,6 +17,15 @@ import type {
 } from "../domain/types";
 
 export const DB_NAME = "aimante";
+
+/** Trace d'une suppression, gardée pour la future synchro entre appareils. */
+export interface Deletion {
+  /** `${table}|${id}` */
+  key: string;
+  table: string;
+  id: string;
+  at: number;
+}
 
 /**
  * Base locale IndexedDB. Seul le dossier `data/` y accède : le reste de
@@ -37,6 +46,7 @@ export class AimanteDB extends Dexie {
   memos!: EntityTable<Memo, "id">;
   dayLogs!: EntityTable<DayLog, "date">;
   settings!: EntityTable<Settings, "id">;
+  deletions!: EntityTable<Deletion, "key">;
 
   constructor(name = DB_NAME) {
     super(name);
@@ -55,6 +65,43 @@ export class AimanteDB extends Dexie {
       memos: "id, createdAt",
       dayLogs: "date",
       settings: "id",
+    });
+    // v2 : date de création des routines, retour en douceur, heure de coucher,
+    // et traces pour la synchro (date de modification, suppressions).
+    this.version(2)
+      .stores({ deletions: "key, at" })
+      .upgrade(async (tx) => {
+        const settings = (await tx.table("settings").get("settings")) as Partial<Settings> | undefined;
+        const since = settings?.seededAt ?? new Date().toISOString().slice(0, 10);
+        await tx
+          .table("habits")
+          .toCollection()
+          .modify((h: Partial<Habit>) => {
+            h.createdOn ??= since;
+          });
+        await tx.table("settings").toCollection().modify((st: Partial<Settings>) => {
+          st.lastOpenedOn ??= since;
+          st.welcomeBack ??= null;
+          if (st.bedtime === undefined) st.bedtime = "23:00";
+        });
+      });
+    installSyncMetadata(this);
+  }
+}
+
+/**
+ * Chaque ligne garde `updatedAt` (millisecondes) : la future synchro saura
+ * quelle version est la plus récente. Une ligne importée garde le sien.
+ */
+function installSyncMetadata(database: Dexie) {
+  for (const table of database.tables as Table<Record<string, unknown>>[]) {
+    if (table.name === "deletions") continue;
+    table.hook("creating", (_key, obj) => {
+      if (typeof obj.updatedAt !== "number") obj.updatedAt = Date.now();
+    });
+    table.hook("updating", (mods) => {
+      if ("updatedAt" in mods) return undefined;
+      return { updatedAt: Date.now() };
     });
   }
 }

@@ -64,3 +64,18 @@ export const IconNext = (p: P) => (
     <path d="M9 5l7 7-7 7" />
   </svg>
 );
+export const IconCheck = (p: P) => (
+  <svg {...base} strokeWidth={3.2} {...p}>
+    <path d="M5 12.5l4.5 4.5L19 7.5" />
+  </svg>
+);
+export const IconPen = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M4 20h4L19 9l-4-4L4 16v4z" />
+  </svg>
+);
+export const IconPlus = (p: P) => (
+  <svg {...base} strokeWidth={2.6} {...p}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
