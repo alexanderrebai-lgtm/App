@@ -48,4 +48,46 @@ export const MIGRATIONS: string[] = [
      thigh_cm REAL NOT NULL,
      PRIMARY KEY (profile_id, date)
    );`,
+  `CREATE TABLE IF NOT EXISTS food_entry (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     name TEXT NOT NULL,
+     kcal REAL NOT NULL,
+     protein REAL NOT NULL,
+     carbs REAL,
+     fat REAL,
+     menu_slot INTEGER
+   );
+   CREATE INDEX IF NOT EXISTS food_entry_day ON food_entry (profile_id, date);
+   CREATE TABLE IF NOT EXISTS water_log (
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     ml INTEGER NOT NULL,
+     PRIMARY KEY (profile_id, date)
+   );
+   CREATE TABLE IF NOT EXISTS menu_override (
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     slot INTEGER NOT NULL,
+     recipe_id TEXT NOT NULL,
+     PRIMARY KEY (profile_id, date, slot)
+   );
+   CREATE TABLE IF NOT EXISTS pantry_item (
+     profile_id TEXT NOT NULL,
+     ingredient TEXT NOT NULL,
+     owned INTEGER NOT NULL,
+     PRIMARY KEY (profile_id, ingredient)
+   );
+   CREATE TABLE IF NOT EXISTS recipe_pref (
+     profile_id TEXT NOT NULL,
+     recipe_id TEXT NOT NULL,
+     pref TEXT NOT NULL,
+     PRIMARY KEY (profile_id, recipe_id)
+   );
+   CREATE TABLE IF NOT EXISTS price_override (
+     ingredient TEXT PRIMARY KEY NOT NULL,
+     price TEXT NOT NULL,
+     updated_at TEXT NOT NULL
+   );`,
 ];

@@ -41,7 +41,7 @@ describe('onboarding', () => {
   });
 
   it('allergies → ingrédients exclus, et retour', () => {
-    expect(excludedIngredients(['peanuts', 'fish'])).toEqual(['peanut-butter', 'tuna']);
+    expect(excludedIngredients(['peanuts', 'fish'])).toEqual(['peanut-butter', 'sardines', 'tuna', 'white-fish']);
     const p = buildProfile({ ...full, allergies: ['eggs'], dietTags: ['vegetarian'] }, '2026-11-06', undefined, 'x');
     expect(draftFromProfile(p)).toMatchObject({ allergies: ['eggs'], dietTags: ['vegetarian'], goal: 'mass' });
   });

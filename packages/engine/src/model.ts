@@ -82,6 +82,8 @@ export interface Measurements {
 }
 
 export interface FoodEntry {
+  /** Identifiant en base (absent avant l'enregistrement). */
+  id?: number;
   profileId: string;
   date: IsoDate;
   name: string;

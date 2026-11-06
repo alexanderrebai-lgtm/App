@@ -1,7 +1,7 @@
 import * as SQLite from 'expo-sqlite';
-import type { CheckIn, ExerciseLog, Profile, SessionLog } from '@muscu/engine';
+import type { CheckIn, ExerciseLog, FoodEntry, PriceOverrides, Profile, SessionLog } from '@muscu/engine';
 import { MIGRATIONS } from './migrations';
-import type { Store } from './types';
+import type { RecipePref, Store } from './types';
 
 const now = () => new Date().toISOString();
 
@@ -45,6 +45,12 @@ export function createStore(name = 'elan.db'): Store {
       const weights = await d.getAllAsync<{ date: string; kg: number }>('SELECT date, kg FROM body_weight WHERE profile_id = ? ORDER BY date', profileId);
       const meas = await d.getAllAsync<{ date: string; arm_cm: number; chest_cm: number; waist_cm: number; thigh_cm: number }>(
         'SELECT * FROM measurements WHERE profile_id = ? ORDER BY date', profileId);
+      const food = await d.getAllAsync<{ id: number; date: string; name: string; kcal: number; protein: number; carbs: number | null; fat: number | null; menu_slot: number | null }>(
+        'SELECT * FROM food_entry WHERE profile_id = ? ORDER BY date, id', profileId);
+      const water = await d.getAllAsync<{ date: string; ml: number }>('SELECT date, ml FROM water_log WHERE profile_id = ? ORDER BY date', profileId);
+      const overrides = await d.getAllAsync<{ date: string; slot: number; recipe_id: string }>('SELECT date, slot, recipe_id FROM menu_override WHERE profile_id = ?', profileId);
+      const pantry = await d.getAllAsync<{ ingredient: string }>('SELECT ingredient FROM pantry_item WHERE profile_id = ? AND owned = 1', profileId);
+      const prefs = await d.getAllAsync<{ recipe_id: string; pref: RecipePref }>('SELECT recipe_id, pref FROM recipe_pref WHERE profile_id = ?', profileId);
       return {
         sessions: sessions.map((r): SessionLog => ({
           profileId, date: r.date, done: !!r.done,
@@ -55,6 +61,15 @@ export function createStore(name = 'elan.db'): Store {
         checkIns: checks.map((r): CheckIn => ({ profileId, date: r.date, energy: r.energy as CheckIn['energy'], soreness: r.soreness as CheckIn['soreness'] })),
         weights: weights.map((r) => ({ profileId, date: r.date, kg: r.kg })),
         measurements: meas.map((r) => ({ profileId, date: r.date, armCm: r.arm_cm, chestCm: r.chest_cm, waistCm: r.waist_cm, thighCm: r.thigh_cm })),
+        food: food.map((r): FoodEntry => ({
+          id: r.id, profileId, date: r.date, name: r.name, kcal: r.kcal, protein: r.protein,
+          ...(r.carbs !== null ? { carbs: r.carbs } : {}), ...(r.fat !== null ? { fat: r.fat } : {}),
+          ...(r.menu_slot !== null ? { menuSlot: r.menu_slot as FoodEntry['menuSlot'] } : {}),
+        })),
+        water,
+        menuOverrides: Object.fromEntries(overrides.map((o) => [`${o.date}|${o.slot}`, o.recipe_id])),
+        pantry: pantry.map((x) => x.ingredient),
+        recipePrefs: Object.fromEntries(prefs.map((x) => [x.recipe_id, x.pref])),
       };
     },
     async saveSession(s) {
@@ -87,6 +102,35 @@ export function createStore(name = 'elan.db'): Store {
         'INSERT INTO measurements (profile_id, date, arm_cm, chest_cm, waist_cm, thigh_cm) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(profile_id, date) DO UPDATE SET arm_cm = excluded.arm_cm, chest_cm = excluded.chest_cm, waist_cm = excluded.waist_cm, thigh_cm = excluded.thigh_cm',
         m.profileId, m.date, m.armCm, m.chestCm, m.waistCm, m.thighCm);
     },
+    async addFood(f) {
+      await get().runAsync('INSERT INTO food_entry (profile_id, date, name, kcal, protein, carbs, fat, menu_slot) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        f.profileId, f.date, f.name, f.kcal, f.protein, f.carbs ?? null, f.fat ?? null, f.menuSlot ?? null);
+    },
+    async deleteFood(id) {
+      await get().runAsync('DELETE FROM food_entry WHERE id = ?', id);
+    },
+    async setWater(profileId, date, ml) {
+      await get().runAsync('INSERT INTO water_log (profile_id, date, ml) VALUES (?, ?, ?) ON CONFLICT(profile_id, date) DO UPDATE SET ml = excluded.ml', profileId, date, ml);
+    },
+    async setMenuOverride(profileId, date, slot, recipeId) {
+      if (recipeId === null) await get().runAsync('DELETE FROM menu_override WHERE profile_id = ? AND date = ? AND slot = ?', profileId, date, slot);
+      else await get().runAsync('INSERT INTO menu_override (profile_id, date, slot, recipe_id) VALUES (?, ?, ?, ?) ON CONFLICT(profile_id, date, slot) DO UPDATE SET recipe_id = excluded.recipe_id', profileId, date, slot, recipeId);
+    },
+    async setPantry(profileId, ingredient, owned) {
+      await get().runAsync('INSERT INTO pantry_item (profile_id, ingredient, owned) VALUES (?, ?, ?) ON CONFLICT(profile_id, ingredient) DO UPDATE SET owned = excluded.owned', profileId, ingredient, owned ? 1 : 0);
+    },
+    async setRecipePref(profileId, recipeId, pref) {
+      if (pref === null) await get().runAsync('DELETE FROM recipe_pref WHERE profile_id = ? AND recipe_id = ?', profileId, recipeId);
+      else await get().runAsync('INSERT INTO recipe_pref (profile_id, recipe_id, pref) VALUES (?, ?, ?) ON CONFLICT(profile_id, recipe_id) DO UPDATE SET pref = excluded.pref', profileId, recipeId, pref);
+    },
+    async getPriceOverrides() {
+      const rows = await get().getAllAsync<{ ingredient: string; price: string }>('SELECT ingredient, price FROM price_override');
+      return Object.fromEntries(rows.map((r) => [r.ingredient, JSON.parse(r.price)])) as PriceOverrides;
+    },
+    async setPriceOverride(ingredient, price) {
+      if (price === null) await get().runAsync('DELETE FROM price_override WHERE ingredient = ?', ingredient);
+      else await get().runAsync('INSERT INTO price_override (ingredient, price, updated_at) VALUES (?, ?, ?) ON CONFLICT(ingredient) DO UPDATE SET price = excluded.price, updated_at = excluded.updated_at', ingredient, JSON.stringify(price), now());
+    },
     async getSetting(key) {
       const r = await get().getFirstAsync<{ value: string }>('SELECT value FROM settings WHERE key = ?', key);
       return r?.value ?? null;
@@ -96,7 +140,7 @@ export function createStore(name = 'elan.db'): Store {
       else await get().runAsync('INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value', key, value);
     },
     async wipe() {
-      await get().execAsync('DELETE FROM session_log; DELETE FROM exercise_log; DELETE FROM check_in; DELETE FROM body_weight; DELETE FROM measurements; DELETE FROM profile; DELETE FROM settings;');
+      await get().execAsync('DELETE FROM session_log; DELETE FROM exercise_log; DELETE FROM check_in; DELETE FROM body_weight; DELETE FROM measurements; DELETE FROM food_entry; DELETE FROM water_log; DELETE FROM menu_override; DELETE FROM pantry_item; DELETE FROM recipe_pref; DELETE FROM price_override; DELETE FROM profile; DELETE FROM settings;');
     },
   };
 }
