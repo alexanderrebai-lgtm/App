@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 import { router } from 'expo-router';
-import { addDays, batchPlan, effectiveTargets, fr, mondayOf, nextRecipe, plannedMeals, recipeCost, type Slot } from '@muscu/engine';
+import { addDays, batchPlan, effectiveTargets, mondayOf, nextRecipe, plannedMeals, recipeCost, type Slot } from '@muscu/engine';
 import { euros } from '../../lib/food';
 import { longDate, num } from '../../lib/format';
-import { useMenuPrefs, useWeekMenus } from '../../lib/useNutrition';
+import { useMealNames, useMenuPrefs, useWeekMenus } from '../../lib/useNutrition';
 import { useApp, useProfile } from '../../store/AppState';
 import { colors, fonts, space } from '../../theme';
 import { Card } from '../Card';
@@ -17,6 +17,7 @@ export function MenusView() {
   const { today, saveProfile, setMenuOverride, menuOverrides } = useApp();
   const [w, setW] = useState(0);
   const prefs = useMenuPrefs();
+  const names = useMealNames();
   const { dates, days, prices } = useWeekMenus(addDays(mondayOf(today), 7 * w));
   const kcal = effectiveTargets(p).kcal;
   const batch = batchPlan(days);
@@ -57,10 +58,10 @@ export function MenusView() {
               return (
                 <View key={m.slot} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, minHeight: 44 }}>
                   <Pressable style={{ flex: 1 }} accessibilityRole="button" onPress={() => router.push(`/recette/${m.recipe.id}?f=${m.factor}`)}>
-                    <T v="caption" color={colors.mute}>{fr.mealSlots[m.slot]}{menuOverrides[key] ? ' · changé' : ''}</T>
+                    <T v="caption" color={colors.mute}>{names[m.slot]}{menuOverrides[key] ? ' · changé' : ''}</T>
                     <T v="detail" style={{ fontFamily: fonts.medium }}>{m.recipe.name} <T v="caption" color={colors.mute}>×{num(m.factor, 1)}</T></T>
                   </Pressable>
-                  <Pressable accessibilityRole="button" accessibilityLabel={`Changer le plat : ${fr.mealSlots[m.slot]} du ${longDate(date)}`} hitSlop={6}
+                  <Pressable accessibilityRole="button" accessibilityLabel={`Changer le plat : ${names[m.slot]} du ${longDate(date)}`} hitSlop={6}
                     onPress={() => setMenuOverride(date, m.slot, nextRecipe(m.recipe.id, m.slot as Slot, prefs, day))}
                     style={{ minHeight: 44, paddingHorizontal: 10, borderRadius: 10, borderWidth: 1, borderColor: colors.line, justifyContent: 'center' }}>
                     <T v="caption" style={{ fontFamily: fonts.semibold }}>Changer</T>

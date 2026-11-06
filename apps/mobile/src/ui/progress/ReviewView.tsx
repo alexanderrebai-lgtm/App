@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View } from 'react-native';
-import { addDays, effectiveTargets, fr, weeklyReview } from '@muscu/engine';
+import { addDays, applyCalorieAdvice, effectiveTargets, fr, weeklyReview } from '@muscu/engine';
 import { dayMonth, num } from '../../lib/format';
 import { useApp, useProfile } from '../../store/AppState';
 import { colors, space } from '../../theme';
@@ -66,8 +66,8 @@ export function ReviewView() {
               {r.calorieAdvice.deltaKcal ? '' : ' Garde ton objectif.'}
             </T>
             {r.calorieAdvice.deltaKcal && back === 0 ? (
-              <Button label={`${r.calorieAdvice.deltaKcal > 0 ? 'Ajouter' : 'Retirer'} 150 kcal (${num(t.kcal + r.calorieAdvice.deltaKcal)} kcal par jour)`}
-                onPress={() => app.saveProfile({ ...p, kcalTarget: t.kcal + r.calorieAdvice!.deltaKcal })} />
+              <Button label={`${r.calorieAdvice.deltaKcal > 0 ? 'Ajouter' : 'Retirer'} ${Math.abs(r.calorieAdvice.deltaKcal)} kcal (${num(applyCalorieAdvice(p, r.calorieAdvice.deltaKcal).kcal)} kcal par jour)`}
+                onPress={() => app.saveProfile({ ...p, kcalTarget: applyCalorieAdvice(p, r.calorieAdvice!.deltaKcal).kcal })} />
             ) : null}
           </>
         ) : <T v="detail" color={colors.mute}>Pèse-toi chaque semaine pendant au moins 2 semaines pour un conseil d’ajustement.</T>}

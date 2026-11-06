@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import {
-  addDays, adherence, effectiveTargets, estimate1RM, exerciseCurve, measurementsDue, mondayOf, records, setsPerMuscle,
+  addDays, adherence, applyCalorieAdvice, effectiveTargets, estimate1RM, exerciseCurve, measurementsDue, mondayOf, records, setsPerMuscle,
   tonnage, weightAdvice,
 } from '@muscu/engine';
 import { dayMonth, num } from '../../lib/format';
@@ -133,7 +133,7 @@ function Body() {
   const [kg, setKg] = useState(last?.kg ?? p.weightKg);
   const lastM = measurements.at(-1);
   const [m, setM] = useState({ armCm: lastM?.armCm ?? 30, chestCm: lastM?.chestCm ?? 90, waistCm: lastM?.waistCm ?? 80, thighCm: lastM?.thighCm ?? 52 });
-  const advice = weightAdvice(weights, p.goal, today);
+  const advice = weightAdvice(weights, p.goal, today, { level: p.level, hardGainer: p.hardGainer });
   const t = effectiveTargets(p);
   const due = measurementsDue(lastM?.date, today);
   return (
@@ -158,8 +158,8 @@ function Body() {
               {' '}({advice.slope >= 0 ? '+' : ''}{num(advice.slope, 2)} kg par semaine, objectif {num(advice.range[0], 2)} à {num(advice.range[1], 2)}).
             </T>
             {advice.deltaKcal ? (
-              <Button label={`${advice.deltaKcal > 0 ? 'Ajouter' : 'Retirer'} 150 kcal (${num(t.kcal + advice.deltaKcal)} kcal)`}
-                onPress={() => saveProfile({ ...p, kcalTarget: t.kcal + advice.deltaKcal })} />
+              <Button label={`${advice.deltaKcal > 0 ? 'Ajouter' : 'Retirer'} ${Math.abs(advice.deltaKcal)} kcal (${num(applyCalorieAdvice(p, advice.deltaKcal).kcal)} kcal)`}
+                onPress={() => saveProfile({ ...p, kcalTarget: applyCalorieAdvice(p, advice.deltaKcal).kcal })} />
             ) : <T v="detail" color={colors.mute}>Garde ton objectif actuel ({num(t.kcal)} kcal).</T>}
           </>
         )}

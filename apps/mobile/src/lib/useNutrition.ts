@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { content } from '@muscu/content';
 import {
-  addDays, effectiveTargets, menuForDate, mondayOf, plannedMeals, rotationDays, withPriceOverrides,
+  addDays, effectiveTargets, mealCount, mealPlan, menuForDate, menuPrefsFor, mondayOf, plannedMeals, rotationDays, withPriceOverrides,
   type IsoDate, type MenuPrefs,
 } from '@muscu/engine';
 import { useApp, useProfile } from '../store/AppState';
@@ -12,14 +12,17 @@ export function useMenuPrefs(): MenuPrefs {
   const { recipePrefs } = useApp();
   return useMemo(() => {
     const ids = Object.entries(recipePrefs);
-    return {
-      budgetMode: p.budgetMode,
-      dietTags: p.dietTags,
-      excludedIngredients: p.excludedIngredients,
+    return menuPrefsFor(p, {
       excludedRecipes: ids.filter(([, v]) => v === 'excluded').map(([k]) => k),
       favoriteRecipes: ids.filter(([, v]) => v === 'favorite').map(([k]) => k),
-    };
-  }, [p.budgetMode, p.dietTags, p.excludedIngredients, recipePrefs]);
+    });
+  }, [p.budgetMode, p.dietTags, p.excludedIngredients, p.mealsPerDay, p.hardGainer, p.goal, p.maxCookMinutes, recipePrefs]);
+}
+
+/** Noms des prises de la journée (3 à 6 repas selon le profil). */
+export function useMealNames(): string[] {
+  const p = useProfile();
+  return mealPlan(mealCount(p)).names;
 }
 
 /** Repas prévus d'une date, portions ajustées à la cible du profil. */

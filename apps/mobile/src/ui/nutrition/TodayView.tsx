@@ -3,10 +3,10 @@ import { Pressable, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 import { content, programs } from '@muscu/content';
 import {
-  dayPlan, dayTotals, effectiveTargets, fr, lastDays, mealSplit, menuEntry, waterLiters,
+  dayPlan, dayTotals, effectiveTargets, lastDays, mealSplit, menuEntry, waterLiters,
 } from '@muscu/engine';
 import { DAY_INITIALS, num } from '../../lib/format';
-import { useDayMeals } from '../../lib/useNutrition';
+import { useDayMeals, useMealNames } from '../../lib/useNutrition';
 import { useApp, useProfile } from '../../store/AppState';
 import { colors, fonts, radius, space, type as typeScale } from '../../theme';
 import { Button } from '../Button';
@@ -29,6 +29,7 @@ export function TodayView() {
   const { today, food, water, addFood, deleteFood, setWater } = useApp();
   const t = effectiveTargets(p);
   const meals = useDayMeals(today);
+  const names = useMealNames();
   const got = dayTotals(food, today);
   const todays = food.filter((f) => f.date === today);
   const training = dayPlan(p, today)?.day.kind === 'training';
@@ -81,13 +82,13 @@ export function TodayView() {
             const eaten = todays.find((f) => f.menuSlot === m.slot);
             return (
               <View key={m.slot} style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.m, borderTopWidth: i ? 1 : 0, borderTopColor: colors.line }}>
-                <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: !!eaten }} aria-checked={!!eaten} accessibilityLabel={`${fr.mealSlots[m.slot]} mangé`}
+                <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: !!eaten }} aria-checked={!!eaten} accessibilityLabel={`${names[m.slot]} mangé`}
                   onPress={() => (eaten?.id ? deleteFood(eaten.id) : addFood(menuEntry(m, today, p.id)))}
                   style={{ width: 32, height: 32, borderRadius: 8, borderWidth: eaten ? 0 : 2, borderColor: colors.line, backgroundColor: eaten ? colors.neon : 'transparent', alignItems: 'center', justifyContent: 'center' }}>
                   {eaten ? <Icon name="check" size={18} color={colors.night} strokeWidth={3} /> : null}
                 </Pressable>
                 <Pressable style={{ flex: 1 }} accessibilityRole="button" onPress={() => router.push(`/recette/${m.recipe.id}?f=${m.factor}`)}>
-                  <T v="caption" color={colors.mute}>{fr.mealSlots[m.slot]}</T>
+                  <T v="caption" color={colors.mute}>{names[m.slot]}</T>
                   <T style={{ fontFamily: fonts.medium }}>{m.recipe.name}</T>
                 </Pressable>
                 <T v="detail" color={colors.mute}>{num(m.macros.kcal)} kcal</T>
@@ -181,9 +182,9 @@ export function TodayView() {
           </View>
           {tips ? (
             <View style={{ gap: space.s }}>
-              {mealSplit(t).map((m, i) => (
+              {mealSplit(t, names.length).map((m, i) => (
                 <View key={i} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <T v="detail">{fr.mealSlots[i]}</T>
+                  <T v="detail">{names[i]}</T>
                   <T v="detail" color={colors.mute}>{num(m.kcal)} kcal · {m.protein} g prot. · {m.carbs} g gluc. · {m.fat} g lip.</T>
                 </View>
               ))}

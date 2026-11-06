@@ -2,7 +2,7 @@ import { exerciseById, exercisesData, programs } from '@muscu/content';
 import { fr, PHASE_STARTS, type DayPlan, type Level, type Phase } from '@muscu/engine';
 import { colors } from '../theme';
 
-export const LEVEL: Record<Level, string> = { beginner: 'Débutant', advanced: 'Confirmé' };
+export const LEVEL: Record<Level, string> = { beginner: 'Sédentaire / débutant', intermediate: 'Intermédiaire', advanced: 'Avancé' };
 
 export function phaseRanges(level: Level): string[] {
   const [a, b] = PHASE_STARTS[level];
@@ -11,7 +11,7 @@ export function phaseRanges(level: Level): string[] {
 
 /** Nom de phase ; en niveau confirmé, la première s'appelle « Remise en route ». */
 export function phaseName(level: Level, phase: Phase): string {
-  return level === 'advanced' && phase === 0 ? 'Remise en route' : programs.phaseNames[phase]!;
+  return level !== 'beginner' && phase === 0 ? 'Remise en route' : programs.phaseNames[phase]!;
 }
 
 export function planLabel(plan: DayPlan): string {
