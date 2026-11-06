@@ -18,4 +18,34 @@ export const MIGRATIONS: string[] = [
      key TEXT PRIMARY KEY NOT NULL,
      value TEXT NOT NULL
    );`,
+  `CREATE TABLE IF NOT EXISTS exercise_log (
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     exercise TEXT NOT NULL,
+     cardio INTEGER NOT NULL DEFAULT 0,
+     sets TEXT NOT NULL,
+     PRIMARY KEY (profile_id, date, exercise)
+   );
+   CREATE TABLE IF NOT EXISTS check_in (
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     energy INTEGER NOT NULL,
+     soreness TEXT NOT NULL,
+     PRIMARY KEY (profile_id, date)
+   );
+   CREATE TABLE IF NOT EXISTS body_weight (
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     kg REAL NOT NULL,
+     PRIMARY KEY (profile_id, date)
+   );
+   CREATE TABLE IF NOT EXISTS measurements (
+     profile_id TEXT NOT NULL,
+     date TEXT NOT NULL,
+     arm_cm REAL NOT NULL,
+     chest_cm REAL NOT NULL,
+     waist_cm REAL NOT NULL,
+     thigh_cm REAL NOT NULL,
+     PRIMARY KEY (profile_id, date)
+   );`,
 ];

@@ -113,6 +113,7 @@ export function buildProfile(d: Draft, today: IsoDate, existing?: Profile, id: s
   if (sameBody && existing?.kcalTarget) p.kcalTarget = existing.kcalTarget;
   if (sameBody && existing?.proteinTarget) p.proteinTarget = existing.proteinTarget;
   if (existing?.supplements) p.supplements = existing.supplements;
+  if (existing?.oneRepMaxes) p.oneRepMaxes = existing.oneRepMaxes;
   return p;
 }
 
