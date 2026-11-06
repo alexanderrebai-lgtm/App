@@ -9,9 +9,9 @@
 | Droits | Visiteurs non connectés : aucun. Connectés : lecture, ajout, modification, suppression filtrées par RLS ; `TRUNCATE` retiré |
 | Appli | Branchée sur le projet (`apps/mobile/src/sync/config.ts`) |
 | Test d'intégration | 5 tests passés contre le serveur réel (envoi, isolation, lecture seule, co-édition, propriétaire non modifiable), comptes de test supprimés ensuite |
-| Connexion par code e-mail | **À finir** : il faut un service d'envoi d'e-mails (SMTP) |
+| Connexion par code e-mail | SMTP Brevo branché, e-mail en français avec le code à 6 chiffres (valable 10 minutes), connexion ouverte dans l'appli. Reste à vérifier la réception réelle |
 
-## Dernière étape : l'envoi des codes par e-mail
+## Envoi des codes par e-mail (fait)
 
 Sur l'offre gratuite, Supabase envoie au plus 2 e-mails par heure et n'autorise pas à modifier leur contenu ; son e-mail par défaut contient un lien, pas le code à 6 chiffres que l'appli demande.
 
@@ -36,3 +36,7 @@ Une ligne par profil (`profile_snapshot`) avec ses données au format de sauvega
 
 - Fusion entrée par entrée : la plus récente l'emporte ; une suppression faite sur un seul appareil peut réapparaître.
 - Synchronisation lancée à la main (bouton « Synchroniser maintenant »).
+
+## Délivrabilité
+
+L'expéditeur est une adresse Gmail envoyée par Brevo : certains fournisseurs classent ces e-mails en spam. Avant la publication, prendre un nom de domaine, l'authentifier dans Brevo (DKIM, DMARC) et changer l'adresse d'expéditeur dans Supabase.

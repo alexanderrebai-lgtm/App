@@ -13,4 +13,4 @@ export const syncConfigured = !!(SUPABASE_URL && SUPABASE_ANON_KEY);
  * Vrai quand le projet envoie les codes à 6 chiffres par e-mail (service SMTP branché et modèle d'e-mail
  * avec {{ .Token }}). Sur l'offre gratuite sans SMTP, Supabase envoie un lien au lieu d'un code.
  */
-export const emailCodeReady = false;
+export const emailCodeReady = true;
