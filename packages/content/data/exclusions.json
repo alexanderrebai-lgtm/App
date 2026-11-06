@@ -29,7 +29,8 @@
         "light-cream",
         "milk",
         "mozzarella",
-        "plain-yogurt"
+        "plain-yogurt",
+        "whole-milk"
       ]
     },
     {
@@ -62,6 +63,13 @@
         "soy-sauce",
         "wheat-tortilla",
         "wholemeal-bread"
+      ]
+    },
+    {
+      "id": "nuts",
+      "name": "Fruits à coque",
+      "ingredients": [
+        "almonds"
       ]
     }
   ]

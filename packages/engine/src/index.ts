@@ -11,4 +11,6 @@ export * from './review';
 export * from './backup';
 export * from './session';
 export * from './reminders';
+export * from './coaching';
+export * from './volume';
 export * as fr from './i18n/fr';

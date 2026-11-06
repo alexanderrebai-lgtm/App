@@ -9,8 +9,12 @@ import supplementsJson from '../data/supplements.json';
 import equipmentJson from '../data/equipment.json';
 import exclusionsJson from '../data/exclusions.json';
 import guideJson from '../data/guide.json';
+import evidenceJson from '../data/evidence.json';
+import healthJson from '../data/health.json';
+import coachingJson from '../data/coaching.json';
+import whyJson from '../data/why.json';
 import {
-  EquipmentFile, ExclusionsFile, GuideFile, ExercisesFile, IngredientsFile, MenusFile, NutritionFile, PricesFile, ProgramsFile,
+  CoachingFile, EquipmentFile, EvidenceFile, ExclusionsFile, GuideFile, HealthFile, WhyFile, ExercisesFile, IngredientsFile, MenusFile, NutritionFile, PricesFile, ProgramsFile,
   RecipesFile, SupplementsFile,
 } from './schema';
 
@@ -28,6 +32,10 @@ export const supplements = SupplementsFile.parse(supplementsJson);
 export const equipment = EquipmentFile.parse(equipmentJson);
 export const exclusions = ExclusionsFile.parse(exclusionsJson);
 export const guide = GuideFile.parse(guideJson);
+export const evidence = EvidenceFile.parse(evidenceJson);
+export const health = HealthFile.parse(healthJson);
+export const coaching = CoachingFile.parse(coachingJson);
+export const why = WhyFile.parse(whyJson);
 
 export const exerciseById = new Map(exercisesData.exercises.map((e) => [e.id, e]));
 export const ingredientById = new Map(ingredientsData.ingredients.map((i) => [i.id, i]));
@@ -44,6 +52,10 @@ export interface Content {
   supplements: typeof supplements;
   equipment: typeof equipment;
   exclusions: typeof exclusions;
+  evidence: typeof evidence;
+  health: typeof health;
+  coaching: typeof coaching;
+  why: typeof why;
 }
 
 export const content: Content = {
@@ -57,4 +69,8 @@ export const content: Content = {
   supplements,
   equipment,
   exclusions,
+  evidence,
+  health,
+  coaching,
+  why,
 };

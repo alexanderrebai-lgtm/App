@@ -64,6 +64,14 @@
     "cardio": [
       "caffeine",
       "omega3"
+    ],
+    "fatloss": [
+      "whey",
+      "omega3"
+    ],
+    "health": [
+      "omega3",
+      "vitaminD"
     ]
   },
   "usefulness": [
@@ -73,7 +81,9 @@
         "mass": "recommended",
         "strength": "recommended",
         "power": "recommended",
-        "cardio": "optional"
+        "cardio": "optional",
+        "fatloss": "optional",
+        "health": "optional"
       }
     },
     {
@@ -82,7 +92,9 @@
         "mass": "useful",
         "strength": "useful",
         "power": "useful",
-        "cardio": "useful"
+        "cardio": "useful",
+        "fatloss": "useful",
+        "health": "optional"
       }
     },
     {
@@ -91,7 +103,9 @@
         "mass": "useful",
         "strength": "useful",
         "power": "useful",
-        "cardio": "useful"
+        "cardio": "useful",
+        "fatloss": "useful",
+        "health": "useful"
       }
     },
     {
@@ -100,7 +114,9 @@
         "mass": "optional",
         "strength": "recommended",
         "power": "recommended",
-        "cardio": "recommended"
+        "cardio": "recommended",
+        "fatloss": "optional",
+        "health": "optional"
       }
     },
     {
@@ -109,7 +125,9 @@
         "mass": "useful",
         "strength": "useful",
         "power": "useful",
-        "cardio": "useful"
+        "cardio": "useful",
+        "fatloss": "useful",
+        "health": "useful"
       }
     },
     {
@@ -118,7 +136,9 @@
         "mass": "optional",
         "strength": "optional",
         "power": "optional",
-        "cardio": "optional"
+        "cardio": "optional",
+        "fatloss": "optional",
+        "health": "optional"
       }
     },
     {
@@ -127,7 +147,9 @@
         "mass": "optional",
         "strength": "optional",
         "power": "optional",
-        "cardio": "optional"
+        "cardio": "optional",
+        "fatloss": "optional",
+        "health": "optional"
       }
     },
     {
@@ -136,7 +158,9 @@
         "mass": "optional",
         "strength": "useless",
         "power": "optional",
-        "cardio": "optional"
+        "cardio": "optional",
+        "fatloss": "optional",
+        "health": "optional"
       }
     },
     {
@@ -145,7 +169,9 @@
         "mass": "useless",
         "strength": "useless",
         "power": "useless",
-        "cardio": "useful"
+        "cardio": "useful",
+        "fatloss": "useless",
+        "health": "useless"
       }
     },
     {
@@ -154,7 +180,9 @@
         "mass": "useless",
         "strength": "useless",
         "power": "useless",
-        "cardio": "useless"
+        "cardio": "useless",
+        "fatloss": "useless",
+        "health": "useless"
       }
     }
   ],
@@ -185,6 +213,17 @@
         "Oméga-3 : 500 mg à 1 g d’EPA + DHA par jour",
         "Efforts de plus de 60 min : eau + 30 à 60 g de glucides par heure",
         "Créatine et whey : facultatives pour ce programme"
+      ],
+      "fatloss": [
+        "Whey : 1 dosette (25–30 g) quand tu n’atteins pas tes {protein} g de protéines : c’est le complément le plus utile quand on mange moins",
+        "Oméga-3 : 500 mg à 1 g d’EPA + DHA par jour si tu manges peu de poisson gras",
+        "Café avant la séance si tu veux (optionnel), sans sucre",
+        "Les brûleurs de graisse ne servent à rien : c’est le déficit calorique qui fait le travail"
+      ],
+      "health": [
+        "Oméga-3 : 500 mg à 1 g d’EPA + DHA par jour si tu manges peu de poisson gras",
+        "Vitamine D en hiver : dose à valider avec ton médecin",
+        "Aucun autre complément n’est nécessaire : mange varié, dors 7 à 9 h"
       ]
     },
     "doses": [

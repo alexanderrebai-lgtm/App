@@ -1,15 +1,91 @@
 {
   "rotationWeeks": 4,
-  "mealShares": [
-    0.25,
-    0.3,
-    0.15,
-    0.3
-  ],
-  "slots": [
-    "Matin",
-    "Midi",
-    "Collation",
-    "Soir"
-  ]
+  "mealPlans": {
+    "3": {
+      "names": [
+        "Matin",
+        "Midi",
+        "Soir"
+      ],
+      "categories": [
+        "breakfast",
+        "main",
+        "main"
+      ],
+      "shares": [
+        0.3,
+        0.4,
+        0.3
+      ]
+    },
+    "4": {
+      "names": [
+        "Matin",
+        "Midi",
+        "Collation",
+        "Soir"
+      ],
+      "categories": [
+        "breakfast",
+        "main",
+        "snack",
+        "main"
+      ],
+      "shares": [
+        0.25,
+        0.3,
+        0.15,
+        0.3
+      ]
+    },
+    "5": {
+      "names": [
+        "Matin",
+        "Midi",
+        "Collation",
+        "Soir",
+        "Avant le coucher"
+      ],
+      "categories": [
+        "breakfast",
+        "main",
+        "snack",
+        "main",
+        "snack"
+      ],
+      "shares": [
+        0.22,
+        0.28,
+        0.12,
+        0.26,
+        0.12
+      ]
+    },
+    "6": {
+      "names": [
+        "Matin",
+        "Milieu de matinée",
+        "Midi",
+        "Collation",
+        "Soir",
+        "Avant le coucher"
+      ],
+      "categories": [
+        "breakfast",
+        "snack",
+        "main",
+        "snack",
+        "main",
+        "snack"
+      ],
+      "shares": [
+        0.2,
+        0.1,
+        0.25,
+        0.12,
+        0.25,
+        0.08
+      ]
+    }
+  }
 }

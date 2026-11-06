@@ -2,7 +2,7 @@ import {
   content as defaultContent, type Content, type GoalId, type Macros, type Recipe, type RecipeIngredient, type RecipeTag,
 } from '@muscu/content';
 import { addDays, diffDays, type IsoDate } from './dates';
-import type { FoodEntry, Profile, Sex } from './model';
+import type { FoodEntry, Level, Profile, Sex } from './model';
 
 const r5 = (x: number) => Math.round(x / 5) * 5;
 const SEX_CONSTANT: Record<Sex, number> = { male: 5, female: -161 };
@@ -24,14 +24,44 @@ export interface Targets extends Macros {
   maintenance: number;
 }
 
+export interface TargetOptions {
+  level?: Level;
+  /** Prise de masse difficile : surplus plus grand. */
+  hardGainer?: boolean;
+}
+
+/** Paramètres de l'objectif pour ce niveau : surplus ou déficit, variation de poids visée, protéines, lipides. */
+export function goalPlan(goal: GoalId, o: TargetOptions = {}, c: Content = defaultContent) {
+  const g = c.nutrition.goals[goal];
+  const level = o.level ?? 'beginner';
+  const hg = o.hardGainer && g.hardGainer ? g.hardGainer : null;
+  return {
+    kcalOffset: hg ? hg.kcalOffset[level] : g.byLevel[level].kcalOffset,
+    trendPct: hg ? hg.trendPct[level] : g.byLevel[level].trendPct,
+    proteinPerKg: hg ? hg.proteinPerKg : g.proteinPerKg,
+    fatPerKg: hg ? hg.fatPerKg : g.fatPerKg,
+    adjustKcal: hg ? hg.adjustKcal : c.coaching.calories.adjustKcal,
+    mealsPerDay: hg ? hg.mealsPerDay : 4,
+    hardGainer: !!hg,
+  };
+}
+
+/** Plancher de calories en déficit : jamais sous 1,15 × le métabolisme de base ni sous un minimum par sexe. */
+export function calorieFloor(p: Body, c: Content = defaultContent): number {
+  const f = c.nutrition.minKcal;
+  return Math.round(Math.max(bmr(p) * f.bmrFactor, f[p.sex]) / 50) * 50;
+}
+
 /**
- * Cibles du jour : C = 50 × round((M + S) / 50), S selon l'objectif.
+ * Cibles du jour : C = 50 × round((M + S) / 50), S selon l'objectif, le niveau et la difficulté à prendre du poids.
+ * En déficit, C ne descend jamais sous le plancher de calories (et n'est pas un déficit si l'entretien est déjà plus bas).
  * Protéines et lipides en g/kg arrondis à 5 g ; les glucides complètent.
  */
-export function targets(p: Body, goal: GoalId, c: Content = defaultContent): Targets {
-  const g = c.nutrition.goals[goal];
+export function targets(p: Body, goal: GoalId, o: TargetOptions = {}, c: Content = defaultContent): Targets {
+  const g = goalPlan(goal, o, c);
   const m = maintenance(p, c);
-  const kcal = Math.round((m + g.kcalOffset) / 50) * 50;
+  let kcal = Math.round((m + g.kcalOffset) / 50) * 50;
+  if (g.kcalOffset < 0) kcal = Math.max(kcal, Math.min(Math.round(m / 50) * 50, calorieFloor(p, c)));
   const protein = r5(g.proteinPerKg * p.weightKg);
   const fat = r5(g.fatPerKg * p.weightKg);
   const carbs = r5((kcal - 4 * protein - 9 * fat) / 4);
@@ -40,12 +70,21 @@ export function targets(p: Body, goal: GoalId, c: Content = defaultContent): Tar
 
 /** Cibles effectives : celles saisies par la personne priment sur le calcul. */
 export function effectiveTargets(p: Profile, c: Content = defaultContent): Targets {
-  const t = targets(p, p.goal, c);
+  const t = targets(p, p.goal, { level: p.level, hardGainer: p.hardGainer }, c);
   return { ...t, kcal: p.kcalTarget ?? t.kcal, protein: p.proteinTarget ?? t.protein };
 }
 
-export function mealSplit(t: Macros, c: Content = defaultContent): Macros[] {
-  return c.menus.mealShares.map((q) => ({
+/** Nombre de repas par jour : choisi, sinon 5 pour une prise de masse difficile, sinon 4. */
+export function mealCount(p: Pick<Profile, 'mealsPerDay' | 'hardGainer' | 'goal'>): number {
+  return p.mealsPerDay ?? (p.hardGainer && p.goal === 'mass' ? 5 : 4);
+}
+
+export function mealPlan(count: number, c: Content = defaultContent) {
+  return c.menus.mealPlans[String(Math.min(6, Math.max(3, count)))] ?? c.menus.mealPlans['4']!;
+}
+
+export function mealSplit(t: Macros, count = 4, c: Content = defaultContent): Macros[] {
+  return mealPlan(count, c).shares.map((q) => ({
     kcal: Math.round((t.kcal * q) / 10) * 10,
     protein: Math.round(t.protein * q),
     carbs: Math.round(t.carbs * q),
@@ -115,12 +154,8 @@ export function scaleQty(i: RecipeIngredient, f: number): number {
 
 // ---------- menus ----------
 
-export type Slot = 0 | 1 | 2 | 3;
-export const SLOTS: Slot[] = [0, 1, 2, 3];
-
+export type Slot = number;
 export type MealCategory = 'breakfast' | 'main' | 'snack';
-/** Catégorie de recette servie à chaque prise : matin, midi, collation, soir. */
-export const SLOT_CATEGORY: MealCategory[] = ['breakfast', 'main', 'snack', 'main'];
 
 export interface MenuPrefs {
   budgetMode: boolean;
@@ -130,44 +165,76 @@ export interface MenuPrefs {
   excludedRecipes?: string[];
   /** Plats favoris : ils reviennent deux fois plus souvent. */
   favoriteRecipes?: string[];
+  /** Nombre de repas par jour (3 à 6). */
+  meals?: number;
+  /** Temps de cuisine maximal par repas, en minutes. */
+  maxMinutes?: number;
+  /** Étiquettes préférées (« dense » pour la prise de masse difficile, « light » pour la perte de graisse) : elles reviennent plus souvent. */
+  preferTags?: RecipeTag[];
+}
+
+/** Préférences de menu déduites du profil (objectif, repas, temps de cuisine). */
+export function menuPrefsFor(
+  p: Pick<Profile, 'budgetMode' | 'dietTags' | 'excludedIngredients' | 'mealsPerDay' | 'hardGainer' | 'goal' | 'maxCookMinutes'>,
+  extra: Pick<MenuPrefs, 'excludedRecipes' | 'favoriteRecipes'> = {},
+): MenuPrefs {
+  return {
+    budgetMode: p.budgetMode, dietTags: p.dietTags, excludedIngredients: p.excludedIngredients, ...extra,
+    meals: mealCount(p), maxMinutes: p.maxCookMinutes,
+    preferTags: p.goal === 'fatloss' ? ['light'] : p.hardGainer && p.goal === 'mass' ? ['dense'] : [],
+  };
 }
 
 /**
- * Recettes possibles par catégorie : budget serré = recettes « budget », filtrées par
- * régime, allergies et plats exclus. Si un filtre vide une catégorie, on relâche
- * d'abord le budget, puis les plats exclus, pour toujours proposer un menu.
+ * Recettes possibles par catégorie : budget serré = recettes « budget », filtrées par régime, allergies,
+ * plats exclus et temps de cuisine. Si un filtre vide une catégorie, on relâche d'abord le budget,
+ * puis le temps de cuisine, puis les plats exclus, pour toujours proposer un menu.
  */
 export function recipePools(prefs: MenuPrefs, c: Content = defaultContent): Record<MealCategory, string[]> {
   const out = {} as Record<MealCategory, string[]>;
   const allowed = (r: Recipe) => recipeAllowed(r, prefs);
   const notExcluded = (r: Recipe) => !(prefs.excludedRecipes ?? []).includes(r.id);
+  const quick = (r: Recipe) => !prefs.maxMinutes || r.minutes <= prefs.maxMinutes;
+  const cheap = (r: Recipe) => !prefs.budgetMode || r.tags.includes('budget');
   for (const cat of ['breakfast', 'main', 'snack'] as const) {
     const ofCat = c.recipes.filter((r) => r.category === cat);
     const tries = [
-      ofCat.filter((r) => allowed(r) && notExcluded(r) && (!prefs.budgetMode || r.tags.includes('budget'))),
+      ofCat.filter((r) => allowed(r) && notExcluded(r) && cheap(r) && quick(r)),
+      ofCat.filter((r) => allowed(r) && notExcluded(r) && quick(r)),
+      ofCat.filter((r) => allowed(r) && notExcluded(r) && cheap(r)),
       ofCat.filter((r) => allowed(r) && notExcluded(r)),
       ofCat.filter(allowed),
       ofCat,
     ];
-    const pool = tries.find((t) => t.length >= (cat === 'main' ? 2 : 1))!.map((r) => r.id);
-    const fav = pool.filter((id) => (prefs.favoriteRecipes ?? []).includes(id));
-    out[cat] = [...pool, ...fav];
+    const pool = tries.find((t) => t.length >= (cat === 'main' ? 2 : 1))!;
+    const fav = new Set(prefs.favoriteRecipes ?? []);
+    const pref = new Set(prefs.preferTags ?? []);
+    const extra = pool.filter((r) => fav.has(r.id) || r.tags.some((t) => pref.has(t))).map((r) => r.id);
+    out[cat] = [...pool.map((r) => r.id), ...extra];
   }
   return out;
 }
 
 /**
- * Menu d'un jour de la rotation (semaine 0–3, jour 0–6) : matin, midi, collation, soir.
- * Les plats du midi et du soir se suivent dans la liste : jamais deux fois le même plat le même jour.
+ * Menu d'un jour de la rotation (semaine 0–3, jour 0–6), une recette par prise.
+ * Jamais deux fois la même recette le même jour.
  */
 export function menuForDay(week: number, day: number, prefs: MenuPrefs, c: Content = defaultContent): string[] {
   const n = week * 7 + day;
+  const plan = mealPlan(prefs.meals ?? 4, c);
   const P = recipePools(prefs, c);
-  const at = (a: string[], i: number) => a[i % a.length]!;
-  let lunch = at(P.main, 2 * n);
-  let dinner = at(P.main, 2 * n + 1);
-  if (lunch === dinner) dinner = at(P.main, 2 * n + 2);
-  return [at(P.breakfast, n), lunch, at(P.snack, 3 * n + 1), dinner];
+  const seen = { breakfast: 0, main: 0, snack: 0 };
+  const used = new Set<string>();
+  return plan.categories.map((cat) => {
+    const k = seen[cat]++;
+    const pool = P[cat];
+    const base = cat === 'breakfast' ? n + k : cat === 'main' ? 2 * n + k : 3 * n + 1 + k;
+    let i = base;
+    for (let tries = 0; tries < pool.length && used.has(pool[i % pool.length]!); tries++) i++;
+    const id = pool[i % pool.length]!;
+    used.add(id);
+    return id;
+  });
 }
 
 /** Changements de plats faits par la personne : clé « AAAA-MM-JJ|prise ». */
@@ -182,7 +249,8 @@ export function menuForDate(start: IsoDate, date: IsoDate, prefs: MenuPrefs, ove
 
 /** Plat suivant possible pour une prise (bouton « changer de plat »). */
 export function nextRecipe(current: string, slot: Slot, prefs: MenuPrefs, avoid: string[] = [], c: Content = defaultContent): string {
-  const pool = [...new Set(recipePools(prefs, c)[SLOT_CATEGORY[slot]!])];
+  const cat = mealPlan(prefs.meals ?? 4, c).categories[slot] ?? 'main';
+  const pool = [...new Set(recipePools(prefs, c)[cat])];
   const i = pool.indexOf(current);
   for (let k = 1; k <= pool.length; k++) {
     const cand = pool[(Math.max(0, i) + k) % pool.length]!;
@@ -208,8 +276,8 @@ export function plannedMeals(recipeIds: string[], dailyKcal: number, c: Content 
     const recipe = c.recipes.find((r) => r.id === id);
     if (!recipe) throw new Error(`Recette inconnue : ${id}`);
     const base = recipeMacros(recipe, c);
-    const factor = portionFactor(base.kcal, dailyKcal, c.menus.mealShares[slot]!);
-    return { slot: slot as Slot, recipe, factor, macros: scaleMacros(base, factor) };
+    const factor = portionFactor(base.kcal, dailyKcal, mealPlan(recipeIds.length, c).shares[slot]!);
+    return { slot, recipe, factor, macros: scaleMacros(base, factor) };
   });
 }
 
@@ -250,4 +318,39 @@ export function batchPlan(days: string[][], c: Content = defaultContent): { reci
     .map(([id, ds]) => ({ recipe: c.recipes.find((r) => r.id === id)!, portions: ds.length, days: [...new Set(ds)] }))
     .filter((x) => x.recipe?.tags.includes('batch') && x.portions >= 2)
     .sort((a, b) => b.portions - a.portions);
+}
+
+// ---------- calories supplémentaires (prise de masse difficile) ----------
+
+export interface Booster { ingredient: string; qty: number; unit: RecipeIngredient['unit']; label: string; kcal: number }
+
+/**
+ * Quand les portions (plafonnées à ×1,6) ne suffisent pas pour atteindre la cible, propose des ajouts
+ * caloriques simples (huile d'olive, beurre de cacahuète, lait entier…) jusqu'à couvrir l'écart.
+ */
+export function boostersFor(gapKcal: number, c: Content = defaultContent): { items: Booster[]; kcal: number } {
+  if (gapKcal < 100) return { items: [], kcal: 0 };
+  const all: Booster[] = c.why.hardGainer.boosters.map((b) => {
+    const ing = c.ingredients.ingredients.find((x) => x.id === b.ingredient)!;
+    const grams = b.unit === 'piece' ? b.qty * (ing.gramsPerUnit ?? 0) : b.qty;
+    return { ...b, kcal: Math.round((ing.per100g.kcal * grams) / 100) };
+  });
+  const items: Booster[] = [];
+  let kcal = 0;
+  for (let round = 0; round < 3 && kcal < gapKcal - 50; round++) {
+    for (const b of all) {
+      if (kcal >= gapKcal - 50) break;
+      items.push(b);
+      kcal += b.kcal;
+    }
+  }
+  return { items, kcal };
+}
+
+/** Un jour de menu : repas, total, écart avec la cible et ajouts proposés pour le combler. */
+export function plannedDay(recipeIds: string[], dailyKcal: number, c: Content = defaultContent) {
+  const meals = plannedMeals(recipeIds, dailyKcal, c);
+  const total = meals.reduce((a, m) => a + m.macros.kcal, 0);
+  const gap = Math.round(dailyKcal - total);
+  return { meals, total, gap, boosters: gap > 0 ? boostersFor(gap, c) : { items: [], kcal: 0 } };
 }

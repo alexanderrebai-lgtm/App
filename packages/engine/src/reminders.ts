@@ -1,7 +1,7 @@
 // Rappels locaux : le moteur calcule quoi rappeler et quand, l'appli les programme.
 import { content as defaultContent, type Content } from '@muscu/content';
 import type { Profile } from './model';
-import { WEEK_PATTERN } from './program';
+import { weekPattern } from './program';
 import { supplementsForDay } from './supplements';
 
 export interface Time { hour: number; minute: number }
@@ -34,9 +34,9 @@ export interface Reminder {
 const toNotifWeekday = (wd: number) => ((wd + 1) % 7) + 1;
 const MEALS = ['Petit-déjeuner', 'Déjeuner', 'Collation', 'Dîner'];
 
-export function reminderPlan(p: Pick<Profile, 'sessionsPerWeek' | 'goal' | 'supplements'>, s: ReminderSettings, c: Content = defaultContent): Reminder[] {
+export function reminderPlan(p: Pick<Profile, 'sessionsPerWeek' | 'goal' | 'supplements' | 'trainingDays'>, s: ReminderSettings, c: Content = defaultContent): Reminder[] {
   const out: Reminder[] = [];
-  const pattern = WEEK_PATTERN[p.sessionsPerWeek];
+  const pattern = weekPattern(p.sessionsPerWeek, p.trainingDays);
   if (s.sessions.on) {
     pattern.forEach((d, wd) => {
       if (d.kind !== 'training') return;

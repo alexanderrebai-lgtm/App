@@ -1,0 +1,17 @@
+{
+  "intro": "Six questions pour savoir si tu dois voir un médecin avant de commencer. Elles s’inspirent du questionnaire PAR-Q+ sans le remplacer. Tes réponses restent sur ton téléphone.",
+  "questions": [
+    { "id": "heart", "text": "Un médecin t’a-t-il déjà dit que tu avais un problème de cœur ou de tension, ou que tu ne devais faire du sport que sous surveillance médicale ?", "level": "doctor" },
+    { "id": "chest", "text": "As-tu une douleur dans la poitrine au repos, dans la vie courante ou quand tu fais un effort ?", "level": "doctor" },
+    { "id": "dizzy", "text": "As-tu perdu l’équilibre à cause d’un étourdissement, ou perdu connaissance, au cours des 12 derniers mois ?", "level": "doctor" },
+    { "id": "chronic", "text": "As-tu une maladie chronique (diabète, asthme, problème de thyroïde…) ou un traitement en cours ?", "level": "advice" },
+    { "id": "joints", "text": "As-tu une douleur d’os, d’articulation ou de dos qu’un effort pourrait aggraver ?", "level": "advice" },
+    { "id": "weight", "text": "As-tu perdu du poids sans le vouloir ces 3 derniers mois, es-tu enceinte ou as-tu accouché récemment ?", "level": "doctor" }
+  ],
+  "outcomes": {
+    "ok": { "title": "Tu peux commencer", "text": "Aucune réponse n’appelle d’avis médical. Commence doucement et arrête-toi en cas de douleur vive." },
+    "advice": { "title": "Un avis médical est conseillé", "text": "Une de tes réponses mérite d’être vue avec ton médecin, surtout si ton état a changé récemment. Tu peux commencer avec des charges légères et lui en parler." },
+    "doctor": { "title": "Parle à ton médecin avant de commencer", "text": "Une de tes réponses justifie un avis médical avant de t’entraîner. Élan peut attendre : tu peux garder ton programme et ne démarrer qu’après son accord." }
+  },
+  "underweight": "Ton IMC est inférieur à 18,5. Si tu manges déjà beaucoup sans prendre de poids, un bilan médical peut écarter une cause (thyroïde, digestion). Parle-en à ton médecin avant de viser une prise de poids."
+}

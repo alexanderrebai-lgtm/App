@@ -4,6 +4,8 @@ export interface Scheme {
   raw: string;
   /** Nombre de séries, 0 si la prescription n'est pas en séries (durée, tours…). */
   sets: number;
+  /** Bas de la fourchette de répétitions (0 si « max » ou absent). */
+  minReps: number;
   /** Haut de la fourchette de répétitions (0 si « max » ou absent). */
   topReps: number;
   /** Vrai pour les durées/distances : saisie en minutes et kilomètres. */
@@ -16,6 +18,7 @@ export function parseScheme(raw: string): Scheme {
   return {
     raw,
     sets: sets ? Number(sets[1]) : 0,
+    minReps: reps ? Number(reps[1]) : 0,
     topReps: reps ? Number(reps[2] ?? reps[1]) : 0,
     free: !raw.includes('×'),
   };

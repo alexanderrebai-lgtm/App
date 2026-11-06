@@ -3,7 +3,8 @@ import type { GoalId, RecipeTag, SupplementId } from '@muscu/content';
 import type { IsoDate } from './dates';
 
 export type Sex = 'male' | 'female';
-export type Level = 'beginner' | 'advanced';
+export type Level = 'beginner' | 'intermediate' | 'advanced';
+export type InjuryArea = 'shoulder' | 'knee' | 'lowerBack' | 'wrist' | 'elbow';
 export type SessionsPerWeek = 2 | 3 | 4;
 export type Feedback = 'easy' | 'good' | 'hard';
 export type Soreness = 'none' | 'light' | 'strong';
@@ -37,6 +38,24 @@ export interface Profile {
   supplements?: SupplementId[];
   /** Niveau confirmé : 1RM connus, par exercice (kg). */
   oneRepMaxes?: Record<string, number>;
+  /** Prise de masse : la personne prend difficilement du poids (surplus plus grand, 5 repas). */
+  hardGainer?: boolean;
+  /** Zones douloureuses : les exercices qui les sollicitent sont remplacés. */
+  injuries?: InjuryArea[];
+  /** Durée de séance disponible, en minutes (la séance est raccourcie pour y tenir). */
+  sessionMinutes?: 30 | 45 | 60 | 90;
+  /** Jours d'entraînement choisis (0 = lundi … 5 = samedi), autant que de séances par semaine. */
+  trainingDays?: number[];
+  /** Plus lourd haltère disponible, en kg : au-delà, on progresse autrement (répétitions, tempo). */
+  maxDumbbellKg?: number;
+  /** Nombre de repas par jour (3 à 6) ; 4 par défaut, 5 pour la prise de masse difficile. */
+  mealsPerDay?: 3 | 4 | 5 | 6;
+  /** Temps de cuisine maximal par repas, en minutes. */
+  maxCookMinutes?: 15 | 30 | 45;
+  /** Questionnaire de santé passé à l'inscription. */
+  health?: { date: IsoDate; answers: Record<string, boolean>; outcome: 'ok' | 'advice' | 'doctor' };
+  /** Semaines allégées décidées par la personne : vrai = allégée, faux = normale, par numéro de semaine (0…25). */
+  deloadOverrides?: Record<number, boolean>;
 }
 
 /** Une série réalisée. Pour le cardio : kg = minutes, reps = kilomètres. */
@@ -92,7 +111,7 @@ export interface FoodEntry {
   carbs?: number;
   fat?: number;
   /** Repas du menu coché (0 matin, 1 midi, 2 collation, 3 soir). */
-  menuSlot?: 0 | 1 | 2 | 3;
+  menuSlot?: number;
 }
 
 export interface SupplementLog { profileId: string; date: IsoDate; supplement: SupplementId; taken: boolean }

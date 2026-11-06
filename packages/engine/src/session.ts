@@ -56,12 +56,16 @@ export interface StartOptions {
   now: number;
   /** Niveau confirmé : 1RM connus par exercice. */
   oneRepMaxes?: Record<string, number>;
+  /** Plus lourd haltère disponible (kg) : au-delà, on ajoute des répétitions plutôt que de la charge. */
+  maxDumbbellKg?: number;
+  content?: Content;
 }
 
-function prepare(p: Prescription, o: Pick<StartOptions, 'plan' | 'history' | 'lowReadiness' | 'oneRepMaxes'>, planned = p.exercise): SessionExercise {
+function prepare(p: Prescription, o: Pick<StartOptions, 'plan' | 'history' | 'lowReadiness' | 'oneRepMaxes' | 'maxDumbbellKg'>, planned = p.exercise, c: Content = defaultContent): SessionExercise {
   const scheme = parseScheme(p.scheme);
   const last = lastLog(o.history, p.exercise, o.plan.date);
-  const sug = suggestLoad(last, scheme);
+  const isDumbbell = c.exercises.exercises.find((e) => e.id === p.exercise)?.equipment === 'dumbbell';
+  const sug = suggestLoad(last, scheme, { maxKg: isDumbbell ? o.maxDumbbellKg : undefined });
   let kg = sug.kg;
   const orm = o.oneRepMaxes?.[p.exercise];
   if (kg === null && orm && scheme.topReps) kg = workingLoad(orm, scheme.topReps, 2);
@@ -85,7 +89,7 @@ function load(s: SessionState): SessionState {
 }
 
 export function startSession(o: StartOptions, label: string): SessionState {
-  const exercises = o.plan.items.map((p) => prepare(p, o));
+  const exercises = o.plan.items.map((p) => prepare(p, o, p.exercise, o.content));
   return load({
     date: o.plan.date, goal: o.goal, label, startedAt: o.now, phase: exercises.length ? 'intro' : 'done', index: 0,
     exercises, kg: 0, reps: 0, feedback: 'good', rir: null, restEndsAt: 0, restTotal: 0,

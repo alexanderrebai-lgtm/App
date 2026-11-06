@@ -25,7 +25,7 @@ describe('séance guidée', () => {
   it('préremplit avec la dernière séance et propose +2,5 kg si le haut de fourchette est atteint', () => {
     const history: ExerciseLog[] = [{ profileId: 'p1', date: '2026-01-01', exercise: 'developpe-couche-halteres', sets: [{ kg: 20, reps: 12 }, { kg: 20, reps: 12 }] }];
     const s = session({ history });
-    expect([s.kg, s.reps]).toEqual([22.5, 12]);
+    expect([s.kg, s.reps]).toEqual([22.5, 10]); // repart du bas de la fourchette
   });
 
   it('Facile / Bien / Dur règle la série suivante, puis repos automatique', () => {

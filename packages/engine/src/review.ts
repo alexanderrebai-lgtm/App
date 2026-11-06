@@ -154,7 +154,7 @@ export function weeklyReview(
       current: cur, previous: pre,
       cigarettes: trend(cur.cigarettes, pre.cigarettes), drinks: trend(cur.drinks, pre.drinks),
     },
-    calorieAdvice: weightAdvice(data.weights, p.goal, lastDay < today ? lastDay : today, c),
+    calorieAdvice: weightAdvice(data.weights, p.goal, lastDay < today ? lastDay : today, { level: p.level, hardGainer: p.hardGainer }, c),
     tips,
   };
 }

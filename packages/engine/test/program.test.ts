@@ -57,7 +57,12 @@ describe('séances identiques au prototype', () => {
               const date = addDays(START, d);
               const mine = dayPlan(p, date)!;
               const theirs = P.sess(date);
-              expect(mine.items.map((i) => [nameOf(i.exercise), i.scheme])).toEqual(theirs.l.map((x: string[]) => [x[0], x[1]]));
+              const got = mine.items.map((i) => [nameOf(i.exercise), i.scheme]);
+              const want = theirs.l.map((x: string[]) => [x[0], x[1]]);
+              // niveau confirmé : le complément de volume ajoute des exercices d'appoint en plus de ceux du prototype
+              const key = (x: string[]) => x.join('|');
+              const base = new Set(want.map(key));
+              expect(lv ? got.filter((x: string[]) => base.has(key(x))) : got).toEqual(want);
               expect(fr.sessionLabels[mine.label]).toBe(theirs.lab);
               expect([mine.week, mine.phase, mine.deload]).toEqual([theirs.i.w, theirs.i.ph, theirs.i.dl]);
             }

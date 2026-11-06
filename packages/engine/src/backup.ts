@@ -20,7 +20,7 @@ const ProfileSchema = z.object({
   age: z.number().int().positive(),
   goal: GoalId,
   sessionsPerWeek: z.union([z.literal(2), z.literal(3), z.literal(4)]),
-  level: z.enum(['beginner', 'advanced']),
+  level: z.enum(['beginner', 'intermediate', 'advanced']),
   startDate: Iso,
   firstUseDate: Iso,
   equipment: z.enum(['gym', 'home']),
@@ -33,6 +33,15 @@ const ProfileSchema = z.object({
   proteinTarget: z.number().positive().optional(),
   supplements: z.array(SupplementId).optional(),
   oneRepMaxes: z.record(z.string(), z.number().positive()).optional(),
+  hardGainer: z.boolean().optional(),
+  injuries: z.array(z.enum(['shoulder', 'knee', 'lowerBack', 'wrist', 'elbow'])).optional(),
+  sessionMinutes: z.union([z.literal(30), z.literal(45), z.literal(60), z.literal(90)]).optional(),
+  trainingDays: z.array(z.number().int().min(0).max(5)).optional(),
+  maxDumbbellKg: z.number().positive().optional(),
+  mealsPerDay: z.union([z.literal(3), z.literal(4), z.literal(5), z.literal(6)]).optional(),
+  maxCookMinutes: z.union([z.literal(15), z.literal(30), z.literal(45)]).optional(),
+  health: z.object({ date: Iso, answers: z.record(z.string(), z.boolean()), outcome: z.enum(['ok', 'advice', 'doctor']) }).optional(),
+  deloadOverrides: z.record(z.string(), z.boolean()).optional(),
 });
 
 const pid = { profileId: z.string(), date: Iso };
@@ -62,13 +71,13 @@ export const BackupSchema = z.object({
   food: z.array(z.object({
     ...pid, name: z.string(), kcal: z.number(), protein: z.number(),
     carbs: z.number().optional(), fat: z.number().optional(),
-    menuSlot: z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3)]).optional(),
+    menuSlot: z.number().int().min(0).max(5).optional(),
   })),
   supplements: z.array(z.object({ ...pid, supplement: SupplementId, taken: z.boolean() })),
   life: z.array(z.object({ ...pid, cigarettes: z.number().int().min(0), drinks: z.number().int().min(0) })),
   pantry: z.array(z.object({ profileId: z.string(), ingredient: z.string(), owned: z.boolean() })),
   water: z.array(z.object({ ...pid, ml: z.number().min(0) })).default([]),
-  menuOverrides: z.array(z.object({ ...pid, slot: z.number().int().min(0).max(3), recipeId: z.string() })).default([]),
+  menuOverrides: z.array(z.object({ ...pid, slot: z.number().int().min(0).max(5), recipeId: z.string() })).default([]),
   recipePrefs: z.array(z.object({ profileId: z.string(), recipeId: z.string(), pref: z.enum(['favorite', 'excluded']) })).default([]),
   priceOverrides: z.record(z.string(), z.union([z.object({ perKg: z.number().min(0) }), z.object({ perUnit: z.number().min(0) })])).default({}),
 });
@@ -228,7 +237,7 @@ function fromPrototype(s: z.infer<typeof PrototypeSchema>, opts: PrototypeImport
       for (const f of a) {
         b.food.push({
           profileId, date, name: f.n, kcal: f.k, protein: f.p ?? 0,
-          ...(f.m != null && f.m >= 0 && f.m <= 3 ? { menuSlot: f.m as 0 | 1 | 2 | 3 } : {}),
+          ...(f.m != null && f.m >= 0 && f.m <= 5 ? { menuSlot: f.m } : {}),
         });
       }
     }

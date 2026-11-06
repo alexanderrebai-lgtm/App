@@ -1,10 +1,17 @@
 import { z } from 'zod';
 
-export const GoalId = z.enum(['mass', 'strength', 'power', 'cardio']);
+export const GoalId = z.enum(['mass', 'strength', 'power', 'cardio', 'fatloss', 'health']);
 export type GoalId = z.infer<typeof GoalId>;
 
 /** Objet avec une entrée obligatoire par objectif (z.record rendrait les clés optionnelles). */
-const byGoal = <T extends z.ZodTypeAny>(s: T) => z.object({ mass: s, strength: s, power: s, cardio: s });
+const byGoal = <T extends z.ZodTypeAny>(s: T) => z.object({ mass: s, strength: s, power: s, cardio: s, fatloss: s, health: s });
+
+export const LevelId = z.enum(['beginner', 'intermediate', 'advanced']);
+export type LevelId = z.infer<typeof LevelId>;
+const byLevel = <T extends z.ZodTypeAny>(s: T) => z.object({ beginner: s, intermediate: s, advanced: s });
+
+export const Joint = z.enum(['shoulder', 'knee', 'lowerBack', 'wrist', 'elbow']);
+export type Joint = z.infer<typeof Joint>;
 
 export const Muscle = z.enum([
   'chest', 'back', 'shoulders', 'biceps', 'triceps', 'quads', 'hamstrings', 'glutes',
@@ -22,6 +29,10 @@ export const Exercise = z.object({
   kind: z.enum(['strength', 'power', 'core', 'cardio', 'mobility']),
   muscles: z.array(Muscle).min(1),
   equipment: Equipment,
+  /** Rôle dans la séance : exercice de base, ciblé, gainage… */
+  role: z.enum(['compound', 'isolation', 'core', 'power', 'cardio', 'mobility']),
+  /** Articulations fortement sollicitées (pour adapter la séance aux blessures). */
+  joints: z.array(Joint),
   technique: z.string().optional(),
 });
 export type Exercise = z.infer<typeof Exercise>;
@@ -90,7 +101,7 @@ export const RecipeIngredient = z.object({
 });
 export type RecipeIngredient = z.infer<typeof RecipeIngredient>;
 
-export const RecipeTag = z.enum(['budget', 'noPork', 'vegetarian', 'batch', 'freezable']);
+export const RecipeTag = z.enum(['budget', 'noPork', 'vegetarian', 'batch', 'freezable', 'dense', 'light']);
 export type RecipeTag = z.infer<typeof RecipeTag>;
 
 export const Recipe = z.object({
@@ -109,10 +120,15 @@ export type Recipe = z.infer<typeof Recipe>;
 
 export const RecipesFile = z.object({ recipes: z.array(Recipe) });
 
+export const MealPlan = z.object({
+  names: z.array(z.string()).min(3),
+  categories: z.array(z.enum(['breakfast', 'main', 'snack'])).min(3),
+  shares: z.array(z.number()).min(3),
+});
 export const MenusFile = z.object({
   rotationWeeks: z.number().int().positive(),
-  mealShares: z.array(z.number()).length(4),
-  slots: z.array(z.string()).length(4),
+  /** Plans de repas : clé = nombre de prises par jour (3 à 6). */
+  mealPlans: z.record(z.string(), MealPlan),
 });
 export type MenusFile = z.infer<typeof MenusFile>;
 
@@ -138,15 +154,26 @@ export const PricesFile = z.object({
 });
 export type PricesFile = z.infer<typeof PricesFile>;
 
+const LevelPlan = z.object({ kcalOffset: z.number(), trendPct: z.tuple([z.number(), z.number()]) });
 export const NutritionFile = z.object({
   activityFactor: z.number(),
   waterLitersPerKg: z.number(),
   waterTrainingBonusL: z.number(),
+  minKcal: z.object({ male: z.number(), female: z.number(), bmrFactor: z.number() }),
   goals: byGoal(z.object({
-    kcalOffset: z.number(),
     proteinPerKg: z.number(),
     fatPerKg: z.number(),
-    weightTrendKgPerWeek: z.tuple([z.number(), z.number()]),
+    /** Surplus ou déficit (kcal/jour) et variation de poids visée (% du poids par semaine), par niveau. */
+    byLevel: byLevel(LevelPlan),
+    /** Prise de masse difficile : surplus plus grand, 5 repas, ajustement de 200 kcal. */
+    hardGainer: z.object({
+      kcalOffset: byLevel(z.number()),
+      trendPct: byLevel(z.tuple([z.number(), z.number()])),
+      proteinPerKg: z.number(),
+      fatPerKg: z.number(),
+      adjustKcal: z.number(),
+      mealsPerDay: z.number(),
+    }).optional(),
   })),
   quickFoods: z.array(z.object({ name: z.string(), kcal: z.number(), protein: z.number(), carbs: z.number(), fat: z.number() })),
 });
@@ -200,3 +227,66 @@ export const GuideFile = z.object({
   warmup: z.object({ title: z.string(), steps: z.array(z.string()).min(1) }),
   glossary: z.array(z.object({ term: z.string(), text: z.string() })).min(1),
 });
+
+const Confidence = z.enum(['élevée', 'moyenne', 'faible']);
+export const EvidenceFile = z.object({
+  note: z.string(),
+  items: z.array(z.object({
+    id: z.string(), topic: z.string(), claim: z.string(),
+    source: z.object({ title: z.string(), url: z.string().url() }),
+    type: z.string(), confidence: Confidence, limit: z.string(),
+  })).min(1),
+});
+export type EvidenceFile = z.infer<typeof EvidenceFile>;
+
+export const HealthFile = z.object({
+  intro: z.string(),
+  questions: z.array(z.object({ id: z.string(), text: z.string(), level: z.enum(['advice', 'doctor']) })).min(1),
+  outcomes: z.object({
+    ok: z.object({ title: z.string(), text: z.string() }),
+    advice: z.object({ title: z.string(), text: z.string() }),
+    doctor: z.object({ title: z.string(), text: z.string() }),
+  }),
+  underweight: z.string(),
+});
+export type HealthFile = z.infer<typeof HealthFile>;
+
+const Range = z.tuple([z.number(), z.number()]);
+export const CoachingFile = z.object({
+  levels: byLevel(z.object({ name: z.string(), text: z.string(), phaseStarts: Range, recommendedSessions: Range })),
+  volumeSetsPerWeek: z.object({ default: byLevel(Range), strength: byLevel(Range), health: byLevel(Range), fatloss: byLevel(Range) }),
+  volumeMuscles: z.array(Muscle),
+  /** Muscles évalués par rapport à la cible (les autres sont seulement affichés). */
+  volumeEvaluated: z.array(Muscle),
+  /** Petits muscles : cible réduite (ils travaillent aussi en indirect). */
+  volumeSmallMuscles: z.object({ muscles: z.array(Muscle), low: z.number(), high: z.number() }),
+  volumePriority: z.array(Muscle),
+  /** Complément de volume pour les niveaux intermédiaire et avancé, à partir de cette phase (0, 1 ou 2). */
+  topUpFromPhase: z.number().int().min(0).max(2),
+  topUpMaxPerSession: z.number().int().positive(),
+  accessories: z.record(z.string(), z.array(Prescription)),
+  session: z.object({ setSeconds: z.number(), transitionSeconds: z.number(), warmupMinutes: z.number(), minExercises: z.number(), freeMinutesDefault: z.number() }),
+  progression: z.object({ microStepKg: z.number(), microBelowKg: z.number(), stepKg: z.number(), plateauSessions: z.number(), plateauMinGainPct: z.number() }),
+  deload: z.object({
+    fatigueEnergyBelow: z.number(), hardShareAbove: z.number(), windowDays: z.number(),
+    maxWeeksWithoutDeload: byLevel(z.number()), minWeeksBetween: z.number(),
+  }),
+  calories: z.object({ adjustKcal: z.number(), belowToleranceKg: z.number(), aboveToleranceKg: z.number() }),
+  plyoContactsMax: z.number(),
+});
+export type CoachingFile = z.infer<typeof CoachingFile>;
+
+export const WhyFile = z.object({
+  roles: z.record(z.string(), z.object({ label: z.string(), text: z.string() })),
+  zones: z.array(z.object({ id: z.string(), min: z.number(), max: z.number(), label: z.string(), text: z.string(), restText: z.string() })),
+  rirByPhase: z.array(z.string()).length(3),
+  phaseWhy: z.array(z.string()).length(3),
+  goals: byGoal(z.object({ training: z.string(), nutrition: z.string(), evidence: z.array(z.string()) })),
+  hardGainer: z.object({
+    title: z.string(), intro: z.string(),
+    tips: z.array(z.object({ text: z.string(), evidence: z.array(z.string()) })),
+    boosters: z.array(z.object({ ingredient: z.string(), qty: z.number(), unit: Unit, label: z.string() })),
+  }),
+  fatLoss: z.object({ title: z.string(), tips: z.array(z.string()) }),
+});
+export type WhyFile = z.infer<typeof WhyFile>;

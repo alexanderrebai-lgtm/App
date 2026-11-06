@@ -63,6 +63,38 @@
         "after": "20–30 g de protéines + glucides + eau dans l’heure. Sorties de plus de 60 min : bois pendant l’effort et ajoute 30–60 g de glucides par heure.",
         "adjust": "Poids qui baisse 2 semaines de suite : +150 kcal."
       }
+    },
+    "fatloss": {
+      "name": "Perte de graisse",
+      "icon": "🔥",
+      "description": "Perdre du gras en gardant ton muscle : musculation complète, un peu de cardio en fin de séance et un déficit calorique modéré.",
+      "weightGoalText": "perte visée : 0,3 à 0,8 % du poids par semaine",
+      "phaseTexts": [
+        "Apprendre : 2–3 séries de 10–12 reps, 3–4 reps en réserve, marche rapide en fin de séance",
+        "Progresser : 3–4 séries de 8–12 reps, vélo ou rameur en fin de séance",
+        "Intensifier : charges plus lourdes pour garder ton muscle, fractionné doux en fin de séance"
+      ],
+      "nutritionNotes": {
+        "before": "1 à 2 h avant : protéines et féculents légers (œufs et pain, yaourt et flocons). Pas de séance à jeun si tu te sens faible.",
+        "after": "25 à 35 g de protéines dans les 2 h, avec des légumes : tu restes rassasié pour peu de calories.",
+        "adjust": "Poids stable 2 semaines : −150 kcal. Perte de plus de 1 % du poids par semaine : mange un peu plus, tu perdrais du muscle."
+      }
+    },
+    "health": {
+      "name": "Forme générale et santé",
+      "icon": "🌿",
+      "description": "Te sentir bien, mieux respirer, garder un corps solide : 2 à 3 séries par exercice, du cardio doux et des calories d’entretien.",
+      "weightGoalText": "poids stable (à ±0,25 kg par semaine)",
+      "phaseTexts": [
+        "Apprendre : 2 séries de 10–12 reps, 3–4 reps en réserve, marche en fin de séance",
+        "Progresser : 3 séries de 10–12 reps, vélo ou rameur doux en fin de séance",
+        "Entretenir : 3 séries de 8–12 reps, 150 minutes d’activité par semaine au total"
+      ],
+      "nutritionNotes": {
+        "before": "1 à 2 h avant : un repas léger avec des féculents. Bois un verre d’eau.",
+        "after": "Un repas équilibré dans les 2 h : protéines, féculents, légumes.",
+        "adjust": "Poids stable : garde ton objectif. Si tu perds ou prends plus de 0,5 kg par semaine sans le vouloir, l’appli ajuste de 150 kcal."
+      }
     }
   },
   "phaseNames": [
@@ -1155,6 +1187,646 @@
           {
             "exercise": "marche-rapide-retour-au-calme",
             "scheme": "10 min"
+          }
+        ]
+      ]
+    ],
+    "fatloss": [
+      [
+        [
+          {
+            "exercise": "developpe-couche-halteres",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "tirage-vertical-poulie",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "developpe-epaules-halteres",
+            "scheme": "2×10–12"
+          },
+          {
+            "exercise": "rowing-poulie-assis",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "curl-biceps-halteres",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "10 min"
+          }
+        ],
+        [
+          {
+            "exercise": "presse-a-cuisses",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "pont-fessier",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "leg-curl-machine",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "mollets-debout",
+            "scheme": "2×15"
+          },
+          {
+            "exercise": "planche",
+            "scheme": "3×20–30 s"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "10 min"
+          }
+        ],
+        [
+          {
+            "exercise": "pompes-sur-genoux-si-besoin",
+            "scheme": "3×8–12"
+          },
+          {
+            "exercise": "rowing-haltere-un-bras",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "elevations-laterales",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "extension-triceps-poulie",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "face-pull",
+            "scheme": "2×15"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "10 min"
+          }
+        ],
+        [
+          {
+            "exercise": "squat-goblet",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "fentes-marchees",
+            "scheme": "2×10 par jambe"
+          },
+          {
+            "exercise": "leg-extension",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "superman-au-sol",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "crunch",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "10 min"
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "exercise": "developpe-couche-halteres",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "tirage-poitrine-prise-serree",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "developpe-militaire-halteres",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "rowing-buste-appuye",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "curl-marteau",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "velo-ou-rameur-regulier",
+            "scheme": "12 min"
+          }
+        ],
+        [
+          {
+            "exercise": "presse-a-cuisses",
+            "scheme": "4×8–12"
+          },
+          {
+            "exercise": "hip-thrust",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "leg-curl-machine",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "mollets-assis",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "dead-bug",
+            "scheme": "3×8 par côté"
+          },
+          {
+            "exercise": "velo-ou-rameur-regulier",
+            "scheme": "12 min"
+          }
+        ],
+        [
+          {
+            "exercise": "developpe-incline-halteres",
+            "scheme": "3×8–12"
+          },
+          {
+            "exercise": "tirage-horizontal-poulie",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "elevations-laterales",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "dips-sur-banc",
+            "scheme": "3×8–12"
+          },
+          {
+            "exercise": "oiseau-arriere-d-epaule",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "velo-ou-rameur-regulier",
+            "scheme": "12 min"
+          }
+        ],
+        [
+          {
+            "exercise": "squat-goblet",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "fentes-bulgares",
+            "scheme": "3×8 par jambe"
+          },
+          {
+            "exercise": "extension-lombaire-a-45",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "planche-laterale",
+            "scheme": "3×20–30 s"
+          },
+          {
+            "exercise": "releve-de-jambes",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "velo-ou-rameur-regulier",
+            "scheme": "12 min"
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "exercise": "developpe-couche-barre",
+            "scheme": "4×6–8"
+          },
+          {
+            "exercise": "tractions-assistees",
+            "scheme": "4×6–10"
+          },
+          {
+            "exercise": "developpe-militaire-barre",
+            "scheme": "3×6–8"
+          },
+          {
+            "exercise": "rowing-t-bar",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "curl-barre-ez",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "fractionne-doux-1-min-rapide-2-min-lent",
+            "scheme": "6 rép."
+          }
+        ],
+        [
+          {
+            "exercise": "presse-a-cuisses",
+            "scheme": "4×6–8"
+          },
+          {
+            "exercise": "hip-thrust-barre",
+            "scheme": "4×8"
+          },
+          {
+            "exercise": "leg-curl-machine",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "mollets-debout",
+            "scheme": "4×10–12"
+          },
+          {
+            "exercise": "planche",
+            "scheme": "3×30–45 s"
+          },
+          {
+            "exercise": "fractionne-doux-1-min-rapide-2-min-lent",
+            "scheme": "6 rép."
+          }
+        ],
+        [
+          {
+            "exercise": "developpe-incline-barre",
+            "scheme": "4×6–8"
+          },
+          {
+            "exercise": "dips-lestes",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "tirage-vertical-prise-neutre",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "elevations-laterales",
+            "scheme": "4×12–15"
+          },
+          {
+            "exercise": "barre-au-front",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "fractionne-doux-1-min-rapide-2-min-lent",
+            "scheme": "6 rép."
+          }
+        ],
+        [
+          {
+            "exercise": "squat-goblet-lourd",
+            "scheme": "4×6–8"
+          },
+          {
+            "exercise": "pull-through-poulie",
+            "scheme": "3×12"
+          },
+          {
+            "exercise": "fentes-marchees-lestees",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "extension-lombaire-lestee",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "releve-de-jambes-suspendu",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "fractionne-doux-1-min-rapide-2-min-lent",
+            "scheme": "6 rép."
+          }
+        ]
+      ]
+    ],
+    "health": [
+      [
+        [
+          {
+            "exercise": "developpe-couche-halteres",
+            "scheme": "2×10–12"
+          },
+          {
+            "exercise": "tirage-vertical-poulie",
+            "scheme": "2×10–12"
+          },
+          {
+            "exercise": "developpe-epaules-halteres",
+            "scheme": "2×10–12"
+          },
+          {
+            "exercise": "rowing-poulie-assis",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "curl-biceps-halteres",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "10 min"
+          }
+        ],
+        [
+          {
+            "exercise": "presse-a-cuisses",
+            "scheme": "2×10–12"
+          },
+          {
+            "exercise": "pont-fessier",
+            "scheme": "2×12–15"
+          },
+          {
+            "exercise": "leg-curl-machine",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "mollets-debout",
+            "scheme": "2×15"
+          },
+          {
+            "exercise": "planche",
+            "scheme": "2×20–30 s"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "10 min"
+          }
+        ],
+        [
+          {
+            "exercise": "pompes-sur-genoux-si-besoin",
+            "scheme": "2×8–12"
+          },
+          {
+            "exercise": "rowing-haltere-un-bras",
+            "scheme": "2×10–12"
+          },
+          {
+            "exercise": "elevations-laterales",
+            "scheme": "2×12–15"
+          },
+          {
+            "exercise": "extension-triceps-poulie",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "face-pull",
+            "scheme": "2×15"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "10 min"
+          }
+        ],
+        [
+          {
+            "exercise": "squat-goblet",
+            "scheme": "2×10–12"
+          },
+          {
+            "exercise": "fentes-marchees",
+            "scheme": "2×10 par jambe"
+          },
+          {
+            "exercise": "leg-extension",
+            "scheme": "2×12"
+          },
+          {
+            "exercise": "superman-au-sol",
+            "scheme": "2×10"
+          },
+          {
+            "exercise": "crunch",
+            "scheme": "2×12–15"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "10 min"
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "exercise": "developpe-couche-halteres",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "tirage-poitrine-prise-serree",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "developpe-militaire-halteres",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "rowing-buste-appuye",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "curl-marteau",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "15 min"
+          }
+        ],
+        [
+          {
+            "exercise": "presse-a-cuisses",
+            "scheme": "3×8–12"
+          },
+          {
+            "exercise": "hip-thrust",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "leg-curl-machine",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "mollets-assis",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "dead-bug",
+            "scheme": "3×8 par côté"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "15 min"
+          }
+        ],
+        [
+          {
+            "exercise": "developpe-incline-halteres",
+            "scheme": "3×8–12"
+          },
+          {
+            "exercise": "tirage-horizontal-poulie",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "elevations-laterales",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "dips-sur-banc",
+            "scheme": "3×8–12"
+          },
+          {
+            "exercise": "oiseau-arriere-d-epaule",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "15 min"
+          }
+        ],
+        [
+          {
+            "exercise": "squat-goblet",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "fentes-bulgares",
+            "scheme": "3×8 par jambe"
+          },
+          {
+            "exercise": "extension-lombaire-a-45",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "planche-laterale",
+            "scheme": "3×20–30 s"
+          },
+          {
+            "exercise": "releve-de-jambes",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "marche-rapide",
+            "scheme": "15 min"
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "exercise": "developpe-couche-barre",
+            "scheme": "3×6–8"
+          },
+          {
+            "exercise": "tractions-assistees",
+            "scheme": "3×6–10"
+          },
+          {
+            "exercise": "developpe-militaire-barre",
+            "scheme": "3×6–8"
+          },
+          {
+            "exercise": "rowing-t-bar",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "curl-barre-ez",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "velo-ou-rameur-regulier",
+            "scheme": "15 min"
+          }
+        ],
+        [
+          {
+            "exercise": "presse-a-cuisses",
+            "scheme": "3×6–8"
+          },
+          {
+            "exercise": "hip-thrust-barre",
+            "scheme": "3×8"
+          },
+          {
+            "exercise": "leg-curl-machine",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "mollets-debout",
+            "scheme": "3×10–12"
+          },
+          {
+            "exercise": "planche",
+            "scheme": "3×30–45 s"
+          },
+          {
+            "exercise": "velo-ou-rameur-regulier",
+            "scheme": "15 min"
+          }
+        ],
+        [
+          {
+            "exercise": "developpe-incline-barre",
+            "scheme": "3×6–8"
+          },
+          {
+            "exercise": "dips-lestes",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "tirage-vertical-prise-neutre",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "elevations-laterales",
+            "scheme": "3×12–15"
+          },
+          {
+            "exercise": "barre-au-front",
+            "scheme": "3×8–10"
+          },
+          {
+            "exercise": "velo-ou-rameur-regulier",
+            "scheme": "15 min"
+          }
+        ],
+        [
+          {
+            "exercise": "squat-goblet-lourd",
+            "scheme": "3×6–8"
+          },
+          {
+            "exercise": "pull-through-poulie",
+            "scheme": "3×12"
+          },
+          {
+            "exercise": "fentes-marchees-lestees",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "extension-lombaire-lestee",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "releve-de-jambes-suspendu",
+            "scheme": "3×10"
+          },
+          {
+            "exercise": "velo-ou-rameur-regulier",
+            "scheme": "15 min"
           }
         ]
       ]

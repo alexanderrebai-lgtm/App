@@ -1,0 +1,286 @@
+{
+  "levels": {
+    "beginner": {
+      "name": "Débutant",
+      "text": "Tu débutes ou tu reprends après une longue pause. Ton corps progresse vite avec peu de volume : on apprend les gestes d’abord.",
+      "phaseStarts": [
+        8,
+        17
+      ],
+      "recommendedSessions": [
+        2,
+        3
+      ]
+    },
+    "intermediate": {
+      "name": "Intermédiaire",
+      "text": "Tu t’entraînes régulièrement depuis 1 à 3 ans. Il faut un peu plus de volume pour continuer à progresser.",
+      "phaseStarts": [
+        6,
+        15
+      ],
+      "recommendedSessions": [
+        3,
+        4
+      ]
+    },
+    "advanced": {
+      "name": "Avancé",
+      "text": "Plus de 3 ans d’entraînement régulier. Les gains sont plus lents : volume plus élevé et réglages plus fins.",
+      "phaseStarts": [
+        4,
+        14
+      ],
+      "recommendedSessions": [
+        4,
+        4
+      ]
+    }
+  },
+  "volumeSetsPerWeek": {
+    "default": {
+      "beginner": [
+        4,
+        10
+      ],
+      "intermediate": [
+        10,
+        16
+      ],
+      "advanced": [
+        12,
+        20
+      ]
+    },
+    "strength": {
+      "beginner": [
+        4,
+        8
+      ],
+      "intermediate": [
+        8,
+        14
+      ],
+      "advanced": [
+        10,
+        16
+      ]
+    },
+    "health": {
+      "beginner": [
+        3,
+        6
+      ],
+      "intermediate": [
+        6,
+        10
+      ],
+      "advanced": [
+        8,
+        12
+      ]
+    },
+    "fatloss": {
+      "beginner": [
+        4,
+        10
+      ],
+      "intermediate": [
+        8,
+        14
+      ],
+      "advanced": [
+        10,
+        16
+      ]
+    }
+  },
+  "volumeMuscles": [
+    "chest",
+    "back",
+    "shoulders",
+    "biceps",
+    "triceps",
+    "quads",
+    "hamstrings",
+    "glutes",
+    "calves",
+    "core"
+  ],
+  "session": {
+    "setSeconds": 40,
+    "transitionSeconds": 60,
+    "warmupMinutes": 6,
+    "minExercises": 3,
+    "freeMinutesDefault": 12
+  },
+  "progression": {
+    "microStepKg": 1.25,
+    "microBelowKg": 20,
+    "stepKg": 2.5,
+    "plateauSessions": 3,
+    "plateauMinGainPct": 0.5
+  },
+  "deload": {
+    "fatigueEnergyBelow": 2.5,
+    "hardShareAbove": 0.5,
+    "windowDays": 14,
+    "maxWeeksWithoutDeload": {
+      "beginner": 8,
+      "intermediate": 6,
+      "advanced": 5
+    },
+    "minWeeksBetween": 3
+  },
+  "calories": {
+    "adjustKcal": 150,
+    "belowToleranceKg": 0.1,
+    "aboveToleranceKg": 0.15
+  },
+  "plyoContactsMax": 60,
+  "volumeEvaluated": [
+    "chest",
+    "back",
+    "shoulders",
+    "biceps",
+    "triceps",
+    "quads",
+    "hamstrings",
+    "glutes"
+  ],
+  "volumeSmallMuscles": {
+    "muscles": [
+      "shoulders",
+      "biceps",
+      "triceps"
+    ],
+    "low": 0.5,
+    "high": 0.75
+  },
+  "volumePriority": [
+    "shoulders",
+    "hamstrings",
+    "triceps",
+    "biceps",
+    "back",
+    "chest",
+    "quads",
+    "glutes"
+  ],
+  "topUpFromPhase": 1,
+  "topUpMaxPerSession": 3,
+  "accessories": {
+    "shoulders": [
+      {
+        "exercise": "elevations-laterales",
+        "scheme": "3×12–15"
+      },
+      {
+        "exercise": "oiseau-arriere-d-epaule",
+        "scheme": "3×12–15"
+      },
+      {
+        "exercise": "face-pull",
+        "scheme": "3×15"
+      }
+    ],
+    "hamstrings": [
+      {
+        "exercise": "leg-curl-machine",
+        "scheme": "3×10–12"
+      },
+      {
+        "exercise": "pull-through-poulie",
+        "scheme": "3×12"
+      },
+      {
+        "exercise": "pont-fessier",
+        "scheme": "3×12–15"
+      }
+    ],
+    "triceps": [
+      {
+        "exercise": "extension-triceps-poulie",
+        "scheme": "3×10–12"
+      },
+      {
+        "exercise": "barre-au-front",
+        "scheme": "3×10–12"
+      },
+      {
+        "exercise": "dips-sur-banc",
+        "scheme": "3×10–12"
+      }
+    ],
+    "biceps": [
+      {
+        "exercise": "curl-biceps-halteres",
+        "scheme": "3×10–12"
+      },
+      {
+        "exercise": "curl-marteau",
+        "scheme": "3×10–12"
+      },
+      {
+        "exercise": "curl-barre-ez",
+        "scheme": "3×8–10"
+      }
+    ],
+    "back": [
+      {
+        "exercise": "rowing-haltere-un-bras",
+        "scheme": "3×10–12"
+      },
+      {
+        "exercise": "tirage-horizontal-poulie",
+        "scheme": "3×10–12"
+      },
+      {
+        "exercise": "tirage-vertical-prise-neutre",
+        "scheme": "3×8–12"
+      }
+    ],
+    "chest": [
+      {
+        "exercise": "developpe-incline-halteres",
+        "scheme": "3×8–12"
+      },
+      {
+        "exercise": "pompes",
+        "scheme": "3×8–12"
+      },
+      {
+        "exercise": "developpe-couche-halteres",
+        "scheme": "3×8–12"
+      }
+    ],
+    "quads": [
+      {
+        "exercise": "leg-extension",
+        "scheme": "3×12–15"
+      },
+      {
+        "exercise": "fentes-marchees",
+        "scheme": "3×10–12"
+      },
+      {
+        "exercise": "squat-goblet",
+        "scheme": "3×8–12"
+      }
+    ],
+    "glutes": [
+      {
+        "exercise": "hip-thrust",
+        "scheme": "3×8–12"
+      },
+      {
+        "exercise": "fentes-bulgares",
+        "scheme": "3×8–10"
+      },
+      {
+        "exercise": "pont-fessier",
+        "scheme": "3×12–15"
+      }
+    ]
+  }
+}

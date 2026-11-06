@@ -58,18 +58,15 @@ describe('ajustement des calories', () => {
     expect(weightAdvice(W([[14, 65], [0, 66.6]], today), 'mass', today)).toMatchObject({ deltaKcal: -150, status: 'aboveTarget' });
   });
 
-  it('identique au prototype', () => {
-    const P = loadPrototype();
-    const realToday = new Date().toISOString().slice(0, 10);
-    const cases: [number, number][][] = [
-      [[20, 65], [10, 65.1], [0, 65.2]], [[27, 70], [0, 69]], [[12, 60], [0, 61.5]], [[30, 65], [3, 65]],
-    ];
-    for (const goal of ['mass', 'strength', 'power', 'cardio'] as const) for (const c of cases) {
-      const ws = W(c, realToday);
-      setProtoProfile(P, 'd', { prog: goal, bw: ws.map((w) => ({ d: w.date, kg: w.kg })) }, '2026-01-05');
-      const theirs = P.wAdv();
-      const mine = weightAdvice(ws, goal, realToday);
-      expect(mine?.deltaKcal ?? null, `${goal} ${JSON.stringify(c)}`).toBe(theirs ? theirs.dl : null);
-    }
+  it('niveau avancé : la même stagnation est jugée plus tolérable (fourchette en % du poids)', () => {
+    const adv = { level: 'advanced' as const, hardGainer: false };
+    // poids stable : en dessous de la fourchette du débutant, dans la tolérance de l'avancé
+    const w = W([[14, 65], [0, 65]], today);
+    expect(weightAdvice(w, 'mass', today, { level: 'beginner', hardGainer: false })?.status).toBe('belowTarget');
+    expect(weightAdvice(w, 'mass', today, adv)?.deltaKcal).toBe(0);
+  });
+  it('difficulté à prendre du poids : ajustement de +200 kcal', () => {
+    const hg = { level: 'beginner' as const, hardGainer: true };
+    expect(weightAdvice(W([[14, 65], [0, 65]], today), 'mass', today, hg)).toMatchObject({ deltaKcal: 200, status: 'belowTarget' });
   });
 });

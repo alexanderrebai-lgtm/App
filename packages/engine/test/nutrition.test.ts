@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { content, recipeById } from '@muscu/content';
 import {
   addDays, batchPlan, dayTotals, ingredientGrams, lastDays, lineCost, menuEntry, menuForDate, menuForDay, nextRecipe,
-  plannedMeals, portionFactor, recipeAllowed, recipeMacros, recipePools, rotationDays, scaleQty, SLOT_CATEGORY,
+  plannedMeals, portionFactor, recipeAllowed, recipeMacros, recipePools, rotationDays, scaleQty, mealPlan,
   type MenuPrefs,
 } from '../src';
 import { loadPrototype } from './prototype';
@@ -67,7 +67,8 @@ describe('menus', () => {
   it('chaque prise sert une recette de la bonne catégorie, jamais le même plat midi et soir', () => {
     for (const prefs of [BUDGET, NORMAL]) {
       for (const day of rotationDays(prefs)) {
-        day.forEach((id, slot) => expect(recipeById.get(id)!.category).toBe(SLOT_CATEGORY[slot]));
+        const cats = mealPlan(day.length).categories;
+        day.forEach((id, slot) => expect(recipeById.get(id)!.category).toBe(cats[slot]));
         expect(day[1]).not.toBe(day[3]);
       }
     }

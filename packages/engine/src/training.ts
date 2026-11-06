@@ -1,4 +1,4 @@
-import type { GoalId } from '@muscu/content';
+import { content as defaultContent, type Content, type GoalId } from '@muscu/content';
 import type { CheckIn, ExerciseLog, Feedback } from './model';
 import type { Scheme } from './scheme';
 
@@ -9,13 +9,19 @@ export function roundToStep(kg: number, step = LOAD_STEP_KG): number {
   return Math.round(kg / step) * step;
 }
 
-/** Charge de la série suivante après le retour « Facile / Bien / Dur ». */
-export function nextSetLoad(kg: number, feedback: Feedback, step = LOAD_STEP_KG): number {
-  const delta = feedback === 'easy' ? step : feedback === 'hard' ? -step : 0;
-  return Math.max(0, kg + delta);
+/** Pas de charge : plus petit pour les charges légères (en dessous de 20 kg), 2,5 kg ensuite. */
+export function loadStep(kg: number, c: Content = defaultContent): number {
+  return kg < c.coaching.progression.microBelowKg ? c.coaching.progression.microStepKg : c.coaching.progression.stepKg;
 }
 
-export type SuggestionReason = 'topOfRange' | 'allEasy' | 'repeat' | 'firstTime' | 'free';
+/** Charge de la série suivante après le retour « Facile / Bien / Dur ». */
+export function nextSetLoad(kg: number, feedback: Feedback, step?: number): number {
+  const st = step ?? loadStep(kg);
+  const delta = feedback === 'easy' ? st : feedback === 'hard' ? -st : 0;
+  return Math.max(0, Math.round((kg + delta) * 100) / 100);
+}
+
+export type SuggestionReason = 'topOfRange' | 'allEasy' | 'moreReps' | 'firstTime' | 'free' | 'capped';
 
 export interface LoadSuggestion {
   kg: number | null;
@@ -31,17 +37,30 @@ export function bestSet(log: ExerciseLog) {
 }
 
 /**
- * Proposition de charge d'après la dernière séance de cet exercice.
- * Haut de fourchette atteint, ou toutes les séries jugées faciles : + un pas.
- * Sinon : même charge. Première fois : charge qui laisse 3–4 répétitions en réserve.
+ * Proposition de charge d'après la dernière séance de cet exercice : progression « double ».
+ * 1. Tant que le haut de la fourchette n'est pas atteint : même charge, une répétition de plus.
+ * 2. Haut de la fourchette atteint, ou toutes les séries jugées faciles : on monte la charge d'un pas
+ *    (plus petit pour les charges légères) et on repart du bas de la fourchette.
+ * 3. Charge maximale disponible (haltères) atteinte : on garde la charge et on ajoute des répétitions.
+ * Première fois : charge qui laisse 3–4 répétitions en réserve.
  */
-export function suggestLoad(last: ExerciseLog | undefined, scheme: Scheme, step = LOAD_STEP_KG): LoadSuggestion {
+export function suggestLoad(
+  last: ExerciseLog | undefined, scheme: Scheme, opts: { maxKg?: number; step?: number } = {},
+): LoadSuggestion {
   if (scheme.free) return { kg: null, reps: null, reason: 'free' };
   if (!last || last.cardio || !last.sets.length) return { kg: null, reps: null, reason: 'firstTime' };
   const b = bestSet(last)!;
-  if (scheme.topReps > 0 && b.reps >= scheme.topReps) return { kg: b.kg + step, reps: b.reps, reason: 'topOfRange' };
-  if (last.sets.every((s) => s.feedback === 'easy')) return { kg: b.kg + step, reps: b.reps, reason: 'allEasy' };
-  return { kg: b.kg, reps: b.reps, reason: 'repeat' };
+  const reachedTop = scheme.topReps > 0 && b.reps >= scheme.topReps;
+  const allEasy = last.sets.every((s) => s.feedback === 'easy');
+  if (reachedTop || allEasy) {
+    const kg = Math.round((b.kg + (opts.step ?? loadStep(b.kg))) * 100) / 100;
+    if (opts.maxKg && kg > opts.maxKg) {
+      // plus d'haltère plus lourd : on garde la charge et on ajoute des répétitions, jusqu'à 6 au-dessus de la fourchette
+      return { kg: b.kg, reps: Math.min(scheme.topReps + 6, b.reps + 1), reason: 'capped' };
+    }
+    return { kg, reps: scheme.minReps || b.reps, reason: reachedTop ? 'topOfRange' : 'allEasy' };
+  }
+  return { kg: b.kg, reps: Math.min(scheme.topReps || b.reps + 1, b.reps + 1), reason: 'moreReps' };
 }
 
 /** Dernière séance d'un exercice strictement avant une date. */

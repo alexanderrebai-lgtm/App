@@ -7,7 +7,11 @@
       "muscles": [
         "triceps"
       ],
-      "equipment": "barbell"
+      "equipment": "barbell",
+      "role": "isolation",
+      "joints": [
+        "elbow"
+      ]
     },
     {
       "id": "bird-dog",
@@ -17,7 +21,9 @@
         "lowerBack",
         "core"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "core",
+      "joints": []
     },
     {
       "id": "chat-vache",
@@ -26,7 +32,9 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": []
     },
     {
       "id": "circuit-squat-pompes-rowing",
@@ -36,7 +44,12 @@
         "fullBody"
       ],
       "equipment": "bodyweight",
-      "technique": "sq"
+      "technique": "sq",
+      "role": "cardio",
+      "joints": [
+        "shoulder",
+        "knee"
+      ]
     },
     {
       "id": "corde-a-sauter",
@@ -45,7 +58,11 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "jumpRope"
+      "equipment": "jumpRope",
+      "role": "cardio",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "crunch",
@@ -54,7 +71,9 @@
       "muscles": [
         "core"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "core",
+      "joints": []
     },
     {
       "id": "curl-barre-ez",
@@ -64,7 +83,12 @@
         "biceps"
       ],
       "equipment": "barbell",
-      "technique": "cu"
+      "technique": "cu",
+      "role": "isolation",
+      "joints": [
+        "wrist",
+        "elbow"
+      ]
     },
     {
       "id": "curl-biceps-halteres",
@@ -74,7 +98,9 @@
         "biceps"
       ],
       "equipment": "dumbbell",
-      "technique": "cu"
+      "technique": "cu",
+      "role": "isolation",
+      "joints": []
     },
     {
       "id": "curl-marteau",
@@ -84,7 +110,9 @@
         "biceps"
       ],
       "equipment": "dumbbell",
-      "technique": "cu"
+      "technique": "cu",
+      "role": "isolation",
+      "joints": []
     },
     {
       "id": "dead-bug",
@@ -93,7 +121,9 @@
       "muscles": [
         "core"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "core",
+      "joints": []
     },
     {
       "id": "developpe-couche-barre",
@@ -104,7 +134,13 @@
         "triceps"
       ],
       "equipment": "barbell",
-      "technique": "bp"
+      "technique": "bp",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "wrist",
+        "elbow"
+      ]
     },
     {
       "id": "developpe-couche-halteres",
@@ -115,7 +151,11 @@
         "triceps"
       ],
       "equipment": "dumbbell",
-      "technique": "bp"
+      "technique": "bp",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "developpe-couche-halteres-rapide",
@@ -126,7 +166,11 @@
         "triceps"
       ],
       "equipment": "dumbbell",
-      "technique": "bp"
+      "technique": "bp",
+      "role": "power",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "developpe-epaules-halteres",
@@ -136,7 +180,11 @@
         "shoulders"
       ],
       "equipment": "dumbbell",
-      "technique": "op"
+      "technique": "op",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "developpe-incline-barre",
@@ -146,7 +194,11 @@
         "chest",
         "triceps"
       ],
-      "equipment": "barbell"
+      "equipment": "barbell",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "developpe-incline-halteres",
@@ -156,7 +208,11 @@
         "chest",
         "triceps"
       ],
-      "equipment": "dumbbell"
+      "equipment": "dumbbell",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "developpe-militaire-barre",
@@ -166,7 +222,12 @@
         "shoulders"
       ],
       "equipment": "barbell",
-      "technique": "op"
+      "technique": "op",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "wrist"
+      ]
     },
     {
       "id": "developpe-militaire-halteres",
@@ -176,7 +237,11 @@
         "shoulders"
       ],
       "equipment": "dumbbell",
-      "technique": "op"
+      "technique": "op",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "dips",
@@ -186,7 +251,13 @@
         "chest",
         "triceps"
       ],
-      "equipment": "pullupBar"
+      "equipment": "pullupBar",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "wrist",
+        "elbow"
+      ]
     },
     {
       "id": "dips-lestes",
@@ -196,7 +267,13 @@
         "chest",
         "triceps"
       ],
-      "equipment": "pullupBar"
+      "equipment": "pullupBar",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "wrist",
+        "elbow"
+      ]
     },
     {
       "id": "dips-sur-banc",
@@ -206,7 +283,13 @@
         "chest",
         "triceps"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "wrist",
+        "elbow"
+      ]
     },
     {
       "id": "echauffement-footing",
@@ -215,7 +298,11 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "echauffement-marche",
@@ -224,7 +311,9 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": []
     },
     {
       "id": "elevations-laterales",
@@ -233,7 +322,11 @@
       "muscles": [
         "shoulders"
       ],
-      "equipment": "dumbbell"
+      "equipment": "dumbbell",
+      "role": "isolation",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "etirement-flechisseurs-de-hanche",
@@ -242,7 +335,11 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "etirement-ischio-jambiers",
@@ -251,7 +348,11 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "etirement-pecs-au-mur",
@@ -260,7 +361,11 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "etirements",
@@ -269,7 +374,11 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "etirements-jambes-et-dos",
@@ -278,7 +387,11 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "extension-lombaire-a-45",
@@ -288,7 +401,11 @@
         "lowerBack",
         "core"
       ],
-      "equipment": "machine"
+      "equipment": "machine",
+      "role": "compound",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "extension-lombaire-lestee",
@@ -298,7 +415,11 @@
         "lowerBack",
         "core"
       ],
-      "equipment": "machine"
+      "equipment": "machine",
+      "role": "compound",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "extension-triceps-poulie",
@@ -307,7 +428,11 @@
       "muscles": [
         "triceps"
       ],
-      "equipment": "cable"
+      "equipment": "cable",
+      "role": "isolation",
+      "joints": [
+        "elbow"
+      ]
     },
     {
       "id": "face-pull",
@@ -316,7 +441,11 @@
       "muscles": [
         "shoulders"
       ],
-      "equipment": "cable"
+      "equipment": "cable",
+      "role": "isolation",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "fentes-alternees",
@@ -326,7 +455,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "compound",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "fentes-bulgares",
@@ -336,7 +469,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "dumbbell"
+      "equipment": "dumbbell",
+      "role": "compound",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "fentes-marchees",
@@ -346,7 +483,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "compound",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "fentes-marchees-lestees",
@@ -356,7 +497,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "dumbbell"
+      "equipment": "dumbbell",
+      "role": "compound",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "footing-facile-tu-peux-parler",
@@ -365,7 +510,11 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "fractionne-30-s-vite-90-s-lent",
@@ -374,7 +523,11 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "fractionne-45-s-vite-75-s-lent",
@@ -383,7 +536,11 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "fractionne-doux-1-min-rapide-2-min-lent",
@@ -392,7 +549,11 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "hip-thrust",
@@ -403,7 +564,9 @@
         "hamstrings"
       ],
       "equipment": "bodyweight",
-      "technique": "br"
+      "technique": "br",
+      "role": "compound",
+      "joints": []
     },
     {
       "id": "hip-thrust-barre",
@@ -414,7 +577,11 @@
         "hamstrings"
       ],
       "equipment": "barbell",
-      "technique": "br"
+      "technique": "br",
+      "role": "compound",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "lancer-de-medecine-ball",
@@ -423,7 +590,12 @@
       "muscles": [
         "fullBody"
       ],
-      "equipment": "medicineBall"
+      "equipment": "medicineBall",
+      "role": "power",
+      "joints": [
+        "shoulder",
+        "lowerBack"
+      ]
     },
     {
       "id": "lancer-de-medecine-ball-au-mur",
@@ -432,7 +604,11 @@
       "muscles": [
         "fullBody"
       ],
-      "equipment": "medicineBall"
+      "equipment": "medicineBall",
+      "role": "power",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "leg-curl-machine",
@@ -441,7 +617,9 @@
       "muscles": [
         "hamstrings"
       ],
-      "equipment": "machine"
+      "equipment": "machine",
+      "role": "isolation",
+      "joints": []
     },
     {
       "id": "leg-extension",
@@ -451,7 +629,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "machine"
+      "equipment": "machine",
+      "role": "isolation",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "marche-rapide",
@@ -460,7 +642,9 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": []
     },
     {
       "id": "marche-rapide-retour-au-calme",
@@ -469,7 +653,9 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": []
     },
     {
       "id": "mollets-assis",
@@ -478,7 +664,9 @@
       "muscles": [
         "calves"
       ],
-      "equipment": "machine"
+      "equipment": "machine",
+      "role": "isolation",
+      "joints": []
     },
     {
       "id": "mollets-debout",
@@ -487,7 +675,9 @@
       "muscles": [
         "calves"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "isolation",
+      "joints": []
     },
     {
       "id": "mollets-sautes",
@@ -496,7 +686,11 @@
       "muscles": [
         "calves"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "power",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "oiseau-arriere-d-epaule",
@@ -505,7 +699,11 @@
       "muscles": [
         "shoulders"
       ],
-      "equipment": "dumbbell"
+      "equipment": "dumbbell",
+      "role": "isolation",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "pigeon-fessiers",
@@ -514,7 +712,9 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": []
     },
     {
       "id": "planche",
@@ -524,7 +724,11 @@
         "core"
       ],
       "equipment": "bodyweight",
-      "technique": "pl"
+      "technique": "pl",
+      "role": "core",
+      "joints": [
+        "wrist"
+      ]
     },
     {
       "id": "planche-laterale",
@@ -533,7 +737,11 @@
       "muscles": [
         "core"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "core",
+      "joints": [
+        "wrist"
+      ]
     },
     {
       "id": "pompes",
@@ -544,7 +752,12 @@
         "triceps"
       ],
       "equipment": "bodyweight",
-      "technique": "pu"
+      "technique": "pu",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "wrist"
+      ]
     },
     {
       "id": "pompes-sur-genoux-si-besoin",
@@ -555,7 +768,12 @@
         "triceps"
       ],
       "equipment": "bodyweight",
-      "technique": "pu"
+      "technique": "pu",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "wrist"
+      ]
     },
     {
       "id": "pompes-explosives",
@@ -566,7 +784,12 @@
         "triceps"
       ],
       "equipment": "bodyweight",
-      "technique": "pu"
+      "technique": "pu",
+      "role": "power",
+      "joints": [
+        "shoulder",
+        "wrist"
+      ]
     },
     {
       "id": "pont-fessier",
@@ -577,7 +800,9 @@
         "hamstrings"
       ],
       "equipment": "bodyweight",
-      "technique": "br"
+      "technique": "br",
+      "role": "compound",
+      "joints": []
     },
     {
       "id": "pont-fessier-lent",
@@ -588,7 +813,9 @@
         "hamstrings"
       ],
       "equipment": "bodyweight",
-      "technique": "br"
+      "technique": "br",
+      "role": "mobility",
+      "joints": []
     },
     {
       "id": "posture-de-l-enfant",
@@ -597,7 +824,9 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": []
     },
     {
       "id": "presse-a-cuisses",
@@ -607,7 +836,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "machine"
+      "equipment": "machine",
+      "role": "compound",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "presse-a-cuisses-vitesse",
@@ -617,7 +850,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "machine"
+      "equipment": "machine",
+      "role": "power",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "pull-through-poulie",
@@ -627,7 +864,11 @@
         "glutes",
         "hamstrings"
       ],
-      "equipment": "cable"
+      "equipment": "cable",
+      "role": "compound",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "releve-de-jambes",
@@ -636,7 +877,11 @@
       "muscles": [
         "core"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "core",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "releve-de-jambes-suspendu",
@@ -645,7 +890,11 @@
       "muscles": [
         "core"
       ],
-      "equipment": "pullupBar"
+      "equipment": "pullupBar",
+      "role": "core",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "respiration-ventrale",
@@ -654,7 +903,9 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": []
     },
     {
       "id": "retour-au-calme",
@@ -663,7 +914,9 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "cardio",
+      "joints": []
     },
     {
       "id": "rotation-du-haut-du-dos",
@@ -672,7 +925,11 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "mobility",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "rouleau-de-massage-dos-et-cuisses",
@@ -681,7 +938,9 @@
       "muscles": [
         "mobility"
       ],
-      "equipment": "foamRoller"
+      "equipment": "foamRoller",
+      "role": "mobility",
+      "joints": []
     },
     {
       "id": "rowing-buste-appuye",
@@ -692,7 +951,11 @@
         "biceps"
       ],
       "equipment": "dumbbell",
-      "technique": "ro"
+      "technique": "ro",
+      "role": "compound",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "rowing-explosif-poulie",
@@ -703,7 +966,11 @@
         "biceps"
       ],
       "equipment": "cable",
-      "technique": "ro"
+      "technique": "ro",
+      "role": "power",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "rowing-haltere-un-bras",
@@ -714,7 +981,11 @@
         "biceps"
       ],
       "equipment": "dumbbell",
-      "technique": "ro"
+      "technique": "ro",
+      "role": "compound",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "rowing-poulie-assis",
@@ -725,7 +996,9 @@
         "biceps"
       ],
       "equipment": "cable",
-      "technique": "ro"
+      "technique": "ro",
+      "role": "compound",
+      "joints": []
     },
     {
       "id": "rowing-t-bar",
@@ -736,7 +1009,11 @@
         "biceps"
       ],
       "equipment": "barbell",
-      "technique": "ro"
+      "technique": "ro",
+      "role": "compound",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "sauts-en-longueur-sur-place",
@@ -746,7 +1023,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "power",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "sauts-sur-box",
@@ -756,7 +1037,11 @@
         "quads",
         "glutes"
       ],
-      "equipment": "box"
+      "equipment": "box",
+      "role": "power",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "skipping-rapide",
@@ -765,7 +1050,11 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "power",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "squat-goblet",
@@ -776,7 +1065,11 @@
         "glutes"
       ],
       "equipment": "dumbbell",
-      "technique": "sq"
+      "technique": "sq",
+      "role": "compound",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "squat-goblet-lourd",
@@ -787,7 +1080,12 @@
         "glutes"
       ],
       "equipment": "dumbbell",
-      "technique": "sq"
+      "technique": "sq",
+      "role": "compound",
+      "joints": [
+        "knee",
+        "lowerBack"
+      ]
     },
     {
       "id": "squat-saute",
@@ -798,7 +1096,11 @@
         "glutes"
       ],
       "equipment": "bodyweight",
-      "technique": "sq"
+      "technique": "sq",
+      "role": "power",
+      "joints": [
+        "knee"
+      ]
     },
     {
       "id": "superman-au-sol",
@@ -808,7 +1110,11 @@
         "lowerBack",
         "core"
       ],
-      "equipment": "bodyweight"
+      "equipment": "bodyweight",
+      "role": "core",
+      "joints": [
+        "lowerBack"
+      ]
     },
     {
       "id": "tirage-horizontal-poulie",
@@ -818,7 +1124,11 @@
         "back",
         "biceps"
       ],
-      "equipment": "cable"
+      "equipment": "cable",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "tirage-poitrine-prise-serree",
@@ -828,7 +1138,11 @@
         "back",
         "biceps"
       ],
-      "equipment": "cable"
+      "equipment": "cable",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "tirage-vertical-poulie",
@@ -838,7 +1152,11 @@
         "back",
         "biceps"
       ],
-      "equipment": "cable"
+      "equipment": "cable",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "tirage-vertical-prise-neutre",
@@ -848,7 +1166,11 @@
         "back",
         "biceps"
       ],
-      "equipment": "cable"
+      "equipment": "cable",
+      "role": "compound",
+      "joints": [
+        "shoulder"
+      ]
     },
     {
       "id": "tractions-assistees",
@@ -858,7 +1180,12 @@
         "back",
         "biceps"
       ],
-      "equipment": "pullupBar"
+      "equipment": "pullupBar",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "elbow"
+      ]
     },
     {
       "id": "tractions-lestees",
@@ -868,7 +1195,12 @@
         "back",
         "biceps"
       ],
-      "equipment": "pullupBar"
+      "equipment": "pullupBar",
+      "role": "compound",
+      "joints": [
+        "shoulder",
+        "elbow"
+      ]
     },
     {
       "id": "velo-ou-rameur-regulier",
@@ -877,7 +1209,9 @@
       "muscles": [
         "cardio"
       ],
-      "equipment": "cardioMachine"
+      "equipment": "cardioMachine",
+      "role": "cardio",
+      "joints": []
     }
   ],
   "techniques": [

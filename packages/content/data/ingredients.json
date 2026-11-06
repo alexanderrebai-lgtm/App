@@ -923,6 +923,28 @@
         "carbs": 1,
         "fat": 0
       }
+    },
+    {
+      "id": "whole-milk",
+      "name": "lait entier",
+      "aisle": "fresh",
+      "per100g": {
+        "kcal": 64,
+        "protein": 3.3,
+        "carbs": 4.7,
+        "fat": 3.6
+      }
+    },
+    {
+      "id": "almonds",
+      "name": "amandes",
+      "aisle": "pantry",
+      "per100g": {
+        "kcal": 580,
+        "protein": 21,
+        "carbs": 22,
+        "fat": 50
+      }
     }
   ],
   "spoonGrams": {

@@ -1,6 +1,8 @@
 import { content as defaultContent, type Content, type GoalId, type Muscle } from '@muscu/content';
 import { addDays, diffDays, type IsoDate } from './dates';
 import type { BodyWeight, ExerciseLog, Profile, SessionLog } from './model';
+import type { TargetOptions } from './nutrition';
+import { goalPlan } from './nutrition';
 import { plannedTrainingDates } from './program';
 import { estimate1RM } from './training';
 
@@ -87,17 +89,25 @@ export interface WeightAdvice {
   /** Pente en kg par semaine. */
   slope: number;
   range: [number, number];
-  /** +150, −150 ou 0. */
+  /** +150 (+200 si prise de masse difficile), −150 ou 0. */
   deltaKcal: number;
   status: 'belowTarget' | 'onTrack' | 'aboveTarget';
 }
 
+/** Fourchette visée en kg par semaine : % du poids par semaine selon l'objectif, le niveau et la difficulté à prendre du poids. */
+export function weightRange(weightKg: number, goal: GoalId, o: TargetOptions = {}, c: Content = defaultContent): [number, number] {
+  const [lo, hi] = goalPlan(goal, o, c).trendPct;
+  return [Math.round(((weightKg * lo) / 100) * 100) / 100, Math.round(((weightKg * hi) / 100) * 100) / 100];
+}
+
 /**
  * Sur les pesées des 28 derniers jours (au moins 2, sur au moins 10 jours) :
- * pente sous la fourchette − 0,1 → +150 kcal ; au-dessus + 0,15 → −150 kcal.
+ * pente sous la fourchette − tolérance → on mange plus (+150 kcal, +200 si prise de masse difficile) ;
+ * au-dessus + tolérance → on mange moins (−150 kcal). Pour la perte de graisse, « sous » veut dire
+ * « on perd plus vite que prévu » : on remonte les calories pour protéger le muscle.
  */
 export function weightAdvice(
-  weights: BodyWeight[], goal: GoalId, today: IsoDate, c: Content = defaultContent,
+  weights: BodyWeight[], goal: GoalId, today: IsoDate, o: TargetOptions = {}, c: Content = defaultContent,
 ): WeightAdvice | null {
   const lim = addDays(today, -28);
   const b = weights.filter((w) => w.date >= lim && w.date <= today).sort((x, y) => (x.date < y.date ? -1 : 1));
@@ -107,9 +117,11 @@ export function weightAdvice(
   const span = diffDays(last.date, first.date);
   if (span < 10) return null;
   const slope = (last.kg - first.kg) / (span / 7);
-  const range = c.nutrition.goals[goal].weightTrendKgPerWeek;
-  if (slope < range[0] - 0.1) return { slope, range, deltaKcal: ADJUST_KCAL, status: 'belowTarget' };
-  if (slope > range[1] + 0.15) return { slope, range, deltaKcal: -ADJUST_KCAL, status: 'aboveTarget' };
+  const range = weightRange(last.kg, goal, o, c);
+  const { belowToleranceKg: bt, aboveToleranceKg: at } = c.coaching.calories;
+  const up = goalPlan(goal, o, c).adjustKcal;
+  if (slope < range[0] - bt) return { slope, range, deltaKcal: up, status: 'belowTarget' };
+  if (slope > range[1] + at) return { slope, range, deltaKcal: -c.coaching.calories.adjustKcal, status: 'aboveTarget' };
   return { slope, range, deltaKcal: 0, status: 'onTrack' };
 }
 

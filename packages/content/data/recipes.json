@@ -3257,6 +3257,464 @@
       "tags": [
         "noPork"
       ]
+    },
+    {
+      "id": "shake-prise-de-masse-xl",
+      "name": "Shake prise de masse XL",
+      "category": "snack",
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredient": "whole-milk",
+          "qty": 400,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "oats",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "peanut-butter",
+          "qty": 30,
+          "unit": "g"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Mets tout dans le mixeur.",
+        "Mixe 1 minute jusqu’à une texture lisse."
+      ],
+      "tasteTip": "Une boisson passe plus facilement qu’un repas quand on a peu d’appétit : bois-la par petites gorgées en 15 minutes.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "dense"
+      ]
+    },
+    {
+      "id": "riz-au-lait-gourmand",
+      "name": "Riz au lait gourmand",
+      "category": "breakfast",
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredient": "rice",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "ingredient": "whole-milk",
+          "qty": 500,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "butter",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "raisins",
+          "qty": 20,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais cuire le riz dans le lait à feu doux 25 minutes en remuant.",
+        "Ajoute le beurre, le miel et les raisins secs."
+      ],
+      "tasteTip": "Une pincée de cannelle et de sel : il a le goût d’un dessert de grand-mère.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "dense",
+        "batch"
+      ]
+    },
+    {
+      "id": "porridge-xl-amandes",
+      "name": "Porridge XL aux amandes",
+      "category": "breakfast",
+      "minutes": 8,
+      "ingredients": [
+        {
+          "ingredient": "oats",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "whole-milk",
+          "qty": 350,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "almonds",
+          "qty": 25,
+          "unit": "g"
+        },
+        {
+          "ingredient": "banana",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 15,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Chauffe flocons et lait 4 minutes en remuant.",
+        "Ajoute la banane écrasée, les amandes concassées et le miel."
+      ],
+      "tasteTip": "Fais griller les amandes à sec 2 minutes : elles croustillent et parfument tout le bol.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "dense"
+      ]
+    },
+    {
+      "id": "pates-thon-fromage-huile",
+      "name": "Pâtes au thon, fromage et huile d’olive",
+      "category": "main",
+      "minutes": 20,
+      "ingredients": [
+        {
+          "ingredient": "pasta",
+          "qty": 120,
+          "unit": "g",
+          "label": "pâtes crues"
+        },
+        {
+          "ingredient": "tuna",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 40,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 15,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crushed-tomatoes",
+          "qty": 100,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Cuis les pâtes.",
+        "Réchauffe les tomates avec le thon émietté.",
+        "Mélange avec les pâtes, l’huile d’olive et le fromage."
+      ],
+      "tasteTip": "L’huile d’olive crue ajoutée à la fin apporte des calories sans volume : idéal quand on mange peu.",
+      "tags": [
+        "noPork",
+        "dense"
+      ]
+    },
+    {
+      "id": "omelette-fromagere-pommes-de-terre-xl",
+      "name": "Omelette fromagère et pommes de terre XL",
+      "category": "main",
+      "minutes": 25,
+      "ingredients": [
+        {
+          "ingredient": "egg",
+          "qty": 4,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 300,
+          "unit": "g"
+        },
+        {
+          "ingredient": "grated-cheese",
+          "qty": 40,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 10,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais dorer les pommes de terre en dés 12 minutes dans l’huile.",
+        "Verse les œufs battus, ajoute le fromage, cuis 5 minutes à feu doux."
+      ],
+      "tasteTip": "Laisse bien dorer les pommes de terre avant les œufs : le croustillant fait toute la différence.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "dense"
+      ]
+    },
+    {
+      "id": "omelette-epinards-feta",
+      "name": "Omelette aux épinards et feta",
+      "category": "breakfast",
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredient": "egg",
+          "qty": 3,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "frozen-spinach",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "feta",
+          "qty": 30,
+          "unit": "g"
+        },
+        {
+          "ingredient": "oil",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Fais décongeler et égoutter les épinards.",
+        "Fais-les revenir 2 minutes, verse les œufs battus et émiette la feta.",
+        "Cuis doucement jusqu’à ce que ce soit pris."
+      ],
+      "tasteTip": "Presse bien les épinards : l’omelette reste moelleuse au lieu de rendre de l’eau.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "light"
+      ]
+    },
+    {
+      "id": "bowl-poulet-pois-chiches-crudites",
+      "name": "Bowl de poulet, pois chiches et crudités",
+      "category": "main",
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredient": "cooked-chicken",
+          "qty": 130,
+          "unit": "g"
+        },
+        {
+          "ingredient": "chickpeas",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crudites",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 8,
+          "unit": "g"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 2,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Égoutte les pois chiches.",
+        "Mélange tous les ingrédients avec l’huile et le citron.",
+        "Sale, poivre."
+      ],
+      "tasteTip": "Beaucoup de volume pour peu de calories : tu es rassasié plus longtemps.",
+      "tags": [
+        "noPork",
+        "light"
+      ]
+    },
+    {
+      "id": "soupe-legumes-lentilles-corail",
+      "name": "Soupe de légumes et lentilles corail",
+      "category": "main",
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredient": "red-lentils",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "ingredient": "carrot",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "leek",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "potato",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "cumin",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Coupe les légumes en morceaux.",
+        "Cuis-les 20 minutes avec les lentilles dans 80 cl d’eau.",
+        "Mixe, assaisonne avec le cumin et l’huile."
+      ],
+      "tasteTip": "Une cuillère de yaourt nature au moment de servir la rend crémeuse sans crème.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "budget",
+        "light",
+        "batch",
+        "freezable"
+      ]
+    },
+    {
+      "id": "thon-riz-haricots-verts",
+      "name": "Thon, riz et haricots verts",
+      "category": "main",
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredient": "tuna",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "rice",
+          "qty": 60,
+          "unit": "g",
+          "label": "riz cru"
+        },
+        {
+          "ingredient": "frozen-green-beans",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "olive-oil",
+          "qty": 8,
+          "unit": "g"
+        },
+        {
+          "ingredient": "lemon-juice",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Cuis le riz et les haricots verts.",
+        "Mélange avec le thon émietté, l’huile et le citron."
+      ],
+      "tasteTip": "Un peu de moutarde dans l’huile de l’assaisonnement donne du caractère.",
+      "tags": [
+        "noPork",
+        "light"
+      ]
+    },
+    {
+      "id": "yaourt-fruits-rouges",
+      "name": "Yaourt nature et fruits rouges",
+      "category": "snack",
+      "minutes": 3,
+      "ingredients": [
+        {
+          "ingredient": "plain-yogurt",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "frozen-berries",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "ingredient": "honey",
+          "qty": 5,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Laisse décongeler les fruits rouges.",
+        "Verse-les sur le yaourt avec le miel."
+      ],
+      "tasteTip": "Les fruits décongelés rendent leur jus : un coulis gratuit.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "light"
+      ]
+    },
+    {
+      "id": "fromage-blanc-pomme-cannelle",
+      "name": "Fromage blanc, pomme et cannelle",
+      "category": "snack",
+      "minutes": 3,
+      "ingredients": [
+        {
+          "ingredient": "fromage-blanc",
+          "qty": 200,
+          "unit": "g"
+        },
+        {
+          "ingredient": "apple",
+          "qty": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cinnamon",
+          "qty": 1,
+          "unit": "tsp"
+        }
+      ],
+      "steps": [
+        "Coupe la pomme en dés.",
+        "Mélange avec le fromage blanc et la cannelle."
+      ],
+      "tasteTip": "Fais chauffer la pomme 1 minute au micro-ondes : elle devient fondante.",
+      "tags": [
+        "noPork",
+        "vegetarian",
+        "light"
+      ]
     }
   ]
 }

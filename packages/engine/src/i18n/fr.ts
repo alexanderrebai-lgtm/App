@@ -37,7 +37,8 @@ export const budgetTips: Record<BudgetTip, string> = {
 export const suggestionText: Record<SuggestionReason, string> = {
   topOfRange: 'Haut de la fourchette atteint : on monte la charge.',
   allEasy: 'Tout était facile la dernière fois : on monte la charge.',
-  repeat: 'Même charge que la dernière fois : vise une répétition de plus.',
+  moreReps: 'Même charge que la dernière fois : vise une répétition de plus.',
+  capped: 'Tu as atteint ton haltère le plus lourd : garde-le et ajoute des répétitions, ou ralentis la descente.',
   firstTime: 'Choisis une charge qui te laisse 3 à 4 répétitions en réserve.',
   free: 'Note ta durée et ta distance.',
 };

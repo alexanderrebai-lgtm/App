@@ -28,8 +28,8 @@ describe('proposition de charge', () => {
   it('toutes les séries faciles : + 2,5 kg', () => {
     expect(suggestLoad(log('2026-01-05', [[20, 10, 'easy'], [20, 10, 'easy']]), s)).toMatchObject({ kg: 22.5, reason: 'allEasy' });
   });
-  it('sinon même charge', () => {
-    expect(suggestLoad(log('2026-01-05', [[20, 10, 'good'], [20, 9, 'hard']]), s)).toMatchObject({ kg: 20, reason: 'repeat' });
+  it('sinon même charge, une répétition de plus', () => {
+    expect(suggestLoad(log('2026-01-05', [[20, 10, 'good'], [20, 9, 'hard']]), s)).toMatchObject({ kg: 20, reps: 11, reason: 'moreReps' });
   });
   it('cardio : saisie libre', () => {
     expect(suggestLoad(undefined, parseScheme('25 min')).reason).toBe('free');

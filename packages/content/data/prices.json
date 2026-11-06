@@ -205,6 +205,12 @@
     },
     "frozen-berries": {
       "perKg": 6
+    },
+    "whole-milk": {
+      "perKg": 1.2
+    },
+    "almonds": {
+      "perKg": 11
     }
   },
   "packs": {
@@ -327,6 +333,11 @@
       "size": 250,
       "price": 0.9,
       "label": "1 boîte"
+    },
+    "almonds": {
+      "size": 200,
+      "price": 2.2,
+      "label": "200 g"
     }
   },
   "bulk": [
