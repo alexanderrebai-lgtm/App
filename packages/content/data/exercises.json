@@ -83,7 +83,7 @@
       "muscles": [
         "biceps"
       ],
-      "equipment": "bodyweight",
+      "equipment": "dumbbell",
       "technique": "cu"
     },
     {
@@ -233,7 +233,7 @@
       "muscles": [
         "shoulders"
       ],
-      "equipment": "bodyweight"
+      "equipment": "dumbbell"
     },
     {
       "id": "etirement-flechisseurs-de-hanche",
@@ -505,7 +505,7 @@
       "muscles": [
         "shoulders"
       ],
-      "equipment": "bodyweight"
+      "equipment": "dumbbell"
     },
     {
       "id": "pigeon-fessiers",
@@ -691,7 +691,7 @@
         "back",
         "biceps"
       ],
-      "equipment": "bodyweight",
+      "equipment": "dumbbell",
       "technique": "ro"
     },
     {

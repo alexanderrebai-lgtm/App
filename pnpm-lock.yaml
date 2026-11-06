@@ -100,6 +100,12 @@ importers:
         specifier: 3.25.76
         version: 3.25.76
 
+  packages/motion:
+    devDependencies:
+      '@muscu/content':
+        specifier: workspace:*
+        version: link:../content
+
 packages:
 
   2g@1.0.1:

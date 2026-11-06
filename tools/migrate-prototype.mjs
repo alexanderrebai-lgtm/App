@@ -68,7 +68,7 @@ const EQUIP = [
   [/barre|EZ|T-bar/i, 'barbell'],
   [/^(Tractions|Dips(?! sur banc))|suspendu/, 'pullupBar'],
   [/Extension lombaire/, 'machine'],
-  [/haltère|goblet|lestée?s?|Fentes bulgares/i, 'dumbbell'],
+  [/haltère|goblet|lestée?s?|Fentes bulgares|^Élévations|^Curl marteau|^Oiseau|^Rowing buste/i, 'dumbbell'],
   [/poulie|Face pull|^Tirage/i, 'cable'],
   [/(Presse|Leg curl|Leg extension|Mollets assis|machine|Extension lombaire à 45°)/i, 'machine'],
   [/box/, 'box'],
