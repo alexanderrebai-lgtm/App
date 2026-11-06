@@ -1,8 +1,8 @@
 import {
-  content as defaultContent, type Content, type GoalId, type Macros, type Recipe, type RecipeIngredient,
+  content as defaultContent, type Content, type GoalId, type Macros, type Recipe, type RecipeIngredient, type RecipeTag,
 } from '@muscu/content';
-import { diffDays, type IsoDate } from './dates';
-import type { Profile, Sex } from './model';
+import { addDays, diffDays, type IsoDate } from './dates';
+import type { FoodEntry, Profile, Sex } from './model';
 
 const r5 = (x: number) => Math.round(x / 5) * 5;
 const SEX_CONSTANT: Record<Sex, number> = { male: 5, female: -161 };
@@ -118,24 +118,82 @@ export function scaleQty(i: RecipeIngredient, f: number): number {
 export type Slot = 0 | 1 | 2 | 3;
 export const SLOTS: Slot[] = [0, 1, 2, 3];
 
-/**
- * Menu d'un jour de la rotation (semaine 0–3, jour 0–6), formules du prototype.
- * Renvoie les identifiants de recette : matin, midi, collation, soir.
- */
-export function menuForDay(week: number, day: number, budgetMode: boolean, c: Content = defaultContent): string[] {
-  const n = week * 7 + day;
-  const R = budgetMode ? c.menus.budget : c.menus.normal;
-  const at = (a: string[], i: number) => a[i % a.length]!;
-  if (budgetMode) {
-    return [at(R.breakfast, n + week), at(R.main, n * 3 + week), at(R.snack, n + week), at(R.main, n * 3 + week + 3)];
-  }
-  return [at(R.breakfast, n + week), at(R.main, n * 3 + week), at(R.snack, n + 2 * week), at(R.main, n * 3 + week + 7)];
+export type MealCategory = 'breakfast' | 'main' | 'snack';
+/** Catégorie de recette servie à chaque prise : matin, midi, collation, soir. */
+export const SLOT_CATEGORY: MealCategory[] = ['breakfast', 'main', 'snack', 'main'];
+
+export interface MenuPrefs {
+  budgetMode: boolean;
+  dietTags: RecipeTag[];
+  excludedIngredients: string[];
+  /** Plats que la personne ne veut plus voir. */
+  excludedRecipes?: string[];
+  /** Plats favoris : ils reviennent deux fois plus souvent. */
+  favoriteRecipes?: string[];
 }
 
-/** Menu d'une date réelle : rotation de 28 jours depuis le début du programme. */
-export function menuForDate(start: IsoDate, date: IsoDate, budgetMode: boolean, c: Content = defaultContent): string[] {
+/**
+ * Recettes possibles par catégorie : budget serré = recettes « budget », filtrées par
+ * régime, allergies et plats exclus. Si un filtre vide une catégorie, on relâche
+ * d'abord le budget, puis les plats exclus, pour toujours proposer un menu.
+ */
+export function recipePools(prefs: MenuPrefs, c: Content = defaultContent): Record<MealCategory, string[]> {
+  const out = {} as Record<MealCategory, string[]>;
+  const allowed = (r: Recipe) => recipeAllowed(r, prefs);
+  const notExcluded = (r: Recipe) => !(prefs.excludedRecipes ?? []).includes(r.id);
+  for (const cat of ['breakfast', 'main', 'snack'] as const) {
+    const ofCat = c.recipes.filter((r) => r.category === cat);
+    const tries = [
+      ofCat.filter((r) => allowed(r) && notExcluded(r) && (!prefs.budgetMode || r.tags.includes('budget'))),
+      ofCat.filter((r) => allowed(r) && notExcluded(r)),
+      ofCat.filter(allowed),
+      ofCat,
+    ];
+    const pool = tries.find((t) => t.length >= (cat === 'main' ? 2 : 1))!.map((r) => r.id);
+    const fav = pool.filter((id) => (prefs.favoriteRecipes ?? []).includes(id));
+    out[cat] = [...pool, ...fav];
+  }
+  return out;
+}
+
+/**
+ * Menu d'un jour de la rotation (semaine 0–3, jour 0–6) : matin, midi, collation, soir.
+ * Les plats du midi et du soir se suivent dans la liste : jamais deux fois le même plat le même jour.
+ */
+export function menuForDay(week: number, day: number, prefs: MenuPrefs, c: Content = defaultContent): string[] {
+  const n = week * 7 + day;
+  const P = recipePools(prefs, c);
+  const at = (a: string[], i: number) => a[i % a.length]!;
+  let lunch = at(P.main, 2 * n);
+  let dinner = at(P.main, 2 * n + 1);
+  if (lunch === dinner) dinner = at(P.main, 2 * n + 2);
+  return [at(P.breakfast, n), lunch, at(P.snack, 3 * n + 1), dinner];
+}
+
+/** Changements de plats faits par la personne : clé « AAAA-MM-JJ|prise ». */
+export type MenuOverrides = Record<string, string>;
+
+/** Menu d'une date réelle : rotation de 28 jours depuis le début du programme, puis changements. */
+export function menuForDate(start: IsoDate, date: IsoDate, prefs: MenuPrefs, overrides: MenuOverrides = {}, c: Content = defaultContent): string[] {
   const n = Math.max(0, diffDays(date, start)) % (c.menus.rotationWeeks * 7);
-  return menuForDay(Math.floor(n / 7), n % 7, budgetMode, c);
+  const base = menuForDay(Math.floor(n / 7), n % 7, prefs, c);
+  return base.map((id, slot) => overrides[`${date}|${slot}`] ?? id);
+}
+
+/** Plat suivant possible pour une prise (bouton « changer de plat »). */
+export function nextRecipe(current: string, slot: Slot, prefs: MenuPrefs, avoid: string[] = [], c: Content = defaultContent): string {
+  const pool = [...new Set(recipePools(prefs, c)[SLOT_CATEGORY[slot]!])];
+  const i = pool.indexOf(current);
+  for (let k = 1; k <= pool.length; k++) {
+    const cand = pool[(Math.max(0, i) + k) % pool.length]!;
+    if (cand !== current && !avoid.includes(cand)) return cand;
+  }
+  return current;
+}
+
+/** Les 28 jours de la rotation, recettes par prise. */
+export function rotationDays(prefs: MenuPrefs, c: Content = defaultContent): string[][] {
+  return Array.from({ length: c.menus.rotationWeeks * 7 }, (_, n) => menuForDay(Math.floor(n / 7), n % 7, prefs, c));
 }
 
 export interface PlannedMeal {
@@ -159,4 +217,37 @@ export function plannedMeals(recipeIds: string[], dailyKcal: number, c: Content 
 export function recipeAllowed(r: Recipe, p: Pick<Profile, 'dietTags' | 'excludedIngredients'>): boolean {
   return p.dietTags.every((t) => r.tags.includes(t))
     && !r.ingredients.some((i) => p.excludedIngredients.includes(i.ingredient));
+}
+
+// ---------- suivi des calories ----------
+
+export function dayTotals(entries: FoodEntry[], date: IsoDate): Macros {
+  return entries.filter((e) => e.date === date).reduce(
+    (a, e) => ({ kcal: a.kcal + e.kcal, protein: a.protein + e.protein, carbs: a.carbs + (e.carbs ?? 0), fat: a.fat + (e.fat ?? 0) }),
+    { kcal: 0, protein: 0, carbs: 0, fat: 0 },
+  );
+}
+
+/** Entrée de journal pour « j'ai mangé le menu ». */
+export function menuEntry(meal: PlannedMeal, date: IsoDate, profileId: string): FoodEntry {
+  return { profileId, date, name: meal.recipe.name, ...meal.macros, menuSlot: meal.slot };
+}
+
+/** Totaux des `n` derniers jours, du plus ancien au plus récent. */
+export function lastDays(entries: FoodEntry[], today: IsoDate, n = 7): { date: IsoDate; kcal: number; protein: number }[] {
+  return Array.from({ length: n }, (_, i) => {
+    const date = addDays(today, i - n + 1);
+    const t = dayTotals(entries, date);
+    return { date, kcal: t.kcal, protein: t.protein };
+  });
+}
+
+/** Plan de batch cooking : plats « batch » de la semaine servis au moins deux fois. */
+export function batchPlan(days: string[][], c: Content = defaultContent): { recipe: Recipe; portions: number; days: number[] }[] {
+  const seen = new Map<string, number[]>();
+  days.forEach((d, i) => d.forEach((id) => seen.set(id, [...(seen.get(id) ?? []), i])));
+  return [...seen.entries()]
+    .map(([id, ds]) => ({ recipe: c.recipes.find((r) => r.id === id)!, portions: ds.length, days: [...new Set(ds)] }))
+    .filter((x) => x.recipe?.tags.includes('batch') && x.portions >= 2)
+    .sort((a, b) => b.portions - a.portions);
 }

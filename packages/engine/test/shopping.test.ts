@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { budgetStatus, shoppingList, shoppingQty } from '../src';
+import { budgetStatus, recipeCost, rotationDays, shoppingList, shoppingQty, withPriceOverrides, type MenuPrefs } from '../src';
+import { content, recipeById } from '@muscu/content';
 
-const base = { week: 0, dailyKcal: 2900, budgetMode: true, weeklyBudget: 30, owned: new Set<string>() };
+const prefs = (budgetMode: boolean): MenuPrefs => ({ budgetMode, dietTags: [], excludedIngredients: [] });
+const rot = { true: rotationDays(prefs(true)), false: rotationDays(prefs(false)) };
+const week = (budgetMode: boolean, w: number) => ({ days: rot[`${budgetMode}`].slice(w * 7, w * 7 + 7), rotation: rot[`${budgetMode}`], budgetMode });
+const base = { ...week(true, 0), dailyKcal: 2900, weeklyBudget: 30, owned: new Set<string>() };
 
 describe('liste de courses', () => {
   const s = shoppingList(base);
@@ -13,13 +17,18 @@ describe('liste de courses', () => {
     expect(s.pantry.map((l) => l.ingredient.id)).toContain('rice');
   });
 
-  it('le profil de référence en budget serré reste autour de 25–30 € par semaine', () => {
-    for (const week of [0, 1, 2, 3]) {
-      const w = shoppingList({ ...base, week });
-      expect(w.weekCost).toBeGreaterThan(22);
-      expect(w.weekCost).toBeLessThan(33);
+  it('budget serré : autour de 25–30 € par semaine, un peu plus en prise de masse avec deux pistes', () => {
+    for (const wk of [0, 1, 2, 3]) {
+      // 2 600 kcal (force, explosivité, cardio) : dans le budget de 30 € à 1 € près
+      const lean = shoppingList({ ...base, ...week(true, wk), dailyKcal: 2600 });
+      expect(lean.weekCost, `semaine ${wk + 1} à 2 600 kcal`).toBeLessThan(31);
+      expect(lean.weekCost).toBeGreaterThan(20);
+      // 2 900 kcal (prise de masse) : légèrement au-dessus, avec le message et deux pistes
+      const mass = shoppingList({ ...base, ...week(true, wk) });
+      expect(mass.weekCost, `semaine ${wk + 1} à 2 900 kcal`).toBeLessThan(34);
+      if (!mass.budget.within) expect(mass.budget.tips).toHaveLength(2);
     }
-    expect(shoppingList({ ...base, budgetMode: false }).weekCost).toBeGreaterThan(s.weekCost);
+    expect(shoppingList({ ...base, ...week(false, 0) }).weekCost).toBeGreaterThan(s.weekCost);
   });
 
   it('« j’en ai » : rien à payer pour ce produit', () => {
@@ -32,7 +41,8 @@ describe('liste de courses', () => {
   });
 
   it('épices : un pot, dure plus de 6 mois', () => {
-    const cumin = shoppingList({ ...base, budgetMode: false }).pantry.find((l) => l.ingredient.id === 'cumin');
+    const all = [0, 1, 2, 3].flatMap((w) => shoppingList({ ...base, ...week(false, w) }).pantry);
+    const cumin = all.find((l) => l.ingredient.aisle === 'spice' && l.unit === 'tsp');
     expect(cumin).toMatchObject({ packPrice: 2.5, lastsWeeks: null });
   });
 
@@ -62,4 +72,19 @@ it('quantités affichées', () => {
   expect(shoppingQty('g', 1234)).toEqual({ qty: 1.2, unit: 'kg' });
   expect(shoppingQty('g', 453)).toEqual({ qty: 450, unit: 'g' });
   expect(shoppingQty('piece', 6.2)).toEqual({ qty: 7, unit: 'piece' });
+});
+
+describe('prix', () => {
+  it('coût d’une recette mise à l’échelle', () => {
+    const r = recipeById.get('lentilles-corail-epicees')!;
+    expect(recipeCost(r, 1.5, content.prices)).toBeCloseTo(recipeCost(r, 1, content.prices) * 1.5, 5);
+  });
+  it('les prix modifiés remplacent ceux du fichier', () => {
+    const cheap = withPriceOverrides(content.prices, { rice: { perKg: 0 } });
+    const a = shoppingList(base);
+    const b = shoppingList({ ...base, prices: cheap });
+    expect(b.fresh.length).toBe(a.fresh.length);
+    expect(b.weekCost).toBeLessThan(a.weekCost);
+    expect(content.prices.items.rice).toEqual({ perKg: 1.7 });
+  });
 });

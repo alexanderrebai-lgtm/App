@@ -1,5 +1,6 @@
 import { content as defaultContent, type Content, type Ingredient, type PricesFile, type Unit } from '@muscu/content';
-import { menuForDay, plannedMeals } from './nutrition';
+import { plannedMeals } from './nutrition';
+import type { Recipe } from '@muscu/content';
 
 export interface ShoppingLine {
   ingredient: Ingredient;
@@ -23,13 +24,22 @@ export function lineCost(ing: Ingredient, unit: Unit, qty: number, prices: Price
   return g ? (qty / g) * p.perUnit : 0;
 }
 
-/** Totaux d'une semaine de la rotation (0–3), portions ajustées à la cible. */
-export function weekTotals(
-  week: number, dailyKcal: number, budgetMode: boolean, c: Content = defaultContent, prices: PricesFile = c.prices,
-): Map<string, ShoppingLine> {
+/** Coût d'une recette mise à l'échelle. */
+export function recipeCost(r: Recipe, factor: number, prices: PricesFile, c: Content = defaultContent): number {
+  return r.ingredients.reduce((a, i) => a + lineCost(c.ingredients.ingredients.find((x) => x.id === i.ingredient)!, i.unit, i.qty * factor, prices), 0);
+}
+
+/** Prix modifiés par la personne : ils remplacent ceux du fichier daté. */
+export type PriceOverrides = Record<string, { perKg: number } | { perUnit: number }>;
+export function withPriceOverrides(prices: PricesFile, overrides: PriceOverrides): PricesFile {
+  return { ...prices, items: { ...prices.items, ...overrides } };
+}
+
+/** Totaux de courses pour une liste de jours (recettes par prise), portions ajustées à la cible. */
+export function daysTotals(days: string[][], dailyKcal: number, c: Content = defaultContent, prices: PricesFile = c.prices): Map<string, ShoppingLine> {
   const t = new Map<string, ShoppingLine>();
-  for (let d = 0; d < 7; d++) {
-    for (const meal of plannedMeals(menuForDay(week, d, budgetMode, c), dailyKcal, c)) {
+  for (const day of days) {
+    for (const meal of plannedMeals(day, dailyKcal, c)) {
       for (const i of meal.recipe.ingredients) {
         const ing = c.ingredients.ingredients.find((x) => x.id === i.ingredient)!;
         const key = `${i.ingredient}|${i.unit}`;
@@ -87,7 +97,10 @@ export function budgetStatus(weekCost: number, budget: number, budgetMode: boole
 }
 
 export interface ShoppingOptions {
-  week: number;
+  /** Les 7 jours de la semaine choisie (recettes par prise). */
+  days: string[][];
+  /** Les 28 jours de la rotation, pour estimer la durée d'un paquet. */
+  rotation: string[][];
   dailyKcal: number;
   budgetMode: boolean;
   weeklyBudget: number;
@@ -97,8 +110,9 @@ export interface ShoppingOptions {
 
 export function shoppingList(o: ShoppingOptions, c: Content = defaultContent): ShoppingList {
   const prices = o.prices ?? c.prices;
-  const T = weekTotals(o.week, o.dailyKcal, o.budgetMode, c, prices);
-  const all = [0, 1, 2, 3].map((w) => weekTotals(w, o.dailyKcal, o.budgetMode, c, prices));
+  const T = daysTotals(o.days, o.dailyKcal, c, prices);
+  const weeks = Math.max(1, Math.floor(o.rotation.length / 7));
+  const all = Array.from({ length: weeks }, (_, w) => daysTotals(o.rotation.slice(w * 7, w * 7 + 7), o.dailyKcal, c, prices));
   const avg = (key: string) => all.reduce((a, w) => a + (w.get(key)?.qty ?? 0), 0) / all.length;
   const fresh: ShoppingLine[] = [];
   const pantry: PantryLine[] = [];
