@@ -76,3 +76,25 @@ describe('contenus migrés du prototype', () => {
     for (const g of goals) for (const id of content.supplements.defaults[g]) expect(ids.has(id)).toBe(true);
   });
 });
+
+describe('matériel maison et exclusions', () => {
+  const home = content.equipment.home;
+  it('les remplacements maison existent et n’utilisent que le matériel disponible', () => {
+    for (const [from, alts] of Object.entries(home.alternatives)) {
+      expect(exerciseById.has(from), from).toBe(true);
+      expect(home.available).not.toContain(exerciseById.get(from)!.equipment);
+      for (const a of alts) {
+        expect(exerciseById.has(a), a).toBe(true);
+        expect(home.available, a).toContain(exerciseById.get(a)!.equipment);
+      }
+    }
+  });
+  it('chaque exercice de salle a un remplacement maison', () => {
+    for (const e of content.exercises.exercises) {
+      if (!home.available.includes(e.equipment)) expect(home.alternatives[e.id], e.id).toBeDefined();
+    }
+  });
+  it('les allergies citent des ingrédients connus', () => {
+    for (const a of content.exclusions.allergies) for (const i of a.ingredients) expect(ingredientById.has(i), i).toBe(true);
+  });
+});

@@ -1,0 +1,13 @@
+{
+  "diets": [
+    { "id": "noPork", "name": "Sans porc" },
+    { "id": "vegetarian", "name": "Végétarien" }
+  ],
+  "allergies": [
+    { "id": "eggs", "name": "Œufs", "ingredients": ["egg"] },
+    { "id": "dairy", "name": "Lait et produits laitiers", "ingredients": ["milk", "fromage-blanc", "grated-cheese", "butter", "cheese-slice", "plain-yogurt", "mozzarella"] },
+    { "id": "peanuts", "name": "Arachides", "ingredients": ["peanut-butter"] },
+    { "id": "fish", "name": "Poisson", "ingredients": ["tuna"] },
+    { "id": "gluten", "name": "Gluten", "ingredients": ["wholemeal-bread", "pasta", "flour", "semolina", "wheat-tortilla", "burger-bun", "oats", "soy-sauce"] }
+  ]
+}

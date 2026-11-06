@@ -196,7 +196,7 @@
         "chest",
         "triceps"
       ],
-      "equipment": "dumbbell"
+      "equipment": "pullupBar"
     },
     {
       "id": "dips-sur-banc",
@@ -298,7 +298,7 @@
         "lowerBack",
         "core"
       ],
-      "equipment": "dumbbell"
+      "equipment": "machine"
     },
     {
       "id": "extension-triceps-poulie",
@@ -828,7 +828,7 @@
         "back",
         "biceps"
       ],
-      "equipment": "bodyweight"
+      "equipment": "cable"
     },
     {
       "id": "tirage-vertical-poulie",
@@ -848,7 +848,7 @@
         "back",
         "biceps"
       ],
-      "equipment": "bodyweight"
+      "equipment": "cable"
     },
     {
       "id": "tractions-assistees",
@@ -868,7 +868,7 @@
         "back",
         "biceps"
       ],
-      "equipment": "dumbbell"
+      "equipment": "pullupBar"
     },
     {
       "id": "velo-ou-rameur-regulier",

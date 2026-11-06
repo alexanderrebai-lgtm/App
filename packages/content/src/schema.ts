@@ -173,3 +173,18 @@ export const SupplementsFile = z.object({
   })),
 });
 export type SupplementsFile = z.infer<typeof SupplementsFile>;
+
+export const EquipmentFile = z.object({
+  home: z.object({
+    description: z.string(),
+    available: z.array(Equipment),
+    alternatives: z.record(z.string(), z.array(z.string()).min(1)),
+  }),
+});
+export type EquipmentFile = z.infer<typeof EquipmentFile>;
+
+export const ExclusionsFile = z.object({
+  diets: z.array(z.object({ id: RecipeTag, name: z.string() })),
+  allergies: z.array(z.object({ id: z.string(), name: z.string(), ingredients: z.array(z.string()).min(1) })),
+});
+export type ExclusionsFile = z.infer<typeof ExclusionsFile>;

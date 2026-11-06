@@ -125,3 +125,26 @@ it('weekday : lundi = 0', () => {
   expect(weekday(START)).toBe(0);
   expect(weekday('2026-11-08')).toBe(6);
 });
+
+describe('matériel maison', () => {
+  const home = new Set(content.equipment.home.available);
+  it('toutes les séances à la maison n’utilisent que haltères et poids du corps, sans doublon', () => {
+    for (const goal of ['mass', 'strength', 'power', 'cardio'] as const) for (const freq of [2, 3, 4] as const) {
+      const p = profile({ goal, sessionsPerWeek: freq, equipment: 'home', backCare: true });
+      for (let d = 0; d < 182; d++) {
+        const plan = dayPlan(p, addDays(START, d))!;
+        for (const i of plan.items) expect(home.has(exerciseById.get(i.exercise)!.equipment), `${goal} ${i.exercise}`).toBe(true);
+        if (plan.day.kind === 'training') {
+          const ids = plan.items.map((i) => i.exercise);
+          expect(new Set(ids).size, `${goal} ${freq} ${plan.date} ${ids}`).toBe(ids.length);
+        }
+      }
+    }
+  });
+  it('la prescription est conservée', () => {
+    const gym = dayPlan(profile({ sessionsPerWeek: 4 }), START)!;
+    const homeP = dayPlan(profile({ sessionsPerWeek: 4, equipment: 'home' }), START)!;
+    expect(homeP.items.map((i) => i.scheme)).toEqual(gym.items.map((i) => i.scheme));
+    expect(homeP.items[1]!.exercise).toBe('rowing-haltere-un-bras'); // tirage vertical poulie
+  });
+});

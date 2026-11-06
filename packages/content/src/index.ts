@@ -6,8 +6,10 @@ import menusJson from '../data/menus.json';
 import pricesJson from '../data/prices.json';
 import nutritionJson from '../data/nutrition.json';
 import supplementsJson from '../data/supplements.json';
+import equipmentJson from '../data/equipment.json';
+import exclusionsJson from '../data/exclusions.json';
 import {
-  ExercisesFile, IngredientsFile, MenusFile, NutritionFile, PricesFile, ProgramsFile,
+  EquipmentFile, ExclusionsFile, ExercisesFile, IngredientsFile, MenusFile, NutritionFile, PricesFile, ProgramsFile,
   RecipesFile, SupplementsFile,
 } from './schema';
 
@@ -22,6 +24,8 @@ export const menus = MenusFile.parse(menusJson);
 export const defaultPrices = PricesFile.parse(pricesJson);
 export const nutrition = NutritionFile.parse(nutritionJson);
 export const supplements = SupplementsFile.parse(supplementsJson);
+export const equipment = EquipmentFile.parse(equipmentJson);
+export const exclusions = ExclusionsFile.parse(exclusionsJson);
 
 export const exerciseById = new Map(exercisesData.exercises.map((e) => [e.id, e]));
 export const ingredientById = new Map(ingredientsData.ingredients.map((i) => [i.id, i]));
@@ -36,6 +40,8 @@ export interface Content {
   prices: typeof defaultPrices;
   nutrition: typeof nutrition;
   supplements: typeof supplements;
+  equipment: typeof equipment;
+  exclusions: typeof exclusions;
 }
 
 export const content: Content = {
@@ -47,4 +53,6 @@ export const content: Content = {
   prices: defaultPrices,
   nutrition,
   supplements,
+  equipment,
+  exclusions,
 };

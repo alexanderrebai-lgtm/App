@@ -85,7 +85,25 @@ export interface DayPlan {
   items: Prescription[];
 }
 
-type PlanProfile = Pick<Profile, 'goal' | 'sessionsPerWeek' | 'level' | 'startDate' | 'backCare'>;
+type PlanProfile = Pick<Profile, 'goal' | 'sessionsPerWeek' | 'level' | 'startDate' | 'backCare'> & Partial<Pick<Profile, 'equipment'>>;
+
+/**
+ * Matériel maison : chaque exercice de salle est remplacé par le premier équivalent
+ * faisable avec des haltères et le poids du corps qui n'est pas déjà dans la séance.
+ */
+export function adaptForEquipment(items: Prescription[], equipment: Profile['equipment'], c: Content = defaultContent): Prescription[] {
+  if (equipment !== 'home') return items;
+  const home = c.equipment.home;
+  const out: Prescription[] = [];
+  for (const it of items) {
+    const alts = home.alternatives[it.exercise];
+    if (!alts) { out.push(it); continue; }
+    const taken = new Set([...out.map((o) => o.exercise), ...items.map((o) => o.exercise)]);
+    const pick = alts.find((a) => !taken.has(a)) ?? alts[0]!;
+    out.push({ exercise: pick, scheme: it.scheme });
+  }
+  return out;
+}
 
 export function dayPlan(p: PlanProfile, date: IsoDate, c: Content = defaultContent): DayPlan | null {
   const offset = diffDays(date, p.startDate);
@@ -99,9 +117,12 @@ export function dayPlan(p: PlanProfile, date: IsoDate, c: Content = defaultConte
   if (day.kind === 'training') {
     items = [...weekSessions(p.goal, phase, p.sessionsPerWeek, c)[day.index]!];
     label = sessionLabels(p.goal, p.sessionsPerWeek)[day.index]!;
-    if (p.backCare && getsBackCare(p.goal, p.sessionsPerWeek, day.index)) items.push(c.programs.backCare);
+    items = adaptForEquipment(items, p.equipment ?? 'gym', c);
+    if (p.backCare && getsBackCare(p.goal, p.sessionsPerWeek, day.index) && !items.some((i) => i.exercise === c.programs.backCare.exercise)) {
+      items.push(c.programs.backCare);
+    }
   } else if (day.kind === 'mobility') items = c.programs.recovery.mobility.items;
-  else if (day.kind === 'walk') items = c.programs.recovery.walk.items;
+  else if (day.kind === 'walk') items = adaptForEquipment(c.programs.recovery.walk.items, p.equipment ?? 'gym', c);
   return { date, week, weekday: wd, phase, deload: isDeloadWeek(week), day, label, items };
 }
 

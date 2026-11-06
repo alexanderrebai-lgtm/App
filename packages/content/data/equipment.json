@@ -1,0 +1,40 @@
+{
+  "home": {
+    "description": "À la maison : une paire d’haltères réglables, une chaise ou un canapé, le sol. Corde à sauter et rouleau facultatifs.",
+    "available": ["dumbbell", "bodyweight", "jumpRope", "foamRoller"],
+    "alternatives": {
+      "barre-au-front": ["dips-sur-banc", "pompes-sur-genoux-si-besoin"],
+      "curl-barre-ez": ["curl-biceps-halteres", "curl-marteau"],
+      "developpe-couche-barre": ["developpe-couche-halteres", "pompes"],
+      "developpe-incline-barre": ["developpe-incline-halteres", "pompes"],
+      "developpe-militaire-barre": ["developpe-militaire-halteres", "developpe-epaules-halteres"],
+      "dips": ["dips-sur-banc", "pompes"],
+      "dips-lestes": ["dips-sur-banc", "pompes"],
+      "extension-lombaire-a-45": ["superman-au-sol", "bird-dog"],
+      "extension-lombaire-lestee": ["superman-au-sol", "bird-dog"],
+      "extension-triceps-poulie": ["dips-sur-banc", "pompes-sur-genoux-si-besoin"],
+      "face-pull": ["oiseau-arriere-d-epaule", "elevations-laterales"],
+      "hip-thrust-barre": ["hip-thrust", "pont-fessier"],
+      "lancer-de-medecine-ball": ["pompes-explosives", "squat-saute"],
+      "lancer-de-medecine-ball-au-mur": ["pompes-explosives", "squat-saute"],
+      "leg-curl-machine": ["pont-fessier", "hip-thrust"],
+      "leg-extension": ["fentes-marchees", "fentes-bulgares"],
+      "mollets-assis": ["mollets-debout"],
+      "presse-a-cuisses": ["squat-goblet", "fentes-bulgares"],
+      "presse-a-cuisses-vitesse": ["squat-saute", "squat-goblet"],
+      "pull-through-poulie": ["pont-fessier", "hip-thrust"],
+      "releve-de-jambes-suspendu": ["releve-de-jambes", "dead-bug"],
+      "rowing-explosif-poulie": ["rowing-haltere-un-bras", "rowing-buste-appuye"],
+      "rowing-poulie-assis": ["rowing-haltere-un-bras", "rowing-buste-appuye"],
+      "rowing-t-bar": ["rowing-buste-appuye", "rowing-haltere-un-bras"],
+      "sauts-sur-box": ["squat-saute", "sauts-en-longueur-sur-place"],
+      "tirage-horizontal-poulie": ["rowing-haltere-un-bras", "rowing-buste-appuye"],
+      "tirage-poitrine-prise-serree": ["rowing-buste-appuye", "rowing-haltere-un-bras"],
+      "tirage-vertical-poulie": ["rowing-haltere-un-bras", "rowing-buste-appuye"],
+      "tirage-vertical-prise-neutre": ["rowing-buste-appuye", "rowing-haltere-un-bras"],
+      "tractions-assistees": ["rowing-haltere-un-bras", "rowing-buste-appuye"],
+      "tractions-lestees": ["rowing-haltere-un-bras", "rowing-buste-appuye"],
+      "velo-ou-rameur-regulier": ["footing-facile-tu-peux-parler", "marche-rapide"]
+    }
+  }
+}
