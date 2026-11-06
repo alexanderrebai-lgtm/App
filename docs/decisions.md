@@ -85,7 +85,7 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 | Projet | Projet existant du compte, vide, en région UE (Francfort) | Évite un second projet ; l'offre gratuite en limite le nombre. |
 | Droits | `TRUNCATE` et tous les droits des visiteurs non connectés retirés | `TRUNCATE` ignore les règles RLS : n'importe quel utilisateur aurait pu vider la table. |
 | Clé de l'appli | Clé « publishable » et adresse versionnées dans `config.ts` | Publiques par conception (incluses dans chaque appli installée) ; la clé secrète n'est jamais versionnée. |
-| Connexion | Désactivée dans l'appli tant que les codes par e-mail ne sont pas envoyés | Sans SMTP, Supabase envoie un lien et non un code, et au plus 2 e-mails par heure. |
+| Connexion | Code à 6 chiffres par e-mail via Brevo, expéditeur sur le domaine `elan-app.fr` | Sans SMTP, Supabase envoie un lien et non un code (2 e-mails par heure) ; Brevo refuse les expéditeurs Gmail ou Hotmail. Réception vérifiée dans la boîte principale de Gmail et d'Hotmail. |
 
 ## Règles harmonisées (incohérences du prototype)
 
