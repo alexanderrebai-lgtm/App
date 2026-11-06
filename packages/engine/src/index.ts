@@ -10,4 +10,5 @@ export * from './supplements';
 export * from './review';
 export * from './backup';
 export * from './session';
+export * from './reminders';
 export * as fr from './i18n/fr';

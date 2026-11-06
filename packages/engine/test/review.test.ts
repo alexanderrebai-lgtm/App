@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { exportBackup, fr, importBackup, lifeTotals, trend, weeklyReview, type ReviewData } from '../src';
+import { EMPTY_BACKUP, exportBackup, fr, importBackup, lifeTotals, trend, weeklyReview, type ReviewData } from '../src';
 import { profile } from './fixtures';
 
 const pid = 'p1';
@@ -58,7 +58,7 @@ describe('bilan hebdomadaire', () => {
 
 describe('sauvegarde', () => {
   it('export puis import à l’identique', () => {
-    const data = { ...empty, profiles: [profile()], measurements: [], pantry: [] };
+    const data = { ...EMPTY_BACKUP, ...empty, profiles: [profile()] };
     const json = exportBackup(data, new Date('2026-01-01T00:00:00Z'));
     const r = importBackup(json);
     expect(r.ok && r.source).toBe('app');

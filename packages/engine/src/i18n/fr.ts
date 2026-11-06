@@ -44,6 +44,26 @@ export const suggestionText: Record<SuggestionReason, string> = {
 
 export const lifestyle = {
   encouragement: 'Baisse un peu chaque semaine : c’est ce qui compte, pas la perfection.',
-  heartWarning: 'La caféine et le tabac accélèrent le cœur : reste à la dose basse de caféine.',
-  quitHelp: { FR: { name: 'Tabac Info Service', phone: '39 89', url: 'https://www.tabac-info-service.fr' } },
+  heartWarning: 'La caféine et le tabac accélèrent le cœur : reste à la dose basse de caféine et évite les pré-workouts forts.',
+  training: 'Pas de cigarette dans l’heure avant et après la séance. Évite l’alcool le soir d’une séance.',
+  quitHelp: {
+    FR: [
+      { name: 'Tabac Info Service', phone: '39 89', url: 'https://www.tabac-info-service.fr', what: 'Aide gratuite pour arrêter de fumer, avec un tabacologue.' },
+      { name: 'Alcool Info Service', phone: '0 980 980 930', url: 'https://www.alcool-info-service.fr', what: 'Écoute anonyme et gratuite sur l’alcool, 7 jours sur 7.' },
+    ],
+  },
 };
+
+/** Message bienveillant selon la tendance de la semaine. */
+export function lifeMessage(kind: 'cigarettes' | 'drinks', t: 'down' | 'up' | 'same' | 'none', current: number): string {
+  if (kind === 'cigarettes') {
+    if (t === 'none') return 'Aucune cigarette notée ces deux dernières semaines.';
+    if (t === 'down') return `${current} cette semaine, moins que la semaine d’avant : ton souffle te dira merci.`;
+    if (t === 'up') return 'Un peu plus que la semaine d’avant. Fixe-toi un petit objectif : une cigarette de moins par jour.';
+    return 'Stable par rapport à la semaine d’avant. Essaie de supprimer celle de l’heure qui suit la séance.';
+  }
+  if (t === 'none') return 'Aucun verre noté ces deux dernières semaines.';
+  if (t === 'down') return 'Moins d’alcool que la semaine d’avant : très bien pour ta récupération et ton sommeil.';
+  if (t === 'up') return 'Un peu plus que la semaine d’avant. Garde au moins 2 à 3 jours sans alcool par semaine.';
+  return 'Stable par rapport à la semaine d’avant.';
+}

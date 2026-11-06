@@ -158,3 +158,17 @@ export function weeklyReview(
     tips,
   };
 }
+
+/** Hygiène de vie des 7 derniers jours (jour par jour) et comparaison avec les 7 jours d'avant. */
+export function lifeWeek(logs: LifeLog[], today: IsoDate) {
+  const days = Array.from({ length: 7 }, (_, i) => addDays(today, i - 6));
+  const prev = days.map((d) => addDays(d, -7));
+  const byDay = days.map((date) => {
+    const l = logs.find((x) => x.date === date);
+    return { date, cigarettes: l?.cigarettes ?? 0, drinks: l?.drinks ?? 0 };
+  });
+  const cur = lifeTotals(logs, days);
+  const pre = lifeTotals(logs, prev);
+  const alcoholFreeDays = byDay.filter((d) => d.drinks === 0).length;
+  return { byDay, current: cur, previous: pre, cigarettes: trend(cur.cigarettes, pre.cigarettes), drinks: trend(cur.drinks, pre.drinks), alcoholFreeDays };
+}

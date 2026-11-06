@@ -6,7 +6,7 @@ import type {
   SupplementLog,
 } from './model';
 
-export const BACKUP_VERSION = 1;
+export const BACKUP_VERSION = 2;
 
 const Iso = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 const Feedback = z.enum(['easy', 'good', 'hard']);
@@ -38,7 +38,8 @@ const ProfileSchema = z.object({
 const pid = { profileId: z.string(), date: Iso };
 export const BackupSchema = z.object({
   app: z.literal('muscu'),
-  version: z.literal(BACKUP_VERSION),
+  // la version 1 (M0 à M2) reste lisible : les collections ajoutées ensuite sont vides
+  version: z.union([z.literal(1), z.literal(2)]),
   exportedAt: z.string(),
   profiles: z.array(ProfileSchema),
   exerciseLogs: z.array(z.object({
@@ -66,6 +67,10 @@ export const BackupSchema = z.object({
   supplements: z.array(z.object({ ...pid, supplement: SupplementId, taken: z.boolean() })),
   life: z.array(z.object({ ...pid, cigarettes: z.number().int().min(0), drinks: z.number().int().min(0) })),
   pantry: z.array(z.object({ profileId: z.string(), ingredient: z.string(), owned: z.boolean() })),
+  water: z.array(z.object({ ...pid, ml: z.number().min(0) })).default([]),
+  menuOverrides: z.array(z.object({ ...pid, slot: z.number().int().min(0).max(3), recipeId: z.string() })).default([]),
+  recipePrefs: z.array(z.object({ profileId: z.string(), recipeId: z.string(), pref: z.enum(['favorite', 'excluded']) })).default([]),
+  priceOverrides: z.record(z.string(), z.union([z.object({ perKg: z.number().min(0) }), z.object({ perUnit: z.number().min(0) })])).default({}),
 });
 
 export interface Backup {
@@ -82,9 +87,20 @@ export interface Backup {
   supplements: SupplementLog[];
   life: LifeLog[];
   pantry: PantryItem[];
+  water: { profileId: string; date: IsoDate; ml: number }[];
+  menuOverrides: { profileId: string; date: IsoDate; slot: number; recipeId: string }[];
+  recipePrefs: { profileId: string; recipeId: string; pref: 'favorite' | 'excluded' }[];
+  priceOverrides: Record<string, { perKg: number } | { perUnit: number }>;
 }
 
-export function exportBackup(data: Omit<Backup, 'app' | 'version' | 'exportedAt'>, now = new Date()): string {
+export type BackupData = Omit<Backup, 'app' | 'version' | 'exportedAt'>;
+
+export const EMPTY_BACKUP: BackupData = {
+  profiles: [], exerciseLogs: [], sessions: [], checkIns: [], weights: [], measurements: [], food: [],
+  supplements: [], life: [], pantry: [], water: [], menuOverrides: [], recipePrefs: [], priceOverrides: {},
+};
+
+export function exportBackup(data: BackupData, now = new Date()): string {
   const b: Backup = { app: 'muscu', version: BACKUP_VERSION, exportedAt: now.toISOString(), ...data };
   return JSON.stringify(b);
 }
@@ -97,7 +113,7 @@ export function importBackup(json: string, opts: PrototypeImportOptions = {}): I
   try { raw = JSON.parse(json); } catch { return { ok: false, error: 'invalidJson' }; }
   if (raw && typeof raw === 'object' && (raw as { app?: unknown }).app === 'muscu') {
     const r = BackupSchema.safeParse(raw);
-    return r.success ? { ok: true, backup: r.data as Backup, source: 'app' } : { ok: false, error: 'invalidBackup' };
+    return r.success ? { ok: true, backup: { ...r.data, version: BACKUP_VERSION } as Backup, source: 'app' } : { ok: false, error: 'invalidBackup' };
   }
   const proto = PrototypeSchema.safeParse(raw);
   if (!proto.success) return { ok: false, error: 'unknownFormat' };
@@ -163,8 +179,7 @@ function fromPrototype(s: z.infer<typeof PrototypeSchema>, opts: PrototypeImport
 
   const b: Backup = {
     app: 'muscu', version: BACKUP_VERSION, exportedAt: new Date().toISOString(),
-    profiles: [], exerciseLogs: [], sessions: [], checkIns: [], weights: [], measurements: [],
-    food: [], supplements: [], life: [], pantry: [],
+    ...EMPTY_BACKUP, profiles: [],
   };
   const first = s.fst && s.fst > s.start ? s.fst : s.start;
   for (const [key, p] of Object.entries(s.p)) {
@@ -227,4 +242,55 @@ function fromPrototype(s: z.infer<typeof PrototypeSchema>, opts: PrototypeImport
     }
   }
   return b;
+}
+
+// ---------- fusion (synchronisation entre appareils et co-édition) ----------
+
+type Collections = Exclude<keyof BackupData, 'profiles' | 'priceOverrides'>;
+const KEYS: Record<Collections, (x: never) => string> = {
+  exerciseLogs: (x: ExerciseLog) => `${x.profileId}|${x.date}|${x.exercise}`,
+  sessions: (x: SessionLog) => `${x.profileId}|${x.date}`,
+  checkIns: (x: CheckIn) => `${x.profileId}|${x.date}`,
+  weights: (x: BodyWeight) => `${x.profileId}|${x.date}`,
+  measurements: (x: Measurements) => `${x.profileId}|${x.date}`,
+  food: (x: FoodEntry) => `${x.profileId}|${x.date}|${x.menuSlot ?? ''}|${x.name}|${x.kcal}`,
+  supplements: (x: SupplementLog) => `${x.profileId}|${x.date}|${x.supplement}`,
+  life: (x: LifeLog) => `${x.profileId}|${x.date}`,
+  pantry: (x: PantryItem) => `${x.profileId}|${x.ingredient}`,
+  water: (x: { profileId: string; date: string }) => `${x.profileId}|${x.date}`,
+  menuOverrides: (x: { profileId: string; date: string; slot: number }) => `${x.profileId}|${x.date}|${x.slot}`,
+  recipePrefs: (x: { profileId: string; recipeId: string }) => `${x.profileId}|${x.recipeId}`,
+};
+
+/**
+ * Fusionne deux sauvegardes : tout ce qui n'existe que d'un côté est gardé ; quand une même
+ * entrée (même profil, même jour…) existe des deux côtés, la version de `newer` l'emporte.
+ * Les journaux alimentaires sont additionnés sans doublon. Une suppression faite sur un seul
+ * appareil peut donc réapparaître : limite assumée de cette première synchronisation.
+ */
+export function mergeBackups(older: BackupData, newer: BackupData): BackupData {
+  const out = { ...EMPTY_BACKUP } as BackupData;
+  const profiles = new Map(older.profiles.map((p) => [p.id, p]));
+  for (const p of newer.profiles) profiles.set(p.id, p);
+  out.profiles = [...profiles.values()];
+  for (const k of Object.keys(KEYS) as Collections[]) {
+    const key = KEYS[k] as (x: unknown) => string;
+    const m = new Map<string, unknown>();
+    for (const x of older[k] as unknown[]) m.set(key(x), x);
+    for (const x of newer[k] as unknown[]) m.set(key(x), x);
+    (out as unknown as Record<string, unknown[]>)[k] = [...m.values()];
+  }
+  out.priceOverrides = { ...older.priceOverrides, ...newer.priceOverrides };
+  return out;
+}
+
+/** Ne garde que les données d'un profil (partage d'un seul profil). */
+export function backupForProfile(b: BackupData, profileId: string): BackupData {
+  const out = { ...EMPTY_BACKUP } as BackupData;
+  out.profiles = b.profiles.filter((p) => p.id === profileId);
+  for (const k of Object.keys(KEYS) as Collections[]) {
+    (out as unknown as Record<string, unknown[]>)[k] = (b[k] as { profileId: string }[]).filter((x) => x.profileId === profileId);
+  }
+  out.priceOverrides = {};
+  return out;
 }
