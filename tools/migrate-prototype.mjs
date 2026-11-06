@@ -114,6 +114,10 @@ for (const g of GOALS) {
     nutritionNotes: { before: P.NOTES[g][0], after: P.NOTES[g][1], adjust: P.NOTES[g][2] },
   };
 }
+// Corrections de texte : alignées sur les règles retenues (voir docs/decisions.md).
+goals.mass.phaseTexts[1] = goals.mass.phaseTexts[1].replace('+2 kg', '+2,5 kg');
+goals.mass.nutritionNotes.adjust = goals.mass.nutritionNotes.adjust.replace('+200 kcal', '+150 kcal');
+for (const g of ['power', 'cardio']) goals[g].weightGoalText = 'poids stable (à ±0,25 kg par semaine)';
 const recovery = {
   mobility: { title: 'Mobilité · mercredi · 20 min', items: P.REC[0].map((x) => { const [n, s] = x.split('|'); return { exercise: exId.get(n), scheme: s }; }) },
   walk: { title: 'Marche et étirements · samedi', items: P.REC[1].map((x) => { const [n, s] = x.split('|'); return { exercise: exId.get(n), scheme: s }; }) },

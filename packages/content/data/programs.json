@@ -7,13 +7,13 @@
       "weightGoalText": "gain visé : 0,25 à 0,5 kg par semaine",
       "phaseTexts": [
         "Apprendre : 2–3 séries de 10–12 reps, 3–4 reps en réserve",
-        "Progresser : 3–4 séries de 8–12 reps, nouveaux exercices, +2 kg dès que possible",
+        "Progresser : 3–4 séries de 8–12 reps, nouveaux exercices, +2,5 kg dès que possible",
         "Intensifier : 3–4 séries de 6–10 reps, charges plus lourdes"
       ],
       "nutritionNotes": {
         "before": "1 h 30 avant : féculents + protéines (porridge, riz + poulet). 30 min avant si besoin : une banane.",
         "after": "Dans l’heure : 25–35 g de protéines + glucides (smoothie, riz + poulet, fromage blanc + flocons).",
-        "adjust": "Poids stable 2 semaines : +200 kcal (flocons au lait + banane). Plus de 0,5 kg par semaine : retire 150 kcal."
+        "adjust": "Poids stable 2 semaines : +150 kcal (flocons au lait + banane). Plus de 0,5 kg par semaine : retire 150 kcal."
       }
     },
     "strength": {
@@ -36,7 +36,7 @@
       "name": "Explosivité",
       "icon": "⚡",
       "description": "Sauter plus haut, accélérer, lancer plus fort. Mouvements rapides et sauts, 60 contacts au sol maximum par séance.",
-      "weightGoalText": "poids stable à ±1 kg",
+      "weightGoalText": "poids stable (à ±0,25 kg par semaine)",
       "phaseTexts": [
         "Technique : sauts et lancers de qualité, 4 × 5, repos 90 s",
         "Puissance : 5 × 4, plus de vitesse",
@@ -52,7 +52,7 @@
       "name": "Cardio",
       "icon": "🫁",
       "description": "Souffle et endurance : footing, vélo, fractionné progressif, un peu de renforcement.",
-      "weightGoalText": "poids stable à ±1 kg",
+      "weightGoalText": "poids stable (à ±0,25 kg par semaine)",
       "phaseTexts": [
         "Base : endurance facile 25 min, fractionné doux",
         "Endurance : 35 min, fractionné 30 s / 90 s",
