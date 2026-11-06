@@ -128,3 +128,14 @@ export const TABLE_NAMES = [
 export type TableName = (typeof TABLE_NAMES)[number];
 
 export const db = new AimanteDB();
+
+/** Supprime des lignes et garde une trace de chaque suppression (pour la future synchro). */
+export async function removeRows(database: AimanteDB, tableName: TableName, keys: string[]): Promise<void> {
+  if (!keys.length) return;
+  const table = database.table(tableName);
+  await database.transaction("rw", [table, database.deletions], async () => {
+    await table.bulkDelete(keys);
+    const at = Date.now();
+    await database.deletions.bulkPut(keys.map((id) => ({ key: `${tableName}|${id}`, table: tableName, id, at })));
+  });
+}

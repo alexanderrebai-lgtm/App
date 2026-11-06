@@ -44,3 +44,14 @@ export function guessAisle(name: string): Aisle {
   }
   return "Autre";
 }
+
+/**
+ * Clé pour repérer un même article écrit différemment : « Bananes », « banane »
+ * et « BANANE » donnent la même clé. Sert à éviter les doublons dans la liste.
+ */
+export function dedupeKey(name: string): string {
+  return normalizeName(name)
+    .split(" ")
+    .map((w) => (w.length > 3 ? w.replace(/[sx]$/, "") : w))
+    .join(" ");
+}

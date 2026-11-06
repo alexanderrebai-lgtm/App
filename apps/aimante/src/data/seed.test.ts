@@ -27,6 +27,7 @@ describe("données de départ", () => {
     expect(s.staples).toHaveLength(12);
     expect(s.staples.find((x) => x.name === "Œufs")?.aisle).toBe("Frais");
     expect(s.settings.totalDrops).toBe(0);
+    expect(s.shopping.map((x) => x.name)).toEqual(["Bananes", "Lait", "Liquide vaisselle"]);
   });
 
   it("chaque tâche ménagère appartient à une pièce existante", () => {

@@ -74,7 +74,7 @@ Les écrans ne parlent jamais à Dexie directement : ils passent par `src/data/r
 
 - [x] Étape 1 : base (Vite, PWA, Dexie, 5 onglets, thème clair/sombre, données de départ, export/import)
 - [x] Étape 2 : Aujourd'hui + Maison (routines, tâches avec report, ménage, session éclair, plante et gouttes, journée difficile, retour en douceur, heure de coucher)
-- [ ] Étape 3 : Repas + Courses
+- [x] Étape 3 : Repas + Courses (menu sur 7 jours, recettes, remplissage varié, ingrédients vers les courses sans doublon, rayons automatiques, essentiels)
 - [ ] Étape 4 : Agenda, revue et bilan doux du dimanche
 - [ ] Synchro téléphone + ordi (Supabase, connexion par code e-mail)
 - [ ] Étape 5 : vraies notifications (service Supabase) et finitions

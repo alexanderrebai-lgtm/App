@@ -14,6 +14,7 @@ import type {
   Recipe,
   Room,
   Settings,
+  ShoppingItem,
   Staple,
 } from "../domain/types";
 import { type AimanteDB } from "./db";
@@ -35,6 +36,7 @@ export interface SeedData {
   recipes: Recipe[];
   mealPlan: MealPlanEntry[];
   staples: Staple[];
+  shopping: ShoppingItem[];
   events: AgendaEvent[];
   backlog: BacklogItem[];
   memos: Memo[];
@@ -105,6 +107,10 @@ export function buildSeed(today: ISODate, now = Date.now()): SeedData {
     recipes,
     mealPlan,
     staples: SEED_STAPLES.map((name, order) => ({ id: newId(), name, aisle: guessAisle(name), order })),
+    // Quelques articles pour que la liste ne soit pas vide au départ (les mêmes que dans le prototype).
+    shopping: ["Bananes", "Lait", "Liquide vaisselle"].map((name, i) => ({
+      id: newId(), name, aisle: guessAisle(name), checked: false, origin: "essentiel" as const, createdAt: now + i,
+    })),
     events: [
       { id: newId(), title: "Payer le loyer", date: firstOfMonth, time: null, kind: "a-faire", repeat: "monthly" },
       { id: newId(), title: "Coiffeur", date: thirdOfMonth, time: "10:00", kind: "rdv", repeat: "monthly" },
@@ -130,6 +136,7 @@ export async function ensureSeeded(database: AimanteDB, today: ISODate): Promise
       database.recipes.bulkAdd(s.recipes),
       database.mealPlan.bulkAdd(s.mealPlan),
       database.staples.bulkAdd(s.staples),
+      database.shoppingItems.bulkAdd(s.shopping),
       database.events.bulkAdd(s.events),
       database.backlog.bulkAdd(s.backlog),
       database.memos.bulkAdd(s.memos),

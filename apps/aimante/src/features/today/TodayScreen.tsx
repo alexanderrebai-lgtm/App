@@ -43,6 +43,7 @@ import type { TabId } from "../../ui/TabBar";
 import { useToast } from "../../ui/Toast";
 import { useNow } from "../../ui/useNow";
 import { useToday } from "../../ui/useToday";
+import { MealSlotSheet, type SlotRef } from "../meals/MealSlotSheet";
 import { HabitsSheet, MOMENTS } from "./HabitsSheet";
 
 interface Props {
@@ -57,6 +58,7 @@ export function TodayScreen({ onOpenSettings, goTo }: Props) {
   const week = weekDays(t);
   const yesterday = addDays(t, -1);
   const [habitsOpen, setHabitsOpen] = useState(false);
+  const [slot, setSlot] = useState<SlotRef | null>(null);
 
   const settings = useLive(getSettings);
   // La semaine pour les pastilles, plus hier (pour « raté hier » le lundi).
@@ -405,11 +407,11 @@ export function TodayScreen({ onOpenSettings, goTo }: Props) {
         }
       >
         <div className="grid2">
-          {(["midi", "soir"] as const).map((slot) => {
-            const label = mealLabel(slot);
+          {(["midi", "soir"] as const).map((s) => {
+            const label = mealLabel(s);
             return (
-              <button type="button" key={slot} className={`meal ${label ? "" : "empty-slot"}`} onClick={() => goTo("meals")}>
-                <small>{slot}</small>
+              <button type="button" key={s} className={`meal ${label ? "" : "empty-slot"}`} onClick={() => setSlot({ date: t, slot: s })}>
+                <small>{s}</small>
                 {label ?? "Choisir"}
               </button>
             );
@@ -418,6 +420,7 @@ export function TodayScreen({ onOpenSettings, goTo }: Props) {
       </Slip>
 
       <HabitsSheet open={habitsOpen} onClose={() => setHabitsOpen(false)} />
+      <MealSlotSheet target={slot} onClose={() => setSlot(null)} />
     </>
   );
 }
