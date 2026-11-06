@@ -1,0 +1,36 @@
+{
+  "sections": [
+    { "id": "comment", "title": "Comment ça marche", "text": "Au premier lancement tu choisis ton objectif, ton nombre de séances et ton niveau. L’appli construit 26 semaines en 3 phases qui évoluent : exercices, séries et charges changent. Le calendrier te montre chaque jour, la séance s’ouvre d’un toucher, le mannequin te montre le geste, tu notes tes séries et l’appli te dit quand augmenter le poids. Tu peux changer d’objectif à tout moment dans ton profil." },
+    { "id": "reprise", "title": "Je reprends après des années sans sport", "text": "Commence par 2 séances par semaine et des charges légères : les 2 premières semaines servent à apprendre les gestes. Des courbatures de 48 à 72 h sont normales au début. Ton corps progresse vite quand on part de zéro : la régularité compte plus que l’intensité. Si tu as un doute de santé (cœur, tension, douleur), fais un bilan chez ton médecin avant de commencer, surtout si tu fumes." },
+    { "id": "progression", "title": "Règle de progression", "text": "Si tu réussis toutes tes séries au haut de la fourchette avec une bonne technique, ou si tout était facile, ajoute 2,5 kg la séance suivante. Sinon, garde le même poids. Au début, choisis une charge qui te laisse 3 à 4 répétitions en réserve. Toutes les 4 semaines : semaine allégée, une série de moins." },
+    { "id": "dos", "title": "Le dos", "text": "En mode dos sensible, un bloc de renfort (bird-dog) s’ajoute aux séances du bas, avec du gainage et du renfort des lombaires. Le programme ne contient ni soulevé de terre ni squat à la barre. Charges légères au début, jamais de douleur vive. Si une douleur lombaire apparaît, arrête et consulte un médecin ou un kiné. Les sauts du programme Explosivité demandent une bonne technique : commence bas." },
+    { "id": "recup", "title": "Récupération", "text": "Mercredi (avec 2 ou 4 séances) : mobilité 20 minutes. Samedi : marche et étirements. Dimanche : repos. Dors 7 à 9 heures : c’est pendant le sommeil que le muscle se reconstruit." },
+    { "id": "tabac", "title": "Tabac et alcool", "text": "Les deux ralentissent la récupération et la progression. Pas de cigarette dans l’heure avant et après la séance. Évite l’alcool le soir d’une séance et garde au moins 2 à 3 jours par semaine sans alcool. Aide gratuite : Tabac Info Service au 39 89, Alcool Info Service au 0 980 980 930." },
+    { "id": "sources", "title": "Sources et limites", "text": "Les programmes et les repères de nutrition s’appuient sur des articles de coachs et de diététiciens du sport, des guides d’entraînement (course, pliométrie, musculation débutant) et des publications de référence : protéines autour de 1,6 à 2,2 g par kg, lipides d’au moins 0,6 g par kg, glucides pour le reste, 1 à 2 séances de sauts maximum par semaine, fractionné introduit progressivement. Les calories sont des estimations (formule de Mifflin-St Jeor × 1,55) : l’appli les ajuste avec ton poids sur 2 semaines. Élan n’est pas un avis médical et ne remplace pas un médecin, un kiné ou un diététicien." }
+  ],
+  "warmup": {
+    "title": "Échauffement · 6 minutes",
+    "steps": [
+      "3 minutes de marche rapide, de vélo ou de corde à sauter.",
+      "10 cercles des épaules et 10 rotations des hanches de chaque côté.",
+      "10 squats au poids du corps, lents.",
+      "Une série légère du premier exercice : environ la moitié de ta charge, 10 répétitions."
+    ]
+  },
+  "glossary": [
+    { "term": "Série", "text": "Un bloc de répétitions enchaînées sans pause. « 3 × 10 » veut dire 3 séries de 10 répétitions." },
+    { "term": "Répétition", "text": "Un mouvement complet, aller et retour." },
+    { "term": "Fourchette", "text": "« 8–12 » : vise entre 8 et 12 répétitions. Quand tu atteins 12 partout, la charge augmente." },
+    { "term": "Répétitions en réserve", "text": "Combien de répétitions tu aurais encore pu faire à la fin de la série. 3 à 4 au début, moins ensuite." },
+    { "term": "RPE", "text": "Effort perçu de 1 à 10. RPE 8 = il te restait environ 2 répétitions en réserve." },
+    { "term": "1RM", "text": "La charge maximale que tu pourrais soulever une seule fois. L’appli l’estime à partir de tes séries, sans jamais te le faire tester." },
+    { "term": "Tempo", "text": "La vitesse du mouvement, par exemple 2 secondes pour descendre et 1 pour remonter." },
+    { "term": "Semaine allégée", "text": "Toutes les 4 semaines, une série de moins par exercice pour récupérer et repartir plus fort." },
+    { "term": "Volume, tonnage", "text": "Le total soulevé : charge × répétitions, additionné sur toutes les séries." },
+    { "term": "Gainage", "text": "Garder le ventre et le dos serrés pour protéger les lombaires (planche, dead bug)." },
+    { "term": "Surcharge progressive", "text": "Augmenter peu à peu la charge, les répétitions ou les séries : c’est ce qui fait progresser." },
+    { "term": "Mobilité", "text": "Exercices doux qui entretiennent l’amplitude des articulations." },
+    { "term": "Macros", "text": "Protéines, glucides et lipides : les trois sources d’énergie de l’alimentation." },
+    { "term": "Batch cooking", "text": "Cuisiner plusieurs portions en une fois, souvent le dimanche, pour la semaine." }
+  ]
+}

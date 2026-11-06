@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { guide } from '@muscu/content';
 import { Pressable, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { dayPlan, isLowReadiness, parseScheme, restSeconds, setsToDo } from '@muscu/engine';
@@ -48,6 +49,12 @@ export default function SessionDay() {
         </T>
       </View>
       {training && date <= today && !done ? <CheckInCard /> : null}
+      {training ? (
+        <Card style={{ backgroundColor: colors.slateHi }}>
+          <T v="label" color={colors.azure}>{guide.warmup.title}</T>
+          {guide.warmup.steps.map((x, i) => <T key={i} v="detail" color={colors.soft}>{i + 1}. {x}</T>)}
+        </Card>
+      ) : null}
       <View style={{ gap: space.m }}>
         {plan.items.map((i, k) => {
           const sc = parseScheme(i.scheme);

@@ -8,8 +8,9 @@ import nutritionJson from '../data/nutrition.json';
 import supplementsJson from '../data/supplements.json';
 import equipmentJson from '../data/equipment.json';
 import exclusionsJson from '../data/exclusions.json';
+import guideJson from '../data/guide.json';
 import {
-  EquipmentFile, ExclusionsFile, ExercisesFile, IngredientsFile, MenusFile, NutritionFile, PricesFile, ProgramsFile,
+  EquipmentFile, ExclusionsFile, GuideFile, ExercisesFile, IngredientsFile, MenusFile, NutritionFile, PricesFile, ProgramsFile,
   RecipesFile, SupplementsFile,
 } from './schema';
 
@@ -26,6 +27,7 @@ export const nutrition = NutritionFile.parse(nutritionJson);
 export const supplements = SupplementsFile.parse(supplementsJson);
 export const equipment = EquipmentFile.parse(equipmentJson);
 export const exclusions = ExclusionsFile.parse(exclusionsJson);
+export const guide = GuideFile.parse(guideJson);
 
 export const exerciseById = new Map(exercisesData.exercises.map((e) => [e.id, e]));
 export const ingredientById = new Map(ingredientsData.ingredients.map((i) => [i.id, i]));

@@ -51,6 +51,7 @@ export default function ProfileTab() {
           ['Compléments', 'Routine, dosages et où les trouver', '/complements'],
           ['Sauvegarde', 'Exporter ou importer tes données', '/sauvegarde'],
           ['Compte et partage', 'Synchroniser, partager avec un ami', '/compte'],
+          ['Guide', 'Bien démarrer, fiches techniques, glossaire', '/guide'],
         ] as const).map(([title, desc, href], i) => (
           <Pressable key={href} accessibilityRole="button" onPress={() => router.push(href)}
             style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, paddingVertical: space.m, borderTopWidth: i ? 1 : 0, borderTopColor: colors.line, minHeight: 56 }}>

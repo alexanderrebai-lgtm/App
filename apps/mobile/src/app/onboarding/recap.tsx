@@ -77,6 +77,7 @@ export default function RecapStep() {
         ))}
         <T v="detail" color={colors.mute}>Toutes les 4 semaines, une semaine allégée : une série de moins par exercice.</T>
       </View>
+      <T v="caption" color={colors.mute}>Élan n’est pas un avis médical. En cas de doute (cœur, tension, douleur, traitement), parle à ton médecin avant de commencer.</T>
     </Screen>
   );
 }

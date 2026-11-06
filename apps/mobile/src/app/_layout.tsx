@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
@@ -12,6 +12,20 @@ import { ReminderSync } from '../ui/ReminderSync';
 import { T } from '../ui/Text';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
+
+/** Écran affiché si un écran plante : rien n'est perdu, les données sont dans la base. */
+export function ErrorBoundary({ error, retry }: { error: Error; retry: () => Promise<void> }) {
+  return (
+    <View style={{ flex: 1, backgroundColor: colors.night, justifyContent: 'center', padding: gutter, gap: 12 }}>
+      <T v="title">Oups, cet écran a planté</T>
+      <T color={colors.soft}>Tes données sont intactes. Réessaie ; si le problème revient, ferme et rouvre l’appli.</T>
+      <T v="caption" color={colors.mute}>{error.message}</T>
+      <Pressable accessibilityRole="button" onPress={retry} style={{ minHeight: 56, borderRadius: 12, backgroundColor: colors.neon, alignItems: 'center', justifyContent: 'center' }}>
+        <T v="button" color={colors.night}>Réessayer</T>
+      </Pressable>
+    </View>
+  );
+}
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({

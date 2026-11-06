@@ -194,3 +194,9 @@ export const ExclusionsFile = z.object({
   allergies: z.array(z.object({ id: z.string(), name: z.string(), ingredients: z.array(z.string()).min(1) })),
 });
 export type ExclusionsFile = z.infer<typeof ExclusionsFile>;
+
+export const GuideFile = z.object({
+  sections: z.array(z.object({ id: z.string(), title: z.string(), text: z.string() })).min(1),
+  warmup: z.object({ title: z.string(), steps: z.array(z.string()).min(1) }),
+  glossary: z.array(z.object({ term: z.string(), text: z.string() })).min(1),
+});
