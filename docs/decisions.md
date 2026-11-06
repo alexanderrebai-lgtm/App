@@ -116,3 +116,15 @@ Chaque écart avec le prototype ou le cahier des charges est listé ici, avec sa
 - En mode budget serré, les semaines 1 et 4 de la rotation donnent le même menu (formules du prototype). À revoir en M3 avec les nouvelles recettes.
 - Les recettes passent de 27 à 60 en M3.
 - Le remplacement d'exercice ne tient pas encore compte du matériel (salle ou maison) : prévu en M1 avec l'onboarding.
+
+## M6 — Coaching adaptatif (objectifs, niveaux, explications)
+
+**Ajouts** : objectifs « Perte de graisse » et « Forme générale et santé » ; 3 niveaux (débutant, intermédiaire, avancé) qui règlent phases, volume, surplus et rythme visé ; parcours « difficulté à prendre du poids » (surplus plus grand, 5 repas, recettes denses, ajouts caloriques) ; blessures, durée de séance, jours choisis, haltère maximal, repas par jour, temps de cuisine ; questionnaire de santé (6 questions) ; volume hebdomadaire par muscle avec complément automatique ; double progression ; semaine allégée décidée d'après la fatigue ; détection des plateaux ; écrans « Mon coaching », « Preuves » et « Pourquoi cet exercice ? ».
+
+**Écarts à signaler**
+- Les repères chiffrés (volume, protéines, rythme de prise par niveau) viennent de résumés d'études. Les articles d'origine n'ont pas pu être relus (accès bloqué) : `evidence.json` affiche un niveau de confiance et le dit à l'utilisateur. À revalider avant la publication sur les stores.
+- Pour le débutant, le programme reste identique au prototype (tests d'équivalence conservés). Pour les niveaux intermédiaire et avancé, le complément de volume ajoute des exercices d'appoint : le test d'équivalence vérifie que les exercices du prototype restent présents et dans le même ordre.
+- Prise de masse : le rythme dépend du niveau (0,2–0,5 %, 0,1–0,25 %, 0,05–0,12 % du poids par semaine) au lieu d'un surplus unique.
+- Le plancher de calories en déficit (1 700 kcal homme, 1 400 femme, ou 1,15 × métabolisme de base) empêche tout ajustement en dessous.
+- Le questionnaire de santé n'est pas un avis médical et ne bloque pas l'utilisation ; ses réponses restent sur le téléphone.
+- Pas de cardiofréquencemètre : les zones se règlent au test de la parole.

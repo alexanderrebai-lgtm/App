@@ -288,6 +288,7 @@ export const WhyFile = z.object({
     boosters: z.array(z.object({ ingredient: z.string(), qty: z.number(), unit: Unit, label: z.string() })),
   }),
   fatLoss: z.object({ title: z.string(), tips: z.array(z.string()) }),
+  cardio: z.object({ title: z.string(), zones: z.array(z.object({ label: z.string(), text: z.string() })), fuel: z.string() }),
   progression: z.object({ title: z.string(), text: z.string() }),
   deload: z.object({
     title: z.string(), text: z.string(), reasons: z.record(z.string(), z.string()),

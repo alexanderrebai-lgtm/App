@@ -143,7 +143,14 @@ export default function Coaching() {
       ) : null}
 
       <Button label="Voir les preuves et les sources" variant="secondary" onPress={() => router.push('/preuves')} />
-      <T v="caption" color={colors.mute}>Élan n’est pas un avis médical. Dernière séance de cardio : parle-nous de ton ressenti plutôt que de ton pouls ; si tu peux parler, l’effort est bon.</T>
+      {p.goal === 'cardio' || p.goal === 'fatloss' || p.goal === 'health' ? (
+        <Card>
+          <T v="heading">{why.cardio.title}</T>
+          {why.cardio.zones.map((z) => <T key={z.label} v="detail" color={colors.soft}><T v="detail" color={colors.neon}>{z.label}. </T>{z.text}</T>)}
+          <T v="detail" color={colors.mute}>{why.cardio.fuel}</T>
+        </Card>
+      ) : null}
+      <T v="caption" color={colors.mute}>Élan n’est pas un avis médical. En cas de douleur vive ou de malaise, arrête et parle à ton médecin.</T>
     </Screen>
   );
 }

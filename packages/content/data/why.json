@@ -253,5 +253,23 @@
     "now": "Alléger cette semaine",
     "skip": "Sauter l’allègement prévu",
     "undo": "Revenir au calendrier"
+  },
+  "cardio": {
+    "title": "Cardio : trois zones sans cardiofréquencemètre",
+    "zones": [
+      {
+        "label": "Facile",
+        "text": "Tu peux tenir une conversation complète. C’est la base : elle construit l’endurance sans trop fatiguer les jambes."
+      },
+      {
+        "label": "Soutenu",
+        "text": "Tu parles par phrases courtes. Utile une séance par semaine pour progresser."
+      },
+      {
+        "label": "Dur",
+        "text": "Tu ne dis que quelques mots. Réservé aux fractionnés courts, avec récupération."
+      }
+    ],
+    "fuel": "Séance de moins de 45 min facile : pas besoin de manger en plus. Au-delà d’une heure ou en fractionné, prends des glucides avant (banane, flocons d’avoine) et bois régulièrement."
   }
 }
