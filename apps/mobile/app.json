@@ -10,7 +10,11 @@
     "backgroundColor": "#0E1220",
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "app.elan.training"
+      "bundleIdentifier": "app.elan.training",
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "app.elan.training",
@@ -48,6 +52,7 @@
     ],
     "experiments": {
       "typedRoutes": false
-    }
+    },
+    "description": "Programme de musculation, cardio et nutrition sur 26 semaines, guidé série par série."
   }
 }

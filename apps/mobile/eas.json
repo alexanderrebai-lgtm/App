@@ -1,0 +1,17 @@
+{
+  "cli": { "version": ">= 16.0.0", "appVersionSource": "remote" },
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "ios": { "resourceClass": "default" },
+      "env": { "EXPO_PUBLIC_SUPABASE_URL": "", "EXPO_PUBLIC_SUPABASE_ANON_KEY": "" }
+    },
+    "production": {
+      "autoIncrement": true,
+      "ios": { "resourceClass": "default" }
+    }
+  },
+  "submit": {
+    "production": { "ios": {} }
+  }
+}
